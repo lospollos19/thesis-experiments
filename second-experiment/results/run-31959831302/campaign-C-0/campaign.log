@@ -1,0 +1,8 @@
+condition C on extern at 8df50fc
+collected 188 (113 gpu)
+unselected suite: 230.23s
+testmon database built in 267.25s
+--- geometry-halve-max-radius
+    selected 188 (113 gpu), occupancy 228.86s
+
+wrote campaign-C-geometry-halve-max-radius.json

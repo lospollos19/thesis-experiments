@@ -1,0 +1,12 @@
+condition C on extern at f241381
+collected 187 (113 gpu)
+unselected suite: 230.28s
+testmon database built in 266.46s
+--- grayscale-perturb-weight
+    selected 44 (44 gpu), occupancy 144.29s
+--- conv1d-v-border-wrap
+    selected 80 (80 gpu), occupancy 224.81s
+--- geometry-halve-max-radius
+    selected 0 (0 gpu), occupancy 0.68s
+
+wrote campaign-C-2-3.json

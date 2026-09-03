@@ -1,0 +1,7 @@
+2026-08-16T18:49:26.8600000Z Requested labels: self-hosted, Linux, ARM64
+2026-08-16T18:49:26.8600000Z Job defined at: lospollos19/gpu-motion-pipeline/.github/workflows/r3-campaign.yml@refs/heads/main
+2026-08-16T18:49:26.8600000Z Waiting for a runner to pick up this job...
+2026-08-16T18:49:26.8580000Z Evaluating campaign.if
+2026-08-16T18:49:26.8580000Z Evaluating: success()
+2026-08-16T18:49:26.8580000Z Result: true
+2026-08-16T19:29:38.4210000Z Job is about to start running on the runner: jetson-orin

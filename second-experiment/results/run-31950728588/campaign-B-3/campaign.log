@@ -1,0 +1,24 @@
+condition B on extern at 0a80e2e
+collected 187 (113 gpu)
+unselected suite: 231.27s
+testmon database built in 265.41s
+--- grayscale-swap-bgr-weights
+    selected 0 (0 gpu), occupancy 0.67s
+--- grayscale-perturb-weight
+    selected 0 (0 gpu), occupancy 0.68s
+--- conv1d-h-drop-last-tap
+    selected 0 (0 gpu), occupancy 0.67s
+--- conv1d-h-border-wrap
+    selected 0 (0 gpu), occupancy 0.67s
+--- conv1d-v-border-wrap
+    selected 0 (0 gpu), occupancy 0.67s
+--- absdiff-drop-abs
+    selected 0 (0 gpu), occupancy 0.68s
+--- threshold-boundary
+    selected 0 (0 gpu), occupancy 0.67s
+--- geometry-halve-max-radius
+    selected 0 (0 gpu), occupancy 0.67s
+--- geometry-narrow-tile-width
+    selected 0 (0 gpu), occupancy 0.68s
+
+wrote campaign-B-1-1.json

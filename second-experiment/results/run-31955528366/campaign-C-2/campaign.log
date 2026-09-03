@@ -1,0 +1,12 @@
+condition C on extern at f241381
+collected 187 (113 gpu)
+unselected suite: 230.3s
+testmon database built in 265.32s
+--- conv1d-h-drop-last-tap
+    selected 80 (80 gpu), occupancy 225.83s
+--- absdiff-drop-abs
+    selected 59 (59 gpu), occupancy 211.78s
+--- geometry-narrow-tile-width
+    selected 0 (0 gpu), occupancy 0.68s
+
+wrote campaign-C-3-3.json

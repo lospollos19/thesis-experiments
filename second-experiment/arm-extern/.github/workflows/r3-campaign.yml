@@ -1,0 +1,262 @@
+name: R3 — step 04 campaign
+
+# The measurement RQ2 exists for. Three conditions over the mutation corpus, each
+# recording what was selected and how long the device was occupied:
+#
+#   A  variant/inline  testmon alone            expected safe, near-total over-selection
+#   B  variant/extern  testmon alone            expected unsafe, empty selection
+#   C  variant/extern  testmon + kernel-aware   the contribution
+#
+# Safety is decided afterwards against D(m) from R2 (run 31845787189). The campaign
+# deliberately does not know D(m): a selector that could see the answer while choosing
+# what to run would be measuring nothing.
+#
+# Cost. Condition A re-runs almost the whole suite per mutation, C runs roughly 60 % of
+# it, B runs nothing. With the database build per job, that is about 16 minutes per A
+# chunk, 12 per C chunk and 5 for B — roughly an hour and three quarters of device time
+# in total, serialised on the one runner.
+on:
+  workflow_dispatch:
+    inputs:
+      map_run_id:
+        description: "Run id holding the kernel map artefact (verdict-q2q3)"
+        default: "31558337740"
+      only_condition:
+        description: "Run a single condition (A, B or C). Empty runs all three."
+        default: ""
+      only_mutations:
+        description: "Comma-separated mutation ids to re-measure. Needs only_condition."
+        default: ""
+      repeats:
+        description: "Timings per selection. >1 switches to one job per distinct selection."
+        default: "1"
+
+concurrency:
+  group: orin-exclusive
+  cancel-in-progress: false
+
+jobs:
+  # The matrix is built here rather than written inline because a job-level `if:` cannot
+  # read the matrix context — GitHub rejects the workflow outright. Filtering the matrix
+  # before it expands is the way to re-run one condition without paying for the other
+  # two, which is what a partial failure needs when the arms are serialised on one
+  # device.
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.build.outputs.matrix }}
+    steps:
+      - id: build
+        env:
+          ONLY: ${{ inputs.only_condition }}
+          ONLY_MUTATIONS: ${{ inputs.only_mutations }}
+          REPEATS: ${{ inputs.repeats }}
+        run: |
+          python3 - <<'PY' >> "$GITHUB_OUTPUT"
+          import json, os
+          jobs = [
+              {"condition": "A", "branch": "variant/inline", "chunk": f"{i}/3"}
+              for i in (1, 2, 3)
+          ] + [
+              # B selects nothing, so the whole corpus fits in one job.
+              {"condition": "B", "branch": "variant/extern", "chunk": "1/1"}
+          ] + [
+              {"condition": "C", "branch": "variant/extern", "chunk": f"{i}/3"}
+              for i in (1, 2, 3)
+          ]
+          only = os.environ.get("ONLY", "").strip()
+          if only:
+              jobs = [j for j in jobs if j["condition"] == only]
+          # Re-measuring named mutations after a fix is one job, not a chunked sweep:
+          # the point is to avoid paying again for the ones that were unaffected.
+          if os.environ.get("ONLY_MUTATIONS", "").strip():
+              if not only:
+                  raise SystemExit("only_mutations needs only_condition")
+              jobs = jobs[:1]
+          # Repetitions are per *selection*, not per mutation. The corpus's nine
+          # mutations produce five distinct selections among the eight in the
+          # denominator — the three conv1d mutations select the same set, as do the two
+          # grayscale ones — so repeating all nine would measure three of them three
+          # times over without saying so. One job per representative, plus one job that
+          # repeats the unselected reference, which is the denominator of every saving
+          # and needs its own variance.
+          repeats = int(os.environ.get("REPEATS", "1") or 1)
+          if repeats > 1:
+              if only != "C":
+                  raise SystemExit("repeats>1 is wired for condition C only")
+              reps = [
+                  {"condition": "C", "branch": "variant/extern", "mutation": m}
+                  for m in (
+                      "grayscale-swap-bgr-weights",
+                      "absdiff-drop-abs",
+                      "threshold-boundary",
+                      "conv1d-h-border-wrap",
+                      "geometry-halve-max-radius",
+                  )
+              ]
+              jobs = [
+                  {"condition": "C", "branch": "variant/extern", "mutation": "__reference__"}
+              ] + reps
+          if not jobs:
+              raise SystemExit(f"only_condition={only!r} matches no job")
+          print("matrix=" + json.dumps({"include": jobs}))
+          PY
+          cat "$GITHUB_OUTPUT"
+
+  campaign:
+    needs: plan
+    strategy:
+      fail-fast: false
+      matrix: ${{ fromJSON(needs.plan.outputs.matrix) }}
+    # The repository's default workflow token is contents:read only, and reading an
+    # artefact from *another* run needs actions:read. Without it the download fails with
+    # "Resource not accessible by integration", which is what killed the C jobs twice.
+    permissions:
+      contents: read
+      actions: read
+    runs-on: [self-hosted, Linux, ARM64]
+    timeout-minutes: 30
+    steps:
+      - name: Clean workspace
+        run: git clean -xdff 2>/dev/null || true
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Lock the clocks
+        run: |
+          set -uo pipefail
+          sudo -n nvpmodel -m 0 || echo "::warning::nvpmodel -m 0 failed"
+          sudo -n jetson_clocks || echo "::warning::jetson_clocks failed"
+
+      - name: Bootstrap Poetry
+        run: |
+          set -euo pipefail
+          VENV="$HOME/.poetry-venv"
+          echo "$VENV/bin" >> "$GITHUB_PATH"
+          "$VENV/bin/poetry" --version
+
+      - name: Install dependencies
+        env:
+          CUDA_ROOT: /usr/local/cuda
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry install --extras "headless gpu"
+
+      - name: Preflight — assert the PyCUDA path is really active
+        run: |
+          set -euo pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry run python - <<'PY'
+          import sys
+          from motion_pipeline.processing.gpu_processor import GPUProcessor
+          backend = GPUProcessor().backend
+          print(f"backend = {backend}")
+          if backend != "pycuda":
+              sys.exit("GPUProcessor fell back to NumPy")
+          PY
+
+      # The map is the kernel-aware layer's only input, and it must come from the
+      # unmutated tree. Downloading R1's artefact rather than re-tracing keeps the
+      # campaign from paying for a tracing pass it does not need.
+      # actions/download-artifact rather than `gh run download`: the Orin runner has no
+      # GitHub CLI, which is what failed the first C jobs of run 31950728588. The action
+      # is JavaScript and fetches across runs given run-id plus a token.
+      - name: Fetch the kernel map
+        if: matrix.condition == 'C'
+        uses: actions/download-artifact@v4
+        with:
+          name: verdict-q2q3
+          path: map
+          run-id: ${{ inputs.map_run_id }}
+          repository: ${{ github.repository }}
+          github-token: ${{ github.token }}
+
+      - name: Check the kernel map
+        if: matrix.condition == 'C'
+        run: |
+          set -euo pipefail
+          test -s map/kernel_deps.json
+          python3 -c "import json;print(len(json.load(open('map/kernel_deps.json'))),'tests in the map')"
+
+      - name: Run the condition
+        id: run
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          extra=""
+          [ "${{ matrix.condition }}" = "C" ] && extra="--map map/kernel_deps.json"
+          if [ "${{ matrix.mutation }}" = "__reference__" ]; then
+            scope="--reference-only --only ${{ inputs.only_mutations || 'absdiff-drop-abs' }}"
+          elif [ -n "${{ matrix.mutation }}" ]; then
+            scope="--only ${{ matrix.mutation }} --skip-unselected"
+          elif [ -n "${{ inputs.only_mutations }}" ]; then
+            scope="--only ${{ inputs.only_mutations }}"
+          else
+            scope="--chunk ${{ matrix.chunk }}"
+          fi
+          reps="--repeats ${{ inputs.repeats }}"
+          # One file per job, named after what the job measured rather than after the
+          # flags that produced it.
+          label="${{ matrix.mutation || matrix.chunk }}"
+          label="$(echo "$label" | tr ',/ _' '----')"
+          poetry run python tools/campaign.py \
+            --condition "${{ matrix.condition }}" \
+            $scope $reps \
+            --out "campaign-${{ matrix.condition }}-${label}.json" \
+            $extra 2>&1 | tee campaign.log
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: campaign-${{ matrix.condition }}-${{ strategy.job-index }}
+          path: |
+            campaign-*.json
+            campaign.log
+
+  verdict:
+    needs: campaign
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      # No `|| true` here. It was there before and it turned a permission failure into a
+      # reported success, so the job failed one step later on an empty directory and the
+      # real cause stayed hidden. A fetch that cannot happen must say so where it happens.
+      - name: Fetch R2's ground truth
+        run: gh run download 31845787189 -R "${{ github.repository }}" -D gt
+
+      - name: Aggregate
+        run: |
+          set -uo pipefail
+          find gt -name 'gt-*.json' | sort > gt.list
+          if [ ! -s gt.list ]; then
+            echo "::error::no ground truth: the violation rate cannot be computed"
+            exit 1
+          fi
+          args=""
+          for c in A B C; do
+            files=$(find artifacts -name "campaign-$c-*.json" | sort | paste -sd, -)
+            if [ -n "$files" ]; then args="$args $c=$files"; else
+              echo "::warning::condition $c produced no measurement"
+            fi
+          done
+          python3 tools/campaign_report.py --ground-truth $(cat gt.list) \
+            --campaign $args --out verdict-campaign.md | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verdict-campaign
+          path: verdict-campaign.md

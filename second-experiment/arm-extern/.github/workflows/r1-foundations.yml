@@ -1,0 +1,430 @@
+name: R1 — foundations
+
+# Three independent questions batched into one dispatch, because every GPU fact costs a
+# round-trip to a single shared device:
+#
+#   Q1  does the testmon database survive between jobs, or does selection silently
+#       degrade to "re-run everything"?
+#   Q2  is the traced test -> kernel map exploitable, i.e. non-trivial?
+#   Q3  is that map complete for every gpu-marked test?
+#
+# Each question reports even when another fails: the measuring steps carry
+# continue-on-error and write a verdict file, the jobs are joined with if: always(),
+# and a final job aggregates the verdicts and fails on any red. A run that aborts on
+# the first error costs a whole round-trip for one answer.
+on:
+  workflow_dispatch:
+    inputs:
+      trace_sessions:
+        description: "Tracing sessions to union for Q2 (minimum 3)"
+        default: "3"
+
+# Serialises against the CI GPU job in this repository. Not against the RQ1 case study,
+# which lives in another repository: concurrency groups do not cross repositories.
+concurrency:
+  group: orin-exclusive
+  cancel-in-progress: false
+
+jobs:
+  # ---------------------------------------------------------------- Q1, part 1
+  # Build the database on the pre-mutation state, one job per arm, and publish it with
+  # a checksum and the SHA it was built from. A database reused across content states
+  # would select against the wrong baseline, so both are recorded, not just the file.
+  q1-build:
+    strategy:
+      fail-fast: false        # one arm failing must not cost the other its answer
+      matrix:
+        include:
+          # slug because an artefact name cannot carry the slash in a branch name, and
+          # matching the two matrices by position alone would break the day they differ
+          - branch: variant/inline
+            slug: inline
+          - branch: variant/extern
+            slug: extern
+    runs-on: [self-hosted, Linux, ARM64]
+    timeout-minutes: 30
+    steps:
+      - name: Clean workspace
+        run: git clean -xdff 2>/dev/null || true
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Lock the clocks
+        run: |
+          set -uo pipefail
+          locked=true
+          sudo -n nvpmodel -m 0 || { echo "::warning::nvpmodel -m 0 failed"; locked=false; }
+          sudo -n jetson_clocks || { echo "::warning::jetson_clocks failed"; locked=false; }
+          nvpmodel -q || echo "::warning::nvpmodel -q unavailable"
+          echo "CLOCKS_LOCKED=$locked" >> "$GITHUB_ENV"
+
+      - name: Bootstrap Poetry
+        run: |
+          set -euo pipefail
+          VENV="$HOME/.poetry-venv"
+          if [ ! -x "$VENV/bin/poetry" ]; then
+            if python3 -c "import ensurepip" 2>/dev/null; then
+              python3 -m venv "$VENV"
+            else
+              python3 -m venv --without-pip "$VENV"
+              curl -fsSL https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+              "$VENV/bin/python" /tmp/get-pip.py --quiet
+            fi
+            "$VENV/bin/python" -m pip install --quiet --upgrade pip
+            "$VENV/bin/python" -m pip install --quiet poetry
+          fi
+          echo "$VENV/bin" >> "$GITHUB_PATH"
+
+      - name: Install dependencies
+        env:
+          CUDA_ROOT: /usr/local/cuda
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry install --extras "headless gpu"
+
+      - name: Preflight — assert the PyCUDA path is really active
+        run: |
+          set -euo pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          which nvcc && nvcc --version
+          poetry run python - <<'PY'
+          import sys
+          from motion_pipeline.processing.gpu_processor import GPUProcessor
+          backend = GPUProcessor().backend
+          print(f"backend = {backend}")
+          if backend != "pycuda":
+              sys.exit("GPUProcessor fell back to NumPy")
+          PY
+
+      # The whole suite, not `-m gpu`. testmon turns itself off under a marker or
+      # keyword expression and says so on its header line:
+      #   testmon: selection automatically deactivated because -m was used
+      # so a campaign invoked with `-m gpu` would measure a 0 % saving produced by the
+      # command line rather than observed. Restricting by path keeps selection active;
+      # only -m and -k deactivate it.
+      - name: Build the testmon database
+        id: build
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          rm -f .testmondata*
+          poetry run pytest tests/ -q --testmon -rs 2>&1 | tee build.log
+          if grep -q SKIPPED build.log; then
+            echo "::error::a test was skipped while building the baseline database"
+            exit 1
+          fi
+
+      # The database is SQLite in WAL mode: straight after a run the main file holds
+      # ~4 KB and .testmondata-wal holds the content. Archiving the main file alone
+      # ships an empty database, and testmon then re-runs everything with no error and
+      # no warning. Checkpointing folds the log back in and removes the failure class
+      # rather than working around it; the glob still copies whatever remains, and the
+      # checksums guard the download rather than the WAL.
+      - name: Package the database
+        if: always()
+        run: |
+          set -uo pipefail
+          poetry run python tools/checkpoint_testmon_db.py .testmondata \
+            || echo "::warning::WAL checkpoint failed; the artefact may be incomplete"
+          mkdir -p db
+          cp .testmondata* db/ 2>/dev/null || echo "::warning::no .testmondata produced"
+          ls -la db/
+          ( cd db && sha256sum .testmondata* > SHA256SUMS 2>/dev/null || true )
+          echo "${{ github.sha }}" > db/BUILT_FROM_SHA
+          git rev-parse HEAD > db/BUILT_FROM_BRANCH_SHA
+          # testmon re-runs a previously failed test on every subsequent selection, by
+          # design. A baseline built from a red suite therefore cannot answer Q1: the
+          # verify job would count those re-runs as a persistence failure, which is what
+          # the first R1 run did. Carry the count so the verdict can say so instead of
+          # blaming the database.
+          grep -oE '[0-9]+ failed' build.log 2>/dev/null | head -1 | cut -d' ' -f1 \
+            > db/BUILD_FAILED_COUNT || true
+          [ -s db/BUILD_FAILED_COUNT ] || echo 0 > db/BUILD_FAILED_COUNT
+          grep '^FAILED ' build.log 2>/dev/null > db/BUILD_FAILED_NODEIDS || true
+          cat db/SHA256SUMS db/BUILT_FROM_BRANCH_SHA db/BUILD_FAILED_COUNT 2>/dev/null || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: testmon-db-${{ matrix.slug }}
+          path: db/
+          include-hidden-files: true
+
+  # ---------------------------------------------------------------- Q1, part 2
+  # The real test: a fresh workspace, git clean, the database restored from the
+  # artefact rather than from the workspace, nothing mutated. Expect zero tests
+  # selected. Anything else means selection has silently degraded.
+  q1-verify:
+    needs: q1-build
+    if: always()
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - branch: variant/inline
+            slug: inline
+          - branch: variant/extern
+            slug: extern
+    runs-on: [self-hosted, Linux, ARM64]
+    timeout-minutes: 30
+    steps:
+      - name: Clean workspace
+        run: git clean -xdff 2>/dev/null || true
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          name: testmon-db-${{ matrix.slug }}
+          path: db
+
+      - name: Bootstrap Poetry
+        run: |
+          set -euo pipefail
+          VENV="$HOME/.poetry-venv"
+          echo "$VENV/bin" >> "$GITHUB_PATH"
+          "$VENV/bin/poetry" --version
+
+      - name: Install dependencies
+        env:
+          CUDA_ROOT: /usr/local/cuda
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry install --extras "headless gpu"
+
+      - name: Restore the database and verify its checksum
+        id: restore
+        continue-on-error: true
+        run: |
+          set -euo pipefail
+          test -f db/SHA256SUMS || { echo "::error::no database artefact"; exit 1; }
+          ( cd db && sha256sum -c SHA256SUMS )
+          echo "built from $(cat db/BUILT_FROM_BRANCH_SHA) — now at $(git rev-parse HEAD)"
+          if [ "$(cat db/BUILT_FROM_BRANCH_SHA)" != "$(git rev-parse HEAD)" ]; then
+            echo "::error::database built from a different content state; it must not be reused"
+            exit 1
+          fi
+          cp db/.testmondata* .
+          ls -la .testmondata*
+
+      - name: Q1 — select with nothing mutated
+        id: q1
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry run pytest tests/ -q --testmon 2>&1 | tee select.log || true
+          # "no tests ran" is testmon's phrasing for an empty selection. Count what
+          # actually executed rather than trusting the exit status.
+          # The `|| true` is the whole point: on an empty selection the log reads
+          # "no tests ran", grep matches nothing and exits 1, and under the runner's
+          # default `bash -e` plus pipefail the assignment aborts the step — precisely
+          # when Q1 is green. The first attempt only survived because it was red.
+          selected=$( { grep -oE '[0-9]+ (passed|failed)' select.log || true; } \
+                      | awk '{ total += $1 } END { print total + 0 }')
+          failed_before=$(cat db/BUILD_FAILED_COUNT 2>/dev/null || echo 0)
+          echo "selected=$selected" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Q1 — ${{ matrix.branch }}"
+            echo ""
+            echo "- tests selected with nothing mutated: **$selected** (expected 0)"
+            echo "- tests already failing in the baseline: **$failed_before**"
+            echo "- selection run: \`$(grep -oE 'in [0-9]+\.[0-9]+s' select.log | tail -1)\`"
+            echo "- database SHA256: \`$(head -c 20 db/SHA256SUMS)…\`"
+            echo "- built from: \`$(cat db/BUILT_FROM_BRANCH_SHA)\`"
+          } > verdict-q1-${{ matrix.slug }}.md
+          # Order matters. A red baseline is not evidence about persistence either way,
+          # so it is reported as an unanswered question rather than as a failed one.
+          if [ "$failed_before" -ne 0 ]; then
+            {
+              echo "- verdict: **RED** — baseline not green: $failed_before test(s) failed while"
+              echo "  building the database. testmon re-runs prior failures on every selection,"
+              echo "  so Q1 is unanswerable from this baseline. Fix the tests, rebuild, re-ask."
+              sed 's/^/    /' db/BUILD_FAILED_NODEIDS 2>/dev/null || true
+            } >> verdict-q1-${{ matrix.slug }}.md
+            exit 1
+          fi
+          if [ "$selected" -ne 0 ]; then
+            echo "- verdict: **RED** — selection did not collapse to zero: $selected test(s) ran with nothing mutated" \
+              >> verdict-q1-${{ matrix.slug }}.md
+            exit 1
+          fi
+          echo "- verdict: **GREEN**" >> verdict-q1-${{ matrix.slug }}.md
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verdict-q1-${{ matrix.slug }}
+          path: |
+            verdict-q1-*.md
+            select.log
+
+  # ---------------------------------------------------------------- Q2 and Q3
+  # Traced on variant/extern, the arm condition C is built on. The map itself is
+  # arm-independent: the launch sites live in gpu_processor.py, which is identical on
+  # both branches.
+  q2q3-kernel-map:
+    if: always()
+    runs-on: [self-hosted, Linux, ARM64]
+    timeout-minutes: 30
+    steps:
+      - name: Clean workspace
+        run: git clean -xdff 2>/dev/null || true
+
+      - uses: actions/checkout@v4
+        with:
+          ref: variant/extern
+
+      - name: Lock the clocks
+        run: |
+          set -uo pipefail
+          sudo -n nvpmodel -m 0 || echo "::warning::nvpmodel -m 0 failed"
+          sudo -n jetson_clocks || echo "::warning::jetson_clocks failed"
+          nvpmodel -q || true
+
+      - name: Bootstrap Poetry
+        run: |
+          set -euo pipefail
+          echo "$HOME/.poetry-venv/bin" >> "$GITHUB_PATH"
+          "$HOME/.poetry-venv/bin/poetry" --version
+
+      - name: Install dependencies
+        env:
+          CUDA_ROOT: /usr/local/cuda
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry install --extras "headless gpu"
+
+      - name: Preflight — assert the PyCUDA path is really active
+        run: |
+          set -euo pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry run python - <<'PY'
+          import sys
+          from motion_pipeline.processing.gpu_processor import GPUProcessor
+          backend = GPUProcessor().backend
+          print(f"backend = {backend}")
+          if backend != "pycuda":
+              sys.exit("GPUProcessor fell back to NumPy")
+          PY
+
+      # Two lists. The first is the denominator and stays the full gpu set; the second
+      # only records which of those tests declare that they launch nothing, so that an
+      # expected absence can be told from a tracer miss without shrinking the check.
+      - name: Collect the gpu nodeids
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry run pytest tests/ -m gpu -q --collect-only 2>/dev/null \
+            | grep '::' > gpu_nodeids.txt
+          poetry run pytest tests/ -m "gpu and no_kernel_launch" -q --collect-only 2>/dev/null \
+            | grep '::' > kernel_free_nodeids.txt || true
+          wc -l gpu_nodeids.txt kernel_free_nodeids.txt
+
+      # Several sessions, then the union. A kernel launched only on a rare branch would
+      # be missing from a single pass, and a missing edge is a silent safety violation
+      # rather than a visible failure. The first session also serves as the duration
+      # control against the ~234 s reference, since tracing is the only thing added.
+      - name: Trace the kernel usage
+        id: trace
+        continue-on-error: true
+        env:
+          MP_TRACE_KERNELS: "1"
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          sessions=${{ inputs.trace_sessions }}
+          for i in $(seq 1 "${sessions:-3}"); do
+            echo "--- tracing session $i"
+            MP_TRACE_OUT="trace-session-$i.json" \
+              poetry run pytest tests/ -m gpu -q -rs 2>&1 | tee "trace-$i.log"
+            if grep -q SKIPPED "trace-$i.log"; then
+              echo "::error::a gpu-marked test was skipped during tracing session $i"
+            fi
+          done
+          grep -hoE 'in [0-9]+\.[0-9]+s' trace-*.log | tail -n +1
+
+      - name: Q2 and Q3 — merge, report, and check completeness
+        id: map
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          poetry run python tools/merge_kernel_deps.py \
+            --out kernel_deps.json trace-session-*.json
+          poetry run python tools/kernel_map_report.py kernel_deps.json \
+            --gpu-nodeids gpu_nodeids.txt --kernel-free kernel_free_nodeids.txt \
+            --out verdict-q2q3.md
+          # The same completeness property as a test, so it is enforced by the suite and
+          # not only by this workflow.
+          MP_KERNEL_MAP=kernel_deps.json MP_GPU_NODEIDS=gpu_nodeids.txt \
+            MP_KERNEL_FREE_NODEIDS=kernel_free_nodeids.txt \
+            poetry run pytest tests/test_kernel_map.py -q
+
+      - name: Suite duration control
+        if: always()
+        run: |
+          {
+            echo ""
+            echo "### Suite duration after the split into five translation units"
+            echo ""
+            grep -hoE '[0-9]+ passed.*in [0-9.]+s' trace-*.log 2>/dev/null || echo "no run recorded"
+            echo ""
+            echo "Reference before the split: ~234 s."
+          } >> verdict-q2q3.md
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verdict-q2q3
+          path: |
+            verdict-q2q3.md
+            kernel_deps.json
+            gpu_nodeids.txt
+            kernel_free_nodeids.txt
+            trace-session-*.json
+            trace-*.log
+
+  # ---------------------------------------------------------------- aggregation
+  # Runs whatever happened upstream, publishes the three verdicts side by side, and only
+  # then fails. Off the Orin: it holds no hardware.
+  verdict:
+    needs: [q1-build, q1-verify, q2q3-kernel-map]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        continue-on-error: true
+        with:
+          path: artifacts
+
+      - name: Aggregate
+        run: |
+          set -uo pipefail
+          {
+            echo "# R1 — foundations"
+            echo ""
+            for f in artifacts/*/verdict-*.md; do
+              [ -f "$f" ] && cat "$f" && echo ""
+            done
+          } | tee summary.md >> "$GITHUB_STEP_SUMMARY"
+          red=0
+          # Anchored on the emphasised verdict token: a bare "TRIVIAL" also matches
+          # "NON-TRIVIAL", which is the green case.
+          grep -qF '**RED**' summary.md && red=1
+          grep -qF '**INCOMPLETE**' summary.md && red=1
+          grep -qE '(^|[^-])\*\*TRIVIAL\*\*' summary.md && red=1
+          # A missing verdict is a red of its own: the question went unanswered.
+          for expected in verdict-q1-inline verdict-q1-extern verdict-q2q3; do
+            if ! ls artifacts/*/"${expected}"*.md >/dev/null 2>&1; then
+              echo "::error::$expected produced no verdict"
+              red=1
+            fi
+          done
+          exit "$red"

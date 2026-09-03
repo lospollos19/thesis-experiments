@@ -1,0 +1,54 @@
+{
+  "arm": "inline",
+  "backend": "pycuda",
+  "commit": "3c991a61b397c76d366f95dc6ae4e951ea2d2c57",
+  "mutations": {
+    "conv1d-v-border-wrap": {
+      "behaviour_changing": true,
+      "duration_s": 231.23,
+      "failed": [
+        "tests/test_kernels.py::test_full_chain_matches_numpy",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[33]",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[3]",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[5]",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[9]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution2]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution2]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution2]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution2]"
+      ],
+      "kind": "boundary",
+      "summary": "vertical border rule: clamp to edge becomes wrap-around"
+    },
+    "geometry-halve-max-radius": {
+      "behaviour_changing": true,
+      "duration_s": 231.96,
+      "failed": [
+        "tests/test_kernels.py::test_max_blur_contract_is_thirty_three_taps"
+      ],
+      "kind": "constant",
+      "summary": "halve MAX_RADIUS: the largest supported blur drops from 33 to 17 taps"
+    },
+    "grayscale-perturb-weight": {
+      "behaviour_changing": true,
+      "duration_s": 232.96,
+      "failed": [
+        "tests/test_kernels.py::test_full_chain_matches_numpy",
+        "tests/test_kernels.py::test_grayscale_matches_numpy",
+        "tests/test_workload_kernels.py::test_grayscale_matches_numpy_at_scale[resolution0]",
+        "tests/test_workload_kernels.py::test_grayscale_matches_numpy_at_scale[resolution1]",
+        "tests/test_workload_kernels.py::test_grayscale_matches_numpy_at_scale[resolution2]"
+      ],
+      "kind": "numeric",
+      "summary": "perturb the green luminance weight by 0.002"
+    }
+  }
+}

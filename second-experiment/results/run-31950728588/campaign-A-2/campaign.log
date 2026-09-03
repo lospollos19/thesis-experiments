@@ -1,0 +1,12 @@
+condition A on inline at 3023bf1
+collected 182 (113 gpu)
+unselected suite: 230.22s
+testmon database built in 267.25s
+--- conv1d-h-drop-last-tap
+    selected 125 (113 gpu), occupancy 233.3s
+--- absdiff-drop-abs
+    selected 125 (113 gpu), occupancy 226.7s
+--- geometry-narrow-tile-width
+    selected 125 (113 gpu), occupancy 230.26s
+
+wrote campaign-A-3-3.json

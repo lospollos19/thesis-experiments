@@ -1,0 +1,119 @@
+{
+  "arm": "extern",
+  "collected": 187,
+  "commit": "0a80e2ecbd9e6b5826c4c725c7b4494b8287b101",
+  "condition": "B",
+  "db_build_seconds": 265.41,
+  "gpu_collected": 113,
+  "mutations": {
+    "absdiff-drop-abs": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.68,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.68,
+      "selected": []
+    },
+    "conv1d-h-border-wrap": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.67,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.67,
+      "selected": []
+    },
+    "conv1d-h-drop-last-tap": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.67,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.67,
+      "selected": []
+    },
+    "conv1d-v-border-wrap": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.67,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.67,
+      "selected": []
+    },
+    "geometry-halve-max-radius": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.67,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.67,
+      "selected": []
+    },
+    "geometry-narrow-tile-width": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.68,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.68,
+      "selected": []
+    },
+    "grayscale-perturb-weight": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.68,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.68,
+      "selected": []
+    },
+    "grayscale-swap-bgr-weights": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.67,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.67,
+      "selected": []
+    },
+    "threshold-boundary": {
+      "n_selected": 0,
+      "n_selected_gpu": 0,
+      "n_testmon": 0,
+      "occupancy_seconds": 0.67,
+      "reasons": {
+        "rule": "testmon"
+      },
+      "run_seconds": 0.0,
+      "select_seconds": 0.67,
+      "selected": []
+    }
+  },
+  "unselected_seconds": 231.27
+}

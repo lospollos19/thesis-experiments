@@ -1,0 +1,101 @@
+﻿2026-08-12T00:35:18.5897371Z Current runner version: '2.336.0'
+2026-08-12T00:35:18.5934307Z ##[group]Runner Image Provisioner
+2026-08-12T00:35:18.5935614Z Hosted Compute Agent
+2026-08-12T00:35:18.5936702Z Version: 20260707.563
+2026-08-12T00:35:18.5937823Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-08-12T00:35:18.5939085Z Build Date: 2026-07-07T19:33:50Z
+2026-08-12T00:35:18.5940474Z Worker ID: {400067f3-b650-4342-86b5-cebd37d14edf}
+2026-08-12T00:35:18.5941736Z Azure Region: westus
+2026-08-12T00:35:18.5943039Z ##[endgroup]
+2026-08-12T00:35:18.5945463Z ##[group]Operating System
+2026-08-12T00:35:18.5946481Z Ubuntu
+2026-08-12T00:35:18.5947420Z 24.04.4
+2026-08-12T00:35:18.5948242Z LTS
+2026-08-12T00:35:18.5949143Z ##[endgroup]
+2026-08-12T00:35:18.5950133Z ##[group]Runner Image
+2026-08-12T00:35:18.5951084Z Image: ubuntu-24.04
+2026-08-12T00:35:18.5952014Z Version: 20260720.247.2
+2026-08-12T00:35:18.5954664Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+2026-08-12T00:35:18.5957442Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+2026-08-12T00:35:18.5959119Z ##[endgroup]
+2026-08-12T00:35:18.5961375Z ##[group]GITHUB_TOKEN Permissions
+2026-08-12T00:35:18.5964380Z Contents: read
+2026-08-12T00:35:18.5965313Z Metadata: read
+2026-08-12T00:35:18.5966437Z Packages: read
+2026-08-12T00:35:18.5967403Z ##[endgroup]
+2026-08-12T00:35:18.5970618Z Secret source: Actions
+2026-08-12T00:35:18.5972817Z Prepare workflow directory
+2026-08-12T00:35:18.6673022Z Prepare all required actions
+2026-08-12T00:35:18.6746865Z Getting action download info
+2026-08-12T00:35:19.0506398Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2026-08-12T00:35:19.6750203Z Complete job name: verdict
+2026-08-12T00:35:19.7559321Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-12T00:35:19.7568774Z ##[group]Run actions/download-artifact@v4
+2026-08-12T00:35:19.7569619Z with:
+2026-08-12T00:35:19.7570047Z   path: artifacts
+2026-08-12T00:35:19.7570515Z   merge-multiple: false
+2026-08-12T00:35:19.7571061Z   repository: lospollos19/gpu-motion-pipeline
+2026-08-12T00:35:19.7571649Z   run-id: 31549375584
+2026-08-12T00:35:19.7572546Z ##[endgroup]
+2026-08-12T00:35:19.9422181Z (node:1905) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-12T00:35:19.9425437Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-12T00:35:20.2301029Z Found 5 artifact(s)
+2026-08-12T00:35:20.2321871Z No input name, artifact-ids or pattern filtered specified, downloading all artifacts
+2026-08-12T00:35:20.2336976Z An extra directory with the artifact name will be created for each download
+2026-08-12T00:35:20.2338949Z Preparing to download the following artifacts:
+2026-08-12T00:35:20.2341528Z - verdict-q1-extern (ID: 9124124464, Size: 990, Expected Digest: sha256:7d225dc83d127dda9feb8a8414fd712746cc5dcf8ca14bbe1196251845fb8c09)
+2026-08-12T00:35:20.2347396Z - verdict-q1-inline (ID: 9124100325, Size: 990, Expected Digest: sha256:deaefadb2e95852bb8602191038d704a513f11f304c961b4958cc83bee2f0acc)
+2026-08-12T00:35:20.2374810Z - testmon-db-inline (ID: 9124094469, Size: 25552, Expected Digest: sha256:aaf9dbc9680b42b47f7ed27262ec7de7de96762a9d13d8d2e3e69c98710c0851)
+2026-08-12T00:35:20.2571768Z - verdict-q2q3 (ID: 9123994183, Size: 6609, Expected Digest: sha256:5ac2ff8039fed3eba94d20ed0ee1c52e3142091f487f0a99b80791296f5e543e)
+2026-08-12T00:35:20.2576361Z - testmon-db-extern (ID: 9123743928, Size: 26216, Expected Digest: sha256:5ad9a1d7ad44f4f5573a4cdf2afd8196bf7a82f0999523f9ce2fe9d063e5df5f)
+2026-08-12T00:35:20.4707014Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/b2344305-4e45-421c-a9b4-50bf27fd5c41/workflow-job-run-2c7b216f-801d-5137-afb4-d0d79abf351c/artifacts/45829f7ec60eafc50fe5bc4899187f44773c14a7b90a218ac9773c2cfe67dd9f.zip
+2026-08-12T00:35:20.4711482Z Starting download of artifact to: /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline/artifacts/testmon-db-inline
+2026-08-12T00:35:20.6187464Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/b2344305-4e45-421c-a9b4-50bf27fd5c41/workflow-job-run-dec0f8d0-317b-5d62-bff6-32a259c0f9da/artifacts/35a8d6d98f10c80b63b00090546347cd7c398fb2d78ad7dd9af72ac10056b8cd.zip
+2026-08-12T00:35:20.6191573Z Starting download of artifact to: /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline/artifacts/testmon-db-extern
+2026-08-12T00:35:20.6199920Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/b2344305-4e45-421c-a9b4-50bf27fd5c41/workflow-job-run-0525b152-21fd-5dbe-b37f-c613f5f457de/artifacts/943d0cad2c922874d834917f08547e41d67c04470713effe1a401b69e569f7fc.zip
+2026-08-12T00:35:20.6204047Z Starting download of artifact to: /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline/artifacts/verdict-q1-extern
+2026-08-12T00:35:20.6211424Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/b2344305-4e45-421c-a9b4-50bf27fd5c41/workflow-job-run-3309fb93-1c26-5487-ae9c-4794c6460d64/artifacts/ab747f333d9be7a55c938ac0c079335f0d136a7ffc6c0f9de369f87b08be549a.zip
+2026-08-12T00:35:20.6215625Z Starting download of artifact to: /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline/artifacts/verdict-q2q3
+2026-08-12T00:35:20.6223877Z Redirecting to blob download url: https://productionresultssa3.blob.core.windows.net/actions-results/b2344305-4e45-421c-a9b4-50bf27fd5c41/workflow-job-run-4f128885-047d-560f-b0c4-4f1e6a1d0f4b/artifacts/0b1bc10719e3f9d6611beb5b649e5a77ac7bfa38d11f22111b230020cc930353.zip
+2026-08-12T00:35:20.6228031Z Starting download of artifact to: /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline/artifacts/verdict-q1-inline
+2026-08-12T00:35:20.7679696Z (node:1905) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-08-12T00:35:20.8377076Z SHA256 digest of downloaded artifact is aaf9dbc9680b42b47f7ed27262ec7de7de96762a9d13d8d2e3e69c98710c0851
+2026-08-12T00:35:20.8379981Z Artifact download completed successfully.
+2026-08-12T00:35:20.8790235Z SHA256 digest of downloaded artifact is 7d225dc83d127dda9feb8a8414fd712746cc5dcf8ca14bbe1196251845fb8c09
+2026-08-12T00:35:20.8793583Z Artifact download completed successfully.
+2026-08-12T00:35:20.8976531Z SHA256 digest of downloaded artifact is deaefadb2e95852bb8602191038d704a513f11f304c961b4958cc83bee2f0acc
+2026-08-12T00:35:20.8979054Z Artifact download completed successfully.
+2026-08-12T00:35:20.9082176Z SHA256 digest of downloaded artifact is 5ac2ff8039fed3eba94d20ed0ee1c52e3142091f487f0a99b80791296f5e543e
+2026-08-12T00:35:20.9085607Z Artifact download completed successfully.
+2026-08-12T00:35:20.9625474Z SHA256 digest of downloaded artifact is 5ad9a1d7ad44f4f5573a4cdf2afd8196bf7a82f0999523f9ce2fe9d063e5df5f
+2026-08-12T00:35:20.9629710Z Artifact download completed successfully.
+2026-08-12T00:35:20.9632461Z Total of 5 artifact(s) downloaded
+2026-08-12T00:35:20.9634727Z Download artifact has finished successfully
+2026-08-12T00:35:20.9940197Z ##[group]Run set -uo pipefail
+2026-08-12T00:35:20.9941662Z [36;1mset -uo pipefail[0m
+2026-08-12T00:35:20.9943204Z [36;1m{[0m
+2026-08-12T00:35:20.9944212Z [36;1m  echo "# R1 — foundations"[0m
+2026-08-12T00:35:20.9945548Z [36;1m  echo ""[0m
+2026-08-12T00:35:20.9946727Z [36;1m  for f in artifacts/*/verdict-*.md; do[0m
+2026-08-12T00:35:20.9948285Z [36;1m    [ -f "$f" ] && cat "$f" && echo ""[0m
+2026-08-12T00:35:20.9949693Z [36;1m  done[0m
+2026-08-12T00:35:20.9950898Z [36;1m} | tee summary.md >> "$GITHUB_STEP_SUMMARY"[0m
+2026-08-12T00:35:20.9952784Z [36;1mred=0[0m
+2026-08-12T00:35:20.9954446Z [36;1m# Anchored on the emphasised verdict token: a bare "TRIVIAL" also matches[0m
+2026-08-12T00:35:20.9956571Z [36;1m# "NON-TRIVIAL", which is the green case.[0m
+2026-08-12T00:35:20.9958157Z [36;1mgrep -qF '**RED**' summary.md && red=1[0m
+2026-08-12T00:35:20.9959795Z [36;1mgrep -qF '**INCOMPLETE**' summary.md && red=1[0m
+2026-08-12T00:35:20.9961612Z [36;1mgrep -qE '(^|[^-])\*\*TRIVIAL\*\*' summary.md && red=1[0m
+2026-08-12T00:35:20.9964101Z [36;1m# A missing verdict is a red of its own: the question went unanswered.[0m
+2026-08-12T00:35:20.9966545Z [36;1mfor expected in verdict-q1-inline verdict-q1-extern verdict-q2q3; do[0m
+2026-08-12T00:35:20.9968800Z [36;1m  if ! ls artifacts/*/"${expected}"*.md >/dev/null 2>&1; then[0m
+2026-08-12T00:35:20.9970864Z [36;1m    echo "::error::$expected produced no verdict"[0m
+2026-08-12T00:35:20.9972591Z [36;1m    red=1[0m
+2026-08-12T00:35:20.9973751Z [36;1m  fi[0m
+2026-08-12T00:35:20.9974770Z [36;1mdone[0m
+2026-08-12T00:35:20.9975804Z [36;1mexit "$red"[0m
+2026-08-12T00:35:21.0025465Z shell: /usr/bin/bash -e {0}
+2026-08-12T00:35:21.0026696Z ##[endgroup]
+2026-08-12T00:35:21.0275069Z ##[error]Process completed with exit code 1.
+2026-08-12T00:35:21.0444582Z Cleaning up orphan processes
+2026-08-12T00:35:21.0883097Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/download-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

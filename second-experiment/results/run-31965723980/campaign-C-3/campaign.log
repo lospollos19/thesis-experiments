@@ -1,0 +1,7 @@
+condition C on extern at 3249fab
+collected 188 (113 gpu)
+testmon database built in 265.67s
+--- threshold-boundary
+    selected 71 (71 gpu), occupancy 214.92s
+
+wrote campaign-C-threshold-boundary.json

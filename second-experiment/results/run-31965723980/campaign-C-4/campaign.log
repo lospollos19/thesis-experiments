@@ -1,0 +1,7 @@
+condition C on extern at 3249fab
+collected 188 (113 gpu)
+testmon database built in 266.74s
+--- conv1d-h-border-wrap
+    selected 80 (80 gpu), occupancy 225.46s
+
+wrote campaign-C-conv1d-h-border-wrap.json

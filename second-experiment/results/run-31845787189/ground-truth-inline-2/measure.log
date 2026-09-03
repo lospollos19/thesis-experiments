@@ -1,0 +1,8 @@
+--- conv1d-h-drop-last-tap
+    17 failing, 232.77s
+--- absdiff-drop-abs
+    17 failing, 230.54s
+--- geometry-narrow-tile-width
+    0 failing, 232.86s
+
+wrote gt-inline-3-3.json: 3 mutation(s) on arm 'inline'

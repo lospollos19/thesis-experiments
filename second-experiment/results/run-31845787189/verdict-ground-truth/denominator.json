@@ -1,0 +1,13 @@
+{
+  "denominator": [
+    "absdiff-drop-abs",
+    "conv1d-h-border-wrap",
+    "conv1d-h-drop-last-tap",
+    "conv1d-v-border-wrap",
+    "geometry-halve-max-radius",
+    "grayscale-perturb-weight",
+    "grayscale-swap-bgr-weights",
+    "threshold-boundary"
+  ],
+  "undetected": []
+}

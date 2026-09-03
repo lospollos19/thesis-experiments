@@ -1,0 +1,207 @@
+﻿2026-08-14T22:38:29.5279645Z Current runner version: '2.336.0'
+2026-08-14T22:38:29.5289634Z Runner name: 'jetson-orin'
+2026-08-14T22:38:29.5290679Z Runner group name: 'Default'
+2026-08-14T22:38:29.5292102Z Machine name: 'jetson-orin'
+2026-08-14T22:38:29.5296424Z ##[group]GITHUB_TOKEN Permissions
+2026-08-14T22:38:29.5300258Z Contents: read
+2026-08-14T22:38:29.5301034Z Metadata: read
+2026-08-14T22:38:29.5301743Z Packages: read
+2026-08-14T22:38:29.5302432Z ##[endgroup]
+2026-08-14T22:38:29.5306229Z Secret source: Actions
+2026-08-14T22:38:29.5308056Z Prepare workflow directory
+2026-08-14T22:38:29.6111539Z Prepare all required actions
+2026-08-14T22:38:29.6191666Z Getting action download info
+2026-08-14T22:38:30.0734027Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-14T22:38:30.5335662Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-14T22:38:31.2071135Z Complete job name: measure (variant/extern, extern, 2/3, no)
+2026-08-14T22:38:31.3814747Z ##[group]Run git clean -xdff 2>/dev/null || true
+2026-08-14T22:38:31.3816598Z [36;1mgit clean -xdff 2>/dev/null || true[0m
+2026-08-14T22:38:31.3844581Z shell: /usr/bin/bash -e {0}
+2026-08-14T22:38:31.3846332Z ##[endgroup]
+2026-08-14T22:38:31.4060150Z Removing .pytest_cache/
+2026-08-14T22:38:31.4061664Z Removing __pycache__/
+2026-08-14T22:38:31.4062852Z Removing gt-inline-2-3.json
+2026-08-14T22:38:31.4064030Z Removing measure.log
+2026-08-14T22:38:31.4065173Z Removing src/motion_pipeline/__pycache__/
+2026-08-14T22:38:31.4066642Z Removing src/motion_pipeline/camera/__pycache__/
+2026-08-14T22:38:31.4068246Z Removing src/motion_pipeline/processing/__pycache__/
+2026-08-14T22:38:31.4070195Z Removing src/motion_pipeline/simulation/__pycache__/
+2026-08-14T22:38:31.4071791Z Removing src/motion_pipeline/ui/__pycache__/
+2026-08-14T22:38:31.4073225Z Removing tests/__pycache__/
+2026-08-14T22:38:31.4074439Z Removing tools/__pycache__/
+2026-08-14T22:38:31.4528476Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-14T22:38:31.4542751Z ##[group]Run actions/checkout@v4
+2026-08-14T22:38:31.4544037Z with:
+2026-08-14T22:38:31.4545095Z   ref: variant/extern
+2026-08-14T22:38:31.4546400Z   repository: lospollos19/gpu-motion-pipeline
+2026-08-14T22:38:31.4556252Z   token: ***
+2026-08-14T22:38:31.4557313Z   ssh-strict: true
+2026-08-14T22:38:31.4558353Z   ssh-user: git
+2026-08-14T22:38:31.4559391Z   persist-credentials: true
+2026-08-14T22:38:31.4560520Z   clean: true
+2026-08-14T22:38:31.4561535Z   sparse-checkout-cone-mode: true
+2026-08-14T22:38:31.4562728Z   fetch-depth: 1
+2026-08-14T22:38:31.4563721Z   fetch-tags: false
+2026-08-14T22:38:31.4564764Z   show-progress: true
+2026-08-14T22:38:31.4565904Z   lfs: false
+2026-08-14T22:38:31.4566869Z   submodules: false
+2026-08-14T22:38:31.4567918Z   set-safe-directory: true
+2026-08-14T22:38:31.4569083Z   allow-unsafe-pr-checkout: false
+2026-08-14T22:38:31.4570535Z ##[endgroup]
+2026-08-14T22:38:31.5983949Z Syncing repository: lospollos19/gpu-motion-pipeline
+2026-08-14T22:38:31.5987864Z ##[group]Getting Git version info
+2026-08-14T22:38:31.5990373Z Working directory is '/home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline'
+2026-08-14T22:38:31.6020560Z [command]/usr/bin/git version
+2026-08-14T22:38:31.6022182Z git version 2.43.0
+2026-08-14T22:38:31.6026484Z ##[endgroup]
+2026-08-14T22:38:31.6035603Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/9b0ca4da-e255-4020-9a73-bf79fe6e0d85/.gitconfig'
+2026-08-14T22:38:31.6039969Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/9b0ca4da-e255-4020-9a73-bf79fe6e0d85' before making global git config changes
+2026-08-14T22:38:31.6043421Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-14T22:38:31.6047345Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-14T22:38:31.6096326Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-08-14T22:38:31.6128217Z https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-14T22:38:31.6147186Z ##[group]Removing previously created refs, to avoid conflicts
+2026-08-14T22:38:31.6153365Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-08-14T22:38:31.6185946Z refs/heads/variant/inline
+2026-08-14T22:38:31.6200695Z [command]/usr/bin/git checkout --detach
+2026-08-14T22:38:31.6252161Z HEAD is now at 3c991a6 feat: measure D(m), the ground truth the violation rate is computed against
+2026-08-14T22:38:31.6314117Z [command]/usr/bin/git branch --delete --force variant/inline
+2026-08-14T22:38:31.6354569Z Deleted branch variant/inline (was 3c991a6).
+2026-08-14T22:38:31.6407807Z ##[endgroup]
+2026-08-14T22:38:31.6410948Z [command]/usr/bin/git submodule status
+2026-08-14T22:38:31.6685361Z ##[group]Cleaning the repository
+2026-08-14T22:38:31.6690044Z [command]/usr/bin/git clean -ffdx
+2026-08-14T22:38:31.6737536Z [command]/usr/bin/git reset --hard HEAD
+2026-08-14T22:38:31.6782695Z HEAD is now at 3c991a6 feat: measure D(m), the ground truth the violation rate is computed against
+2026-08-14T22:38:31.6787937Z ##[endgroup]
+2026-08-14T22:38:31.6790923Z ##[group]Disabling automatic garbage collection
+2026-08-14T22:38:31.6796155Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-14T22:38:31.6831809Z ##[endgroup]
+2026-08-14T22:38:31.6833427Z ##[group]Setting up auth
+2026-08-14T22:38:31.6841711Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-14T22:38:31.6881342Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-14T22:38:31.7156746Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-14T22:38:31.7199012Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-14T22:38:31.7468629Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-14T22:38:31.7511870Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-14T22:38:31.7792131Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-14T22:38:31.7846585Z ##[endgroup]
+2026-08-14T22:38:31.7848168Z ##[group]Fetching the repository
+2026-08-14T22:38:31.7868268Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/variant/extern*:refs/remotes/origin/variant/extern* +refs/tags/variant/extern*:refs/tags/variant/extern*
+2026-08-14T22:38:32.4397108Z ##[endgroup]
+2026-08-14T22:38:32.4397960Z ##[group]Determining the checkout info
+2026-08-14T22:38:32.4406880Z [command]/usr/bin/git branch --list --remote origin/variant/extern
+2026-08-14T22:38:32.4440892Z   origin/variant/extern
+2026-08-14T22:38:32.4448513Z ##[endgroup]
+2026-08-14T22:38:32.4455286Z [command]/usr/bin/git sparse-checkout disable
+2026-08-14T22:38:32.4508057Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-14T22:38:32.4544047Z ##[group]Checking out the ref
+2026-08-14T22:38:32.4550018Z [command]/usr/bin/git checkout --progress --force -B variant/extern refs/remotes/origin/variant/extern
+2026-08-14T22:38:32.4600388Z Previous HEAD position was 3c991a6 feat: measure D(m), the ground truth the violation rate is computed against
+2026-08-14T22:38:32.4610083Z Switched to a new branch 'variant/extern'
+2026-08-14T22:38:32.4611336Z branch 'variant/extern' set up to track 'origin/variant/extern'.
+2026-08-14T22:38:32.4618592Z ##[endgroup]
+2026-08-14T22:38:32.4669402Z [command]/usr/bin/git log -1 --format=%H
+2026-08-14T22:38:32.4702054Z ee589c218a7bb045cfee294eb983a26bba94ab36
+2026-08-14T22:38:32.4878469Z ##[group]Run set -uo pipefail
+2026-08-14T22:38:32.4879170Z [36;1mset -uo pipefail[0m
+2026-08-14T22:38:32.4879832Z [36;1msudo -n nvpmodel -m 0 || echo "::warning::nvpmodel -m 0 failed"[0m
+2026-08-14T22:38:32.4880657Z [36;1msudo -n jetson_clocks || echo "::warning::jetson_clocks failed"[0m
+2026-08-14T22:38:32.4897736Z shell: /usr/bin/bash -e {0}
+2026-08-14T22:38:32.4918944Z ##[endgroup]
+2026-08-14T22:38:32.8993804Z ##[group]Run set -euo pipefail
+2026-08-14T22:38:32.8994452Z [36;1mset -euo pipefail[0m
+2026-08-14T22:38:32.8994941Z [36;1mVENV="$HOME/.poetry-venv"[0m
+2026-08-14T22:38:32.8995467Z [36;1mecho "$VENV/bin" >> "$GITHUB_PATH"[0m
+2026-08-14T22:38:32.8996017Z [36;1m"$VENV/bin/poetry" --version[0m
+2026-08-14T22:38:32.9014202Z shell: /usr/bin/bash -e {0}
+2026-08-14T22:38:32.9014707Z ##[endgroup]
+2026-08-14T22:38:33.4014905Z Poetry (version 2.4.1)
+2026-08-14T22:38:33.5228439Z ##[group]Run export PATH="/usr/local/cuda/bin:$PATH"
+2026-08-14T22:38:33.5229375Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-14T22:38:33.5230056Z [36;1mpoetry install --extras "headless gpu"[0m
+2026-08-14T22:38:33.5255061Z shell: /usr/bin/bash -e {0}
+2026-08-14T22:38:33.5255566Z env:
+2026-08-14T22:38:33.5255973Z   CUDA_ROOT: /usr/local/cuda
+2026-08-14T22:38:33.5256429Z ##[endgroup]
+2026-08-14T22:38:34.3864102Z Installing dependencies from lock file
+2026-08-14T22:38:34.5249837Z 
+2026-08-14T22:38:34.5250207Z No dependencies to install or update
+2026-08-14T22:38:34.5272869Z 
+2026-08-14T22:38:34.5273624Z Installing the current project: motion-pipeline (0.1.0)
+2026-08-14T22:38:34.7058285Z ##[group]Run set -euo pipefail
+2026-08-14T22:38:34.7058902Z [36;1mset -euo pipefail[0m
+2026-08-14T22:38:34.7059385Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-14T22:38:34.7059947Z [36;1mpoetry run python - <<'PY'[0m
+2026-08-14T22:38:34.7060378Z [36;1mimport sys[0m
+2026-08-14T22:38:34.7060936Z [36;1mfrom motion_pipeline.processing.gpu_processor import GPUProcessor[0m
+2026-08-14T22:38:34.7061595Z [36;1mbackend = GPUProcessor().backend[0m
+2026-08-14T22:38:34.7062072Z [36;1mprint(f"backend = {backend}")[0m
+2026-08-14T22:38:34.7062529Z [36;1mif backend != "pycuda":[0m
+2026-08-14T22:38:34.7063062Z [36;1m    sys.exit("GPUProcessor fell back to NumPy")[0m
+2026-08-14T22:38:34.7063610Z [36;1mPY[0m
+2026-08-14T22:38:34.7082067Z shell: /usr/bin/bash -e {0}
+2026-08-14T22:38:34.7082549Z ##[endgroup]
+2026-08-14T22:38:35.7168850Z backend = pycuda
+2026-08-14T22:38:35.8224035Z ##[group]Run set -o pipefail
+2026-08-14T22:38:35.8224589Z [36;1mset -o pipefail[0m
+2026-08-14T22:38:35.8224983Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-14T22:38:35.8225403Z [36;1mextra=""[0m
+2026-08-14T22:38:35.8225736Z [36;1m[ "no" = "no" ] && extra="--skip-baseline"[0m
+2026-08-14T22:38:35.8226277Z [36;1mpoetry run python tools/ground_truth.py \[0m
+2026-08-14T22:38:35.8226808Z [36;1m  --out "gt-extern-$(echo '2/3' | tr / -).json" \[0m
+2026-08-14T22:38:35.8227309Z [36;1m  --chunk "2/3" $extra 2>&1 | tee measure.log[0m
+2026-08-14T22:38:35.8242924Z shell: /usr/bin/bash -e {0}
+2026-08-14T22:38:35.8243293Z ##[endgroup]
+2026-08-14T22:38:36.9412269Z --- grayscale-perturb-weight
+2026-08-14T22:42:28.0688402Z     5 failing, 231.13s
+2026-08-14T22:42:28.0688976Z --- conv1d-v-border-wrap
+2026-08-14T22:46:20.1993019Z     17 failing, 232.13s
+2026-08-14T22:50:13.6660576Z --- geometry-halve-max-radius
+2026-08-14T22:50:13.6661139Z     1 failing, 233.47s
+2026-08-14T22:50:13.6691650Z 
+2026-08-14T22:50:13.6692009Z wrote gt-extern-2-3.json: 3 mutation(s) on arm 'extern'
+2026-08-14T22:50:13.6940984Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-14T22:50:13.6944155Z ##[group]Run actions/upload-artifact@v4
+2026-08-14T22:50:13.6944528Z with:
+2026-08-14T22:50:13.6944787Z   name: ground-truth-extern-4
+2026-08-14T22:50:13.6945130Z   path: gt-*.json
+measure.log
+
+2026-08-14T22:50:13.6945459Z   if-no-files-found: warn
+2026-08-14T22:50:13.6945767Z   compression-level: 6
+2026-08-14T22:50:13.6946053Z   overwrite: false
+2026-08-14T22:50:13.6946335Z   include-hidden-files: false
+2026-08-14T22:50:13.6946655Z ##[endgroup]
+2026-08-14T22:50:13.9221389Z (node:461369) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-14T22:50:13.9222541Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-14T22:50:13.9303144Z With the provided path, there will be 2 files uploaded
+2026-08-14T22:50:13.9311173Z Artifact name is valid!
+2026-08-14T22:50:13.9312524Z Root directory input is valid!
+2026-08-14T22:50:14.3467739Z Beginning upload of artifact content to blob storage
+2026-08-14T22:50:14.3780480Z (node:461369) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-14T22:50:14.7487193Z Uploaded bytes 969
+2026-08-14T22:50:14.8525825Z Finished uploading artifact content to blob storage!
+2026-08-14T22:50:14.8527303Z SHA256 digest of uploaded artifact zip is e5b805fbea17bf9ce33122872522fc809dea11c57667db9d8b13e3e2fd1cbda2
+2026-08-14T22:50:14.8529874Z Finalizing artifact upload
+2026-08-14T22:50:15.0930183Z Artifact ground-truth-extern-4.zip successfully finalized. Artifact ID 9236607628
+2026-08-14T22:50:15.0931297Z Artifact ground-truth-extern-4 has been successfully uploaded! Final size is 969 bytes. Artifact ID is 9236607628
+2026-08-14T22:50:15.0940353Z Artifact download URL: https://github.com/lospollos19/gpu-motion-pipeline/actions/runs/31845787189/artifacts/9236607628
+2026-08-14T22:50:15.1247694Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-14T22:50:15.1249587Z Post job cleanup.
+2026-08-14T22:50:15.2428664Z [command]/usr/bin/git version
+2026-08-14T22:50:15.2483636Z git version 2.43.0
+2026-08-14T22:50:15.2531722Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/fe32a39c-a458-4ff5-8df5-7768da23b1f0/.gitconfig'
+2026-08-14T22:50:15.2543360Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/fe32a39c-a458-4ff5-8df5-7768da23b1f0' before making global git config changes
+2026-08-14T22:50:15.2544607Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-14T22:50:15.2551297Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-14T22:50:15.2601244Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-14T22:50:15.2645492Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-14T22:50:15.2927326Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-14T22:50:15.2959804Z http.https://github.com/.extraheader
+2026-08-14T22:50:15.2974385Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-14T22:50:15.3018719Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-14T22:50:15.3294038Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-14T22:50:15.3340253Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-14T22:50:15.3824277Z Cleaning up orphan processes
+2026-08-14T22:50:15.4994056Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,10 @@
+--- baseline (no mutation)
+    0 failing, 231.55s
+--- grayscale-swap-bgr-weights
+    5 failing, 233.6s
+--- conv1d-h-border-wrap
+    17 failing, 231.5s
+--- threshold-boundary
+    10 failing, 233.02s
+
+wrote gt-extern-1-3.json: 3 mutation(s) on arm 'extern'

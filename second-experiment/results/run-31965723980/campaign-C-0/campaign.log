@@ -1,0 +1,9 @@
+condition C on extern at 3249fab
+collected 188 (113 gpu)
+unselected suite [1/5]: 230.18s
+unselected suite [2/5]: 230.16s
+unselected suite [3/5]: 231.8s
+unselected suite [4/5]: 231.39s
+unselected suite [5/5]: 229.32s
+
+wrote campaign-C---reference--.json: reference only, 5 timing(s)

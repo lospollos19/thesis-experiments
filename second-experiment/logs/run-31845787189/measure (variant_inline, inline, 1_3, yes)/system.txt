@@ -1,0 +1,7 @@
+2026-08-14T22:13:51.9820000Z Evaluating measure.if
+2026-08-14T22:13:51.9820000Z Evaluating: success()
+2026-08-14T22:13:51.9820000Z Result: true
+2026-08-14T22:13:51.9820000Z Requested labels: self-hosted, Linux, ARM64
+2026-08-14T22:13:51.9820000Z Job defined at: lospollos19/gpu-motion-pipeline/.github/workflows/r2-ground-truth.yml@refs/heads/main
+2026-08-14T22:13:51.9820000Z Waiting for a runner to pick up this job...
+2026-08-14T22:50:19.6630000Z Job is about to start running on the runner: jetson-orin

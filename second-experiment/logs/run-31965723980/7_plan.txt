@@ -1,0 +1,90 @@
+﻿2026-08-16T18:49:24.5144220Z Current runner version: '2.336.0'
+2026-08-16T18:49:24.5179062Z ##[group]Runner Image Provisioner
+2026-08-16T18:49:24.5180322Z Hosted Compute Agent
+2026-08-16T18:49:24.5181209Z Version: 20260729.566
+2026-08-16T18:49:24.5182184Z Commit: cf7153fe6e25b664e8693c24944bf2b00355d109
+2026-08-16T18:49:24.5183354Z Build Date: 2026-07-29T19:17:02Z
+2026-08-16T18:49:24.5184590Z Worker ID: {231dce3f-c46e-43a5-ac30-616e8fbadd2d}
+2026-08-16T18:49:24.5185789Z Azure Region: eastus
+2026-08-16T18:49:24.5186630Z ##[endgroup]
+2026-08-16T18:49:24.5188651Z ##[group]Operating System
+2026-08-16T18:49:24.5189640Z Ubuntu
+2026-08-16T18:49:24.5190399Z 24.04.4
+2026-08-16T18:49:24.5191222Z LTS
+2026-08-16T18:49:24.5191969Z ##[endgroup]
+2026-08-16T18:49:24.5192826Z ##[group]Runner Image
+2026-08-16T18:49:24.5193780Z Image: ubuntu-24.04
+2026-08-16T18:49:24.5194992Z Version: 20260810.271.1
+2026-08-16T18:49:24.5197006Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260810.271/images/ubuntu/Ubuntu2404-Readme.md
+2026-08-16T18:49:24.5199466Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260810.271
+2026-08-16T18:49:24.5201061Z ##[endgroup]
+2026-08-16T18:49:24.5202828Z ##[group]GITHUB_TOKEN Permissions
+2026-08-16T18:49:24.5206243Z Contents: read
+2026-08-16T18:49:24.5207127Z Metadata: read
+2026-08-16T18:49:24.5208455Z Packages: read
+2026-08-16T18:49:24.5209427Z ##[endgroup]
+2026-08-16T18:49:24.5212342Z Secret source: Actions
+2026-08-16T18:49:24.5214246Z Prepare workflow directory
+2026-08-16T18:49:24.5671951Z Prepare all required actions
+2026-08-16T18:49:24.5819076Z Complete job name: plan
+2026-08-16T18:49:24.6908422Z ##[group]Run python3 - <<'PY' >> "$GITHUB_OUTPUT"
+2026-08-16T18:49:24.6909862Z [36;1mpython3 - <<'PY' >> "$GITHUB_OUTPUT"[0m
+2026-08-16T18:49:24.6911114Z [36;1mimport json, os[0m
+2026-08-16T18:49:24.6912007Z [36;1mjobs = [[0m
+2026-08-16T18:49:24.6913331Z [36;1m    {"condition": "A", "branch": "variant/inline", "chunk": f"{i}/3"}[0m
+2026-08-16T18:49:24.6914874Z [36;1m    for i in (1, 2, 3)[0m
+2026-08-16T18:49:24.6915891Z [36;1m] + [[0m
+2026-08-16T18:49:24.6917128Z [36;1m    # B selects nothing, so the whole corpus fits in one job.[0m
+2026-08-16T18:49:24.6918574Z [36;1m    {"condition": "B", "branch": "variant/extern", "chunk": "1/1"}[0m
+2026-08-16T18:49:24.6919857Z [36;1m] + [[0m
+2026-08-16T18:49:24.6920917Z [36;1m    {"condition": "C", "branch": "variant/extern", "chunk": f"{i}/3"}[0m
+2026-08-16T18:49:24.6922236Z [36;1m    for i in (1, 2, 3)[0m
+2026-08-16T18:49:24.6923280Z [36;1m][0m
+2026-08-16T18:49:24.6924636Z [36;1monly = os.environ.get("ONLY", "").strip()[0m
+2026-08-16T18:49:24.6925974Z [36;1mif only:[0m
+2026-08-16T18:49:24.6927059Z [36;1m    jobs = [j for j in jobs if j["condition"] == only][0m
+2026-08-16T18:49:24.6928626Z [36;1m# Re-measuring named mutations after a fix is one job, not a chunked sweep:[0m
+2026-08-16T18:49:24.6930568Z [36;1m# the point is to avoid paying again for the ones that were unaffected.[0m
+2026-08-16T18:49:24.6932094Z [36;1mif os.environ.get("ONLY_MUTATIONS", "").strip():[0m
+2026-08-16T18:49:24.6933366Z [36;1m    if not only:[0m
+2026-08-16T18:49:24.6934819Z [36;1m        raise SystemExit("only_mutations needs only_condition")[0m
+2026-08-16T18:49:24.6936091Z [36;1m    jobs = jobs[:1][0m
+2026-08-16T18:49:24.6937463Z [36;1m# Repetitions are per *selection*, not per mutation. The corpus's nine[0m
+2026-08-16T18:49:24.6939132Z [36;1m# mutations produce five distinct selections among the eight in the[0m
+2026-08-16T18:49:24.6940836Z [36;1m# denominator — the three conv1d mutations select the same set, as do the two[0m
+2026-08-16T18:49:24.6942727Z [36;1m# grayscale ones — so repeating all nine would measure three of them three[0m
+2026-08-16T18:49:24.6944855Z [36;1m# times over without saying so. One job per representative, plus one job that[0m
+2026-08-16T18:49:24.6946845Z [36;1m# repeats the unselected reference, which is the denominator of every saving[0m
+2026-08-16T18:49:24.6948330Z [36;1m# and needs its own variance.[0m
+2026-08-16T18:49:24.6949865Z [36;1mrepeats = int(os.environ.get("REPEATS", "1") or 1)[0m
+2026-08-16T18:49:24.6951187Z [36;1mif repeats > 1:[0m
+2026-08-16T18:49:24.6952098Z [36;1m    if only != "C":[0m
+2026-08-16T18:49:24.6953220Z [36;1m        raise SystemExit("repeats>1 is wired for condition C only")[0m
+2026-08-16T18:49:24.6954909Z [36;1m    reps = [[0m
+2026-08-16T18:49:24.6956052Z [36;1m        {"condition": "C", "branch": "variant/extern", "mutation": m}[0m
+2026-08-16T18:49:24.6957521Z [36;1m        for m in ([0m
+2026-08-16T18:49:24.6958563Z [36;1m            "grayscale-swap-bgr-weights",[0m
+2026-08-16T18:49:24.6959654Z [36;1m            "absdiff-drop-abs",[0m
+2026-08-16T18:49:24.6960823Z [36;1m            "threshold-boundary",[0m
+2026-08-16T18:49:24.6961882Z [36;1m            "conv1d-h-border-wrap",[0m
+2026-08-16T18:49:24.6963047Z [36;1m            "geometry-halve-max-radius",[0m
+2026-08-16T18:49:24.6964168Z [36;1m        )[0m
+2026-08-16T18:49:24.6965296Z [36;1m    ][0m
+2026-08-16T18:49:24.6966257Z [36;1m    jobs = [[0m
+2026-08-16T18:49:24.6967479Z [36;1m        {"condition": "C", "branch": "variant/extern", "mutation": "__reference__"}[0m
+2026-08-16T18:49:24.6968812Z [36;1m    ] + reps[0m
+2026-08-16T18:49:24.6969858Z [36;1mif not jobs:[0m
+2026-08-16T18:49:24.6971028Z [36;1m    raise SystemExit(f"only_condition={only!r} matches no job")[0m
+2026-08-16T18:49:24.6972484Z [36;1mprint("matrix=" + json.dumps({"include": jobs}))[0m
+2026-08-16T18:49:24.6973655Z [36;1mPY[0m
+2026-08-16T18:49:24.6975065Z [36;1mcat "$GITHUB_OUTPUT"[0m
+2026-08-16T18:49:24.7471735Z shell: /usr/bin/bash -e {0}
+2026-08-16T18:49:24.7473428Z env:
+2026-08-16T18:49:24.7474243Z   ONLY: C
+2026-08-16T18:49:24.7475526Z   ONLY_MUTATIONS: 
+2026-08-16T18:49:24.7476416Z   REPEATS: 5
+2026-08-16T18:49:24.7477261Z ##[endgroup]
+2026-08-16T18:49:24.8125189Z matrix={"include": [{"condition": "C", "branch": "variant/extern", "mutation": "__reference__"}, {"condition": "C", "branch": "variant/extern", "mutation": "grayscale-swap-bgr-weights"}, {"condition": "C", "branch": "variant/extern", "mutation": "absdiff-drop-abs"}, {"condition": "C", "branch": "variant/extern", "mutation": "threshold-boundary"}, {"condition": "C", "branch": "variant/extern", "mutation": "conv1d-h-border-wrap"}, {"condition": "C", "branch": "variant/extern", "mutation": "geometry-halve-max-radius"}]}
+2026-08-16T18:49:24.8472484Z Evaluate and set job outputs
+2026-08-16T18:49:24.8506557Z Set output 'matrix'
+2026-08-16T18:49:24.8509824Z Cleaning up orphan processes

@@ -1,0 +1,268 @@
+﻿2026-08-03T18:32:11.4759860Z Current runner version: '2.336.0'
+2026-08-03T18:32:11.4771960Z Runner name: 'jetson-orin'
+2026-08-03T18:32:11.4773039Z Runner group name: 'Default'
+2026-08-03T18:32:11.4774458Z Machine name: 'jetson-orin'
+2026-08-03T18:32:11.4778796Z ##[group]GITHUB_TOKEN Permissions
+2026-08-03T18:32:11.4782893Z Contents: read
+2026-08-03T18:32:11.4783657Z Metadata: read
+2026-08-03T18:32:11.4784366Z Packages: read
+2026-08-03T18:32:11.4785073Z ##[endgroup]
+2026-08-03T18:32:11.4789014Z Secret source: Actions
+2026-08-03T18:32:11.4791074Z Prepare workflow directory
+2026-08-03T18:32:11.6570182Z Prepare all required actions
+2026-08-03T18:32:11.6651628Z Getting action download info
+2026-08-03T18:32:12.0798732Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-03T18:32:12.6753970Z Complete job name: test-gpu
+2026-08-03T18:32:12.8894578Z ##[group]Run git clean -xdff 2>/dev/null || true
+2026-08-03T18:32:12.8895877Z [36;1mgit clean -xdff 2>/dev/null || true[0m
+2026-08-03T18:32:12.8921476Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:32:12.8922906Z ##[endgroup]
+2026-08-03T18:32:12.9127569Z Removing .pytest_cache/
+2026-08-03T18:32:12.9128529Z Removing .testmondata
+2026-08-03T18:32:12.9129305Z Removing __pycache__/
+2026-08-03T18:32:12.9130041Z Removing db/
+2026-08-03T18:32:12.9130729Z Removing select.log
+2026-08-03T18:32:12.9131517Z Removing src/motion_pipeline/__pycache__/
+2026-08-03T18:32:12.9132517Z Removing src/motion_pipeline/camera/__pycache__/
+2026-08-03T18:32:12.9133586Z Removing src/motion_pipeline/processing/__pycache__/
+2026-08-03T18:32:12.9134667Z Removing src/motion_pipeline/simulation/__pycache__/
+2026-08-03T18:32:12.9135713Z Removing src/motion_pipeline/ui/__pycache__/
+2026-08-03T18:32:12.9136644Z Removing tests/__pycache__/
+2026-08-03T18:32:12.9137462Z Removing verdict-q1-inline.md
+2026-08-03T18:32:13.0972746Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-03T18:32:13.0985477Z ##[group]Run actions/checkout@v4
+2026-08-03T18:32:13.0986377Z with:
+2026-08-03T18:32:13.0987117Z   repository: lospollos19/gpu-motion-pipeline
+2026-08-03T18:32:13.0993073Z   token: ***
+2026-08-03T18:32:13.0993796Z   ssh-strict: true
+2026-08-03T18:32:13.0994511Z   ssh-user: git
+2026-08-03T18:32:13.0995213Z   persist-credentials: true
+2026-08-03T18:32:13.0995992Z   clean: true
+2026-08-03T18:32:13.0996704Z   sparse-checkout-cone-mode: true
+2026-08-03T18:32:13.0997504Z   fetch-depth: 1
+2026-08-03T18:32:13.0998178Z   fetch-tags: false
+2026-08-03T18:32:13.0998864Z   show-progress: true
+2026-08-03T18:32:13.0999555Z   lfs: false
+2026-08-03T18:32:13.1000273Z   submodules: false
+2026-08-03T18:32:13.1000991Z   set-safe-directory: true
+2026-08-03T18:32:13.1001777Z   allow-unsafe-pr-checkout: false
+2026-08-03T18:32:13.1002574Z ##[endgroup]
+2026-08-03T18:32:13.2343771Z Syncing repository: lospollos19/gpu-motion-pipeline
+2026-08-03T18:32:13.2347080Z ##[group]Getting Git version info
+2026-08-03T18:32:13.2348703Z Working directory is '/home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline'
+2026-08-03T18:32:13.2351099Z [command]/usr/bin/git version
+2026-08-03T18:32:13.2351993Z git version 2.43.0
+2026-08-03T18:32:13.2372136Z ##[endgroup]
+2026-08-03T18:32:13.2386152Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/aeb739a4-0a8b-4467-921e-47c9c41deba9/.gitconfig'
+2026-08-03T18:32:13.2398569Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/aeb739a4-0a8b-4467-921e-47c9c41deba9' before making global git config changes
+2026-08-03T18:32:13.2400878Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-03T18:32:13.2405063Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-03T18:32:13.2460447Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-08-03T18:32:13.2499137Z https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-03T18:32:13.2518717Z ##[group]Removing previously created refs, to avoid conflicts
+2026-08-03T18:32:13.2524586Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-08-03T18:32:13.2554500Z refs/heads/variant/inline
+2026-08-03T18:32:13.2567759Z [command]/usr/bin/git checkout --detach
+2026-08-03T18:32:13.2616733Z HEAD is now at ddf4a8f ci: manual only, nothing runs on a push
+2026-08-03T18:32:13.2675186Z [command]/usr/bin/git branch --delete --force variant/inline
+2026-08-03T18:32:13.2713271Z Deleted branch variant/inline (was ddf4a8f).
+2026-08-03T18:32:13.2763925Z ##[endgroup]
+2026-08-03T18:32:13.2767639Z [command]/usr/bin/git submodule status
+2026-08-03T18:32:13.3041037Z ##[group]Cleaning the repository
+2026-08-03T18:32:13.3046720Z [command]/usr/bin/git clean -ffdx
+2026-08-03T18:32:13.3092983Z [command]/usr/bin/git reset --hard HEAD
+2026-08-03T18:32:13.3139177Z HEAD is now at ddf4a8f ci: manual only, nothing runs on a push
+2026-08-03T18:32:13.3145329Z ##[endgroup]
+2026-08-03T18:32:13.3148109Z ##[group]Disabling automatic garbage collection
+2026-08-03T18:32:13.3153609Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-03T18:32:13.3189430Z ##[endgroup]
+2026-08-03T18:32:13.3190595Z ##[group]Setting up auth
+2026-08-03T18:32:13.3200373Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-03T18:32:13.3239655Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-03T18:32:13.3514625Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-03T18:32:13.3545804Z http.https://github.com/.extraheader
+2026-08-03T18:32:13.3574117Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-03T18:32:13.3600856Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-03T18:32:13.3872697Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-03T18:32:13.3913889Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-03T18:32:13.4201308Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-03T18:32:13.4256350Z ##[endgroup]
+2026-08-03T18:32:13.4257622Z ##[group]Fetching the repository
+2026-08-03T18:32:13.4268689Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ddf4a8fda1b6c97eb71818b33c3f124bb1422786:refs/remotes/origin/main
+2026-08-03T18:32:13.9223235Z From https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-03T18:32:13.9225579Z  + 9d93a55...ddf4a8f ddf4a8fda1b6c97eb71818b33c3f124bb1422786 -> origin/main  (forced update)
+2026-08-03T18:32:13.9249535Z ##[endgroup]
+2026-08-03T18:32:13.9250886Z ##[group]Determining the checkout info
+2026-08-03T18:32:13.9253325Z ##[endgroup]
+2026-08-03T18:32:13.9260228Z [command]/usr/bin/git sparse-checkout disable
+2026-08-03T18:32:13.9317017Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-03T18:32:13.9356455Z ##[group]Checking out the ref
+2026-08-03T18:32:13.9361656Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-03T18:32:13.9410963Z Switched to a new branch 'main'
+2026-08-03T18:32:13.9412309Z branch 'main' set up to track 'origin/main'.
+2026-08-03T18:32:13.9419399Z ##[endgroup]
+2026-08-03T18:32:13.9475631Z [command]/usr/bin/git log -1 --format=%H
+2026-08-03T18:32:13.9512169Z ddf4a8fda1b6c97eb71818b33c3f124bb1422786
+2026-08-03T18:32:14.0079445Z ##[group]Run echo "arch          : $(uname -m)"
+2026-08-03T18:32:14.0081000Z [36;1mecho "arch          : $(uname -m)"[0m
+2026-08-03T18:32:14.0082600Z [36;1mecho "l4t           : $(cat /etc/nv_tegra_release 2>/dev/null | head -1)"[0m
+2026-08-03T18:32:14.0084534Z [36;1mecho "python3       : $(command -v python3) $(python3 -V 2>&1)"[0m
+2026-08-03T18:32:14.0086423Z [36;1mecho "python3.11    : $(command -v python3.11 || echo MISSING)"[0m
+2026-08-03T18:32:14.0088345Z [36;1mecho "python -m pip : $(python3 -m pip --version 2>&1 | head -1)"[0m
+2026-08-03T18:32:14.0090220Z [36;1mecho "poetry        : $(command -v poetry || echo MISSING)"[0m
+2026-08-03T18:32:14.0091926Z [36;1mecho "nvcc          : $(command -v nvcc || echo MISSING)"[0m
+2026-08-03T18:32:14.0093449Z [36;1mnvcc --version 2>/dev/null | tail -2 || true[0m
+2026-08-03T18:32:14.0095124Z [36;1mecho "cuda dirs     : $(ls -d /usr/local/cuda* 2>/dev/null | tr '\n' ' ')"[0m
+2026-08-03T18:32:14.0115702Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:32:14.0116673Z ##[endgroup]
+2026-08-03T18:32:14.0185439Z arch          : aarch64
+2026-08-03T18:32:14.0207975Z l4t           : # R39 (release), REVISION: 2.0, GCID: 45755727, BOARD: generic, EABI: aarch64, DATE: Mon Jun  1 09:28:48 PM UTC 2026
+2026-08-03T18:32:14.0234529Z python3       : /usr/bin/python3 Python 3.12.3
+2026-08-03T18:32:14.0239960Z python3.11    : MISSING
+2026-08-03T18:32:14.0496302Z python -m pip : /usr/bin/python3: No module named pip
+2026-08-03T18:32:14.0500954Z poetry        : MISSING
+2026-08-03T18:32:14.0507050Z nvcc          : /usr/local/cuda/bin/nvcc
+2026-08-03T18:32:14.0529615Z Cuda compilation tools, release 13.2, V13.2.78
+2026-08-03T18:32:14.0530891Z Build cuda_13.2.r13.2/compiler.37668154_0
+2026-08-03T18:32:14.0556277Z cuda dirs     : /usr/local/cuda /usr/local/cuda-13 /usr/local/cuda-13.2 
+2026-08-03T18:32:14.0994087Z ##[group]Run set -euo pipefail
+2026-08-03T18:32:14.0995343Z [36;1mset -euo pipefail[0m
+2026-08-03T18:32:14.0996330Z [36;1mVENV="$HOME/.poetry-venv"[0m
+2026-08-03T18:32:14.0997534Z [36;1mif [ ! -x "$VENV/bin/poetry" ]; then[0m
+2026-08-03T18:32:14.0999180Z [36;1m  # Debian/Ubuntu ships `venv` without `ensurepip` unless python3.12-venv is[0m
+2026-08-03T18:32:14.1001377Z [36;1m  # installed. Testing `python3 -m venv --help` is not enough: the module is[0m
+2026-08-03T18:32:14.1003510Z [36;1m  # present either way and the failure only surfaces during creation.[0m
+2026-08-03T18:32:14.1005254Z [36;1m  if python3 -c "import ensurepip" 2>/dev/null; then[0m
+2026-08-03T18:32:14.1006587Z [36;1m    python3 -m venv "$VENV"[0m
+2026-08-03T18:32:14.1007585Z [36;1m  else[0m
+2026-08-03T18:32:14.1008947Z [36;1m    echo "ensurepip absent — creating the venv without pip and bootstrapping it"[0m
+2026-08-03T18:32:14.1010748Z [36;1m    python3 -m venv --without-pip "$VENV"[0m
+2026-08-03T18:32:14.1012681Z [36;1m    curl -fsSL https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py[0m
+2026-08-03T18:32:14.1014447Z [36;1m    "$VENV/bin/python" /tmp/get-pip.py --quiet[0m
+2026-08-03T18:32:14.1015654Z [36;1m  fi[0m
+2026-08-03T18:32:14.1016698Z [36;1m  "$VENV/bin/python" -m pip install --quiet --upgrade pip[0m
+2026-08-03T18:32:14.1018273Z [36;1m  "$VENV/bin/python" -m pip install --quiet poetry[0m
+2026-08-03T18:32:14.1019500Z [36;1mfi[0m
+2026-08-03T18:32:14.1020283Z [36;1mecho "$VENV/bin" >> "$GITHUB_PATH"[0m
+2026-08-03T18:32:14.1021410Z [36;1m"$VENV/bin/poetry" --version[0m
+2026-08-03T18:32:14.1042432Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:32:14.1043382Z ##[endgroup]
+2026-08-03T18:32:14.6029651Z Poetry (version 2.4.1)
+2026-08-03T18:32:14.7557299Z ##[group]Run export PATH="/usr/local/cuda/bin:$PATH"
+2026-08-03T18:32:14.7559221Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-03T18:32:14.7560889Z [36;1mpoetry install --extras "headless gpu"[0m
+2026-08-03T18:32:14.7586918Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:32:14.7588161Z env:
+2026-08-03T18:32:14.7589178Z   CUDA_ROOT: /usr/local/cuda
+2026-08-03T18:32:14.7591010Z ##[endgroup]
+2026-08-03T18:32:15.6196438Z Installing dependencies from lock file
+2026-08-03T18:32:15.7580693Z 
+2026-08-03T18:32:15.7581051Z No dependencies to install or update
+2026-08-03T18:32:15.7604567Z 
+2026-08-03T18:32:15.7605464Z Installing the current project: motion-pipeline (0.1.0)
+2026-08-03T18:32:15.9761774Z ##[group]Run which nvcc || { echo "::error::nvcc not found — SourceModule cannot compile"; exit 1; }
+2026-08-03T18:32:15.9762944Z [36;1mwhich nvcc || { echo "::error::nvcc not found — SourceModule cannot compile"; exit 1; }[0m
+2026-08-03T18:32:15.9763682Z [36;1mnvcc --version[0m
+2026-08-03T18:32:15.9764091Z [36;1mpoetry run python - <<'PY'[0m
+2026-08-03T18:32:15.9764523Z [36;1mimport sys[0m
+2026-08-03T18:32:15.9765080Z [36;1mfrom motion_pipeline.processing.gpu_processor import GPUProcessor[0m
+2026-08-03T18:32:15.9765735Z [36;1m[0m
+2026-08-03T18:32:15.9766106Z [36;1mbackend = GPUProcessor().backend[0m
+2026-08-03T18:32:15.9766588Z [36;1mprint(f"backend = {backend}")[0m
+2026-08-03T18:32:15.9767142Z [36;1mif backend != "pycuda":[0m
+2026-08-03T18:32:15.9767845Z [36;1m    sys.exit("GPUProcessor fell back to NumPy: the CUDA-C kernels were not exercised")[0m
+2026-08-03T18:32:15.9768544Z [36;1mPY[0m
+2026-08-03T18:32:15.9787545Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:32:15.9788099Z ##[endgroup]
+2026-08-03T18:32:15.9860970Z /usr/local/cuda/bin/nvcc
+2026-08-03T18:32:15.9878501Z nvcc: NVIDIA (R) Cuda compiler driver
+2026-08-03T18:32:15.9879054Z Copyright (c) 2005-2026 NVIDIA Corporation
+2026-08-03T18:32:15.9879583Z Built on Thu_Mar_19_11:11:41_PM_PDT_2026
+2026-08-03T18:32:15.9880303Z Cuda compilation tools, release 13.2, V13.2.78
+2026-08-03T18:32:15.9880856Z Build cuda_13.2.r13.2/compiler.37668154_0
+2026-08-03T18:32:16.9661648Z backend = pycuda
+2026-08-03T18:32:17.0779594Z ##[group]Run set -o pipefail
+2026-08-03T18:32:17.0780108Z [36;1mset -o pipefail[0m
+2026-08-03T18:32:17.0780620Z [36;1m# --durations feeds the workload calibration: FRAMES_PER_RUN in[0m
+2026-08-03T18:32:17.0781433Z [36;1m# tests/workload.py is sized against these numbers, which can only be[0m
+2026-08-03T18:32:17.0782011Z [36;1m# measured on the device.[0m
+2026-08-03T18:32:17.0782563Z [36;1mpoetry run pytest tests/ -m gpu -q -rs --durations=25 | tee gpu-tests.log[0m
+2026-08-03T18:32:17.0783245Z [36;1mif grep -q SKIPPED gpu-tests.log; then[0m
+2026-08-03T18:32:17.0783872Z [36;1m  echo "::error::a gpu-marked test was skipped despite an active PyCUDA backend"[0m
+2026-08-03T18:32:17.0784454Z [36;1m  exit 1[0m
+2026-08-03T18:32:17.0784719Z [36;1mfi[0m
+2026-08-03T18:32:17.0802111Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:32:17.0802465Z ##[endgroup]
+2026-08-03T18:34:38.1769798Z ........................................................................ [ 63%]
+2026-08-03T18:36:07.6282604Z .........................................                                [100%]
+2026-08-03T18:36:07.6283401Z ========================== kernel vs NumPy deviation ===========================
+2026-08-03T18:36:07.6284075Z grayscale 77x101      observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-03T18:36:07.6284800Z grayscale 2d 77x101   observed 0.000e+00  atol 1e-04  (  0.0% of budget)
+2026-08-03T18:36:07.6285449Z blur k=3 77x101       observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-03T18:36:07.6286052Z blur k=5 77x101       observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-03T18:36:07.6286653Z blur k=9 77x101       observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-03T18:36:07.6287263Z blur k=33 77x101      observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-03T18:36:07.6288402Z absdiff 77x101        observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-03T18:36:07.6289218Z grayscale (240, 320)  observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-03T18:36:07.6290014Z grayscale (478, 638)  observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-03T18:36:07.6290865Z grayscale (480, 640)  observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-03T18:36:07.6291610Z blur k=3 (240, 320)   observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-03T18:36:07.6293542Z blur k=3 (478, 638)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6294147Z blur k=3 (480, 640)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6294750Z blur k=5 (240, 320)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6295398Z blur k=5 (478, 638)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6308518Z blur k=5 (480, 640)   observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-03T18:36:07.6309656Z blur k=9 (240, 320)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6310285Z blur k=9 (478, 638)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6310959Z blur k=9 (480, 640)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6311562Z blur k=15 (240, 320)  observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6312157Z blur k=15 (478, 638)  observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-03T18:36:07.6312774Z blur k=15 (480, 640)  observed 6.104e-05  atol 5e-04  ( 12.2% of budget)
+2026-08-03T18:36:07.6313374Z absdiff (240, 320)    observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-03T18:36:07.6313983Z absdiff (478, 638)    observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-03T18:36:07.6314610Z absdiff (480, 640)    observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-03T18:36:07.6315203Z ============================= slowest 25 durations =============================
+2026-08-03T18:36:07.6324015Z 8.98s call     tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[3-resolution1]
+2026-08-03T18:36:07.6326079Z 8.29s call     tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[1-resolution1]
+2026-08-03T18:36:07.6327225Z 8.08s call     tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[3-resolution0]
+2026-08-03T18:36:07.6328249Z 7.78s call     tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[1-resolution0]
+2026-08-03T18:36:07.6329297Z 7.59s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-3-resolution2]
+2026-08-03T18:36:07.6330280Z 6.73s call     tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[3-resolution2]
+2026-08-03T18:36:07.6331287Z 5.92s call     tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[1-resolution2]
+2026-08-03T18:36:07.6332262Z 5.91s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-3-resolution1]
+2026-08-03T18:36:07.6333202Z 4.54s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-3-resolution1]
+2026-08-03T18:36:07.6334153Z 4.54s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-3-resolution1]
+2026-08-03T18:36:07.6335141Z 4.52s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-3-resolution1]
+2026-08-03T18:36:07.6336131Z 4.52s call     tests/test_workload_pipeline.py::test_pipeline_masks_match_the_frame_geometry[resolution1]
+2026-08-03T18:36:07.6337138Z 4.52s call     tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[15-resolution1]
+2026-08-03T18:36:07.6338149Z 4.52s call     tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[25-resolution1]
+2026-08-03T18:36:07.6339160Z 4.51s call     tests/test_workload_pipeline.py::test_pipeline_first_frame_reports_no_motion[resolution1]
+2026-08-03T18:36:07.6340165Z 4.50s call     tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[40-resolution1]
+2026-08-03T18:36:07.6341146Z 4.38s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-3-resolution0]
+2026-08-03T18:36:07.6342099Z 4.32s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-1-resolution1]
+2026-08-03T18:36:07.6343047Z 4.32s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-1-resolution2]
+2026-08-03T18:36:07.6344749Z 4.20s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-1-resolution1]
+2026-08-03T18:36:07.6345707Z 4.18s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-1-resolution1]
+2026-08-03T18:36:07.6346680Z 4.18s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-1-resolution1]
+2026-08-03T18:36:07.6347620Z 4.11s call     tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-1-resolution0]
+2026-08-03T18:36:07.6348596Z 4.03s call     tests/test_workload_pipeline.py::test_pipeline_first_frame_reports_no_motion[resolution0]
+2026-08-03T18:36:07.6349857Z 4.03s call     tests/test_workload_pipeline.py::test_pipeline_masks_match_the_frame_geometry[resolution0]
+2026-08-03T18:36:07.6350614Z 113 passed, 47 deselected in 229.28s (0:03:49)
+2026-08-03T18:36:07.9150203Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-03T18:36:07.9160067Z Post job cleanup.
+2026-08-03T18:36:08.0355974Z [command]/usr/bin/git version
+2026-08-03T18:36:08.0411558Z git version 2.43.0
+2026-08-03T18:36:08.0459937Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/9c920f62-ddce-41b6-86e4-2dec9d5eb065/.gitconfig'
+2026-08-03T18:36:08.0472442Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/9c920f62-ddce-41b6-86e4-2dec9d5eb065' before making global git config changes
+2026-08-03T18:36:08.0473686Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-03T18:36:08.0480353Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-03T18:36:08.0544088Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-03T18:36:08.0582521Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-03T18:36:08.0869010Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-03T18:36:08.0904069Z http.https://github.com/.extraheader
+2026-08-03T18:36:08.0920167Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-03T18:36:08.0965824Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-03T18:36:08.1244522Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-03T18:36:08.1288251Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-03T18:36:08.1764557Z Cleaning up orphan processes
+2026-08-03T18:36:08.2908739Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

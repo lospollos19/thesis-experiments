@@ -1,0 +1,430 @@
+﻿2026-08-03T18:24:27.6373679Z Current runner version: '2.336.0'
+2026-08-03T18:24:27.6450454Z ##[group]Runner Image Provisioner
+2026-08-03T18:24:27.6451757Z Hosted Compute Agent
+2026-08-03T18:24:27.6452680Z Version: 20260707.563
+2026-08-03T18:24:27.6453791Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-08-03T18:24:27.6454917Z Build Date: 2026-07-07T19:33:50Z
+2026-08-03T18:24:27.6456035Z Worker ID: {312936fb-11a5-41df-b0e5-ec98fdf5e959}
+2026-08-03T18:24:27.6457139Z Azure Region: eastus2
+2026-08-03T18:24:27.6478712Z ##[endgroup]
+2026-08-03T18:24:27.6480923Z ##[group]Operating System
+2026-08-03T18:24:27.6481858Z Ubuntu
+2026-08-03T18:24:27.6482876Z 24.04.4
+2026-08-03T18:24:27.6483662Z LTS
+2026-08-03T18:24:27.6484515Z ##[endgroup]
+2026-08-03T18:24:27.6485376Z ##[group]Runner Image
+2026-08-03T18:24:27.6486288Z Image: ubuntu-24.04
+2026-08-03T18:24:27.6487582Z Version: 20260720.247.2
+2026-08-03T18:24:27.6489598Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260720.247/images/ubuntu/Ubuntu2404-Readme.md
+2026-08-03T18:24:27.6492068Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260720.247
+2026-08-03T18:24:27.6493573Z ##[endgroup]
+2026-08-03T18:24:27.6496143Z ##[group]GITHUB_TOKEN Permissions
+2026-08-03T18:24:27.6519227Z Contents: read
+2026-08-03T18:24:27.6520339Z Metadata: read
+2026-08-03T18:24:27.6521174Z Packages: read
+2026-08-03T18:24:27.6522067Z ##[endgroup]
+2026-08-03T18:24:27.6525677Z Secret source: Actions
+2026-08-03T18:24:27.6528016Z Prepare workflow directory
+2026-08-03T18:24:27.8633971Z Prepare all required actions
+2026-08-03T18:24:27.8703236Z Getting action download info
+2026-08-03T18:24:28.0544714Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-03T18:24:28.3388473Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-08-03T18:24:28.5848083Z Complete job name: test-cpu
+2026-08-03T18:24:28.7566429Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-03T18:24:28.7575278Z ##[group]Run actions/checkout@v4
+2026-08-03T18:24:28.7575941Z with:
+2026-08-03T18:24:28.7576407Z   repository: lospollos19/gpu-motion-pipeline
+2026-08-03T18:24:28.7580826Z   token: ***
+2026-08-03T18:24:28.7581248Z   ssh-strict: true
+2026-08-03T18:24:28.7581671Z   ssh-user: git
+2026-08-03T18:24:28.7582099Z   persist-credentials: true
+2026-08-03T18:24:28.7582568Z   clean: true
+2026-08-03T18:24:28.7582996Z   sparse-checkout-cone-mode: true
+2026-08-03T18:24:28.7583497Z   fetch-depth: 1
+2026-08-03T18:24:28.7583916Z   fetch-tags: false
+2026-08-03T18:24:28.7584346Z   show-progress: true
+2026-08-03T18:24:28.7584777Z   lfs: false
+2026-08-03T18:24:28.7585227Z   submodules: false
+2026-08-03T18:24:28.7585656Z   set-safe-directory: true
+2026-08-03T18:24:28.7586153Z   allow-unsafe-pr-checkout: false
+2026-08-03T18:24:28.7586840Z ##[endgroup]
+2026-08-03T18:24:28.8932402Z Syncing repository: lospollos19/gpu-motion-pipeline
+2026-08-03T18:24:28.8935809Z ##[group]Getting Git version info
+2026-08-03T18:24:28.8940003Z Working directory is '/home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline'
+2026-08-03T18:24:28.8942233Z [command]/usr/bin/git version
+2026-08-03T18:24:28.8943165Z git version 2.54.0
+2026-08-03T18:24:28.8946069Z ##[endgroup]
+2026-08-03T18:24:28.8956039Z Temporarily overriding HOME='/home/runner/work/_temp/8ef8dd62-e011-4bbc-aebb-d2b2606f3a15' before making global git config changes
+2026-08-03T18:24:28.8958647Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-03T18:24:28.8960970Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-03T18:24:28.9090804Z Deleting the contents of '/home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline'
+2026-08-03T18:24:28.9095760Z ##[group]Initializing the repository
+2026-08-03T18:24:28.9099572Z [command]/usr/bin/git init /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-03T18:24:28.9200775Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-08-03T18:24:28.9203290Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-08-03T18:24:28.9205816Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-08-03T18:24:28.9211499Z hint: call:
+2026-08-03T18:24:28.9213051Z hint:
+2026-08-03T18:24:28.9214483Z hint: 	git config --global init.defaultBranch <name>
+2026-08-03T18:24:28.9216239Z hint:
+2026-08-03T18:24:28.9219836Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-08-03T18:24:28.9221463Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-08-03T18:24:28.9222880Z hint:
+2026-08-03T18:24:28.9223708Z hint: 	git branch -m <name>
+2026-08-03T18:24:28.9224580Z hint:
+2026-08-03T18:24:28.9225789Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-08-03T18:24:28.9227958Z Initialized empty Git repository in /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline/.git/
+2026-08-03T18:24:28.9252662Z [command]/usr/bin/git remote add origin https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-03T18:24:28.9281809Z ##[endgroup]
+2026-08-03T18:24:28.9283634Z ##[group]Disabling automatic garbage collection
+2026-08-03T18:24:28.9285298Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-03T18:24:28.9344838Z ##[endgroup]
+2026-08-03T18:24:28.9346295Z ##[group]Setting up auth
+2026-08-03T18:24:28.9348303Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-03T18:24:28.9416565Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-03T18:24:28.9910102Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-03T18:24:28.9983568Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-03T18:24:29.0309863Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-03T18:24:29.0354688Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-03T18:24:29.0618444Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-03T18:24:29.0666063Z ##[endgroup]
+2026-08-03T18:24:29.0668270Z ##[group]Fetching the repository
+2026-08-03T18:24:29.0678175Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +ddf4a8fda1b6c97eb71818b33c3f124bb1422786:refs/remotes/origin/main
+2026-08-03T18:24:29.3152813Z From https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-03T18:24:29.3154670Z  * [new ref]         ddf4a8fda1b6c97eb71818b33c3f124bb1422786 -> origin/main
+2026-08-03T18:24:29.3169450Z ##[endgroup]
+2026-08-03T18:24:29.3170998Z ##[group]Determining the checkout info
+2026-08-03T18:24:29.3172650Z ##[endgroup]
+2026-08-03T18:24:29.3173693Z [command]/usr/bin/git sparse-checkout disable
+2026-08-03T18:24:29.3221777Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-03T18:24:29.3260171Z ##[group]Checking out the ref
+2026-08-03T18:24:29.3264523Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-03T18:24:29.3365147Z Switched to a new branch 'main'
+2026-08-03T18:24:29.3373160Z branch 'main' set up to track 'origin/main'.
+2026-08-03T18:24:29.3406628Z ##[endgroup]
+2026-08-03T18:24:29.3450385Z [command]/usr/bin/git log -1 --format=%H
+2026-08-03T18:24:29.3483880Z ddf4a8fda1b6c97eb71818b33c3f124bb1422786
+2026-08-03T18:24:29.4353464Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-03T18:24:29.4356293Z ##[group]Run actions/setup-python@v5
+2026-08-03T18:24:29.4356860Z with:
+2026-08-03T18:24:29.4357432Z   python-version: 3.11
+2026-08-03T18:24:29.4357935Z   check-latest: false
+2026-08-03T18:24:29.4362235Z   token: ***
+2026-08-03T18:24:29.4362689Z   update-environment: true
+2026-08-03T18:24:29.4363230Z   allow-prereleases: false
+2026-08-03T18:24:29.4363740Z   freethreaded: false
+2026-08-03T18:24:29.4364213Z ##[endgroup]
+2026-08-03T18:24:29.5859043Z ##[group]Installed versions
+2026-08-03T18:24:29.5969753Z (node:2006) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-03T18:24:29.5993481Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-03T18:24:29.5996475Z Successfully set up CPython (3.11.15)
+2026-08-03T18:24:29.5998957Z ##[endgroup]
+2026-08-03T18:24:29.6893827Z ##[group]Run pip install poetry
+2026-08-03T18:24:29.6895432Z [36;1mpip install poetry[0m
+2026-08-03T18:24:29.6972386Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:24:29.6973484Z env:
+2026-08-03T18:24:29.6974569Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:29.6976330Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-08-03T18:24:29.6978384Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:29.6979831Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:29.6981278Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:29.6982663Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-08-03T18:24:29.6984084Z ##[endgroup]
+2026-08-03T18:24:30.5864811Z Collecting poetry
+2026-08-03T18:24:30.6541395Z   Downloading poetry-2.4.1-py3-none-any.whl.metadata (7.5 kB)
+2026-08-03T18:24:30.6744814Z Collecting build<2.0.0,>=1.2.1 (from poetry)
+2026-08-03T18:24:30.6835826Z   Downloading build-1.5.0-py3-none-any.whl.metadata (5.7 kB)
+2026-08-03T18:24:30.7047692Z Collecting cachecontrol<0.15.0,>=0.14.0 (from cachecontrol[filecache]<0.15.0,>=0.14.0->poetry)
+2026-08-03T18:24:30.7129346Z   Downloading cachecontrol-0.14.4-py3-none-any.whl.metadata (3.1 kB)
+2026-08-03T18:24:30.7327933Z Collecting cleo<3.0.0,>=2.1.0 (from poetry)
+2026-08-03T18:24:30.7402354Z   Downloading cleo-2.1.0-py3-none-any.whl.metadata (12 kB)
+2026-08-03T18:24:30.9385488Z Collecting dulwich<2,>=0.25.0 (from poetry)
+2026-08-03T18:24:30.9481276Z   Downloading dulwich-1.2.12-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (6.0 kB)
+2026-08-03T18:24:30.9658104Z Collecting fastjsonschema<3.0.0,>=2.18.0 (from poetry)
+2026-08-03T18:24:30.9729019Z   Downloading fastjsonschema-2.22.1-py3-none-any.whl.metadata (2.1 kB)
+2026-08-03T18:24:30.9919238Z Collecting findpython<0.9.0,>=0.6.2 (from poetry)
+2026-08-03T18:24:30.9994515Z   Downloading findpython-0.8.0-py3-none-any.whl.metadata (5.4 kB)
+2026-08-03T18:24:31.0161813Z Collecting installer<2.0.0,>=0.7.0 (from poetry)
+2026-08-03T18:24:31.0241172Z   Downloading installer-1.0.1-py3-none-any.whl.metadata (1.2 kB)
+2026-08-03T18:24:31.0519138Z Collecting keyring<26.0.0,>=25.1.0 (from poetry)
+2026-08-03T18:24:31.0595663Z   Downloading keyring-25.7.0-py3-none-any.whl.metadata (21 kB)
+2026-08-03T18:24:31.0802279Z Collecting packaging>=24.2 (from poetry)
+2026-08-03T18:24:31.0870098Z   Downloading packaging-26.2-py3-none-any.whl.metadata (3.5 kB)
+2026-08-03T18:24:31.1090103Z Collecting pbs-installer>=2025.6.10 (from pbs-installer[download,install]>=2025.6.10->poetry)
+2026-08-03T18:24:31.1155507Z   Downloading pbs_installer-2026.7.28-py3-none-any.whl.metadata (1.2 kB)
+2026-08-03T18:24:31.1379836Z Collecting pkginfo<2.0,>=1.12 (from poetry)
+2026-08-03T18:24:31.1437131Z   Downloading pkginfo-1.12.1.2-py3-none-any.whl.metadata (13 kB)
+2026-08-03T18:24:31.1656323Z Collecting platformdirs<5,>=3.0.0 (from poetry)
+2026-08-03T18:24:31.1740005Z   Downloading platformdirs-4.11.0-py3-none-any.whl.metadata (5.5 kB)
+2026-08-03T18:24:31.1941886Z Collecting poetry-core==2.4.0 (from poetry)
+2026-08-03T18:24:31.2020092Z   Downloading poetry_core-2.4.0-py3-none-any.whl.metadata (3.8 kB)
+2026-08-03T18:24:31.2172208Z Collecting pyproject-hooks<2.0.0,>=1.0.0 (from poetry)
+2026-08-03T18:24:31.2259673Z   Downloading pyproject_hooks-1.2.0-py3-none-any.whl.metadata (1.3 kB)
+2026-08-03T18:24:31.2560267Z Collecting requests<3.0,>=2.26 (from poetry)
+2026-08-03T18:24:31.2683980Z   Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+2026-08-03T18:24:31.2902401Z Collecting requests-toolbelt<2.0.0,>=1.0.0 (from poetry)
+2026-08-03T18:24:31.2975520Z   Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl.metadata (14 kB)
+2026-08-03T18:24:31.3209388Z Collecting shellingham<2.0,>=1.5 (from poetry)
+2026-08-03T18:24:31.3282660Z   Downloading shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+2026-08-03T18:24:31.3541726Z Collecting tomlkit<1.0.0,>=0.11.4 (from poetry)
+2026-08-03T18:24:31.3615489Z   Downloading tomlkit-0.15.1-py3-none-any.whl.metadata (3.3 kB)
+2026-08-03T18:24:31.3998111Z Collecting trove-classifiers>=2022.5.19 (from poetry)
+2026-08-03T18:24:31.4093532Z   Downloading trove_classifiers-2026.6.1.19-py3-none-any.whl.metadata (2.3 kB)
+2026-08-03T18:24:31.4595201Z Collecting virtualenv>=20.26.6 (from poetry)
+2026-08-03T18:24:31.4668381Z   Downloading virtualenv-21.7.1-py3-none-any.whl.metadata (3.5 kB)
+2026-08-03T18:24:31.5786758Z Collecting msgpack<2.0.0,>=0.5.2 (from cachecontrol<0.15.0,>=0.14.0->cachecontrol[filecache]<0.15.0,>=0.14.0->poetry)
+2026-08-03T18:24:31.5863441Z   Downloading msgpack-1.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+2026-08-03T18:24:31.6211204Z Collecting filelock>=3.8.0 (from cachecontrol[filecache]<0.15.0,>=0.14.0->poetry)
+2026-08-03T18:24:31.6272416Z   Downloading filelock-3.32.2-py3-none-any.whl.metadata (2.0 kB)
+2026-08-03T18:24:31.6438377Z Collecting crashtest<0.5.0,>=0.4.1 (from cleo<3.0.0,>=2.1.0->poetry)
+2026-08-03T18:24:31.6511673Z   Downloading crashtest-0.4.1-py3-none-any.whl.metadata (1.1 kB)
+2026-08-03T18:24:32.1546649Z Collecting rapidfuzz<4.0.0,>=3.0.0 (from cleo<3.0.0,>=2.1.0->poetry)
+2026-08-03T18:24:32.1635086Z   Downloading rapidfuzz-3.14.5-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (12 kB)
+2026-08-03T18:24:32.1865039Z Collecting urllib3>=2.2.2 (from dulwich<2,>=0.25.0->poetry)
+2026-08-03T18:24:32.1941962Z   Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+2026-08-03T18:24:32.2132680Z Collecting typing_extensions>=4.6.0 (from dulwich<2,>=0.25.0->poetry)
+2026-08-03T18:24:32.2208634Z   Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+2026-08-03T18:24:32.2394925Z Collecting SecretStorage>=3.2 (from keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.2475601Z   Downloading secretstorage-3.5.0-py3-none-any.whl.metadata (4.0 kB)
+2026-08-03T18:24:32.2623410Z Collecting jeepney>=0.4.2 (from keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.2704025Z   Downloading jeepney-0.9.0-py3-none-any.whl.metadata (1.2 kB)
+2026-08-03T18:24:32.3164917Z Collecting importlib_metadata>=4.11.4 (from keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.3240276Z   Downloading importlib_metadata-9.0.0-py3-none-any.whl.metadata (4.5 kB)
+2026-08-03T18:24:32.3405968Z Collecting jaraco.classes (from keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.3483772Z   Downloading jaraco.classes-3.4.0-py3-none-any.whl.metadata (2.6 kB)
+2026-08-03T18:24:32.3692932Z Collecting jaraco.functools (from keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.3778317Z   Downloading jaraco_functools-4.6.0-py3-none-any.whl.metadata (2.9 kB)
+2026-08-03T18:24:32.3940928Z Collecting jaraco.context (from keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.4018071Z   Downloading jaraco_context-6.1.2-py3-none-any.whl.metadata (4.2 kB)
+2026-08-03T18:24:32.4939395Z Collecting charset_normalizer<4,>=2 (from requests<3.0,>=2.26->poetry)
+2026-08-03T18:24:32.5016741Z   Downloading charset_normalizer-3.4.9-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (41 kB)
+2026-08-03T18:24:32.5229952Z Collecting idna<4,>=2.5 (from requests<3.0,>=2.26->poetry)
+2026-08-03T18:24:32.5303637Z   Downloading idna-3.18-py3-none-any.whl.metadata (6.1 kB)
+2026-08-03T18:24:32.5522910Z Collecting certifi>=2023.5.7 (from requests<3.0,>=2.26->poetry)
+2026-08-03T18:24:32.5598198Z   Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+2026-08-03T18:24:32.5839515Z Collecting zipp>=3.20 (from importlib_metadata>=4.11.4->keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.5912262Z   Downloading zipp-4.1.0-py3-none-any.whl.metadata (3.6 kB)
+2026-08-03T18:24:32.6150078Z Collecting httpx<1,>=0.27.0 (from pbs-installer[download,install]>=2025.6.10->poetry)
+2026-08-03T18:24:32.6221492Z   Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+2026-08-03T18:24:32.6767459Z Collecting backports.zstd>=1.0.0 (from pbs-installer[download,install]>=2025.6.10->poetry)
+2026-08-03T18:24:32.6846274Z   Downloading backports_zstd-1.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (6.8 kB)
+2026-08-03T18:24:32.7085675Z Collecting anyio (from httpx<1,>=0.27.0->pbs-installer[download,install]>=2025.6.10->poetry)
+2026-08-03T18:24:32.7157428Z   Downloading anyio-4.14.2-py3-none-any.whl.metadata (4.6 kB)
+2026-08-03T18:24:32.7343754Z Collecting httpcore==1.* (from httpx<1,>=0.27.0->pbs-installer[download,install]>=2025.6.10->poetry)
+2026-08-03T18:24:32.7419023Z   Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+2026-08-03T18:24:32.7582593Z Collecting h11>=0.16 (from httpcore==1.*->httpx<1,>=0.27.0->pbs-installer[download,install]>=2025.6.10->poetry)
+2026-08-03T18:24:32.7668983Z   Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+2026-08-03T18:24:32.9338687Z Collecting cryptography>=2.0 (from SecretStorage>=3.2->keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:32.9442813Z   Downloading cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl.metadata (4.3 kB)
+2026-08-03T18:24:33.0737851Z Collecting cffi>=2.0.0 (from cryptography>=2.0->SecretStorage>=3.2->keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:33.0816539Z   Downloading cffi-2.1.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.5 kB)
+2026-08-03T18:24:33.0970734Z Collecting pycparser (from cffi>=2.0.0->cryptography>=2.0->SecretStorage>=3.2->keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:33.1047666Z   Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+2026-08-03T18:24:33.1221573Z Collecting distlib<1,>=0.3.7 (from virtualenv>=20.26.6->poetry)
+2026-08-03T18:24:33.1295223Z   Downloading distlib-0.4.3-py2.py3-none-any.whl.metadata (5.3 kB)
+2026-08-03T18:24:33.1476598Z Collecting python-discovery>=1.4.2 (from virtualenv>=20.26.6->poetry)
+2026-08-03T18:24:33.1549599Z   Downloading python_discovery-1.5.1-py3-none-any.whl.metadata (5.0 kB)
+2026-08-03T18:24:33.1813502Z Collecting more-itertools (from jaraco.classes->keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:33.1901672Z   Downloading more_itertools-11.1.0-py3-none-any.whl.metadata (41 kB)
+2026-08-03T18:24:33.2060691Z Collecting backports.tarfile (from jaraco.context->keyring<26.0.0,>=25.1.0->poetry)
+2026-08-03T18:24:33.2139788Z   Downloading backports.tarfile-1.2.0-py3-none-any.whl.metadata (2.0 kB)
+2026-08-03T18:24:33.2267793Z Downloading poetry-2.4.1-py3-none-any.whl (292 kB)
+2026-08-03T18:24:33.2478384Z Downloading poetry_core-2.4.0-py3-none-any.whl (374 kB)
+2026-08-03T18:24:33.2663155Z Downloading build-1.5.0-py3-none-any.whl (26 kB)
+2026-08-03T18:24:33.2769911Z Downloading cachecontrol-0.14.4-py3-none-any.whl (22 kB)
+2026-08-03T18:24:33.2861918Z Downloading cleo-2.1.0-py3-none-any.whl (78 kB)
+2026-08-03T18:24:33.2956147Z Downloading crashtest-0.4.1-py3-none-any.whl (7.6 kB)
+2026-08-03T18:24:33.3046718Z Downloading dulwich-1.2.12-cp311-cp311-manylinux_2_28_x86_64.whl (1.5 MB)
+2026-08-03T18:24:33.3254425Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.5/1.5 MB 69.5 MB/s  0:00:00
+2026-08-03T18:24:33.3338345Z Downloading fastjsonschema-2.22.1-py3-none-any.whl (26 kB)
+2026-08-03T18:24:33.3431361Z Downloading findpython-0.8.0-py3-none-any.whl (21 kB)
+2026-08-03T18:24:33.3525674Z Downloading installer-1.0.1-py3-none-any.whl (464 kB)
+2026-08-03T18:24:33.3628838Z Downloading keyring-25.7.0-py3-none-any.whl (39 kB)
+2026-08-03T18:24:33.3731528Z Downloading msgpack-1.2.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (423 kB)
+2026-08-03T18:24:33.3837900Z Downloading pkginfo-1.12.1.2-py3-none-any.whl (32 kB)
+2026-08-03T18:24:33.3928481Z Downloading platformdirs-4.11.0-py3-none-any.whl (23 kB)
+2026-08-03T18:24:33.4036414Z Downloading pyproject_hooks-1.2.0-py3-none-any.whl (10 kB)
+2026-08-03T18:24:33.4130194Z Downloading rapidfuzz-3.14.5-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (3.2 MB)
+2026-08-03T18:24:33.4305821Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 194.8 MB/s  0:00:00
+2026-08-03T18:24:33.4395015Z Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+2026-08-03T18:24:33.4501438Z Downloading charset_normalizer-3.4.9-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (221 kB)
+2026-08-03T18:24:33.4599672Z Downloading idna-3.18-py3-none-any.whl (65 kB)
+2026-08-03T18:24:33.4725703Z Downloading requests_toolbelt-1.0.0-py2.py3-none-any.whl (54 kB)
+2026-08-03T18:24:33.4825169Z Downloading shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+2026-08-03T18:24:33.4918688Z Downloading tomlkit-0.15.1-py3-none-any.whl (49 kB)
+2026-08-03T18:24:33.5011324Z Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+2026-08-03T18:24:33.5117981Z Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+2026-08-03T18:24:33.5221929Z Downloading filelock-3.32.2-py3-none-any.whl (98 kB)
+2026-08-03T18:24:33.5316751Z Downloading importlib_metadata-9.0.0-py3-none-any.whl (27 kB)
+2026-08-03T18:24:33.5410148Z Downloading jeepney-0.9.0-py3-none-any.whl (49 kB)
+2026-08-03T18:24:33.5508443Z Downloading packaging-26.2-py3-none-any.whl (100 kB)
+2026-08-03T18:24:33.5602390Z Downloading pbs_installer-2026.7.28-py3-none-any.whl (75 kB)
+2026-08-03T18:24:33.5703423Z Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+2026-08-03T18:24:33.5799777Z Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+2026-08-03T18:24:33.5894253Z Downloading backports_zstd-1.6.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (492 kB)
+2026-08-03T18:24:33.5998010Z Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+2026-08-03T18:24:33.6094395Z Downloading secretstorage-3.5.0-py3-none-any.whl (15 kB)
+2026-08-03T18:24:33.6192430Z Downloading cryptography-50.0.0-cp311-abi3-manylinux_2_34_x86_64.whl (4.7 MB)
+2026-08-03T18:24:33.6396223Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.7/4.7 MB 255.7 MB/s  0:00:00
+2026-08-03T18:24:33.6471562Z Downloading cffi-2.1.0-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (217 kB)
+2026-08-03T18:24:33.6570066Z Downloading trove_classifiers-2026.6.1.19-py3-none-any.whl (14 kB)
+2026-08-03T18:24:33.6660804Z Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+2026-08-03T18:24:33.6762577Z Downloading virtualenv-21.7.1-py3-none-any.whl (5.5 MB)
+2026-08-03T18:24:33.6950572Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.5/5.5 MB 333.0 MB/s  0:00:00
+2026-08-03T18:24:33.7028043Z Downloading distlib-0.4.3-py2.py3-none-any.whl (470 kB)
+2026-08-03T18:24:33.7130660Z Downloading python_discovery-1.5.1-py3-none-any.whl (35 kB)
+2026-08-03T18:24:33.7223675Z Downloading zipp-4.1.0-py3-none-any.whl (10 kB)
+2026-08-03T18:24:33.7317870Z Downloading anyio-4.14.2-py3-none-any.whl (125 kB)
+2026-08-03T18:24:33.7434348Z Downloading jaraco.classes-3.4.0-py3-none-any.whl (6.8 kB)
+2026-08-03T18:24:33.7537188Z Downloading jaraco_context-6.1.2-py3-none-any.whl (7.9 kB)
+2026-08-03T18:24:33.7629090Z Downloading backports.tarfile-1.2.0-py3-none-any.whl (30 kB)
+2026-08-03T18:24:33.7738853Z Downloading jaraco_functools-4.6.0-py3-none-any.whl (11 kB)
+2026-08-03T18:24:33.7828878Z Downloading more_itertools-11.1.0-py3-none-any.whl (72 kB)
+2026-08-03T18:24:33.7929459Z Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+2026-08-03T18:24:33.9059854Z Installing collected packages: trove-classifiers, distlib, zipp, urllib3, typing_extensions, tomlkit, shellingham, rapidfuzz, pyproject-hooks, pycparser, poetry-core, platformdirs, pkginfo, pbs-installer, packaging, msgpack, more-itertools, jeepney, installer, idna, h11, filelock, fastjsonschema, crashtest, charset_normalizer, certifi, backports.zstd, backports.tarfile, requests, python-discovery, jaraco.functools, jaraco.context, jaraco.classes, importlib_metadata, httpcore, findpython, dulwich, cleo, cffi, build, anyio, virtualenv, requests-toolbelt, httpx, cryptography, cachecontrol, SecretStorage, keyring, poetry
+2026-08-03T18:24:36.6015707Z 
+2026-08-03T18:24:36.6043351Z Successfully installed SecretStorage-3.5.0 anyio-4.14.2 backports.tarfile-1.2.0 backports.zstd-1.6.0 build-1.5.0 cachecontrol-0.14.4 certifi-2026.7.22 cffi-2.1.0 charset_normalizer-3.4.9 cleo-2.1.0 crashtest-0.4.1 cryptography-50.0.0 distlib-0.4.3 dulwich-1.2.12 fastjsonschema-2.22.1 filelock-3.32.2 findpython-0.8.0 h11-0.16.0 httpcore-1.0.9 httpx-0.28.1 idna-3.18 importlib_metadata-9.0.0 installer-1.0.1 jaraco.classes-3.4.0 jaraco.context-6.1.2 jaraco.functools-4.6.0 jeepney-0.9.0 keyring-25.7.0 more-itertools-11.1.0 msgpack-1.2.1 packaging-26.2 pbs-installer-2026.7.28 pkginfo-1.12.1.2 platformdirs-4.11.0 poetry-2.4.1 poetry-core-2.4.0 pycparser-3.0 pyproject-hooks-1.2.0 python-discovery-1.5.1 rapidfuzz-3.14.5 requests-2.34.2 requests-toolbelt-1.0.0 shellingham-1.5.4 tomlkit-0.15.1 trove-classifiers-2026.6.1.19 typing_extensions-4.16.0 urllib3-2.7.0 virtualenv-21.7.1 zipp-4.1.0
+2026-08-03T18:24:36.6053108Z 
+2026-08-03T18:24:36.6053574Z [notice] A new release of pip is available: 26.1.2 -> 26.2
+2026-08-03T18:24:36.6054313Z [notice] To update, run: pip install --upgrade pip
+2026-08-03T18:24:36.7844011Z ##[group]Run poetry install --extras headless
+2026-08-03T18:24:36.7844414Z [36;1mpoetry install --extras headless[0m
+2026-08-03T18:24:36.7895714Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:24:36.7895988Z env:
+2026-08-03T18:24:36.7896274Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:36.7896729Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-08-03T18:24:36.7897176Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:36.7921761Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:36.7922356Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:36.7922895Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-08-03T18:24:36.7923392Z ##[endgroup]
+2026-08-03T18:24:38.3377990Z Creating virtualenv motion-pipeline-zsOrBSC7-py3.11 in /home/runner/.cache/pypoetry/virtualenvs
+2026-08-03T18:24:39.0789271Z Installing dependencies from lock file
+2026-08-03T18:24:39.1794981Z 
+2026-08-03T18:24:39.1795967Z Package operations: 16 installs, 0 updates, 0 removals
+2026-08-03T18:24:39.1798116Z 
+2026-08-03T18:24:39.1800187Z   - Installing coverage (7.15.0)
+2026-08-03T18:24:39.1820559Z   - Installing iniconfig (2.3.0)
+2026-08-03T18:24:39.1840954Z   - Installing librt (0.12.0)
+2026-08-03T18:24:39.1870458Z   - Installing mypy (1.20.2)
+2026-08-03T18:24:39.1893634Z   - Installing mypy-extensions (1.1.0)
+2026-08-03T18:24:39.1905236Z   - Installing numpy (2.4.6)
+2026-08-03T18:24:39.5128745Z   - Installing opencv-python-headless (4.13.0.92)
+2026-08-03T18:24:39.5148590Z   - Installing packaging (26.2)
+2026-08-03T18:24:39.6514821Z   - Installing pathspec (1.1.1)
+2026-08-03T18:24:39.6650853Z   - Installing pluggy (1.6.0)
+2026-08-03T18:24:39.7566091Z   - Installing pygments (2.20.0)
+2026-08-03T18:24:39.7797180Z   - Installing pytest (8.4.2)
+2026-08-03T18:24:39.8178901Z   - Installing pytest-cov (5.0.0)
+2026-08-03T18:24:39.9061587Z   - Installing pytest-testmon (2.2.0)
+2026-08-03T18:24:39.9979384Z   - Installing ruff (0.4.10)
+2026-08-03T18:24:40.0811237Z   - Installing typing-extensions (4.16.0)
+2026-08-03T18:24:43.5168452Z 
+2026-08-03T18:24:43.5208999Z Installing the current project: motion-pipeline (0.1.0)
+2026-08-03T18:24:43.8558449Z ##[group]Run poetry run ruff check src/
+2026-08-03T18:24:43.8558814Z [36;1mpoetry run ruff check src/[0m
+2026-08-03T18:24:43.8606464Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:24:43.8606730Z env:
+2026-08-03T18:24:43.8607009Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:43.8607580Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-08-03T18:24:43.8608009Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:43.8608384Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:43.8608758Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:43.8609135Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-08-03T18:24:43.8609483Z ##[endgroup]
+2026-08-03T18:24:44.4458426Z All checks passed!
+2026-08-03T18:24:44.4533941Z ##[group]Run poetry run ruff format --check src/ tests/
+2026-08-03T18:24:44.4534375Z [36;1mpoetry run ruff format --check src/ tests/[0m
+2026-08-03T18:24:44.4582765Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:24:44.4583028Z env:
+2026-08-03T18:24:44.4583305Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:44.4583744Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-08-03T18:24:44.4584173Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:44.4584555Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:44.4584934Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:44.4585299Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-08-03T18:24:44.4585615Z ##[endgroup]
+2026-08-03T18:24:45.0525284Z 28 files already formatted
+2026-08-03T18:24:45.0656381Z ##[group]Run poetry run mypy
+2026-08-03T18:24:45.0656682Z [36;1mpoetry run mypy[0m
+2026-08-03T18:24:45.0704573Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:24:45.0704829Z env:
+2026-08-03T18:24:45.0705106Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:45.0705567Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-08-03T18:24:45.0705998Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:45.0706374Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:45.0706745Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:45.0707112Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-08-03T18:24:45.0707699Z ##[endgroup]
+2026-08-03T18:24:49.0539451Z Success: no issues found in 13 source files
+2026-08-03T18:24:49.0790651Z ##[group]Run poetry run pytest tests/ -m "not gpu" --cov=src/ --cov-report=term-missing
+2026-08-03T18:24:49.0791282Z [36;1mpoetry run pytest tests/ -m "not gpu" --cov=src/ --cov-report=term-missing[0m
+2026-08-03T18:24:49.0838785Z shell: /usr/bin/bash -e {0}
+2026-08-03T18:24:49.0839041Z env:
+2026-08-03T18:24:49.0839314Z   pythonLocation: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:49.0839758Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib/pkgconfig
+2026-08-03T18:24:49.0840181Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:49.0840556Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:49.0840933Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.11.15/x64
+2026-08-03T18:24:49.0841300Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.11.15/x64/lib
+2026-08-03T18:24:49.0841621Z ##[endgroup]
+2026-08-03T18:24:51.0081192Z ============================= test session starts ==============================
+2026-08-03T18:24:51.0083185Z platform linux -- Python 3.11.15, pytest-8.4.2, pluggy-1.6.0
+2026-08-03T18:24:51.0084170Z rootdir: /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-03T18:24:51.0085820Z configfile: pyproject.toml
+2026-08-03T18:24:51.0086566Z plugins: cov-5.0.0, testmon-2.2.0
+2026-08-03T18:24:51.0087900Z collected 160 items / 113 deselected / 47 selected
+2026-08-03T18:24:51.0088525Z 
+2026-08-03T18:24:51.0431121Z tests/test_camera.py ......                                              [ 12%]
+2026-08-03T18:24:51.0942648Z tests/test_data_stream.py .......                                        [ 27%]
+2026-08-03T18:24:51.1015923Z tests/test_display.py .....                                              [ 38%]
+2026-08-03T18:24:51.1206131Z tests/test_gpu_processor.py .........                                    [ 57%]
+2026-08-03T18:24:51.1226045Z tests/test_kernel_map.py s                                               [ 59%]
+2026-08-03T18:24:51.1283584Z tests/test_kernels.py .....                                              [ 70%]
+2026-08-03T18:24:51.2993949Z tests/test_main.py ..                                                    [ 74%]
+2026-08-03T18:24:51.3446930Z tests/test_motion_detector.py ......                                     [ 87%]
+2026-08-03T18:24:51.4371662Z tests/test_pipeline.py ...                                               [ 93%]
+2026-08-03T18:24:51.5540102Z tests/test_trace.py ...                                                  [100%]
+2026-08-03T18:24:51.5540554Z 
+2026-08-03T18:24:51.5540857Z ---------- coverage: platform linux, python 3.11.15-final-0 ----------
+2026-08-03T18:24:51.5541507Z Name                                                Stmts   Miss  Cover   Missing
+2026-08-03T18:24:51.5542118Z ---------------------------------------------------------------------------------
+2026-08-03T18:24:51.5542787Z src/motion_pipeline/__init__.py                         1      0   100%
+2026-08-03T18:24:51.5543488Z src/motion_pipeline/camera/__init__.py                  2      0   100%
+2026-08-03T18:24:51.5544157Z src/motion_pipeline/camera/camera_interface.py         45      0   100%
+2026-08-03T18:24:51.5544825Z src/motion_pipeline/pipeline.py                        42      0   100%
+2026-08-03T18:24:51.5545491Z src/motion_pipeline/processing/__init__.py              3      0   100%
+2026-08-03T18:24:51.5546153Z src/motion_pipeline/processing/_trace.py               16      0   100%
+2026-08-03T18:24:51.5546912Z src/motion_pipeline/processing/gpu_processor.py        72      4    94%   27, 238-244
+2026-08-03T18:24:51.5547860Z src/motion_pipeline/processing/kernels.py              21      0   100%
+2026-08-03T18:24:51.5548522Z src/motion_pipeline/processing/motion_detector.py      35      0   100%
+2026-08-03T18:24:51.5549185Z src/motion_pipeline/simulation/__init__.py              2      0   100%
+2026-08-03T18:24:51.5549838Z src/motion_pipeline/simulation/data_stream.py          42      0   100%
+2026-08-03T18:24:51.5550963Z src/motion_pipeline/ui/__init__.py                      2      0   100%
+2026-08-03T18:24:51.5551628Z src/motion_pipeline/ui/display.py                      69      0   100%
+2026-08-03T18:24:51.5552262Z ---------------------------------------------------------------------------------
+2026-08-03T18:24:51.5552838Z TOTAL                                                 352      4    99%
+2026-08-03T18:24:51.5553174Z 
+2026-08-03T18:24:51.5553181Z 
+2026-08-03T18:24:51.5553448Z ================ 46 passed, 1 skipped, 113 deselected in 0.67s =================
+2026-08-03T18:24:51.6335338Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-03T18:24:51.6336500Z Post job cleanup.
+2026-08-03T18:24:51.7611801Z (node:2116) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-03T18:24:51.7613215Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-03T18:24:51.8361753Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-03T18:24:51.8363137Z Post job cleanup.
+2026-08-03T18:24:51.9344963Z [command]/usr/bin/git version
+2026-08-03T18:24:51.9416182Z git version 2.54.0
+2026-08-03T18:24:51.9497916Z Temporarily overriding HOME='/home/runner/work/_temp/58b14ea0-e16d-414f-b05a-e2a56439adb3' before making global git config changes
+2026-08-03T18:24:51.9521258Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-03T18:24:51.9537959Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-03T18:24:51.9559631Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-03T18:24:51.9612775Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-03T18:24:51.9983772Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-03T18:24:52.0031036Z http.https://github.com/.extraheader
+2026-08-03T18:24:52.0057665Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-03T18:24:52.0148775Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-03T18:24:52.0589639Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-03T18:24:52.0674252Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-03T18:24:52.1176637Z Cleaning up orphan processes
+2026-08-03T18:24:52.1455882Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

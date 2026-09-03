@@ -1,0 +1,8 @@
+--- grayscale-perturb-weight
+    5 failing, 232.96s
+--- conv1d-v-border-wrap
+    17 failing, 231.23s
+--- geometry-halve-max-radius
+    1 failing, 231.96s
+
+wrote gt-inline-2-3.json: 3 mutation(s) on arm 'inline'

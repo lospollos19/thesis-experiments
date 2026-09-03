@@ -1,0 +1,7 @@
+2026-08-12T02:54:03.9050000Z Evaluating q2q3-kernel-map.if
+2026-08-12T02:54:03.9050000Z Evaluating: always()
+2026-08-12T02:54:03.9050000Z Result: true
+2026-08-12T02:54:04.3880000Z Requested labels: self-hosted, Linux, ARM64
+2026-08-12T02:54:04.3880000Z Job defined at: lospollos19/gpu-motion-pipeline/.github/workflows/r1-foundations.yml@refs/heads/main
+2026-08-12T02:54:04.3880000Z Waiting for a runner to pick up this job...
+2026-08-12T02:54:04.4330000Z Job is about to start running on the runner: jetson-orin

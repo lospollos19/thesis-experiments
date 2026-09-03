@@ -1,0 +1,245 @@
+﻿2026-08-16T15:40:03.0682788Z Current runner version: '2.336.0'
+2026-08-16T15:40:03.0692805Z Runner name: 'jetson-orin'
+2026-08-16T15:40:03.0693871Z Runner group name: 'Default'
+2026-08-16T15:40:03.0695275Z Machine name: 'jetson-orin'
+2026-08-16T15:40:03.0699700Z ##[group]GITHUB_TOKEN Permissions
+2026-08-16T15:40:03.0703638Z Actions: read
+2026-08-16T15:40:03.0704397Z Contents: read
+2026-08-16T15:40:03.0705101Z Metadata: read
+2026-08-16T15:40:03.0705800Z ##[endgroup]
+2026-08-16T15:40:03.0709798Z Secret source: Actions
+2026-08-16T15:40:03.0711630Z Prepare workflow directory
+2026-08-16T15:40:03.1553694Z Prepare all required actions
+2026-08-16T15:40:03.1633266Z Getting action download info
+2026-08-16T15:40:03.6005550Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-16T15:40:04.1083607Z Download action repository 'actions/download-artifact@v4' (SHA:d3f86a106a0bac45b974a628896c90dbdf5c8093)
+2026-08-16T15:40:04.5357962Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-16T15:40:05.6024963Z Complete job name: campaign (C, variant/extern, 1/3)
+2026-08-16T15:40:05.7595333Z ##[group]Run git clean -xdff 2>/dev/null || true
+2026-08-16T15:40:05.7596174Z [36;1mgit clean -xdff 2>/dev/null || true[0m
+2026-08-16T15:40:05.7618021Z shell: /usr/bin/bash -e {0}
+2026-08-16T15:40:05.7619049Z ##[endgroup]
+2026-08-16T15:40:05.7818574Z Removing .pytest_cache/
+2026-08-16T15:40:05.7819372Z Removing __pycache__/
+2026-08-16T15:40:05.7819901Z Removing campaign-C-3-3.json
+2026-08-16T15:40:05.7820358Z Removing campaign.log
+2026-08-16T15:40:05.7820754Z Removing map/
+2026-08-16T15:40:05.7821163Z Removing src/motion_pipeline/__pycache__/
+2026-08-16T15:40:05.7821757Z Removing src/motion_pipeline/camera/__pycache__/
+2026-08-16T15:40:05.7822390Z Removing src/motion_pipeline/processing/__pycache__/
+2026-08-16T15:40:05.7823060Z Removing src/motion_pipeline/simulation/__pycache__/
+2026-08-16T15:40:05.7823652Z Removing src/motion_pipeline/ui/__pycache__/
+2026-08-16T15:40:05.7824241Z Removing tests/__pycache__/
+2026-08-16T15:40:05.7824676Z Removing tools/__pycache__/
+2026-08-16T15:40:05.8157826Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-16T15:40:05.8168829Z ##[group]Run actions/checkout@v4
+2026-08-16T15:40:05.8169359Z with:
+2026-08-16T15:40:05.8169714Z   ref: variant/extern
+2026-08-16T15:40:05.8170151Z   repository: lospollos19/gpu-motion-pipeline
+2026-08-16T15:40:05.8174241Z   token: ***
+2026-08-16T15:40:05.8174931Z   ssh-strict: true
+2026-08-16T15:40:05.8175574Z   ssh-user: git
+2026-08-16T15:40:05.8176167Z   persist-credentials: true
+2026-08-16T15:40:05.8176803Z   clean: true
+2026-08-16T15:40:05.8177559Z   sparse-checkout-cone-mode: true
+2026-08-16T15:40:05.8178273Z   fetch-depth: 1
+2026-08-16T15:40:05.8178868Z   fetch-tags: false
+2026-08-16T15:40:05.8179433Z   show-progress: true
+2026-08-16T15:40:05.8180123Z   lfs: false
+2026-08-16T15:40:05.8180478Z   submodules: false
+2026-08-16T15:40:05.8180855Z   set-safe-directory: true
+2026-08-16T15:40:05.8181291Z   allow-unsafe-pr-checkout: false
+2026-08-16T15:40:05.8181720Z ##[endgroup]
+2026-08-16T15:40:05.9552633Z Syncing repository: lospollos19/gpu-motion-pipeline
+2026-08-16T15:40:05.9555121Z ##[group]Getting Git version info
+2026-08-16T15:40:05.9556117Z Working directory is '/home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline'
+2026-08-16T15:40:05.9557410Z [command]/usr/bin/git version
+2026-08-16T15:40:05.9557871Z git version 2.43.0
+2026-08-16T15:40:05.9559396Z ##[endgroup]
+2026-08-16T15:40:05.9565257Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/997dd31b-94c1-4482-828a-56730d16abe0/.gitconfig'
+2026-08-16T15:40:05.9569969Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/997dd31b-94c1-4482-828a-56730d16abe0' before making global git config changes
+2026-08-16T15:40:05.9576411Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-16T15:40:05.9577754Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-16T15:40:05.9634516Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-08-16T15:40:05.9665491Z https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-16T15:40:05.9683777Z ##[group]Removing previously created refs, to avoid conflicts
+2026-08-16T15:40:05.9689701Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-08-16T15:40:05.9718172Z refs/heads/variant/extern
+2026-08-16T15:40:05.9730426Z [command]/usr/bin/git checkout --detach
+2026-08-16T15:40:05.9778367Z HEAD is now at f241381 Merge main into variant/extern
+2026-08-16T15:40:05.9837111Z [command]/usr/bin/git branch --delete --force variant/extern
+2026-08-16T15:40:05.9875423Z Deleted branch variant/extern (was f241381).
+2026-08-16T15:40:05.9920988Z ##[endgroup]
+2026-08-16T15:40:05.9926590Z [command]/usr/bin/git submodule status
+2026-08-16T15:40:06.0207767Z ##[group]Cleaning the repository
+2026-08-16T15:40:06.0208437Z [command]/usr/bin/git clean -ffdx
+2026-08-16T15:40:06.0255036Z [command]/usr/bin/git reset --hard HEAD
+2026-08-16T15:40:06.0303235Z HEAD is now at f241381 Merge main into variant/extern
+2026-08-16T15:40:06.0312361Z ##[endgroup]
+2026-08-16T15:40:06.0313102Z ##[group]Disabling automatic garbage collection
+2026-08-16T15:40:06.0318261Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-16T15:40:06.0353557Z ##[endgroup]
+2026-08-16T15:40:06.0354232Z ##[group]Setting up auth
+2026-08-16T15:40:06.0364821Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-16T15:40:06.0404256Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-16T15:40:06.0681218Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-16T15:40:06.0721301Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-16T15:40:06.0994347Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-16T15:40:06.1036231Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-16T15:40:06.1319068Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-16T15:40:06.1392759Z ##[endgroup]
+2026-08-16T15:40:06.1397556Z ##[group]Fetching the repository
+2026-08-16T15:40:06.1399225Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/variant/extern*:refs/remotes/origin/variant/extern* +refs/tags/variant/extern*:refs/tags/variant/extern*
+2026-08-16T15:40:06.8190675Z ##[endgroup]
+2026-08-16T15:40:06.8191332Z ##[group]Determining the checkout info
+2026-08-16T15:40:06.8201106Z [command]/usr/bin/git branch --list --remote origin/variant/extern
+2026-08-16T15:40:06.8235043Z   origin/variant/extern
+2026-08-16T15:40:06.8242100Z ##[endgroup]
+2026-08-16T15:40:06.8248581Z [command]/usr/bin/git sparse-checkout disable
+2026-08-16T15:40:06.8304227Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-16T15:40:06.8342700Z ##[group]Checking out the ref
+2026-08-16T15:40:06.8348524Z [command]/usr/bin/git checkout --progress --force -B variant/extern refs/remotes/origin/variant/extern
+2026-08-16T15:40:06.8398088Z Switched to a new branch 'variant/extern'
+2026-08-16T15:40:06.8399050Z branch 'variant/extern' set up to track 'origin/variant/extern'.
+2026-08-16T15:40:06.8404385Z ##[endgroup]
+2026-08-16T15:40:06.8454099Z [command]/usr/bin/git log -1 --format=%H
+2026-08-16T15:40:06.8485785Z f241381f3f3b79d1c754dd7407bdc5baabc8a5ec
+2026-08-16T15:40:06.8671757Z ##[group]Run set -uo pipefail
+2026-08-16T15:40:06.8672331Z [36;1mset -uo pipefail[0m
+2026-08-16T15:40:06.8672854Z [36;1msudo -n nvpmodel -m 0 || echo "::warning::nvpmodel -m 0 failed"[0m
+2026-08-16T15:40:06.8673526Z [36;1msudo -n jetson_clocks || echo "::warning::jetson_clocks failed"[0m
+2026-08-16T15:40:06.8688777Z shell: /usr/bin/bash -e {0}
+2026-08-16T15:40:06.8689165Z ##[endgroup]
+2026-08-16T15:40:07.2494652Z ##[group]Run set -euo pipefail
+2026-08-16T15:40:07.2495171Z [36;1mset -euo pipefail[0m
+2026-08-16T15:40:07.2495532Z [36;1mVENV="$HOME/.poetry-venv"[0m
+2026-08-16T15:40:07.2495926Z [36;1mecho "$VENV/bin" >> "$GITHUB_PATH"[0m
+2026-08-16T15:40:07.2496347Z [36;1m"$VENV/bin/poetry" --version[0m
+2026-08-16T15:40:07.2573403Z shell: /usr/bin/bash -e {0}
+2026-08-16T15:40:07.2573867Z ##[endgroup]
+2026-08-16T15:40:07.7587304Z Poetry (version 2.4.1)
+2026-08-16T15:40:07.8828637Z ##[group]Run export PATH="/usr/local/cuda/bin:$PATH"
+2026-08-16T15:40:07.8829608Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-16T15:40:07.8830170Z [36;1mpoetry install --extras "headless gpu"[0m
+2026-08-16T15:40:07.8849124Z shell: /usr/bin/bash -e {0}
+2026-08-16T15:40:07.8849481Z env:
+2026-08-16T15:40:07.8849750Z   CUDA_ROOT: /usr/local/cuda
+2026-08-16T15:40:07.8850081Z ##[endgroup]
+2026-08-16T15:40:08.7576543Z Installing dependencies from lock file
+2026-08-16T15:40:08.8959440Z 
+2026-08-16T15:40:08.8959920Z No dependencies to install or update
+2026-08-16T15:40:08.8984486Z 
+2026-08-16T15:40:08.8985192Z Installing the current project: motion-pipeline (0.1.0)
+2026-08-16T15:40:09.0812215Z ##[group]Run set -euo pipefail
+2026-08-16T15:40:09.0812800Z [36;1mset -euo pipefail[0m
+2026-08-16T15:40:09.0813239Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-16T15:40:09.0813715Z [36;1mpoetry run python - <<'PY'[0m
+2026-08-16T15:40:09.0814076Z [36;1mimport sys[0m
+2026-08-16T15:40:09.0814580Z [36;1mfrom motion_pipeline.processing.gpu_processor import GPUProcessor[0m
+2026-08-16T15:40:09.0815171Z [36;1mbackend = GPUProcessor().backend[0m
+2026-08-16T15:40:09.0815581Z [36;1mprint(f"backend = {backend}")[0m
+2026-08-16T15:40:09.0815967Z [36;1mif backend != "pycuda":[0m
+2026-08-16T15:40:09.0816385Z [36;1m    sys.exit("GPUProcessor fell back to NumPy")[0m
+2026-08-16T15:40:09.0816814Z [36;1mPY[0m
+2026-08-16T15:40:09.0831991Z shell: /usr/bin/bash -e {0}
+2026-08-16T15:40:09.0832352Z ##[endgroup]
+2026-08-16T15:40:10.0445631Z backend = pycuda
+2026-08-16T15:40:10.1537915Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-16T15:40:10.1540638Z ##[group]Run actions/download-artifact@v4
+2026-08-16T15:40:10.1541107Z with:
+2026-08-16T15:40:10.1541395Z   name: verdict-q2q3
+2026-08-16T15:40:10.1541689Z   path: map
+2026-08-16T15:40:10.1542023Z   run-id: 31558337740
+2026-08-16T15:40:10.1542367Z   repository: lospollos19/gpu-motion-pipeline
+2026-08-16T15:40:10.1546113Z   github-token: ***
+2026-08-16T15:40:10.1546432Z   merge-multiple: false
+2026-08-16T15:40:10.1546735Z ##[endgroup]
+2026-08-16T15:40:10.3631456Z Downloading single artifact
+2026-08-16T15:40:10.3734823Z (node:1068725) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-16T15:40:10.3735892Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-16T15:40:10.4011812Z (node:1068725) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-16T15:40:10.6424796Z Preparing to download the following artifacts:
+2026-08-16T15:40:10.6425772Z - verdict-q2q3 (ID: 9127014028, Size: 6960, Expected Digest: sha256:9887426343c2e8ade6da59b21d54bb99b21865659ecca3f55d237abe52a147c2)
+2026-08-16T15:40:10.6473365Z Downloading artifact '9127014028' from 'lospollos19/gpu-motion-pipeline'
+2026-08-16T15:40:10.9185816Z Redirecting to blob download url: https://productionresultssa0.blob.core.windows.net/actions-results/18d7c00b-89ec-40f3-8e18-1bbac1e96a88/workflow-job-run-995c6205-85b1-5993-bf9f-881e075c9e9e/artifacts/ab747f333d9be7a55c938ac0c079335f0d136a7ffc6c0f9de369f87b08be549a.zip
+2026-08-16T15:40:10.9188157Z Starting download of artifact to: /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline/map
+2026-08-16T15:40:11.4695495Z (node:1068725) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+2026-08-16T15:40:11.4835114Z SHA256 digest of downloaded artifact is 9887426343c2e8ade6da59b21d54bb99b21865659ecca3f55d237abe52a147c2
+2026-08-16T15:40:11.4835972Z Artifact download completed successfully.
+2026-08-16T15:40:11.4836385Z Total of 1 artifact(s) downloaded
+2026-08-16T15:40:11.4844416Z Download artifact has finished successfully
+2026-08-16T15:40:11.4988202Z ##[group]Run set -euo pipefail
+2026-08-16T15:40:11.4988713Z [36;1mset -euo pipefail[0m
+2026-08-16T15:40:11.4989067Z [36;1mtest -s map/kernel_deps.json[0m
+2026-08-16T15:40:11.4989902Z [36;1mpython3 -c "import json;print(len(json.load(open('map/kernel_deps.json'))),'tests in the map')"[0m
+2026-08-16T15:40:11.5005313Z shell: /usr/bin/bash -e {0}
+2026-08-16T15:40:11.5005660Z ##[endgroup]
+2026-08-16T15:40:11.5266514Z 110 tests in the map
+2026-08-16T15:40:11.5401409Z ##[group]Run set -o pipefail
+2026-08-16T15:40:11.5401952Z [36;1mset -o pipefail[0m
+2026-08-16T15:40:11.5402331Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-16T15:40:11.5402775Z [36;1mextra=""[0m
+2026-08-16T15:40:11.5403126Z [36;1m[ "C" = "C" ] && extra="--map map/kernel_deps.json"[0m
+2026-08-16T15:40:11.5403606Z [36;1mpoetry run python tools/campaign.py \[0m
+2026-08-16T15:40:11.5413264Z [36;1m  --condition "C" \[0m
+2026-08-16T15:40:11.5413632Z [36;1m  --chunk "1/3" \[0m
+2026-08-16T15:40:11.5414077Z [36;1m  --out "campaign-C-$(echo '1/3' | tr / -).json" \[0m
+2026-08-16T15:40:11.5414543Z [36;1m  $extra 2>&1 | tee campaign.log[0m
+2026-08-16T15:40:11.5429046Z shell: /usr/bin/bash -e {0}
+2026-08-16T15:40:11.5429682Z ##[endgroup]
+2026-08-16T15:40:14.7224220Z condition C on extern at f241381
+2026-08-16T15:40:14.7224686Z collected 187 (113 gpu)
+2026-08-16T15:44:04.5082586Z unselected suite: 229.79s
+2026-08-16T15:48:30.9347300Z testmon database built in 266.38s
+2026-08-16T15:48:30.9347940Z --- grayscale-swap-bgr-weights
+2026-08-16T15:50:54.7628497Z     selected 44 (44 gpu), occupancy 143.83s
+2026-08-16T15:50:54.7629074Z --- conv1d-h-border-wrap
+2026-08-16T15:54:40.0248626Z     selected 80 (80 gpu), occupancy 225.26s
+2026-08-16T15:54:40.0249190Z --- threshold-boundary
+2026-08-16T15:58:15.1778463Z     selected 71 (71 gpu), occupancy 215.15s
+2026-08-16T15:58:15.1785054Z 
+2026-08-16T15:58:15.1785479Z wrote campaign-C-1-3.json
+2026-08-16T15:58:15.2382658Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-16T15:58:15.2384585Z ##[group]Run actions/upload-artifact@v4
+2026-08-16T15:58:15.2384948Z with:
+2026-08-16T15:58:15.2385197Z   name: campaign-C-0
+2026-08-16T15:58:15.2385506Z   path: campaign-*.json
+campaign.log
+
+2026-08-16T15:58:15.2385871Z   if-no-files-found: warn
+2026-08-16T15:58:15.2386178Z   compression-level: 6
+2026-08-16T15:58:15.2386463Z   overwrite: false
+2026-08-16T15:58:15.2387169Z   include-hidden-files: false
+2026-08-16T15:58:15.2387503Z ##[endgroup]
+2026-08-16T15:58:15.4693490Z (node:1075876) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-16T15:58:15.4694622Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-16T15:58:15.4779310Z With the provided path, there will be 2 files uploaded
+2026-08-16T15:58:15.4787057Z Artifact name is valid!
+2026-08-16T15:58:15.4788237Z Root directory input is valid!
+2026-08-16T15:58:15.8714496Z Beginning upload of artifact content to blob storage
+2026-08-16T15:58:15.9037362Z (node:1075876) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-16T15:58:16.3861557Z Uploaded bytes 1708
+2026-08-16T15:58:16.4879627Z Finished uploading artifact content to blob storage!
+2026-08-16T15:58:16.4880866Z SHA256 digest of uploaded artifact zip is 7f0f39862e5926e64176e41e940df99e4e4529d40fad1574fc9e904db25a786d
+2026-08-16T15:58:16.4883704Z Finalizing artifact upload
+2026-08-16T15:58:16.7349145Z Artifact campaign-C-0.zip successfully finalized. Artifact ID 9266261686
+2026-08-16T15:58:16.7350394Z Artifact campaign-C-0 has been successfully uploaded! Final size is 1708 bytes. Artifact ID is 9266261686
+2026-08-16T15:58:16.7359611Z Artifact download URL: https://github.com/lospollos19/gpu-motion-pipeline/actions/runs/31955528366/artifacts/9266261686
+2026-08-16T15:58:16.7645949Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-16T15:58:16.7647810Z Post job cleanup.
+2026-08-16T15:58:16.8864113Z [command]/usr/bin/git version
+2026-08-16T15:58:16.8920867Z git version 2.43.0
+2026-08-16T15:58:16.8968642Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/507160f1-b914-48ce-8c89-ebe3af23bf1d/.gitconfig'
+2026-08-16T15:58:16.8980800Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/507160f1-b914-48ce-8c89-ebe3af23bf1d' before making global git config changes
+2026-08-16T15:58:16.8982056Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-16T15:58:16.8988374Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-16T15:58:16.9044385Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-16T15:58:16.9086982Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-16T15:58:16.9370064Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-16T15:58:16.9405049Z http.https://github.com/.extraheader
+2026-08-16T15:58:16.9419882Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-16T15:58:16.9463335Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-16T15:58:16.9740281Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-16T15:58:16.9789369Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-16T15:58:17.0257754Z Cleaning up orphan processes
+2026-08-16T15:58:17.1316048Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/download-artifact@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,541 @@
+{
+  "tests/test_kernels.py::test_absolute_diff_matches_numpy": [
+    "absdiff_f32"
+  ],
+  "tests/test_kernels.py::test_full_chain_matches_numpy": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_kernels.py::test_gaussian_blur_matches_numpy[33]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_kernels.py::test_gaussian_blur_matches_numpy[3]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_kernels.py::test_gaussian_blur_matches_numpy[5]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_kernels.py::test_gaussian_blur_matches_numpy[9]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_kernels.py::test_grayscale_matches_numpy": [
+    "grayscale_bgr_u8"
+  ],
+  "tests/test_kernels.py::test_threshold_matches_numpy": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_absolute_diff_matches_numpy_at_scale[resolution0]": [
+    "absdiff_f32"
+  ],
+  "tests/test_workload_kernels.py::test_absolute_diff_matches_numpy_at_scale[resolution1]": [
+    "absdiff_f32"
+  ],
+  "tests/test_workload_kernels.py::test_absolute_diff_matches_numpy_at_scale[resolution2]": [
+    "absdiff_f32"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_kernels.py::test_grayscale_matches_numpy_at_scale[resolution0]": [
+    "grayscale_bgr_u8"
+  ],
+  "tests/test_workload_kernels.py::test_grayscale_matches_numpy_at_scale[resolution1]": [
+    "grayscale_bgr_u8"
+  ],
+  "tests/test_workload_kernels.py::test_grayscale_matches_numpy_at_scale[resolution2]": [
+    "grayscale_bgr_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[15-resolution0]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[15-resolution1]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[15-resolution2]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[25-resolution0]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[25-resolution1]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[25-resolution2]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[40-resolution0]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[40-resolution1]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_kernels.py::test_threshold_matches_numpy_at_scale[40-resolution2]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[15-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[15-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[15-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[25-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[25-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[25-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[40-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[40-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[40-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_first_frame_reports_no_motion[resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_first_frame_reports_no_motion[resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_first_frame_reports_no_motion[resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[1-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[1-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[1-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[3-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[3-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_is_deterministic_across_runs[3-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_masks_match_the_frame_geometry[resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_masks_match_the_frame_geometry[resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_masks_match_the_frame_geometry[resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-1-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-1-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-1-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-3-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-3-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[15-3-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-1-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-1-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-1-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-3-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-3-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[3-3-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-1-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-1-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-1-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-3-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-3-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[5-3-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-1-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-1-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-1-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-3-resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-3-resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_pipeline.py::test_pipeline_streams_every_frame[9-3-resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_absolute_diff_sustained[resolution0]": [
+    "absdiff_f32"
+  ],
+  "tests/test_workload_primitives.py::test_absolute_diff_sustained[resolution1]": [
+    "absdiff_f32"
+  ],
+  "tests/test_workload_primitives.py::test_absolute_diff_sustained[resolution2]": [
+    "absdiff_f32"
+  ],
+  "tests/test_workload_primitives.py::test_full_primitive_chain_sustained[resolution0]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_full_primitive_chain_sustained[resolution1]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_full_primitive_chain_sustained[resolution2]": [
+    "absdiff_f32",
+    "conv1d_horizontal",
+    "conv1d_vertical",
+    "grayscale_bgr_u8",
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[15-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[15-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[15-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[3-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[3-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[3-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[5-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[5-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[5-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[9-resolution0]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[9-resolution1]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_gaussian_blur_sustained[9-resolution2]": [
+    "conv1d_horizontal",
+    "conv1d_vertical"
+  ],
+  "tests/test_workload_primitives.py::test_grayscale_sustained[resolution0]": [
+    "grayscale_bgr_u8"
+  ],
+  "tests/test_workload_primitives.py::test_grayscale_sustained[resolution1]": [
+    "grayscale_bgr_u8"
+  ],
+  "tests/test_workload_primitives.py::test_grayscale_sustained[resolution2]": [
+    "grayscale_bgr_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[15-resolution0]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[15-resolution1]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[15-resolution2]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[25-resolution0]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[25-resolution1]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[25-resolution2]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[40-resolution0]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[40-resolution1]": [
+    "threshold_u8"
+  ],
+  "tests/test_workload_primitives.py::test_threshold_sustained[40-resolution2]": [
+    "threshold_u8"
+  ]
+}

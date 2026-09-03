@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+# testmon's database is SQLite in WAL mode: the data sits in -wal until a checkpoint,
+# so the three files travel together or not at all (R1, question 1).
+.testmondata*
+# Traced kernel-usage maps, produced per session and merged by tools/.
+kernel_deps*.json
+trace-session-*.json
+*.egg-info/
+dist/
+build/

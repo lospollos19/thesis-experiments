@@ -1,0 +1,130 @@
+name: CI
+
+# Manual only, like every workflow in this repository. Nothing starts on a push: the
+# Orin is a single shared device and automatic runs queue work nobody asked for.
+#
+#   gh workflow run CI --ref main            # both jobs
+#
+# The consequence is explicit and accepted: a commit is only validated when someone
+# validates it. Run this before merging anything that touches src/ or tests/, and note
+# that variant/** carries the two arms of the RQ2 comparison, so both need a run of
+# their own — a green main says nothing about variant/extern's kernel loader.
+on:
+  workflow_dispatch:
+
+jobs:
+  # CPU job: everything that does not need the Orin. Keeps hardware occupancy
+  # limited to the GPU job, which is what RQ2 measures.
+  test-cpu:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Poetry
+        run: pip install poetry
+      - name: Install dependencies
+        run: poetry install --extras headless   # CPU-only, no display in CI
+      - name: Lint
+        run: poetry run ruff check src/
+      - name: Format check
+        run: poetry run ruff format --check src/ tests/
+      - name: Type check
+        run: poetry run mypy
+      - name: Test
+        run: poetry run pytest tests/ -m "not gpu" --cov=src/ --cov-report=term-missing
+
+  test-gpu:
+    runs-on: [self-hosted, Linux, ARM64]
+    # The Orin is a single shared runner. Without a cap, a hung PyCUDA build would
+    # hold the device for GitHub's 6-hour default and block every other experiment.
+    timeout-minutes: 30
+    steps:
+      # Self-hosted workspaces persist between runs. Stale caches (.pytest_cache,
+      # a testmon database, compiled kernels) would silently distort test selection,
+      # so start from a clean tree.
+      - name: Clean workspace
+        run: git clean -xdff 2>/dev/null || true   # no-op on the very first run
+
+      - uses: actions/checkout@v4
+
+      # Non-fatal inventory of the Orin. Runs before anything can fail so that a
+      # single run reports every missing piece at once instead of one per attempt.
+      - name: Probe the runner environment
+        continue-on-error: true
+        run: |
+          echo "arch          : $(uname -m)"
+          echo "l4t           : $(cat /etc/nv_tegra_release 2>/dev/null | head -1)"
+          echo "python3       : $(command -v python3) $(python3 -V 2>&1)"
+          echo "python3.11    : $(command -v python3.11 || echo MISSING)"
+          echo "python -m pip : $(python3 -m pip --version 2>&1 | head -1)"
+          echo "poetry        : $(command -v poetry || echo MISSING)"
+          echo "nvcc          : $(command -v nvcc || echo MISSING)"
+          nvcc --version 2>/dev/null | tail -2 || true
+          echo "cuda dirs     : $(ls -d /usr/local/cuda* 2>/dev/null | tr '\n' ' ')"
+
+      # The Orin runs L4T R39 (Ubuntu 24.04), whose system interpreter is marked
+      # externally-managed (PEP 668): `pip install --user` is refused outright. Keep
+      # Poetry in a venv of its own and never write to system site-packages. The venv
+      # persists across runs on the self-hosted machine, so this is a one-off cost.
+      - name: Bootstrap Poetry
+        run: |
+          set -euo pipefail
+          VENV="$HOME/.poetry-venv"
+          if [ ! -x "$VENV/bin/poetry" ]; then
+            # Debian/Ubuntu ships `venv` without `ensurepip` unless python3.12-venv is
+            # installed. Testing `python3 -m venv --help` is not enough: the module is
+            # present either way and the failure only surfaces during creation.
+            if python3 -c "import ensurepip" 2>/dev/null; then
+              python3 -m venv "$VENV"
+            else
+              echo "ensurepip absent — creating the venv without pip and bootstrapping it"
+              python3 -m venv --without-pip "$VENV"
+              curl -fsSL https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py
+              "$VENV/bin/python" /tmp/get-pip.py --quiet
+            fi
+            "$VENV/bin/python" -m pip install --quiet --upgrade pip
+            "$VENV/bin/python" -m pip install --quiet poetry
+          fi
+          echo "$VENV/bin" >> "$GITHUB_PATH"
+          "$VENV/bin/poetry" --version
+
+      - name: Install dependencies
+        env:
+          # PyCUDA's setup.py locates nvcc and the CUDA headers through this root.
+          CUDA_ROOT: /usr/local/cuda
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry install --extras "headless gpu"
+
+      # Guard against a silent degradation to the NumPy path. GPUProcessor falls back
+      # when nvcc is missing or SourceModule fails to compile; the gpu-marked tests
+      # would then *skip* and the job would report green without ever running a kernel.
+      - name: Preflight — assert the PyCUDA path is really active
+        run: |
+          which nvcc || { echo "::error::nvcc not found — SourceModule cannot compile"; exit 1; }
+          nvcc --version
+          poetry run python - <<'PY'
+          import sys
+          from motion_pipeline.processing.gpu_processor import GPUProcessor
+
+          backend = GPUProcessor().backend
+          print(f"backend = {backend}")
+          if backend != "pycuda":
+              sys.exit("GPUProcessor fell back to NumPy: the CUDA-C kernels were not exercised")
+          PY
+
+      # A skipped gpu test looks the same as a passing one in the run summary, so
+      # treat any skip as a failure: past the preflight, every kernel test must run.
+      - name: Test (GPU only)
+        run: |
+          set -o pipefail
+          # --durations feeds the workload calibration: FRAMES_PER_RUN in
+          # tests/workload.py is sized against these numbers, which can only be
+          # measured on the device.
+          poetry run pytest tests/ -m gpu -q -rs --durations=25 | tee gpu-tests.log
+          if grep -q SKIPPED gpu-tests.log; then
+            echo "::error::a gpu-marked test was skipped despite an active PyCUDA backend"
+            exit 1
+          fi

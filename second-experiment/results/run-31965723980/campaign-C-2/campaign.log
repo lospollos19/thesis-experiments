@@ -1,0 +1,7 @@
+condition C on extern at 3249fab
+collected 188 (113 gpu)
+testmon database built in 265.33s
+--- absdiff-drop-abs
+    selected 59 (59 gpu), occupancy 212.31s
+
+wrote campaign-C-absdiff-drop-abs.json

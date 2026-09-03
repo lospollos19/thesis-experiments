@@ -1,0 +1,3 @@
+tests/test_kernels.py::test_grayscale_passthrough_2d_matches_numpy
+tests/test_kernels.py::test_backend_is_pycuda_on_device
+tests/test_kernels.py::test_blur_rejects_kernel_larger_than_halo

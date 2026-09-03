@@ -1,0 +1,7 @@
+2026-08-12T00:33:43.3510000Z Requested labels: self-hosted, Linux, ARM64
+2026-08-12T00:33:43.3510000Z Job defined at: lospollos19/gpu-motion-pipeline/.github/workflows/r1-foundations.yml@refs/heads/main
+2026-08-12T00:33:43.3510000Z Waiting for a runner to pick up this job...
+2026-08-12T00:33:43.3480000Z Evaluating q1-verify.if
+2026-08-12T00:33:43.3480000Z Evaluating: always()
+2026-08-12T00:33:43.3480000Z Result: true
+2026-08-12T00:33:43.7780000Z Job is about to start running on the runner: jetson-orin

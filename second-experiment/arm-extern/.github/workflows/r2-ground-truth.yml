@@ -1,0 +1,151 @@
+name: R2 — ground truth D(m)
+
+# Measures which tests each mutation actually breaks, per arm. This is the denominator
+# of the safety violation rate, and it is measured rather than derived from the kernel
+# map: the map is what the violation rate judges, so deriving the denominator from it
+# would make the result circular.
+#
+# No selection happens here and no selector is involved. Every run is the whole suite,
+# unselected. What comes out is D(m) per mutation per arm, plus three validity checks:
+# the baseline is green, D(m) matches across the arms, and the equivalent mutant breaks
+# nothing.
+#
+# Cost. Ten unselected suite runs per arm at ~230 s, so roughly 40 minutes of device
+# time per arm before job overhead. The work is split into three chunks per arm to stay
+# under the 30-minute job cap; the first chunk of each arm also measures the baseline.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: orin-exclusive
+  cancel-in-progress: false
+
+jobs:
+  measure:
+    strategy:
+      fail-fast: false      # one chunk failing must not cost the others their answer
+      matrix:
+        include:
+          - branch: variant/inline
+            slug: inline
+            chunk: "1/3"
+            baseline: "yes"
+          - branch: variant/inline
+            slug: inline
+            chunk: "2/3"
+            baseline: "no"
+          - branch: variant/inline
+            slug: inline
+            chunk: "3/3"
+            baseline: "no"
+          - branch: variant/extern
+            slug: extern
+            chunk: "1/3"
+            baseline: "yes"
+          - branch: variant/extern
+            slug: extern
+            chunk: "2/3"
+            baseline: "no"
+          - branch: variant/extern
+            slug: extern
+            chunk: "3/3"
+            baseline: "no"
+    runs-on: [self-hosted, Linux, ARM64]
+    timeout-minutes: 30
+    steps:
+      - name: Clean workspace
+        run: git clean -xdff 2>/dev/null || true
+
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.branch }}
+
+      - name: Lock the clocks
+        run: |
+          set -uo pipefail
+          sudo -n nvpmodel -m 0 || echo "::warning::nvpmodel -m 0 failed"
+          sudo -n jetson_clocks || echo "::warning::jetson_clocks failed"
+
+      - name: Bootstrap Poetry
+        run: |
+          set -euo pipefail
+          VENV="$HOME/.poetry-venv"
+          echo "$VENV/bin" >> "$GITHUB_PATH"
+          "$VENV/bin/poetry" --version
+
+      - name: Install dependencies
+        env:
+          CUDA_ROOT: /usr/local/cuda
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry install --extras "headless gpu"
+
+      # Without this the gpu tests would all skip, every D(m) would come back empty, and
+      # the report would describe a catastrophically inadequate suite that is in fact an
+      # absent device. The tool records the backend too, and the aggregation reds on it.
+      - name: Preflight — assert the PyCUDA path is really active
+        run: |
+          set -euo pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          poetry run python - <<'PY'
+          import sys
+          from motion_pipeline.processing.gpu_processor import GPUProcessor
+          backend = GPUProcessor().backend
+          print(f"backend = {backend}")
+          if backend != "pycuda":
+              sys.exit("GPUProcessor fell back to NumPy")
+          PY
+
+      - name: Measure D(m)
+        id: measure
+        continue-on-error: true
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          extra=""
+          [ "${{ matrix.baseline }}" = "no" ] && extra="--skip-baseline"
+          poetry run python tools/ground_truth.py \
+            --out "gt-${{ matrix.slug }}-$(echo '${{ matrix.chunk }}' | tr / -).json" \
+            --chunk "${{ matrix.chunk }}" $extra 2>&1 | tee measure.log
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ground-truth-${{ matrix.slug }}-${{ strategy.job-index }}
+          path: |
+            gt-*.json
+            measure.log
+
+  verdict:
+    needs: measure
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Aggregate
+        run: |
+          set -uo pipefail
+          inline=$(find artifacts -name 'gt-inline-*.json' | sort | paste -sd, -)
+          extern=$(find artifacts -name 'gt-extern-*.json' | sort | paste -sd, -)
+          # A missing arm is a red of its own: an unanswered question is not a pass, and
+          # the comparability check cannot run on one arm.
+          if [ -z "$inline" ] || [ -z "$extern" ]; then
+            echo "::error::missing measurements (inline='$inline' extern='$extern')"
+            exit 1
+          fi
+          python3 tools/ground_truth_report.py \
+            "inline=$inline" "extern=$extern" \
+            --out verdict-ground-truth.md --denominator denominator.json \
+            | tee -a "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verdict-ground-truth
+          path: |
+            verdict-ground-truth.md
+            denominator.json

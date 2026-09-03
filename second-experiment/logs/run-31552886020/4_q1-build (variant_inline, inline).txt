@@ -1,0 +1,305 @@
+﻿2026-08-12T01:30:48.2693760Z Current runner version: '2.336.0'
+2026-08-12T01:30:48.2703951Z Runner name: 'jetson-orin'
+2026-08-12T01:30:48.2704988Z Runner group name: 'Default'
+2026-08-12T01:30:48.2706387Z Machine name: 'jetson-orin'
+2026-08-12T01:30:48.2710988Z ##[group]GITHUB_TOKEN Permissions
+2026-08-12T01:30:48.2715034Z Contents: read
+2026-08-12T01:30:48.2715797Z Metadata: read
+2026-08-12T01:30:48.2716503Z Packages: read
+2026-08-12T01:30:48.2717201Z ##[endgroup]
+2026-08-12T01:30:48.2721128Z Secret source: Actions
+2026-08-12T01:30:48.2722927Z Prepare workflow directory
+2026-08-12T01:30:48.3533828Z Prepare all required actions
+2026-08-12T01:30:48.3612052Z Getting action download info
+2026-08-12T01:30:48.8409705Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-12T01:30:49.2201195Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-12T01:30:49.8520600Z Complete job name: q1-build (variant/inline, inline)
+2026-08-12T01:30:50.0296514Z ##[group]Run git clean -xdff 2>/dev/null || true
+2026-08-12T01:30:50.0298091Z [36;1mgit clean -xdff 2>/dev/null || true[0m
+2026-08-12T01:30:50.0327016Z shell: /usr/bin/bash -e {0}
+2026-08-12T01:30:50.0328664Z ##[endgroup]
+2026-08-12T01:30:50.0545485Z Removing .pytest_cache/
+2026-08-12T01:30:50.0546858Z Removing __pycache__/
+2026-08-12T01:30:50.0547812Z Removing gpu_nodeids.txt
+2026-08-12T01:30:50.0548786Z Removing kernel_deps.json
+2026-08-12T01:30:50.0550021Z Removing kernel_free_nodeids.txt
+2026-08-12T01:30:50.0551136Z Removing src/motion_pipeline/__pycache__/
+2026-08-12T01:30:50.0552337Z Removing src/motion_pipeline/camera/__pycache__/
+2026-08-12T01:30:50.0553654Z Removing src/motion_pipeline/processing/__pycache__/
+2026-08-12T01:30:50.0554997Z Removing src/motion_pipeline/simulation/__pycache__/
+2026-08-12T01:30:50.0556274Z Removing src/motion_pipeline/ui/__pycache__/
+2026-08-12T01:30:50.0557425Z Removing tests/__pycache__/
+2026-08-12T01:30:50.0558408Z Removing trace-1.log
+2026-08-12T01:30:50.0559466Z Removing trace-2.log
+2026-08-12T01:30:50.0560360Z Removing trace-3.log
+2026-08-12T01:30:50.0561304Z Removing trace-session-1.json
+2026-08-12T01:30:50.0562311Z Removing trace-session-2.json
+2026-08-12T01:30:50.0563309Z Removing trace-session-3.json
+2026-08-12T01:30:50.0564275Z Removing verdict-q2q3.md
+2026-08-12T01:30:50.0979545Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-12T01:30:50.0993558Z ##[group]Run actions/checkout@v4
+2026-08-12T01:30:50.0994593Z with:
+2026-08-12T01:30:50.0995480Z   ref: variant/inline
+2026-08-12T01:30:50.0996537Z   repository: lospollos19/gpu-motion-pipeline
+2026-08-12T01:30:50.1002650Z   token: ***
+2026-08-12T01:30:50.1003512Z   ssh-strict: true
+2026-08-12T01:30:50.1004403Z   ssh-user: git
+2026-08-12T01:30:50.1005324Z   persist-credentials: true
+2026-08-12T01:30:50.1006229Z   clean: true
+2026-08-12T01:30:50.1007074Z   sparse-checkout-cone-mode: true
+2026-08-12T01:30:50.1008323Z   fetch-depth: 1
+2026-08-12T01:30:50.1009155Z   fetch-tags: false
+2026-08-12T01:30:50.1009986Z   show-progress: true
+2026-08-12T01:30:50.1010920Z   lfs: false
+2026-08-12T01:30:50.1011734Z   submodules: false
+2026-08-12T01:30:50.1012582Z   set-safe-directory: true
+2026-08-12T01:30:50.1013531Z   allow-unsafe-pr-checkout: false
+2026-08-12T01:30:50.1014476Z ##[endgroup]
+2026-08-12T01:30:50.2388020Z Syncing repository: lospollos19/gpu-motion-pipeline
+2026-08-12T01:30:50.2391956Z ##[group]Getting Git version info
+2026-08-12T01:30:50.2393902Z Working directory is '/home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline'
+2026-08-12T01:30:50.2396362Z [command]/usr/bin/git version
+2026-08-12T01:30:50.2397358Z git version 2.43.0
+2026-08-12T01:30:50.2407428Z ##[endgroup]
+2026-08-12T01:30:50.2441646Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/f8510108-0f38-48ec-8561-4c62e84ee85c/.gitconfig'
+2026-08-12T01:30:50.2445633Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/f8510108-0f38-48ec-8561-4c62e84ee85c' before making global git config changes
+2026-08-12T01:30:50.2448276Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-12T01:30:50.2450814Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-12T01:30:50.2500573Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-08-12T01:30:50.2534211Z https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-12T01:30:50.2553005Z ##[group]Removing previously created refs, to avoid conflicts
+2026-08-12T01:30:50.2558609Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-08-12T01:30:50.2590151Z refs/heads/variant/extern
+2026-08-12T01:30:50.2603091Z [command]/usr/bin/git checkout --detach
+2026-08-12T01:30:50.2649375Z HEAD is now at a62e839 Merge main into variant/extern
+2026-08-12T01:30:50.2709203Z [command]/usr/bin/git branch --delete --force variant/extern
+2026-08-12T01:30:50.2747802Z Deleted branch variant/extern (was a62e839).
+2026-08-12T01:30:50.2797965Z ##[endgroup]
+2026-08-12T01:30:50.2801870Z [command]/usr/bin/git submodule status
+2026-08-12T01:30:50.3071092Z ##[group]Cleaning the repository
+2026-08-12T01:30:50.3075802Z [command]/usr/bin/git clean -ffdx
+2026-08-12T01:30:50.3125704Z [command]/usr/bin/git reset --hard HEAD
+2026-08-12T01:30:50.3173055Z HEAD is now at a62e839 Merge main into variant/extern
+2026-08-12T01:30:50.3178813Z ##[endgroup]
+2026-08-12T01:30:50.3181814Z ##[group]Disabling automatic garbage collection
+2026-08-12T01:30:50.3187752Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-12T01:30:50.3227312Z ##[endgroup]
+2026-08-12T01:30:50.3228709Z ##[group]Setting up auth
+2026-08-12T01:30:50.3239365Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-12T01:30:50.3280431Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-12T01:30:50.3555094Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-12T01:30:50.3597361Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-12T01:30:50.3872073Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-12T01:30:50.3918751Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-12T01:30:50.4198836Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-12T01:30:50.4251271Z ##[endgroup]
+2026-08-12T01:30:50.4263333Z ##[group]Fetching the repository
+2026-08-12T01:30:50.4266175Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +refs/heads/variant/inline*:refs/remotes/origin/variant/inline* +refs/tags/variant/inline*:refs/tags/variant/inline*
+2026-08-12T01:30:51.1650631Z From https://github.com/lospollos19/gpu-motion-pipeline
+2026-08-12T01:30:51.1653310Z  + 8c1b352...7c3f49c variant/inline -> origin/variant/inline  (forced update)
+2026-08-12T01:30:51.1677672Z ##[endgroup]
+2026-08-12T01:30:51.1679738Z ##[group]Determining the checkout info
+2026-08-12T01:30:51.1687391Z [command]/usr/bin/git branch --list --remote origin/variant/inline
+2026-08-12T01:30:51.1722725Z   origin/variant/inline
+2026-08-12T01:30:51.1729938Z ##[endgroup]
+2026-08-12T01:30:51.1735740Z [command]/usr/bin/git sparse-checkout disable
+2026-08-12T01:30:51.1788777Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-12T01:30:51.1825145Z ##[group]Checking out the ref
+2026-08-12T01:30:51.1830742Z [command]/usr/bin/git checkout --progress --force -B variant/inline refs/remotes/origin/variant/inline
+2026-08-12T01:30:51.1877212Z Previous HEAD position was a62e839 Merge main into variant/extern
+2026-08-12T01:30:51.1887047Z Switched to a new branch 'variant/inline'
+2026-08-12T01:30:51.1889217Z branch 'variant/inline' set up to track 'origin/variant/inline'.
+2026-08-12T01:30:51.1896930Z ##[endgroup]
+2026-08-12T01:30:51.1945250Z [command]/usr/bin/git log -1 --format=%H
+2026-08-12T01:30:51.1978875Z 7c3f49c232d7c548b92bfce8a2ec0e0486223f0f
+2026-08-12T01:30:51.2192978Z ##[group]Run set -uo pipefail
+2026-08-12T01:30:51.2194462Z [36;1mset -uo pipefail[0m
+2026-08-12T01:30:51.2195678Z [36;1mlocked=true[0m
+2026-08-12T01:30:51.2197492Z [36;1msudo -n nvpmodel -m 0 || { echo "::warning::nvpmodel -m 0 failed"; locked=false; }[0m
+2026-08-12T01:30:51.2221194Z [36;1msudo -n jetson_clocks || { echo "::warning::jetson_clocks failed"; locked=false; }[0m
+2026-08-12T01:30:51.2223870Z [36;1mnvpmodel -q || echo "::warning::nvpmodel -q unavailable"[0m
+2026-08-12T01:30:51.2225889Z [36;1mecho "CLOCKS_LOCKED=$locked" >> "$GITHUB_ENV"[0m
+2026-08-12T01:30:51.2249416Z shell: /usr/bin/bash -e {0}
+2026-08-12T01:30:51.2255845Z ##[endgroup]
+2026-08-12T01:30:51.6400607Z NV Power Mode: MAXN
+2026-08-12T01:30:51.6401970Z 0
+2026-08-12T01:30:51.6538214Z ##[group]Run set -euo pipefail
+2026-08-12T01:30:51.6539595Z [36;1mset -euo pipefail[0m
+2026-08-12T01:30:51.6540765Z [36;1mVENV="$HOME/.poetry-venv"[0m
+2026-08-12T01:30:51.6542086Z [36;1mif [ ! -x "$VENV/bin/poetry" ]; then[0m
+2026-08-12T01:30:51.6543649Z [36;1m  if python3 -c "import ensurepip" 2>/dev/null; then[0m
+2026-08-12T01:30:51.6545183Z [36;1m    python3 -m venv "$VENV"[0m
+2026-08-12T01:30:51.6546362Z [36;1m  else[0m
+2026-08-12T01:30:51.6547464Z [36;1m    python3 -m venv --without-pip "$VENV"[0m
+2026-08-12T01:30:51.6549565Z [36;1m    curl -fsSL https://bootstrap.pypa.io/get-pip.py -o /tmp/get-pip.py[0m
+2026-08-12T01:30:51.6559786Z [36;1m    "$VENV/bin/python" /tmp/get-pip.py --quiet[0m
+2026-08-12T01:30:51.6561323Z [36;1m  fi[0m
+2026-08-12T01:30:51.6562615Z [36;1m  "$VENV/bin/python" -m pip install --quiet --upgrade pip[0m
+2026-08-12T01:30:51.6564458Z [36;1m  "$VENV/bin/python" -m pip install --quiet poetry[0m
+2026-08-12T01:30:51.6566022Z [36;1mfi[0m
+2026-08-12T01:30:51.6567042Z [36;1mecho "$VENV/bin" >> "$GITHUB_PATH"[0m
+2026-08-12T01:30:51.6587755Z shell: /usr/bin/bash -e {0}
+2026-08-12T01:30:51.6588880Z env:
+2026-08-12T01:30:51.6589997Z   CLOCKS_LOCKED: true
+2026-08-12T01:30:51.6591011Z ##[endgroup]
+2026-08-12T01:30:51.6756469Z ##[group]Run export PATH="/usr/local/cuda/bin:$PATH"
+2026-08-12T01:30:51.6758116Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-12T01:30:51.6759601Z [36;1mpoetry install --extras "headless gpu"[0m
+2026-08-12T01:30:51.6783658Z shell: /usr/bin/bash -e {0}
+2026-08-12T01:30:51.6784803Z env:
+2026-08-12T01:30:51.6785690Z   CLOCKS_LOCKED: true
+2026-08-12T01:30:51.6786701Z   CUDA_ROOT: /usr/local/cuda
+2026-08-12T01:30:51.6787756Z ##[endgroup]
+2026-08-12T01:30:52.5482822Z Installing dependencies from lock file
+2026-08-12T01:30:52.6877005Z 
+2026-08-12T01:30:52.6877970Z No dependencies to install or update
+2026-08-12T01:30:52.6901519Z 
+2026-08-12T01:30:52.6902547Z Installing the current project: motion-pipeline (0.1.0)
+2026-08-12T01:30:52.8751576Z ##[group]Run set -euo pipefail
+2026-08-12T01:30:52.8752177Z [36;1mset -euo pipefail[0m
+2026-08-12T01:30:52.8752650Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-12T01:30:52.8753170Z [36;1mwhich nvcc && nvcc --version[0m
+2026-08-12T01:30:52.8753625Z [36;1mpoetry run python - <<'PY'[0m
+2026-08-12T01:30:52.8754049Z [36;1mimport sys[0m
+2026-08-12T01:30:52.8754599Z [36;1mfrom motion_pipeline.processing.gpu_processor import GPUProcessor[0m
+2026-08-12T01:30:52.8755257Z [36;1mbackend = GPUProcessor().backend[0m
+2026-08-12T01:30:52.8756226Z [36;1mprint(f"backend = {backend}")[0m
+2026-08-12T01:30:52.8756729Z [36;1mif backend != "pycuda":[0m
+2026-08-12T01:30:52.8757263Z [36;1m    sys.exit("GPUProcessor fell back to NumPy")[0m
+2026-08-12T01:30:52.8757757Z [36;1mPY[0m
+2026-08-12T01:30:52.8775784Z shell: /usr/bin/bash -e {0}
+2026-08-12T01:30:52.8776208Z env:
+2026-08-12T01:30:52.8776529Z   CLOCKS_LOCKED: true
+2026-08-12T01:30:52.8776894Z ##[endgroup]
+2026-08-12T01:30:52.8845787Z /usr/local/cuda/bin/nvcc
+2026-08-12T01:30:52.8864276Z nvcc: NVIDIA (R) Cuda compiler driver
+2026-08-12T01:30:52.8864807Z Copyright (c) 2005-2026 NVIDIA Corporation
+2026-08-12T01:30:52.8865362Z Built on Thu_Mar_19_11:11:41_PM_PDT_2026
+2026-08-12T01:30:52.8865879Z Cuda compilation tools, release 13.2, V13.2.78
+2026-08-12T01:30:52.8866403Z Build cuda_13.2.r13.2/compiler.37668154_0
+2026-08-12T01:30:53.8802783Z backend = pycuda
+2026-08-12T01:30:53.9828867Z ##[group]Run set -o pipefail
+2026-08-12T01:30:53.9829786Z [36;1mset -o pipefail[0m
+2026-08-12T01:30:53.9830233Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-12T01:30:53.9830656Z [36;1mrm -f .testmondata*[0m
+2026-08-12T01:30:53.9831169Z [36;1mpoetry run pytest tests/ -q --testmon -rs 2>&1 | tee build.log[0m
+2026-08-12T01:30:53.9831717Z [36;1mif grep -q SKIPPED build.log; then[0m
+2026-08-12T01:30:53.9832281Z [36;1m  echo "::error::a test was skipped while building the baseline database"[0m
+2026-08-12T01:30:53.9832812Z [36;1m  exit 1[0m
+2026-08-12T01:30:53.9833066Z [36;1mfi[0m
+2026-08-12T01:30:53.9848250Z shell: /usr/bin/bash -e {0}
+2026-08-12T01:30:53.9848595Z env:
+2026-08-12T01:30:53.9848847Z   CLOCKS_LOCKED: true
+2026-08-12T01:30:53.9849130Z ##[endgroup]
+2026-08-12T01:30:56.3266553Z ...........................s............................................ [ 45%]
+2026-08-12T01:35:08.6489818Z ........................................................................ [ 90%]
+2026-08-12T01:35:21.1754100Z ................                                                         [100%]
+2026-08-12T01:35:21.1754866Z ========================== kernel vs NumPy deviation ===========================
+2026-08-12T01:35:21.1755514Z grayscale 77x101      observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-12T01:35:21.1756167Z grayscale 2d 77x101   observed 0.000e+00  atol 1e-04  (  0.0% of budget)
+2026-08-12T01:35:21.1756802Z blur k=3 77x101       observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-12T01:35:21.1757409Z blur k=5 77x101       observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-12T01:35:21.1758009Z blur k=9 77x101       observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-12T01:35:21.1758613Z blur k=33 77x101      observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-12T01:35:21.1759221Z absdiff 77x101        observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-12T01:35:21.1760258Z grayscale (240, 320)  observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-12T01:35:21.1760922Z grayscale (478, 638)  observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-12T01:35:21.1761580Z grayscale (480, 640)  observed 1.526e-05  atol 1e-04  ( 15.3% of budget)
+2026-08-12T01:35:21.1762196Z blur k=3 (240, 320)   observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-12T01:35:21.1762792Z blur k=3 (478, 638)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1763384Z blur k=3 (480, 640)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1763985Z blur k=5 (240, 320)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1764577Z blur k=5 (478, 638)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1765166Z blur k=5 (480, 640)   observed 3.052e-05  atol 5e-04  (  6.1% of budget)
+2026-08-12T01:35:21.1765756Z blur k=9 (240, 320)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1766364Z blur k=9 (478, 638)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1766954Z blur k=9 (480, 640)   observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1768355Z blur k=15 (240, 320)  observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1768952Z blur k=15 (478, 638)  observed 4.578e-05  atol 5e-04  (  9.2% of budget)
+2026-08-12T01:35:21.1769545Z blur k=15 (480, 640)  observed 6.104e-05  atol 5e-04  ( 12.2% of budget)
+2026-08-12T01:35:21.1770145Z absdiff (240, 320)    observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-12T01:35:21.1770780Z absdiff (478, 638)    observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-12T01:35:21.1771425Z absdiff (480, 640)    observed 0.000e+00  atol 1e-05  (  0.0% of budget)
+2026-08-12T01:35:21.1772017Z =========================== short test summary info ============================
+2026-08-12T01:35:21.1772741Z SKIPPED [1] tests/test_kernel_map.py:48: MP_KERNEL_MAP unset: no tracing campaign to check
+2026-08-12T01:35:21.1773870Z 159 passed, 1 skipped in 265.89s (0:04:25)
+2026-08-12T01:35:21.3899931Z ##[error]a test was skipped while building the baseline database
+2026-08-12T01:35:21.3914631Z ##[error]Process completed with exit code 1.
+2026-08-12T01:35:21.4033945Z ##[group]Run set -uo pipefail
+2026-08-12T01:35:21.4034465Z [36;1mset -uo pipefail[0m
+2026-08-12T01:35:21.4034956Z [36;1mpoetry run python tools/checkpoint_testmon_db.py .testmondata \[0m
+2026-08-12T01:35:21.4035679Z [36;1m  || echo "::warning::WAL checkpoint failed; the artefact may be incomplete"[0m
+2026-08-12T01:35:21.4036254Z [36;1mmkdir -p db[0m
+2026-08-12T01:35:21.4036752Z [36;1mcp .testmondata* db/ 2>/dev/null || echo "::warning::no .testmondata produced"[0m
+2026-08-12T01:35:21.4037327Z [36;1mls -la db/[0m
+2026-08-12T01:35:21.4037759Z [36;1m( cd db && sha256sum .testmondata* > SHA256SUMS 2>/dev/null || true )[0m
+2026-08-12T01:35:21.4038444Z [36;1mecho "7c3f49c232d7c548b92bfce8a2ec0e0486223f0f" > db/BUILT_FROM_SHA[0m
+2026-08-12T01:35:21.4039059Z [36;1mgit rev-parse HEAD > db/BUILT_FROM_BRANCH_SHA[0m
+2026-08-12T01:35:21.4039745Z [36;1m# testmon re-runs a previously failed test on every subsequent selection, by[0m
+2026-08-12T01:35:21.4040586Z [36;1m# design. A baseline built from a red suite therefore cannot answer Q1: the[0m
+2026-08-12T01:35:21.4041368Z [36;1m# verify job would count those re-runs as a persistence failure, which is what[0m
+2026-08-12T01:35:21.4042113Z [36;1m# the first R1 run did. Carry the count so the verdict can say so instead of[0m
+2026-08-12T01:35:21.4042666Z [36;1m# blaming the database.[0m
+2026-08-12T01:35:21.4043171Z [36;1mgrep -oE '[0-9]+ failed' build.log 2>/dev/null | head -1 | cut -d' ' -f1 \[0m
+2026-08-12T01:35:21.4043731Z [36;1m  > db/BUILD_FAILED_COUNT || true[0m
+2026-08-12T01:35:21.4044226Z [36;1m[ -s db/BUILD_FAILED_COUNT ] || echo 0 > db/BUILD_FAILED_COUNT[0m
+2026-08-12T01:35:21.4044888Z [36;1mgrep '^FAILED ' build.log 2>/dev/null > db/BUILD_FAILED_NODEIDS || true[0m
+2026-08-12T01:35:21.4045659Z [36;1mcat db/SHA256SUMS db/BUILT_FROM_BRANCH_SHA db/BUILD_FAILED_COUNT 2>/dev/null || true[0m
+2026-08-12T01:35:21.4059891Z shell: /usr/bin/bash -e {0}
+2026-08-12T01:35:21.4060234Z env:
+2026-08-12T01:35:21.4060518Z   CLOCKS_LOCKED: true
+2026-08-12T01:35:21.4060806Z ##[endgroup]
+2026-08-12T01:35:22.1436978Z before: {'.testmondata': 143360}
+2026-08-12T01:35:22.1437566Z checkpoint: busy=0 wal_pages=0 checkpointed=0
+2026-08-12T01:35:22.1438020Z after:  {'.testmondata': 143360}
+2026-08-12T01:35:22.1559021Z total 148
+2026-08-12T01:35:22.1559359Z drwxr-xr-x  2 vub vub   4096 Aug 12 03:35 .
+2026-08-12T01:35:22.1559792Z drwxr-xr-x 12 vub vub   4096 Aug 12 03:35 ..
+2026-08-12T01:35:22.1560238Z -rw-r--r--  1 vub vub 143360 Aug 12 03:35 .testmondata
+2026-08-12T01:35:22.1649325Z 8400cca08542ec1190f432244065550a06e5121ca056e5161270081a080bbcfa  .testmondata
+2026-08-12T01:35:22.1653342Z 7c3f49c232d7c548b92bfce8a2ec0e0486223f0f
+2026-08-12T01:35:22.1653749Z 0
+2026-08-12T01:35:22.1757039Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-12T01:35:22.1760147Z ##[group]Run actions/upload-artifact@v4
+2026-08-12T01:35:22.1760528Z with:
+2026-08-12T01:35:22.1760785Z   name: testmon-db-inline
+2026-08-12T01:35:22.1761088Z   path: db/
+2026-08-12T01:35:22.1761351Z   include-hidden-files: true
+2026-08-12T01:35:22.1761682Z   if-no-files-found: warn
+2026-08-12T01:35:22.1761992Z   compression-level: 6
+2026-08-12T01:35:22.1762285Z   overwrite: false
+2026-08-12T01:35:22.1762544Z env:
+2026-08-12T01:35:22.1762772Z   CLOCKS_LOCKED: true
+2026-08-12T01:35:22.1763043Z ##[endgroup]
+2026-08-12T01:35:22.4036612Z (node:3652982) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-12T01:35:22.4044410Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-12T01:35:22.4124287Z With the provided path, there will be 6 files uploaded
+2026-08-12T01:35:22.4125070Z Artifact name is valid!
+2026-08-12T01:35:22.4125389Z Root directory input is valid!
+2026-08-12T01:35:22.8061823Z Beginning upload of artifact content to blob storage
+2026-08-12T01:35:22.8487797Z (node:3652982) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-12T01:35:23.3114395Z Uploaded bytes 25744
+2026-08-12T01:35:23.4136559Z Finished uploading artifact content to blob storage!
+2026-08-12T01:35:23.4138014Z SHA256 digest of uploaded artifact zip is fca631ada7d9adaff7c7cdd3a9c1f2e7f350fed48ca7c0629bf6819018f03064
+2026-08-12T01:35:23.4140677Z Finalizing artifact upload
+2026-08-12T01:35:23.6928334Z Artifact testmon-db-inline.zip successfully finalized. Artifact ID 9125319936
+2026-08-12T01:35:23.6929467Z Artifact testmon-db-inline has been successfully uploaded! Final size is 25744 bytes. Artifact ID is 9125319936
+2026-08-12T01:35:23.6938756Z Artifact download URL: https://github.com/lospollos19/gpu-motion-pipeline/actions/runs/31552886020/artifacts/9125319936
+2026-08-12T01:35:23.7244470Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-12T01:35:23.7246393Z Post job cleanup.
+2026-08-12T01:35:23.8427297Z [command]/usr/bin/git version
+2026-08-12T01:35:23.8482666Z git version 2.43.0
+2026-08-12T01:35:23.8530708Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/4a8e9b2c-413d-4e53-a41d-80f9125113dc/.gitconfig'
+2026-08-12T01:35:23.8542628Z Temporarily overriding HOME='/home/vub/Documents/moussa/gpu-motion-runner/_work/_temp/4a8e9b2c-413d-4e53-a41d-80f9125113dc' before making global git config changes
+2026-08-12T01:35:23.8543905Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-12T01:35:23.8550280Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/gpu-motion-runner/_work/gpu-motion-pipeline/gpu-motion-pipeline
+2026-08-12T01:35:23.8600890Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-12T01:35:23.8649394Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-12T01:35:23.8930845Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-12T01:35:23.8962793Z http.https://github.com/.extraheader
+2026-08-12T01:35:23.8977354Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-12T01:35:23.9021055Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-12T01:35:23.9299538Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-12T01:35:23.9345238Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-12T01:35:23.9812056Z Cleaning up orphan processes
+2026-08-12T01:35:24.0968852Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

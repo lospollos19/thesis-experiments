@@ -1,0 +1,8 @@
+--- grayscale-perturb-weight
+    5 failing, 231.13s
+--- conv1d-v-border-wrap
+    17 failing, 232.13s
+--- geometry-halve-max-radius
+    1 failing, 233.47s
+
+wrote gt-extern-2-3.json: 3 mutation(s) on arm 'extern'

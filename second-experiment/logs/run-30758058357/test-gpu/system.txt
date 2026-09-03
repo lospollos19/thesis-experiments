@@ -1,0 +1,7 @@
+2026-08-02T17:04:24.0520000Z Requested labels: self-hosted, Linux, ARM64
+2026-08-02T17:04:24.0520000Z Job defined at: lospollos19/gpu-motion-pipeline/.github/workflows/ci.yml@refs/pull/1/merge
+2026-08-02T17:04:24.0520000Z Waiting for a runner to pick up this job...
+2026-08-02T17:04:24.0500000Z Evaluating test-gpu.if
+2026-08-02T17:04:24.0500000Z Evaluating: success()
+2026-08-02T17:04:24.0500000Z Result: true
+2026-08-02T17:04:24.2800000Z Job is about to start running on the runner: jetson-orin

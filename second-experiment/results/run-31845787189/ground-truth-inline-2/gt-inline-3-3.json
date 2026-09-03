@@ -1,0 +1,64 @@
+{
+  "arm": "inline",
+  "backend": "pycuda",
+  "commit": "3c991a61b397c76d366f95dc6ae4e951ea2d2c57",
+  "mutations": {
+    "absdiff-drop-abs": {
+      "behaviour_changing": true,
+      "duration_s": 230.54,
+      "failed": [
+        "tests/test_kernels.py::test_absolute_diff_matches_numpy",
+        "tests/test_kernels.py::test_full_chain_matches_numpy",
+        "tests/test_workload_kernels.py::test_absolute_diff_matches_numpy_at_scale[resolution0]",
+        "tests/test_workload_kernels.py::test_absolute_diff_matches_numpy_at_scale[resolution1]",
+        "tests/test_workload_kernels.py::test_absolute_diff_matches_numpy_at_scale[resolution2]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[15-resolution0]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[15-resolution1]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[15-resolution2]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[25-resolution0]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[25-resolution1]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[25-resolution2]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[40-resolution0]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[40-resolution1]",
+        "tests/test_workload_pipeline.py::test_pipeline_detects_the_injected_motion[40-resolution2]",
+        "tests/test_workload_primitives.py::test_absolute_diff_sustained[resolution0]",
+        "tests/test_workload_primitives.py::test_absolute_diff_sustained[resolution1]",
+        "tests/test_workload_primitives.py::test_absolute_diff_sustained[resolution2]"
+      ],
+      "kind": "operator",
+      "summary": "signed difference instead of absolute difference"
+    },
+    "conv1d-h-drop-last-tap": {
+      "behaviour_changing": true,
+      "duration_s": 232.77,
+      "failed": [
+        "tests/test_kernels.py::test_full_chain_matches_numpy",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[33]",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[3]",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[5]",
+        "tests/test_kernels.py::test_gaussian_blur_matches_numpy[9]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[15-resolution2]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[3-resolution2]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[5-resolution2]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution0]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution1]",
+        "tests/test_workload_kernels.py::test_gaussian_blur_matches_numpy_at_scale[9-resolution2]"
+      ],
+      "kind": "off-by-one",
+      "summary": "drop the last tap of the horizontal accumulation loop"
+    },
+    "geometry-narrow-tile-width": {
+      "behaviour_changing": false,
+      "duration_s": 232.86,
+      "failed": [],
+      "kind": "equivalent",
+      "summary": "halve TILE_W: different block geometry, identical results"
+    }
+  }
+}

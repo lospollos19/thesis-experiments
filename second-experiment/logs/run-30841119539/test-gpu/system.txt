@@ -1,0 +1,7 @@
+2026-08-03T18:24:26.1820000Z Requested labels: self-hosted, Linux, ARM64
+2026-08-03T18:24:26.1820000Z Job defined at: lospollos19/gpu-motion-pipeline/.github/workflows/ci.yml@refs/heads/variant/extern
+2026-08-03T18:24:26.1820000Z Waiting for a runner to pick up this job...
+2026-08-03T18:24:26.1760000Z Evaluating test-gpu.if
+2026-08-03T18:24:26.1760000Z Evaluating: success()
+2026-08-03T18:24:26.1760000Z Result: true
+2026-08-03T18:41:42.8180000Z Job is about to start running on the runner: jetson-orin

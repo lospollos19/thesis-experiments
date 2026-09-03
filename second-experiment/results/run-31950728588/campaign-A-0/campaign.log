@@ -1,0 +1,12 @@
+condition A on inline at 3023bf1
+collected 182 (113 gpu)
+unselected suite: 230.42s
+testmon database built in 265.87s
+--- grayscale-swap-bgr-weights
+    selected 125 (113 gpu), occupancy 232.45s
+--- conv1d-h-border-wrap
+    selected 125 (113 gpu), occupancy 232.91s
+--- threshold-boundary
+    selected 125 (113 gpu), occupancy 232.16s
+
+wrote campaign-A-1-3.json

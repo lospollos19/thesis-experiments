@@ -1,0 +1,8 @@
+2026-08-03T18:24:25.8940000Z Requested labels: ubuntu-latest
+2026-08-03T18:24:25.8940000Z Job defined at: lospollos19/gpu-motion-pipeline/.github/workflows/ci.yml@refs/heads/variant/extern
+2026-08-03T18:24:25.8940000Z Waiting for a runner to pick up this job...
+2026-08-03T18:24:25.8910000Z Evaluating test-cpu.if
+2026-08-03T18:24:25.8910000Z Evaluating: success()
+2026-08-03T18:24:25.8910000Z Result: true
+2026-08-03T18:24:26.4370000Z Job is waiting for a hosted runner to come online.
+2026-08-03T18:24:26.4370000Z Job is about to start running on the hosted runner: GitHub Actions 1000000061

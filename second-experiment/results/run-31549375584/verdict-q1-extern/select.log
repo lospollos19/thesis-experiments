@@ -1,0 +1,40 @@
+F                                                                        [100%]
+=================================== FAILURES ===================================
+________________________ test_main_simulation_headless _________________________
+
+capsys = <_pytest.capture.CaptureFixture object at 0xffff4847e300>
+
+    def test_main_simulation_headless(capsys):
+        stats = main_module.run(["--source", "simulation", "--max-frames", "10"])
+        assert isinstance(stats, PipelineStats)
+        assert stats.total_frames == 10
+>       assert stats.backend == "numpy"
+E       AssertionError: assert 'pycuda' == 'numpy'
+E         
+E         - numpy
+E         + pycuda
+
+tests/test_main.py:14: AssertionError
+----------------------------- Captured stdout call -----------------------------
+frame     1 | STATIC | diff=  0.00
+frame     2 | STATIC | diff=  2.02
+frame     3 | STATIC | diff=  2.02
+frame     4 | STATIC | diff=  2.02
+frame     5 | STATIC | diff=  2.00
+frame     6 | STATIC | diff=  2.00
+frame     7 | STATIC | diff=  2.01
+frame     8 | STATIC | diff=  2.02
+frame     9 | STATIC | diff=  2.01
+frame    10 | STATIC | diff=  2.02
+
+=== PipelineStats ===
+total_frames      : 10
+motion_events     : 0
+avg_processing_ms : 5.98
+backend           : pycuda
+=========================== short test summary info ============================
+FAILED tests/test_main.py::test_main_simulation_headless - AssertionError: assert 'pycuda' == 'numpy'
+  
+  - numpy
+  + pycuda
+1 failed, 1 deselected in 0.41s
