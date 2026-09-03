@@ -12,7 +12,6 @@ environments, to compare what each detects:
 build_cupbop.py                    renders the CuPBoP SIL image Dockerfile
 docker/cupbop-sil/Dockerfile       the committed image recipe
 run_srad.py                        host-side driver
-experiments/srad_v1/               Rodinia srad v1, unmodified
 experiments/srad_v2/               the subject
   srad.cu, srad_kernel.cu, ...     single-TU source
   translate_srad.sh                CuPBoP toolchain: compile -> translate -> llc -> link

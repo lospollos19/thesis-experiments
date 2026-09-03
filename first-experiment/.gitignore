@@ -34,8 +34,7 @@ a.out
 kernel.bc
 host.bc
 
-# srad executables (translate_srad.sh output, named after the source base)
-experiments/srad_v1/srad
+# srad executable (translate_srad.sh output, named after the source base)
 experiments/srad_v2/srad
 
 # Benchmark run outputs
