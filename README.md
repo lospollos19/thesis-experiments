@@ -1,4 +1,4 @@
-# work-thesis
+# thesis-experiments
 
 Code and data for the two experiments of the thesis.
 
