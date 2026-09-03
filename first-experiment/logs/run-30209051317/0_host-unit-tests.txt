@@ -1,0 +1,274 @@
+﻿2026-07-26T15:50:11.6140405Z Current runner version: '2.336.0'
+2026-07-26T15:50:11.6167011Z ##[group]Runner Image Provisioner
+2026-07-26T15:50:11.6167921Z Hosted Compute Agent
+2026-07-26T15:50:11.6168580Z Version: 20260707.563
+2026-07-26T15:50:11.6169202Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-07-26T15:50:11.6169876Z Build Date: 2026-07-07T19:33:50Z
+2026-07-26T15:50:11.6170584Z Worker ID: {cb49d644-4d55-4787-a7e9-6e7947db7a57}
+2026-07-26T15:50:11.6171255Z Azure Region: westcentralus
+2026-07-26T15:50:11.6171874Z ##[endgroup]
+2026-07-26T15:50:11.6173170Z ##[group]Operating System
+2026-07-26T15:50:11.6173745Z Ubuntu
+2026-07-26T15:50:11.6174449Z 22.04.5
+2026-07-26T15:50:11.6174955Z LTS
+2026-07-26T15:50:11.6175436Z ##[endgroup]
+2026-07-26T15:50:11.6175990Z ##[group]Runner Image
+2026-07-26T15:50:11.6176556Z Image: ubuntu-22.04
+2026-07-26T15:50:11.6177103Z Version: 20260720.234.2
+2026-07-26T15:50:11.6178308Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20260720.234/images/ubuntu/Ubuntu2204-Readme.md
+2026-07-26T15:50:11.6179695Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20260720.234
+2026-07-26T15:50:11.6180552Z ##[endgroup]
+2026-07-26T15:50:11.6181695Z ##[group]GITHUB_TOKEN Permissions
+2026-07-26T15:50:11.6183672Z Contents: read
+2026-07-26T15:50:11.6184332Z Metadata: read
+2026-07-26T15:50:11.6184982Z Packages: read
+2026-07-26T15:50:11.6185510Z ##[endgroup]
+2026-07-26T15:50:11.6187589Z Secret source: Actions
+2026-07-26T15:50:11.6188590Z Prepare workflow directory
+2026-07-26T15:50:11.6509927Z Prepare all required actions
+2026-07-26T15:50:11.6556045Z Getting action download info
+2026-07-26T15:50:12.0918747Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-07-26T15:50:12.7582645Z Complete job name: host-unit-tests
+2026-07-26T15:50:12.8307100Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-26T15:50:12.8316154Z ##[group]Run actions/checkout@v4
+2026-07-26T15:50:12.8316904Z with:
+2026-07-26T15:50:12.8317417Z   repository: lospollos19/cupbop-experiment
+2026-07-26T15:50:12.8321590Z   token: ***
+2026-07-26T15:50:12.8322071Z   ssh-strict: true
+2026-07-26T15:50:12.8322598Z   ssh-user: git
+2026-07-26T15:50:12.8323128Z   persist-credentials: true
+2026-07-26T15:50:12.8323667Z   clean: true
+2026-07-26T15:50:12.8324346Z   sparse-checkout-cone-mode: true
+2026-07-26T15:50:12.8324952Z   fetch-depth: 1
+2026-07-26T15:50:12.8325420Z   fetch-tags: false
+2026-07-26T15:50:12.8325977Z   show-progress: true
+2026-07-26T15:50:12.8326490Z   lfs: false
+2026-07-26T15:50:12.8327151Z   submodules: false
+2026-07-26T15:50:12.8327649Z   set-safe-directory: true
+2026-07-26T15:50:12.8328213Z   allow-unsafe-pr-checkout: false
+2026-07-26T15:50:12.8328952Z ##[endgroup]
+2026-07-26T15:50:13.5692661Z Syncing repository: lospollos19/cupbop-experiment
+2026-07-26T15:50:13.5695968Z ##[group]Getting Git version info
+2026-07-26T15:50:13.5766839Z Working directory is '/home/runner/work/cupbop-experiment/cupbop-experiment'
+2026-07-26T15:50:13.5769160Z [command]/usr/bin/git version
+2026-07-26T15:50:13.5770132Z git version 2.54.0
+2026-07-26T15:50:13.5773620Z ##[endgroup]
+2026-07-26T15:50:13.5781049Z Temporarily overriding HOME='/home/runner/work/_temp/52461705-205a-4224-a18a-96a4cbe8b055' before making global git config changes
+2026-07-26T15:50:13.5783018Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-26T15:50:13.5785098Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/cupbop-experiment/cupbop-experiment
+2026-07-26T15:50:13.5788468Z Deleting the contents of '/home/runner/work/cupbop-experiment/cupbop-experiment'
+2026-07-26T15:50:13.5790874Z ##[group]Initializing the repository
+2026-07-26T15:50:13.5792551Z [command]/usr/bin/git init /home/runner/work/cupbop-experiment/cupbop-experiment
+2026-07-26T15:50:13.5794864Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-07-26T15:50:13.5796948Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-07-26T15:50:13.5798443Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-07-26T15:50:13.5799375Z hint: call:
+2026-07-26T15:50:13.5799880Z hint:
+2026-07-26T15:50:13.5800892Z hint: 	git config --global init.defaultBranch <name>
+2026-07-26T15:50:13.5801654Z hint:
+2026-07-26T15:50:13.5802395Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-07-26T15:50:13.5803889Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-07-26T15:50:13.5805462Z hint:
+2026-07-26T15:50:13.5806549Z hint: 	git branch -m <name>
+2026-07-26T15:50:13.5807737Z hint:
+2026-07-26T15:50:13.5808949Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-07-26T15:50:13.5811271Z Initialized empty Git repository in /home/runner/work/cupbop-experiment/cupbop-experiment/.git/
+2026-07-26T15:50:13.5815290Z [command]/usr/bin/git remote add origin https://github.com/lospollos19/cupbop-experiment
+2026-07-26T15:50:13.5818937Z ##[endgroup]
+2026-07-26T15:50:13.5820526Z ##[group]Disabling automatic garbage collection
+2026-07-26T15:50:13.5821959Z [command]/usr/bin/git config --local gc.auto 0
+2026-07-26T15:50:13.5826105Z ##[endgroup]
+2026-07-26T15:50:13.5827613Z ##[group]Setting up auth
+2026-07-26T15:50:13.5829012Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-26T15:50:13.5833552Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-26T15:50:13.5838840Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-26T15:50:13.5842406Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-26T15:50:13.5845822Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-26T15:50:13.5848322Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-26T15:50:13.5850804Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-07-26T15:50:13.5853005Z ##[endgroup]
+2026-07-26T15:50:13.5853965Z ##[group]Fetching the repository
+2026-07-26T15:50:13.5855997Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +da9e0296391bc8b5c21879db45a422ba9225cbaa:refs/remotes/origin/main
+2026-07-26T15:50:13.7920157Z From https://github.com/lospollos19/cupbop-experiment
+2026-07-26T15:50:13.7930790Z  * [new ref]         da9e0296391bc8b5c21879db45a422ba9225cbaa -> origin/main
+2026-07-26T15:50:13.7952355Z ##[endgroup]
+2026-07-26T15:50:13.7954000Z ##[group]Determining the checkout info
+2026-07-26T15:50:13.7956524Z ##[endgroup]
+2026-07-26T15:50:13.7961361Z [command]/usr/bin/git sparse-checkout disable
+2026-07-26T15:50:13.8007490Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-07-26T15:50:13.8038958Z ##[group]Checking out the ref
+2026-07-26T15:50:13.8043530Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-07-26T15:50:13.8223584Z Switched to a new branch 'main'
+2026-07-26T15:50:13.8226654Z branch 'main' set up to track 'origin/main'.
+2026-07-26T15:50:13.8230593Z ##[endgroup]
+2026-07-26T15:50:13.8287992Z [command]/usr/bin/git log -1 --format=%H
+2026-07-26T15:50:13.8318307Z da9e0296391bc8b5c21879db45a422ba9225cbaa
+2026-07-26T15:50:13.8553112Z ##[group]Run sudo apt-get update && sudo apt-get install -y cmake libgtest-dev
+2026-07-26T15:50:13.8554964Z [36;1msudo apt-get update && sudo apt-get install -y cmake libgtest-dev[0m
+2026-07-26T15:50:13.8646385Z shell: /usr/bin/bash -e {0}
+2026-07-26T15:50:13.8647149Z ##[endgroup]
+2026-07-26T15:50:14.0568069Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-07-26T15:50:14.1462918Z Hit:6 https://packages.microsoft.com/repos/azure-cli jammy InRelease
+2026-07-26T15:50:14.1536161Z Get:7 https://packages.microsoft.com/ubuntu/22.04/prod jammy InRelease [3632 B]
+2026-07-26T15:50:14.1656359Z Hit:2 http://azure.archive.ubuntu.com/ubuntu jammy InRelease
+2026-07-26T15:50:14.1771767Z Get:3 http://azure.archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+2026-07-26T15:50:14.1830583Z Get:4 http://azure.archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+2026-07-26T15:50:14.1857590Z Get:5 http://azure.archive.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+2026-07-26T15:50:14.2709982Z Get:8 https://dl.google.com/linux/chrome-stable/deb stable InRelease [2548 B]
+2026-07-26T15:50:14.3025028Z Get:9 https://packages.microsoft.com/ubuntu/22.04/prod jammy/main amd64 Packages [459 kB]
+2026-07-26T15:50:14.3288171Z Get:10 https://packages.microsoft.com/ubuntu/22.04/prod jammy/main armhf Packages [21.8 kB]
+2026-07-26T15:50:14.3359120Z Get:11 https://packages.microsoft.com/ubuntu/22.04/prod jammy/main arm64 Packages [263 kB]
+2026-07-26T15:50:14.4720029Z Get:12 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [3677 kB]
+2026-07-26T15:50:14.5080750Z Get:13 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [550 kB]
+2026-07-26T15:50:14.5123920Z Get:14 http://azure.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [6333 kB]
+2026-07-26T15:50:14.5808848Z Get:15 http://azure.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [1213 kB]
+2026-07-26T15:50:14.5957535Z Get:16 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1279 kB]
+2026-07-26T15:50:14.6109091Z Get:17 http://azure.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [322 kB]
+2026-07-26T15:50:14.6167854Z Get:18 http://azure.archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [76.5 kB]
+2026-07-26T15:50:14.6212640Z Get:19 http://azure.archive.ubuntu.com/ubuntu jammy-updates/multiverse Translation-en [15.9 kB]
+2026-07-26T15:50:14.6632777Z Get:20 http://azure.archive.ubuntu.com/ubuntu jammy-security/main amd64 Packages [3403 kB]
+2026-07-26T15:50:14.6963789Z Get:21 http://azure.archive.ubuntu.com/ubuntu jammy-security/main Translation-en [481 kB]
+2026-07-26T15:50:14.7618426Z Get:22 http://azure.archive.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [6089 kB]
+2026-07-26T15:50:14.8789500Z Get:23 http://azure.archive.ubuntu.com/ubuntu jammy-security/restricted Translation-en [1167 kB]
+2026-07-26T15:50:14.8808170Z Get:24 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1045 kB]
+2026-07-26T15:50:14.8819178Z Get:25 http://azure.archive.ubuntu.com/ubuntu jammy-security/universe Translation-en [234 kB]
+2026-07-26T15:50:14.8848110Z Get:26 http://azure.archive.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [69.1 kB]
+2026-07-26T15:50:14.8864496Z Get:27 http://azure.archive.ubuntu.com/ubuntu jammy-security/multiverse Translation-en [12.9 kB]
+2026-07-26T15:50:14.9288082Z Get:28 https://dl.google.com/linux/chrome-stable/deb stable/main amd64 Packages [1428 B]
+2026-07-26T15:50:22.1458986Z Fetched 27.1 MB in 4s (6717 kB/s)
+2026-07-26T15:50:23.4528339Z Reading package lists...
+2026-07-26T15:50:23.5318233Z Reading package lists...
+2026-07-26T15:50:23.8469414Z Building dependency tree...
+2026-07-26T15:50:23.8485828Z Reading state information...
+2026-07-26T15:50:24.1389186Z The following additional packages will be installed:
+2026-07-26T15:50:24.1417914Z   cmake-data dh-elpa-helper googletest libjsoncpp25 librhash0
+2026-07-26T15:50:24.1421250Z Suggested packages:
+2026-07-26T15:50:24.1425711Z   cmake-doc ninja-build cmake-format
+2026-07-26T15:50:24.3316774Z The following NEW packages will be installed:
+2026-07-26T15:50:24.3322848Z   cmake cmake-data dh-elpa-helper googletest libgtest-dev libjsoncpp25
+2026-07-26T15:50:24.3332882Z   librhash0
+2026-07-26T15:50:24.3559693Z 0 upgraded, 7 newly installed, 0 to remove and 75 not upgraded.
+2026-07-26T15:50:24.3560901Z Need to get 7927 kB of archives.
+2026-07-26T15:50:24.3567685Z After this operation, 37.0 MB of additional disk space will be used.
+2026-07-26T15:50:24.3585852Z Get:1 file:/etc/apt/apt-mirrors.txt Mirrorlist [144 B]
+2026-07-26T15:50:24.4424917Z Get:2 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 libjsoncpp25 amd64 1.9.5-3 [80.0 kB]
+2026-07-26T15:50:24.4921508Z Get:3 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 librhash0 amd64 1.4.2-1ubuntu1 [125 kB]
+2026-07-26T15:50:24.5406602Z Get:4 http://azure.archive.ubuntu.com/ubuntu jammy/main amd64 dh-elpa-helper all 2.0.9ubuntu1 [7610 B]
+2026-07-26T15:50:24.5881960Z Get:5 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 cmake-data all 3.22.1-1ubuntu1.22.04.2 [1913 kB]
+2026-07-26T15:50:24.6636900Z Get:6 http://azure.archive.ubuntu.com/ubuntu jammy-updates/main amd64 cmake amd64 3.22.1-1ubuntu1.22.04.2 [5010 kB]
+2026-07-26T15:50:24.7847748Z Get:7 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 googletest all 1.11.0-3 [541 kB]
+2026-07-26T15:50:24.8370748Z Get:8 http://azure.archive.ubuntu.com/ubuntu jammy/universe amd64 libgtest-dev amd64 1.11.0-3 [250 kB]
+2026-07-26T15:50:25.2262161Z Fetched 7927 kB in 0s (16.0 MB/s)
+2026-07-26T15:50:25.2736699Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-07-26T15:50:25.2999804Z (Reading database ... 
+2026-07-26T15:50:25.3005462Z (Reading database ... 5%
+2026-07-26T15:50:25.3014799Z (Reading database ... 10%
+2026-07-26T15:50:25.3018085Z (Reading database ... 15%
+2026-07-26T15:50:25.3018863Z (Reading database ... 20%
+2026-07-26T15:50:25.3019858Z (Reading database ... 25%
+2026-07-26T15:50:25.3021414Z (Reading database ... 30%
+2026-07-26T15:50:25.3021987Z (Reading database ... 35%
+2026-07-26T15:50:25.3022930Z (Reading database ... 40%
+2026-07-26T15:50:25.3024648Z (Reading database ... 45%
+2026-07-26T15:50:25.3025232Z (Reading database ... 50%
+2026-07-26T15:50:25.3975611Z (Reading database ... 55%
+2026-07-26T15:50:25.4382421Z (Reading database ... 60%
+2026-07-26T15:50:25.4936815Z (Reading database ... 65%
+2026-07-26T15:50:25.6412165Z (Reading database ... 70%
+2026-07-26T15:50:25.8499356Z (Reading database ... 75%
+2026-07-26T15:50:25.9440047Z (Reading database ... 80%
+2026-07-26T15:50:26.1342957Z (Reading database ... 85%
+2026-07-26T15:50:26.2986257Z (Reading database ... 90%
+2026-07-26T15:50:26.4689288Z (Reading database ... 95%
+2026-07-26T15:50:26.4690877Z (Reading database ... 100%
+2026-07-26T15:50:26.4691760Z (Reading database ... 259812 files and directories currently installed.)
+2026-07-26T15:50:26.4765738Z Preparing to unpack .../0-libjsoncpp25_1.9.5-3_amd64.deb ...
+2026-07-26T15:50:26.5836319Z Unpacking libjsoncpp25:amd64 (1.9.5-3) ...
+2026-07-26T15:50:26.6565905Z Selecting previously unselected package librhash0:amd64.
+2026-07-26T15:50:26.6741358Z Preparing to unpack .../1-librhash0_1.4.2-1ubuntu1_amd64.deb ...
+2026-07-26T15:50:26.6787162Z Unpacking librhash0:amd64 (1.4.2-1ubuntu1) ...
+2026-07-26T15:50:26.7128064Z Selecting previously unselected package dh-elpa-helper.
+2026-07-26T15:50:26.7306964Z Preparing to unpack .../2-dh-elpa-helper_2.0.9ubuntu1_all.deb ...
+2026-07-26T15:50:26.7329655Z Unpacking dh-elpa-helper (2.0.9ubuntu1) ...
+2026-07-26T15:50:26.7715903Z Selecting previously unselected package cmake-data.
+2026-07-26T15:50:26.7888693Z Preparing to unpack .../3-cmake-data_3.22.1-1ubuntu1.22.04.2_all.deb ...
+2026-07-26T15:50:26.7976766Z Unpacking cmake-data (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-26T15:50:27.8146742Z Selecting previously unselected package cmake.
+2026-07-26T15:50:27.8349662Z Preparing to unpack .../4-cmake_3.22.1-1ubuntu1.22.04.2_amd64.deb ...
+2026-07-26T15:50:27.8367884Z Unpacking cmake (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-26T15:50:28.1445677Z Selecting previously unselected package googletest.
+2026-07-26T15:50:28.1628931Z Preparing to unpack .../5-googletest_1.11.0-3_all.deb ...
+2026-07-26T15:50:28.1655747Z Unpacking googletest (1.11.0-3) ...
+2026-07-26T15:50:28.2727052Z Selecting previously unselected package libgtest-dev:amd64.
+2026-07-26T15:50:28.2927349Z Preparing to unpack .../6-libgtest-dev_1.11.0-3_amd64.deb ...
+2026-07-26T15:50:28.2944965Z Unpacking libgtest-dev:amd64 (1.11.0-3) ...
+2026-07-26T15:50:28.3818482Z Setting up googletest (1.11.0-3) ...
+2026-07-26T15:50:28.3865815Z Setting up dh-elpa-helper (2.0.9ubuntu1) ...
+2026-07-26T15:50:28.3896065Z Setting up libjsoncpp25:amd64 (1.9.5-3) ...
+2026-07-26T15:50:28.3925642Z Setting up librhash0:amd64 (1.4.2-1ubuntu1) ...
+2026-07-26T15:50:28.3966109Z Setting up cmake-data (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-26T15:50:28.4749539Z Setting up libgtest-dev:amd64 (1.11.0-3) ...
+2026-07-26T15:50:28.4782108Z Setting up cmake (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-26T15:50:28.4819223Z Processing triggers for man-db (2.10.2-1) ...
+2026-07-26T15:50:28.4845549Z Not building database; man-db/auto-update is not 'true'.
+2026-07-26T15:50:28.4863084Z Processing triggers for libc-bin (2.35-0ubuntu3.13) ...
+2026-07-26T15:50:29.1005353Z 
+2026-07-26T15:50:29.1009072Z Running kernel seems to be up-to-date.
+2026-07-26T15:50:29.1009747Z 
+2026-07-26T15:50:29.1010155Z No services need to be restarted.
+2026-07-26T15:50:29.1010799Z 
+2026-07-26T15:50:29.1011102Z No containers need to be restarted.
+2026-07-26T15:50:29.1011598Z 
+2026-07-26T15:50:29.1012017Z No user sessions are running outdated binaries.
+2026-07-26T15:50:29.1012493Z 
+2026-07-26T15:50:29.1013011Z No VM guests are running outdated hypervisor (qemu) binaries on this host.
+2026-07-26T15:50:30.8064721Z ##[group]Run cmake -S . -B build
+2026-07-26T15:50:30.8065197Z [36;1mcmake -S . -B build[0m
+2026-07-26T15:50:30.8105649Z shell: /usr/bin/bash -e {0}
+2026-07-26T15:50:30.8106072Z ##[endgroup]
+2026-07-26T15:50:31.7858177Z -- The CXX compiler identification is GNU 11.4.0
+2026-07-26T15:50:32.0351738Z -- Detecting CXX compiler ABI info
+2026-07-26T15:50:32.2368597Z -- Detecting CXX compiler ABI info - done
+2026-07-26T15:50:32.2531126Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-07-26T15:50:32.2632484Z -- Detecting CXX compile features
+2026-07-26T15:50:32.2690284Z -- Detecting CXX compile features - done
+2026-07-26T15:50:32.4586891Z -- Found GTest: /usr/lib/x86_64-linux-gnu/cmake/GTest/GTestConfig.cmake (found version "1.11.0")
+2026-07-26T15:50:32.4588397Z -- Configuring done (1.1s)
+2026-07-26T15:50:32.4666976Z -- Generating done (0.0s)
+2026-07-26T15:50:32.4669307Z -- Build files have been written to: /home/runner/work/cupbop-experiment/cupbop-experiment/experiments/srad_v2/build
+2026-07-26T15:50:32.4729274Z ##[group]Run cmake --build build
+2026-07-26T15:50:32.4729689Z [36;1mcmake --build build[0m
+2026-07-26T15:50:32.4766228Z shell: /usr/bin/bash -e {0}
+2026-07-26T15:50:32.4766593Z ##[endgroup]
+2026-07-26T15:50:32.4975657Z [ 50%] Building CXX object CMakeFiles/host_test.dir/tests/host_test.cpp.o
+2026-07-26T15:50:33.4184548Z [100%] Linking CXX executable host_test
+2026-07-26T15:50:33.4865469Z [100%] Built target host_test
+2026-07-26T15:50:33.4929005Z ##[group]Run ctest --test-dir build --output-on-failure
+2026-07-26T15:50:33.4929522Z [36;1mctest --test-dir build --output-on-failure[0m
+2026-07-26T15:50:33.4969934Z shell: /usr/bin/bash -e {0}
+2026-07-26T15:50:33.4970350Z ##[endgroup]
+2026-07-26T15:50:34.0324326Z Internal ctest changing into directory: /home/runner/work/cupbop-experiment/cupbop-experiment/experiments/srad_v2/build
+2026-07-26T15:50:34.1232762Z Test project /home/runner/work/cupbop-experiment/cupbop-experiment/experiments/srad_v2/build
+2026-07-26T15:50:34.1815462Z     Start 1: host_test
+2026-07-26T15:50:34.1991248Z 1/1 Test #1: host_test ........................   Passed    0.00 sec
+2026-07-26T15:50:34.1991772Z 
+2026-07-26T15:50:34.1992225Z 100% tests passed, 0 tests failed out of 1
+2026-07-26T15:50:34.1992452Z 
+2026-07-26T15:50:34.1992842Z Total Test time (real) =   0.08 sec
+2026-07-26T15:50:34.2354717Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-26T15:50:34.2356286Z Post job cleanup.
+2026-07-26T15:50:34.3365514Z [command]/usr/bin/git version
+2026-07-26T15:50:34.3415861Z git version 2.54.0
+2026-07-26T15:50:34.3484853Z Temporarily overriding HOME='/home/runner/work/_temp/3c064645-62b3-4b39-a6d7-93ea01724bac' before making global git config changes
+2026-07-26T15:50:34.3505176Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-26T15:50:34.3517201Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/cupbop-experiment/cupbop-experiment
+2026-07-26T15:50:34.3534416Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-26T15:50:34.3586037Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-26T15:50:34.3895675Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-26T15:50:34.3939479Z http.https://github.com/.extraheader
+2026-07-26T15:50:34.3966472Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-07-26T15:50:34.4018665Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-26T15:50:34.4396394Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-26T15:50:34.4455464Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-26T15:50:34.4899940Z Cleaning up orphan processes
+2026-07-26T15:50:34.5177055Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

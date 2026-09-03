@@ -1,0 +1,74 @@
+name: push-cupbop-image
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'docker/cupbop-sil/**'
+      - '.github/workflows/push-cupbop-image.yml'
+
+env:
+  # GHCR requires a lowercase path; adjust if your owner/repo has uppercase letters.
+  IMAGE: ghcr.io/${{ github.repository }}/cupbop-sil
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: write            # required to push to GHCR
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: docker/build-push-action@v6
+        with:
+          context: docker/cupbop-sil     # Dockerfile lives at the root of this context
+          push: true
+          tags: ${{ env.IMAGE }}:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  verify-image:
+    needs: build-and-push
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: read
+    steps:
+      - uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Re-run the vecadd smoke test, but from the PUSHED image (tests both pull and contents)
+      - name: vecadd smoke test from the image
+        run: |
+          docker run --rm ${{ env.IMAGE }}:latest bash -c '
+            set -e
+            cd "$CuPBoP_PATH/examples/vecadd"
+            # Compile CUDA source to bitcode; the final link fails without a GPU (expected), so || true.
+            clang++ -std=c++11 vecadd.cu -I../.. --cuda-path="$CUDA_PATH" \
+              --cuda-gpu-arch=sm_50 -L"$CUDA_PATH/lib64" \
+              -lcudart_static -ldl -lrt -pthread -save-temps -v || true
+            # Host triple varies (pc- vs unknown-) across clang builds, so match the .bc by pattern.
+            KERNEL_BC=$(ls vecadd-*nvptx64*sm_50.bc)
+            HOST_BC=$(ls vecadd-host-*.bc)
+            "$CuPBoP_PATH/build/compilation/kernelTranslator" "$KERNEL_BC" kernel.bc
+            "$CuPBoP_PATH/build/compilation/hostTranslator"   "$HOST_BC"   host.bc
+            llc --relocation-model=pic --filetype=obj kernel.bc
+            llc --relocation-model=pic --filetype=obj host.bc
+            g++ -o vecadd -fPIC -no-pie \
+              -I"$CuPBoP_PATH/runtime/threadPool/include" \
+              -L"$CuPBoP_PATH/build/runtime" -L"$CuPBoP_PATH/build/runtime/threadPool" \
+              host.o kernel.o -I../.. -lc -lCPUruntime -lthreadPool -lpthread
+            ./vecadd
+          '

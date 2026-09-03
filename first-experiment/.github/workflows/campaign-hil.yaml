@@ -1,0 +1,46 @@
+name: campaign-hil
+
+# Mutation campaign, HIL side: builds+runs mutants natively with nvcc on the AGX
+# Orin (self-hosted, free) in ONE job. Safe operators run first; an out-of-bounds
+# address mutant can wedge the shared iGPU -> the runner aborts on the first
+# devices-unavailable, and you resume after a reboot (resume: true). Emits
+# results_hil.jsonl.
+on:
+  workflow_dispatch:
+    inputs:
+      niter:
+        description: "srad iterations (higher = more fault propagation)"
+        default: "2"
+        required: false
+      resume:
+        description: "Resume from existing results_hil.jsonl (after a reboot)"
+        type: boolean
+        default: false
+        required: false
+
+jobs:
+  campaign-hil:
+    runs-on: [self-hosted, ARM64]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          clean: ${{ github.event.inputs.resume != 'true' }}   # keep results on resume
+
+      - name: Run mutation campaign (HIL / nvcc on Orin)
+        working-directory: experiments/srad_v2/mutation
+        shell: bash
+        env:
+          NITER: ${{ github.event.inputs.niter }}
+          RESUME: ${{ github.event.inputs.resume == 'true' && '1' || '0' }}
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          bash run_campaign.sh hil | tee "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload results_hil.jsonl
+        if: always()   # keep partial results even if a wedge aborts the run
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-hil
+          path: experiments/srad_v2/mutation/results_hil.jsonl
+          if-no-files-found: error

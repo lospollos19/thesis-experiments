@@ -1,0 +1,33 @@
+name: racecheck
+
+# sync_removal racecheck diagnostic (RQ1, HIL only). Runs compute-sanitizer
+# --tool racecheck natively on the AGX Orin (self-hosted) to separate World B
+# (real but benign shared-memory race, oracle-blind) from World C (redundant
+# barrier -> equivalent mutant) on the 9 sync_removal mutants. Uploads logs/.
+#
+# sync_removal is a SAFE (non-OOB) operator -> no P6 wedge risk. One mutant at a
+# time inside the script (shared iGPU, P3). Emits diagnostics/racecheck/logs/.
+on:
+  workflow_dispatch: {}
+
+jobs:
+  racecheck:
+    runs-on: [self-hosted, ARM64]
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: racecheck diagnostic (compute-sanitizer on Orin)
+        working-directory: diagnostics/racecheck
+        shell: bash
+        run: |
+          set -o pipefail
+          export PATH="/usr/local/cuda/bin:$PATH"
+          bash run_racecheck.sh | tee "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload racecheck logs
+        if: always()   # keep logs even if a build/run fails
+        uses: actions/upload-artifact@v4
+        with:
+          name: racecheck-logs
+          path: diagnostics/racecheck/logs/
+          if-no-files-found: error

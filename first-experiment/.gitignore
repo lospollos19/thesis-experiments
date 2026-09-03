@@ -1,0 +1,58 @@
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Generated artifacts
+Dockerfile.generated
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+
+# Compiled / linked artifacts (experiments)
+*.o
+*.obj
+*.a
+*.so
+a.out
+
+# CuPBoP translation intermediates (-save-temps + IR-to-IR chain)
+*.bc
+*.ll
+*.s
+*.ii
+*.i
+*.cui
+kernel.bc
+host.bc
+
+# srad executables (translate_srad.sh output, named after the source base)
+experiments/srad_v1/srad
+experiments/srad_v2/srad
+
+# Benchmark run outputs
+image_out.pgm
+*.out.pgm
+
+# OS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+
+# Generated mutants (regenerable via generate_mutants.py)
+experiments/srad_v2/mutation/mutants/
+experiments/srad_v2/mutation/results_*.json
+experiments/srad_v2/mutation/results_*.jsonl
+
+# racecheck diagnostic run outputs (raw logs; uploaded as CI artifact instead)
+diagnostics/racecheck/logs/

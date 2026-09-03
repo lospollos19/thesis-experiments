@@ -1,0 +1,269 @@
+﻿2026-08-01T19:23:18.9466803Z Current runner version: '2.336.0'
+2026-08-01T19:23:18.9479614Z Runner name: 'jetson-orin'
+2026-08-01T19:23:18.9480919Z Runner group name: 'Default'
+2026-08-01T19:23:18.9482669Z Machine name: 'jetson-orin'
+2026-08-01T19:23:18.9488437Z ##[group]GITHUB_TOKEN Permissions
+2026-08-01T19:23:18.9492981Z Contents: read
+2026-08-01T19:23:18.9493932Z Metadata: read
+2026-08-01T19:23:18.9494817Z Packages: read
+2026-08-01T19:23:18.9495705Z ##[endgroup]
+2026-08-01T19:23:18.9500075Z Secret source: Actions
+2026-08-01T19:23:18.9501835Z Prepare workflow directory
+2026-08-01T19:23:19.0743649Z Prepare all required actions
+2026-08-01T19:23:19.0864028Z Getting action download info
+2026-08-01T19:23:19.6263882Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-08-01T19:23:20.3774580Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-08-01T19:23:21.2350654Z Complete job name: campaign-hil
+2026-08-01T19:23:21.4821933Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-01T19:23:21.4841218Z ##[group]Run actions/checkout@v4
+2026-08-01T19:23:21.4843458Z with:
+2026-08-01T19:23:21.4844712Z   clean: false
+2026-08-01T19:23:21.4845776Z   repository: lospollos19/cupbop-experiment
+2026-08-01T19:23:21.4852805Z   token: ***
+2026-08-01T19:23:21.4853757Z   ssh-strict: true
+2026-08-01T19:23:21.4854698Z   ssh-user: git
+2026-08-01T19:23:21.4855631Z   persist-credentials: true
+2026-08-01T19:23:21.4856681Z   sparse-checkout-cone-mode: true
+2026-08-01T19:23:21.4857754Z   fetch-depth: 1
+2026-08-01T19:23:21.4858696Z   fetch-tags: false
+2026-08-01T19:23:21.4859652Z   show-progress: true
+2026-08-01T19:23:21.4860613Z   lfs: false
+2026-08-01T19:23:21.4861585Z   submodules: false
+2026-08-01T19:23:21.4862570Z   set-safe-directory: true
+2026-08-01T19:23:21.4863613Z   allow-unsafe-pr-checkout: false
+2026-08-01T19:23:21.4865656Z ##[endgroup]
+2026-08-01T19:23:22.0470392Z Syncing repository: lospollos19/cupbop-experiment
+2026-08-01T19:23:22.0475109Z ##[group]Getting Git version info
+2026-08-01T19:23:22.0477847Z Working directory is '/home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment'
+2026-08-01T19:23:22.0482701Z [command]/usr/bin/git version
+2026-08-01T19:23:22.0485656Z git version 2.43.0
+2026-08-01T19:23:22.0493145Z ##[endgroup]
+2026-08-01T19:23:22.0509844Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/actions-runner/_work/_temp/49b70457-d6fa-4946-a95b-1339a76071f4/.gitconfig'
+2026-08-01T19:23:22.0520849Z Temporarily overriding HOME='/home/vub/Documents/moussa/actions-runner/_work/_temp/49b70457-d6fa-4946-a95b-1339a76071f4' before making global git config changes
+2026-08-01T19:23:22.0528071Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-01T19:23:22.0534177Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment
+2026-08-01T19:23:22.0606108Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-08-01T19:23:22.0636984Z https://github.com/lospollos19/cupbop-experiment
+2026-08-01T19:23:22.0663333Z ##[group]Removing previously created refs, to avoid conflicts
+2026-08-01T19:23:22.0670202Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-08-01T19:23:22.0771456Z refs/heads/main
+2026-08-01T19:23:22.0789287Z [command]/usr/bin/git checkout --detach
+2026-08-01T19:23:22.0955088Z HEAD is now at 7a0bedc mutation: record partial results (H1 not confirmed at niter=2) + harden campaign (niter param, safe-first order, wedge-abort+resume, JSONL)
+2026-08-01T19:23:22.1026974Z [command]/usr/bin/git branch --delete --force main
+2026-08-01T19:23:22.1082390Z Deleted branch main (was 7a0bedc).
+2026-08-01T19:23:22.1167050Z ##[endgroup]
+2026-08-01T19:23:22.1170881Z [command]/usr/bin/git submodule status
+2026-08-01T19:23:22.1715894Z ##[group]Disabling automatic garbage collection
+2026-08-01T19:23:22.1726796Z [command]/usr/bin/git config --local gc.auto 0
+2026-08-01T19:23:22.1785794Z ##[endgroup]
+2026-08-01T19:23:22.1787711Z ##[group]Setting up auth
+2026-08-01T19:23:22.1800727Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-01T19:23:22.1874463Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-01T19:23:22.2191254Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-01T19:23:22.2251598Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-01T19:23:22.2645102Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-01T19:23:22.2718645Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-01T19:23:22.3113831Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-08-01T19:23:22.3191102Z ##[endgroup]
+2026-08-01T19:23:22.3194885Z ##[group]Fetching the repository
+2026-08-01T19:23:22.3225175Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +7b0956ebebe61dc53b51050e2fa883c8aa2e3178:refs/remotes/origin/main
+2026-08-01T19:23:22.8756125Z From https://github.com/lospollos19/cupbop-experiment
+2026-08-01T19:23:22.8765489Z  + 7a0bedc...7b0956e 7b0956ebebe61dc53b51050e2fa883c8aa2e3178 -> origin/main  (forced update)
+2026-08-01T19:23:22.8802731Z ##[endgroup]
+2026-08-01T19:23:22.8809883Z ##[group]Determining the checkout info
+2026-08-01T19:23:22.8817172Z ##[endgroup]
+2026-08-01T19:23:22.8821646Z [command]/usr/bin/git sparse-checkout disable
+2026-08-01T19:23:22.8919995Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-08-01T19:23:22.9013433Z ##[group]Checking out the ref
+2026-08-01T19:23:22.9020187Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-08-01T19:23:22.9060980Z Warning: you are leaving 1 commit behind, not connected to
+2026-08-01T19:23:22.9066758Z any of your branches:
+2026-08-01T19:23:22.9069100Z 
+2026-08-01T19:23:22.9077016Z   7a0bedc mutation: record partial results (H1 not confirmed at niter=2) + harden campaign (niter param, safe-first order, wedge-abort+resume, JSONL)
+2026-08-01T19:23:22.9086957Z 
+2026-08-01T19:23:22.9090124Z If you want to keep it by creating a new branch, this may be a good time
+2026-08-01T19:23:22.9096467Z to do so with:
+2026-08-01T19:23:22.9098586Z 
+2026-08-01T19:23:22.9100659Z  git branch <new-branch-name> 7a0bedc
+2026-08-01T19:23:22.9103923Z 
+2026-08-01T19:23:22.9105922Z Switched to a new branch 'main'
+2026-08-01T19:23:22.9111000Z branch 'main' set up to track 'origin/main'.
+2026-08-01T19:23:22.9124477Z ##[endgroup]
+2026-08-01T19:23:22.9158775Z [command]/usr/bin/git log -1 --format=%H
+2026-08-01T19:23:22.9197298Z 7b0956ebebe61dc53b51050e2fa883c8aa2e3178
+2026-08-01T19:23:23.0080877Z ##[group]Run set -o pipefail
+2026-08-01T19:23:23.0084385Z [36;1mset -o pipefail[0m
+2026-08-01T19:23:23.0087364Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-08-01T19:23:23.0091245Z [36;1mbash run_campaign.sh hil | tee "$GITHUB_STEP_SUMMARY"[0m
+2026-08-01T19:23:23.0176691Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-08-01T19:23:23.0180499Z env:
+2026-08-01T19:23:23.0182713Z   NITER: 100
+2026-08-01T19:23:23.0184977Z   RESUME: 1
+2026-08-01T19:23:23.0187219Z ##[endgroup]
+2026-08-01T19:23:23.2652240Z Building pristine hil baseline (unmutated srad)...
+2026-08-01T19:23:26.6685664Z baseline ready: 512 rows
+2026-08-01T19:23:26.7555584Z resume: /home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment/experiments/srad_v2/mutation/results_hil.jsonl already has 111 results -- skipping those
+2026-08-01T19:23:26.7559099Z [  1/138] sync_removal_001                   (already done)
+2026-08-01T19:23:26.7560674Z [  2/138] sync_removal_002                   (already done)
+2026-08-01T19:23:26.7561633Z [  3/138] sync_removal_003                   (already done)
+2026-08-01T19:23:26.7562552Z [  4/138] sync_removal_004                   (already done)
+2026-08-01T19:23:26.7563509Z [  5/138] sync_removal_005                   (already done)
+2026-08-01T19:23:26.7564911Z [  6/138] sync_removal_006                   (already done)
+2026-08-01T19:23:26.7566049Z [  7/138] sync_removal_007                   (already done)
+2026-08-01T19:23:26.7567019Z [  8/138] sync_removal_008                   (already done)
+2026-08-01T19:23:26.7567947Z [  9/138] sync_removal_009                   (already done)
+2026-08-01T19:23:26.7568928Z [ 10/138] share_removal_001                  (already done)
+2026-08-01T19:23:26.7569915Z [ 11/138] share_removal_002                  (already done)
+2026-08-01T19:23:26.7570874Z [ 12/138] share_removal_003                  (already done)
+2026-08-01T19:23:26.7571938Z [ 13/138] share_removal_004                  (already done)
+2026-08-01T19:23:26.7602080Z [ 14/138] share_removal_005                  (already done)
+2026-08-01T19:23:26.7604963Z [ 15/138] share_removal_006                  (already done)
+2026-08-01T19:23:26.7606770Z [ 16/138] share_removal_007                  (already done)
+2026-08-01T19:23:26.7608449Z [ 17/138] share_removal_008                  (already done)
+2026-08-01T19:23:26.7610057Z [ 18/138] share_removal_009                  (already done)
+2026-08-01T19:23:26.7611666Z [ 19/138] share_removal_010                  (already done)
+2026-08-01T19:23:26.7613296Z [ 20/138] share_removal_011                  (already done)
+2026-08-01T19:23:26.7614967Z [ 21/138] math_replacement_001               (already done)
+2026-08-01T19:23:26.7616673Z [ 22/138] math_replacement_002               (already done)
+2026-08-01T19:23:26.7618316Z [ 23/138] math_replacement_003               (already done)
+2026-08-01T19:23:26.7620548Z [ 24/138] math_replacement_004               (already done)
+2026-08-01T19:23:26.7622269Z [ 25/138] math_replacement_005               (already done)
+2026-08-01T19:23:26.7623932Z [ 26/138] math_replacement_006               (already done)
+2026-08-01T19:23:26.7625564Z [ 27/138] math_replacement_007               (already done)
+2026-08-01T19:23:26.7627454Z [ 28/138] math_replacement_008               (already done)
+2026-08-01T19:23:26.7629261Z [ 29/138] math_replacement_009               (already done)
+2026-08-01T19:23:26.7630900Z [ 30/138] math_replacement_010               (already done)
+2026-08-01T19:23:26.7632552Z [ 31/138] math_replacement_011               (already done)
+2026-08-01T19:23:26.7634249Z [ 32/138] math_replacement_012               (already done)
+2026-08-01T19:23:26.7636151Z [ 33/138] math_replacement_013               (already done)
+2026-08-01T19:23:26.7637794Z [ 34/138] math_replacement_014               (already done)
+2026-08-01T19:23:26.7639449Z [ 35/138] math_replacement_015               (already done)
+2026-08-01T19:23:26.7641095Z [ 36/138] math_replacement_016               (already done)
+2026-08-01T19:23:26.7644215Z [ 37/138] math_replacement_017               (already done)
+2026-08-01T19:23:26.7646235Z [ 38/138] math_replacement_018               (already done)
+2026-08-01T19:23:26.7647916Z [ 39/138] math_replacement_019               (already done)
+2026-08-01T19:23:26.7649564Z [ 40/138] math_replacement_020               (already done)
+2026-08-01T19:23:26.7651199Z [ 41/138] math_replacement_021               (already done)
+2026-08-01T19:23:26.7652831Z [ 42/138] math_replacement_022               (already done)
+2026-08-01T19:23:26.7654477Z [ 43/138] math_replacement_023               (already done)
+2026-08-01T19:23:26.7656116Z [ 44/138] math_replacement_024               (already done)
+2026-08-01T19:23:26.7658656Z [ 45/138] math_replacement_025               (already done)
+2026-08-01T19:23:26.7660325Z [ 46/138] math_replacement_026               (already done)
+2026-08-01T19:23:26.7662039Z [ 47/138] math_replacement_027               (already done)
+2026-08-01T19:23:26.7663710Z [ 48/138] math_replacement_028               (already done)
+2026-08-01T19:23:26.7665451Z [ 49/138] math_replacement_029               (already done)
+2026-08-01T19:23:26.7677570Z [ 50/138] math_replacement_030               (already done)
+2026-08-01T19:23:26.7679304Z [ 51/138] math_replacement_031               (already done)
+2026-08-01T19:23:26.7680967Z [ 52/138] math_replacement_032               (already done)
+2026-08-01T19:23:26.7682594Z [ 53/138] math_replacement_033               (already done)
+2026-08-01T19:23:26.7684901Z [ 54/138] math_replacement_034               (already done)
+2026-08-01T19:23:26.7686673Z [ 55/138] math_replacement_035               (already done)
+2026-08-01T19:23:26.7688357Z [ 56/138] math_replacement_036               (already done)
+2026-08-01T19:23:26.7710766Z [ 57/138] math_replacement_037               (already done)
+2026-08-01T19:23:26.7712258Z [ 58/138] math_replacement_038               (already done)
+2026-08-01T19:23:26.7713737Z [ 59/138] math_replacement_039               (already done)
+2026-08-01T19:23:26.7715272Z [ 60/138] math_replacement_040               (already done)
+2026-08-01T19:23:26.7716774Z [ 61/138] math_replacement_041               (already done)
+2026-08-01T19:23:26.7718254Z [ 62/138] math_replacement_042               (already done)
+2026-08-01T19:23:26.7719733Z [ 63/138] math_replacement_043               (already done)
+2026-08-01T19:23:26.7721214Z [ 64/138] math_replacement_044               (already done)
+2026-08-01T19:23:26.7722693Z [ 65/138] math_replacement_045               (already done)
+2026-08-01T19:23:26.7724696Z [ 66/138] math_replacement_046               (already done)
+2026-08-01T19:23:26.7726694Z [ 67/138] math_replacement_047               (already done)
+2026-08-01T19:23:26.7728546Z [ 68/138] math_replacement_048               (already done)
+2026-08-01T19:23:26.7730354Z [ 69/138] math_replacement_049               (already done)
+2026-08-01T19:23:26.7732150Z [ 70/138] math_replacement_050               (already done)
+2026-08-01T19:23:26.7733966Z [ 71/138] math_replacement_051               (already done)
+2026-08-01T19:23:26.7735788Z [ 72/138] math_replacement_052               (already done)
+2026-08-01T19:23:26.7737603Z [ 73/138] math_replacement_053               (already done)
+2026-08-01T19:23:26.7787728Z [ 74/138] math_replacement_054               (already done)
+2026-08-01T19:23:26.7790119Z [ 75/138] math_replacement_055               (already done)
+2026-08-01T19:23:26.7792001Z [ 76/138] math_replacement_056               (already done)
+2026-08-01T19:23:26.7793849Z [ 77/138] math_replacement_057               (already done)
+2026-08-01T19:23:26.7795771Z [ 78/138] conditional_boundary_replacement_001 (already done)
+2026-08-01T19:23:26.7797894Z [ 79/138] conditional_boundary_replacement_002 (already done)
+2026-08-01T19:23:26.7799837Z [ 80/138] negate_conditional_replacement_001 (already done)
+2026-08-01T19:23:26.7801747Z [ 81/138] negate_conditional_replacement_002 (already done)
+2026-08-01T19:23:26.7803618Z [ 82/138] negate_conditional_replacement_003 (already done)
+2026-08-01T19:23:26.7807322Z [ 83/138] negate_conditional_replacement_004 (already done)
+2026-08-01T19:23:26.7809429Z [ 84/138] negate_conditional_replacement_005 (already done)
+2026-08-01T19:23:26.7811358Z [ 85/138] negate_conditional_replacement_006 (already done)
+2026-08-01T19:23:26.7813253Z [ 86/138] negate_conditional_replacement_007 (already done)
+2026-08-01T19:23:26.7815159Z [ 87/138] negate_conditional_replacement_008 (already done)
+2026-08-01T19:23:26.7817068Z [ 88/138] negate_conditional_replacement_009 (already done)
+2026-08-01T19:23:26.7818958Z [ 89/138] negate_conditional_replacement_010 (already done)
+2026-08-01T19:23:26.7820845Z [ 90/138] negate_conditional_replacement_011 (already done)
+2026-08-01T19:23:26.7823618Z [ 91/138] negate_conditional_replacement_012 (already done)
+2026-08-01T19:23:26.7825556Z [ 92/138] negate_conditional_replacement_013 (already done)
+2026-08-01T19:23:26.7827450Z [ 93/138] negate_conditional_replacement_014 (already done)
+2026-08-01T19:23:26.7829392Z [ 94/138] negate_conditional_replacement_015 (already done)
+2026-08-01T19:23:26.7831296Z [ 95/138] negate_conditional_replacement_016 (already done)
+2026-08-01T19:23:26.7833265Z [ 96/138] negate_conditional_replacement_017 (already done)
+2026-08-01T19:23:26.7835170Z [ 97/138] negate_conditional_replacement_018 (already done)
+2026-08-01T19:23:26.7837055Z [ 98/138] negate_conditional_replacement_019 (already done)
+2026-08-01T19:23:26.7838951Z [ 99/138] negate_conditional_replacement_020 (already done)
+2026-08-01T19:23:26.7840876Z [100/138] negate_conditional_replacement_021 (already done)
+2026-08-01T19:23:26.7842814Z [101/138] negate_conditional_replacement_022 (already done)
+2026-08-01T19:23:26.7845633Z [102/138] negate_conditional_replacement_023 (already done)
+2026-08-01T19:23:26.7847663Z [103/138] negate_conditional_replacement_024 (already done)
+2026-08-01T19:23:26.7849577Z [104/138] logical_replacement_001            (already done)
+2026-08-01T19:23:26.7851439Z [105/138] logical_replacement_002            (already done)
+2026-08-01T19:23:26.7853330Z [106/138] logical_replacement_003            (already done)
+2026-08-01T19:23:26.7855203Z [107/138] logical_replacement_004            (already done)
+2026-08-01T19:23:26.7857077Z [108/138] logical_replacement_005            (already done)
+2026-08-01T19:23:26.7858933Z [109/138] gpu_index_replacement_001          (already done)
+2026-08-01T19:23:26.7860812Z [110/138] gpu_index_replacement_002          (already done)
+2026-08-01T19:23:26.7862685Z [111/138] gpu_index_replacement_003          (already done)
+2026-08-01T19:23:30.7122903Z [112/138] gpu_index_replacement_004          KILLED_ERROR   (max=0)
+2026-08-01T19:23:33.4846133Z [113/138] gpu_index_replacement_005          KILLED_OUTPUT  (max=1.08065)
+2026-08-01T19:23:35.7487995Z [114/138] gpu_index_replacement_006          KILLED_OUTPUT  (max=1.08065)
+2026-08-01T19:23:38.4852087Z [115/138] gpu_index_replacement_007          KILLED_OUTPUT  (max=1.08065)
+2026-08-01T19:23:41.2308695Z [116/138] gpu_index_replacement_008          KILLED_OUTPUT  (max=2.37484)
+2026-08-01T19:26:41.3193635Z [117/138] gpu_index_increment_001            KILLED_ERROR   (max=0)
+2026-08-01T19:29:41.4045338Z [118/138] gpu_index_increment_002            KILLED_ERROR   (max=0)
+2026-08-01T19:32:39.9761521Z === GPU WEDGED at gpu_index_increment_003 (cudaErrorDevicesUnavailable) ===
+2026-08-01T19:32:39.9765403Z Results so far (118 mutants) are valid in /home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment/experiments/srad_v2/mutation/results_hil.jsonl.
+2026-08-01T19:32:39.9832854Z Reboot the Orin, then re-run with:  RESUME=1 NITER=100 bash run_campaign.sh hil
+2026-08-01T19:32:39.9874477Z ##[error]Process completed with exit code 4.
+2026-08-01T19:32:40.0264058Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-01T19:32:40.0270524Z ##[group]Run actions/upload-artifact@v4
+2026-08-01T19:32:40.0271395Z with:
+2026-08-01T19:32:40.0271958Z   name: results-hil
+2026-08-01T19:32:40.0272757Z   path: experiments/srad_v2/mutation/results_hil.jsonl
+2026-08-01T19:32:40.0273741Z   if-no-files-found: error
+2026-08-01T19:32:40.0274448Z   compression-level: 6
+2026-08-01T19:32:40.0275091Z   overwrite: false
+2026-08-01T19:32:40.0275732Z   include-hidden-files: false
+2026-08-01T19:32:40.0276454Z ##[endgroup]
+2026-08-01T19:32:40.3216191Z (node:7178) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-08-01T19:32:40.3220222Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-08-01T19:32:40.3292102Z With the provided path, there will be 1 file uploaded
+2026-08-01T19:32:40.3301825Z Artifact name is valid!
+2026-08-01T19:32:40.3302855Z Root directory input is valid!
+2026-08-01T19:32:40.7368352Z Beginning upload of artifact content to blob storage
+2026-08-01T19:32:40.7947480Z (node:7178) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-08-01T19:32:41.2369452Z Uploaded bytes 1385
+2026-08-01T19:32:41.3467983Z Finished uploading artifact content to blob storage!
+2026-08-01T19:32:41.3472151Z SHA256 digest of uploaded artifact zip is ef134f9e8b465f55e25ed7e68d3c60be6c7fa422dbcc0cc8faefbfcc649215ab
+2026-08-01T19:32:41.3477833Z Finalizing artifact upload
+2026-08-01T19:32:41.5887792Z Artifact results-hil.zip successfully finalized. Artifact ID 8823049737
+2026-08-01T19:32:41.5892055Z Artifact results-hil has been successfully uploaded! Final size is 1385 bytes. Artifact ID is 8823049737
+2026-08-01T19:32:41.5915928Z Artifact download URL: https://github.com/lospollos19/cupbop-experiment/actions/runs/30714562125/artifacts/8823049737
+2026-08-01T19:32:41.6595987Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-08-01T19:32:41.6601196Z Post job cleanup.
+2026-08-01T19:32:41.8179856Z [command]/usr/bin/git version
+2026-08-01T19:32:41.8249504Z git version 2.43.0
+2026-08-01T19:32:41.8312157Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/actions-runner/_work/_temp/3d6a4d96-7833-493a-956e-10b6f8e68d54/.gitconfig'
+2026-08-01T19:32:41.8329573Z Temporarily overriding HOME='/home/vub/Documents/moussa/actions-runner/_work/_temp/3d6a4d96-7833-493a-956e-10b6f8e68d54' before making global git config changes
+2026-08-01T19:32:41.8332049Z Adding repository directory to the temporary git global config as a safe directory
+2026-08-01T19:32:41.8339456Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment
+2026-08-01T19:32:41.8407902Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-08-01T19:32:41.8466469Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-08-01T19:32:41.8789580Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-08-01T19:32:41.8839411Z http.https://github.com/.extraheader
+2026-08-01T19:32:41.8861928Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-08-01T19:32:41.8920546Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-08-01T19:32:41.9224160Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-08-01T19:32:41.9292436Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-08-01T19:32:42.0024722Z Cleaning up orphan processes
+2026-08-01T19:32:42.1641085Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

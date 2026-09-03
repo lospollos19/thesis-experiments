@@ -1,0 +1,17 @@
+[project]
+name = "cupbop-experiment"
+version = "0.1.0"
+description = "Pythainer builder for the CuPBoP SIL image (RQ1 setup)"
+authors = [{ name = "lospollos19" }]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+    "pythainer (>=0.0.7,<0.1.0)",
+]
+
+[tool.poetry]
+package-mode = false
+
+[build-system]
+requires = ["poetry-core>=2.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,403 @@
+﻿2026-07-25T18:32:39.3902789Z Current runner version: '2.336.0'
+2026-07-25T18:32:39.3940545Z ##[group]Runner Image Provisioner
+2026-07-25T18:32:39.3941988Z Hosted Compute Agent
+2026-07-25T18:32:39.3942922Z Version: 20260707.563
+2026-07-25T18:32:39.3943810Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-07-25T18:32:39.3944960Z Build Date: 2026-07-07T19:33:50Z
+2026-07-25T18:32:39.3945991Z Worker ID: {3b5f5ae3-883e-4ac2-9c28-2a051758a40d}
+2026-07-25T18:32:39.3947145Z Azure Region: centralus
+2026-07-25T18:32:39.3948037Z ##[endgroup]
+2026-07-25T18:32:39.3950418Z ##[group]Operating System
+2026-07-25T18:32:39.3951601Z Ubuntu
+2026-07-25T18:32:39.3952394Z 22.04.5
+2026-07-25T18:32:39.3953123Z LTS
+2026-07-25T18:32:39.3953958Z ##[endgroup]
+2026-07-25T18:32:39.3954779Z ##[group]Runner Image
+2026-07-25T18:32:39.3955704Z Image: ubuntu-22.04
+2026-07-25T18:32:39.3956518Z Version: 20260720.234.2
+2026-07-25T18:32:39.3958503Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20260720.234/images/ubuntu/Ubuntu2204-Readme.md
+2026-07-25T18:32:39.3961325Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20260720.234
+2026-07-25T18:32:39.3962840Z ##[endgroup]
+2026-07-25T18:32:39.3964674Z ##[group]GITHUB_TOKEN Permissions
+2026-07-25T18:32:39.3967767Z Contents: read
+2026-07-25T18:32:39.3968646Z Metadata: read
+2026-07-25T18:32:39.3969471Z Packages: read
+2026-07-25T18:32:39.3970947Z ##[endgroup]
+2026-07-25T18:32:39.3973628Z Secret source: Actions
+2026-07-25T18:32:39.3975546Z Prepare workflow directory
+2026-07-25T18:32:39.4794423Z Prepare all required actions
+2026-07-25T18:32:39.4863141Z Getting action download info
+2026-07-25T18:32:39.7368405Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-07-25T18:32:40.2070051Z Complete job name: srad-through-cupbop
+2026-07-25T18:32:40.2535831Z ##[group]Checking docker version
+2026-07-25T18:32:40.2548886Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-07-25T18:32:40.3285184Z '1.48'
+2026-07-25T18:32:40.3301176Z Docker daemon API version: '1.48'
+2026-07-25T18:32:40.3302009Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-07-25T18:32:40.3513855Z '1.48'
+2026-07-25T18:32:40.3533561Z Docker client API version: '1.48'
+2026-07-25T18:32:40.3539062Z ##[endgroup]
+2026-07-25T18:32:40.3543108Z ##[group]Clean up resources from previous jobs
+2026-07-25T18:32:40.3549922Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=46583a"
+2026-07-25T18:32:40.3707920Z ##[command]/usr/bin/docker network prune --force --filter "label=46583a"
+2026-07-25T18:32:40.3848740Z ##[endgroup]
+2026-07-25T18:32:40.3849288Z ##[group]Create local container network
+2026-07-25T18:32:40.3858854Z ##[command]/usr/bin/docker network create --label 46583a github_network_fd5b2460ae7d4d79a01d04fb70534379
+2026-07-25T18:32:40.4460121Z b7c1511b37456cfcd7f9ea59a9d3c0d80339b494d9367b5e53654102a1653470
+2026-07-25T18:32:40.4481843Z ##[endgroup]
+2026-07-25T18:32:40.4519843Z ##[group]Starting job container
+2026-07-25T18:32:40.4552431Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_ca29962a-d052-4932-b300-5ef26d412fd3 login ghcr.io -u lospollos19 --password-stdin
+2026-07-25T18:32:40.8888221Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_ca29962a-d052-4932-b300-5ef26d412fd3 pull ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest
+2026-07-25T18:32:41.7550828Z latest: Pulling from lospollos19/cupbop-experiment/cupbop-sil
+2026-07-25T18:32:41.9901476Z aece8493d397: Pulling fs layer
+2026-07-25T18:32:41.9902440Z 976b13f9ef1a: Pulling fs layer
+2026-07-25T18:32:41.9903195Z b63c65d3acaa: Pulling fs layer
+2026-07-25T18:32:41.9904019Z 4dda4739d007: Pulling fs layer
+2026-07-25T18:32:41.9904829Z 197843862cd5: Pulling fs layer
+2026-07-25T18:32:41.9905575Z cf87cabd72e2: Pulling fs layer
+2026-07-25T18:32:41.9906365Z 7908cc89184b: Pulling fs layer
+2026-07-25T18:32:41.9907201Z 125997f82033: Pulling fs layer
+2026-07-25T18:32:41.9907980Z 675adc119131: Pulling fs layer
+2026-07-25T18:32:41.9909058Z ce04642bc4a1: Pulling fs layer
+2026-07-25T18:32:41.9909872Z ab12bfa13ae3: Pulling fs layer
+2026-07-25T18:32:41.9910760Z 2e11f6f0a93d: Pulling fs layer
+2026-07-25T18:32:41.9911509Z 9dce873ba65b: Pulling fs layer
+2026-07-25T18:32:41.9912336Z 4f4fb700ef54: Pulling fs layer
+2026-07-25T18:32:41.9913037Z 8d9e35d37b58: Pulling fs layer
+2026-07-25T18:32:41.9913816Z 16e1e99185fd: Pulling fs layer
+2026-07-25T18:32:41.9914517Z 164671959084: Pulling fs layer
+2026-07-25T18:32:41.9915210Z 372952b0bfd4: Pulling fs layer
+2026-07-25T18:32:41.9915928Z 4dda4739d007: Waiting
+2026-07-25T18:32:41.9916621Z 2e11f6f0a93d: Waiting
+2026-07-25T18:32:41.9917380Z 197843862cd5: Waiting
+2026-07-25T18:32:41.9918114Z 9dce873ba65b: Waiting
+2026-07-25T18:32:41.9918864Z cf87cabd72e2: Waiting
+2026-07-25T18:32:41.9919715Z 4f4fb700ef54: Waiting
+2026-07-25T18:32:41.9920524Z 8d9e35d37b58: Waiting
+2026-07-25T18:32:41.9921349Z 16e1e99185fd: Waiting
+2026-07-25T18:32:41.9922345Z 164671959084: Waiting
+2026-07-25T18:32:41.9922743Z 372952b0bfd4: Waiting
+2026-07-25T18:32:41.9923172Z 7908cc89184b: Waiting
+2026-07-25T18:32:41.9923565Z 125997f82033: Waiting
+2026-07-25T18:32:41.9923895Z 675adc119131: Waiting
+2026-07-25T18:32:41.9924231Z ce04642bc4a1: Waiting
+2026-07-25T18:32:41.9924704Z ab12bfa13ae3: Waiting
+2026-07-25T18:32:42.5537213Z 976b13f9ef1a: Verifying Checksum
+2026-07-25T18:32:42.5543377Z 976b13f9ef1a: Download complete
+2026-07-25T18:32:42.6972091Z b63c65d3acaa: Verifying Checksum
+2026-07-25T18:32:42.6973040Z b63c65d3acaa: Download complete
+2026-07-25T18:32:42.7459857Z aece8493d397: Verifying Checksum
+2026-07-25T18:32:42.7462542Z aece8493d397: Download complete
+2026-07-25T18:32:42.9050599Z 4dda4739d007: Verifying Checksum
+2026-07-25T18:32:42.9052315Z 4dda4739d007: Download complete
+2026-07-25T18:32:43.0561784Z 197843862cd5: Verifying Checksum
+2026-07-25T18:32:43.0580124Z 197843862cd5: Download complete
+2026-07-25T18:32:43.2666177Z 7908cc89184b: Verifying Checksum
+2026-07-25T18:32:43.2669457Z 7908cc89184b: Download complete
+2026-07-25T18:32:43.4242758Z 125997f82033: Verifying Checksum
+2026-07-25T18:32:43.4244828Z 125997f82033: Download complete
+2026-07-25T18:32:43.6141761Z 675adc119131: Verifying Checksum
+2026-07-25T18:32:43.6144175Z 675adc119131: Download complete
+2026-07-25T18:32:43.7264224Z aece8493d397: Pull complete
+2026-07-25T18:32:44.0206441Z ab12bfa13ae3: Verifying Checksum
+2026-07-25T18:32:44.0207985Z ab12bfa13ae3: Download complete
+2026-07-25T18:32:45.0651181Z 976b13f9ef1a: Pull complete
+2026-07-25T18:32:48.1825522Z b63c65d3acaa: Pull complete
+2026-07-25T18:32:49.4774921Z 4dda4739d007: Pull complete
+2026-07-25T18:32:50.1150868Z 197843862cd5: Pull complete
+2026-07-25T18:32:51.7605139Z 2e11f6f0a93d: Verifying Checksum
+2026-07-25T18:32:51.7606233Z 2e11f6f0a93d: Download complete
+2026-07-25T18:32:52.1466682Z 9dce873ba65b: Verifying Checksum
+2026-07-25T18:32:52.1480609Z 9dce873ba65b: Download complete
+2026-07-25T18:32:52.4932711Z 4f4fb700ef54: Verifying Checksum
+2026-07-25T18:32:52.4933411Z 4f4fb700ef54: Download complete
+2026-07-25T18:32:56.7578993Z 8d9e35d37b58: Verifying Checksum
+2026-07-25T18:32:56.7590816Z 8d9e35d37b58: Download complete
+2026-07-25T18:32:57.1259623Z 16e1e99185fd: Verifying Checksum
+2026-07-25T18:32:57.1260376Z 16e1e99185fd: Download complete
+2026-07-25T18:32:57.6296128Z 164671959084: Download complete
+2026-07-25T18:32:58.0561696Z 372952b0bfd4: Verifying Checksum
+2026-07-25T18:32:58.0562493Z 372952b0bfd4: Download complete
+2026-07-25T18:33:02.2356644Z cf87cabd72e2: Verifying Checksum
+2026-07-25T18:33:02.2357425Z cf87cabd72e2: Download complete
+2026-07-25T18:33:19.5455561Z ce04642bc4a1: Verifying Checksum
+2026-07-25T18:33:19.5456179Z ce04642bc4a1: Download complete
+2026-07-25T18:33:19.6135671Z cf87cabd72e2: Pull complete
+2026-07-25T18:33:19.6698409Z 7908cc89184b: Pull complete
+2026-07-25T18:33:19.6865239Z 125997f82033: Pull complete
+2026-07-25T18:33:19.6975040Z 675adc119131: Pull complete
+2026-07-25T18:33:44.6748462Z ce04642bc4a1: Pull complete
+2026-07-25T18:33:44.6893761Z ab12bfa13ae3: Pull complete
+2026-07-25T18:33:58.1228304Z 2e11f6f0a93d: Pull complete
+2026-07-25T18:33:58.1377810Z 9dce873ba65b: Pull complete
+2026-07-25T18:33:58.1467209Z 4f4fb700ef54: Pull complete
+2026-07-25T18:33:59.7176493Z 8d9e35d37b58: Pull complete
+2026-07-25T18:34:00.4202262Z 16e1e99185fd: Pull complete
+2026-07-25T18:34:00.5479549Z 164671959084: Pull complete
+2026-07-25T18:34:00.5677964Z 372952b0bfd4: Pull complete
+2026-07-25T18:34:00.5679900Z Digest: sha256:baa9727c6ee469d34e9a0b3996a198708086bae1130bf34e2b80c8c9f37ce76b
+2026-07-25T18:34:00.5681676Z Status: Downloaded newer image for ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest
+2026-07-25T18:34:00.5682688Z ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest
+2026-07-25T18:34:00.5766562Z ##[command]/usr/bin/docker create --name 7eb529b0e93944269a69f71c172fdbce_ghcriolospollos19cupbopexperimentcupbopsillatest_fdbf97 --label 46583a --workdir /__w/cupbop-experiment/cupbop-experiment --network github_network_fd5b2460ae7d4d79a01d04fb70534379  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest "-f" "/dev/null"
+2026-07-25T18:34:00.6092144Z 30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547
+2026-07-25T18:34:00.6113469Z ##[command]/usr/bin/docker start 30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547
+2026-07-25T18:34:00.8191372Z 30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547
+2026-07-25T18:34:00.8217216Z ##[command]/usr/bin/docker ps --all --filter id=30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-07-25T18:34:00.8342279Z 30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547 Up Less than a second
+2026-07-25T18:34:00.8356683Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547
+2026-07-25T18:34:00.8479528Z HOME=/github/home
+2026-07-25T18:34:00.8482382Z GITHUB_ACTIONS=true
+2026-07-25T18:34:00.8482868Z CI=true
+2026-07-25T18:34:00.8483758Z PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-07-25T18:34:00.8484796Z NVARCH=x86_64
+2026-07-25T18:34:00.8487440Z NVIDIA_REQUIRE_CUDA=cuda>=11.7 brand=tesla,driver>=470,driver<471 brand=unknown,driver>=470,driver<471 brand=nvidia,driver>=470,driver<471 brand=nvidiartx,driver>=470,driver<471 brand=geforce,driver>=470,driver<471 brand=geforcertx,driver>=470,driver<471 brand=quadro,driver>=470,driver<471 brand=quadrortx,driver>=470,driver<471 brand=titan,driver>=470,driver<471 brand=titanrtx,driver>=470,driver<471
+2026-07-25T18:34:00.8490569Z NV_CUDA_CUDART_VERSION=11.7.99-1
+2026-07-25T18:34:00.8491260Z NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-7
+2026-07-25T18:34:00.8491668Z CUDA_VERSION=11.7.1
+2026-07-25T18:34:00.8492224Z LD_LIBRARY_PATH=/opt/CuPBoP/build/runtime:/opt/CuPBoP/build/runtime/threadPool
+2026-07-25T18:34:00.8492888Z NVIDIA_VISIBLE_DEVICES=all
+2026-07-25T18:34:00.8493305Z NVIDIA_DRIVER_CAPABILITIES=compute,utility
+2026-07-25T18:34:00.8493742Z NV_CUDA_LIB_VERSION=11.7.1-1
+2026-07-25T18:34:00.8493968Z NV_NVTX_VERSION=11.7.91-1
+2026-07-25T18:34:00.8494186Z NV_LIBNPP_VERSION=11.7.4.75-1
+2026-07-25T18:34:00.8494426Z NV_LIBNPP_PACKAGE=libnpp-11-7=11.7.4.75-1
+2026-07-25T18:34:00.8494689Z NV_LIBCUSPARSE_VERSION=11.7.4.91-1
+2026-07-25T18:34:00.8494941Z NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-7
+2026-07-25T18:34:00.8495219Z NV_LIBCUBLAS_VERSION=11.10.3.66-1
+2026-07-25T18:34:00.8495484Z NV_LIBCUBLAS_PACKAGE=libcublas-11-7=11.10.3.66-1
+2026-07-25T18:34:00.8495780Z NV_LIBNCCL_PACKAGE_NAME=libnccl2
+2026-07-25T18:34:00.8496026Z NV_LIBNCCL_PACKAGE_VERSION=2.13.4-1
+2026-07-25T18:34:00.8496442Z NCCL_VERSION=2.13.4-1
+2026-07-25T18:34:00.8496667Z NV_LIBNCCL_PACKAGE=libnccl2=2.13.4-1+cuda11.7
+2026-07-25T18:34:00.8496931Z NVIDIA_PRODUCT_NAME=CUDA
+2026-07-25T18:34:00.8497154Z NV_CUDA_CUDART_DEV_VERSION=11.7.99-1
+2026-07-25T18:34:00.8497397Z NV_NVML_DEV_VERSION=11.7.91-1
+2026-07-25T18:34:00.8497648Z NV_LIBCUSPARSE_DEV_VERSION=11.7.4.91-1
+2026-07-25T18:34:00.8497929Z NV_LIBNPP_DEV_VERSION=11.7.4.75-1
+2026-07-25T18:34:00.8498240Z NV_LIBNPP_DEV_PACKAGE=libnpp-dev-11-7=11.7.4.75-1
+2026-07-25T18:34:00.8498524Z NV_LIBCUBLAS_DEV_VERSION=11.10.3.66-1
+2026-07-25T18:34:00.8498804Z NV_LIBCUBLAS_DEV_PACKAGE_NAME=libcublas-dev-11-7
+2026-07-25T18:34:00.8499146Z NV_LIBCUBLAS_DEV_PACKAGE=libcublas-dev-11-7=11.10.3.66-1
+2026-07-25T18:34:00.8499463Z NV_CUDA_NSIGHT_COMPUTE_VERSION=11.7.1-1
+2026-07-25T18:34:00.8499805Z NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE=cuda-nsight-compute-11-7=11.7.1-1
+2026-07-25T18:34:00.8500145Z NV_NVPROF_VERSION=11.7.101-1
+2026-07-25T18:34:00.8500782Z NV_NVPROF_DEV_PACKAGE=cuda-nvprof-11-7=11.7.101-1
+2026-07-25T18:34:00.8501166Z NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+2026-07-25T18:34:00.8501449Z NV_LIBNCCL_DEV_PACKAGE_VERSION=2.13.4-1
+2026-07-25T18:34:00.8501730Z NV_LIBNCCL_DEV_PACKAGE=libnccl-dev=2.13.4-1+cuda11.7
+2026-07-25T18:34:00.8502036Z LIBRARY_PATH=/usr/local/cuda/lib64/stubs
+2026-07-25T18:34:00.8502294Z CuPBoP_PATH=/opt/CuPBoP
+2026-07-25T18:34:00.8502509Z CUDA_PATH=/usr/local/cuda
+2026-07-25T18:34:00.8509908Z ##[endgroup]
+2026-07-25T18:34:00.8519066Z ##[group]Waiting for all services to be ready
+2026-07-25T18:34:00.8521009Z ##[endgroup]
+2026-07-25T18:34:00.8778925Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-25T18:34:00.8786697Z ##[group]Run actions/checkout@v4
+2026-07-25T18:34:00.8787116Z with:
+2026-07-25T18:34:00.8787362Z   repository: lospollos19/cupbop-experiment
+2026-07-25T18:34:00.8790168Z   token: ***
+2026-07-25T18:34:00.8790572Z   ssh-strict: true
+2026-07-25T18:34:00.8790792Z   ssh-user: git
+2026-07-25T18:34:00.8791021Z   persist-credentials: true
+2026-07-25T18:34:00.8791266Z   clean: true
+2026-07-25T18:34:00.8791493Z   sparse-checkout-cone-mode: true
+2026-07-25T18:34:00.8791756Z   fetch-depth: 1
+2026-07-25T18:34:00.8791963Z   fetch-tags: false
+2026-07-25T18:34:00.8792183Z   show-progress: true
+2026-07-25T18:34:00.8792422Z   lfs: false
+2026-07-25T18:34:00.8792717Z   submodules: false
+2026-07-25T18:34:00.8792942Z   set-safe-directory: true
+2026-07-25T18:34:00.8793200Z   allow-unsafe-pr-checkout: false
+2026-07-25T18:34:00.8793650Z ##[endgroup]
+2026-07-25T18:34:00.8854111Z ##[command]/usr/bin/docker exec  30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547 sh -c "cat /etc/*release | grep ^ID"
+2026-07-25T18:34:01.2116754Z Syncing repository: lospollos19/cupbop-experiment
+2026-07-25T18:34:01.2119068Z ##[group]Getting Git version info
+2026-07-25T18:34:01.2119770Z Working directory is '/__w/cupbop-experiment/cupbop-experiment'
+2026-07-25T18:34:01.2121013Z [command]/usr/bin/git version
+2026-07-25T18:34:01.2121403Z git version 2.34.1
+2026-07-25T18:34:01.2191421Z ##[endgroup]
+2026-07-25T18:34:01.2227067Z Temporarily overriding HOME='/__w/_temp/3529bb64-6835-40f8-bfcc-e9450359bdc1' before making global git config changes
+2026-07-25T18:34:01.2241483Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-25T18:34:01.2261207Z [command]/usr/bin/git config --global --add safe.directory /__w/cupbop-experiment/cupbop-experiment
+2026-07-25T18:34:01.2310125Z Deleting the contents of '/__w/cupbop-experiment/cupbop-experiment'
+2026-07-25T18:34:01.2319638Z ##[group]Initializing the repository
+2026-07-25T18:34:01.2323313Z [command]/usr/bin/git init /__w/cupbop-experiment/cupbop-experiment
+2026-07-25T18:34:01.2324327Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-07-25T18:34:01.2325578Z hint: is subject to change. To configure the initial branch name to use in all
+2026-07-25T18:34:01.2331342Z hint: of your new repositories, which will suppress this warning, call:
+2026-07-25T18:34:01.2332145Z hint: 
+2026-07-25T18:34:01.2332840Z hint: 	git config --global init.defaultBranch <name>
+2026-07-25T18:34:01.2333534Z hint: 
+2026-07-25T18:34:01.2334164Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-07-25T18:34:01.2335137Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-07-25T18:34:01.2335877Z hint: 
+2026-07-25T18:34:01.2336325Z hint: 	git branch -m <name>
+2026-07-25T18:34:01.2337182Z Initialized empty Git repository in /__w/cupbop-experiment/cupbop-experiment/.git/
+2026-07-25T18:34:01.2339256Z [command]/usr/bin/git remote add origin https://github.com/lospollos19/cupbop-experiment
+2026-07-25T18:34:01.2392879Z ##[endgroup]
+2026-07-25T18:34:01.2393647Z ##[group]Disabling automatic garbage collection
+2026-07-25T18:34:01.2394334Z [command]/usr/bin/git config --local gc.auto 0
+2026-07-25T18:34:01.2423877Z ##[endgroup]
+2026-07-25T18:34:01.2441338Z ##[group]Setting up auth
+2026-07-25T18:34:01.2442301Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-25T18:34:01.2486640Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-25T18:34:01.2910951Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-25T18:34:01.2950423Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-25T18:34:01.3251577Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-25T18:34:01.3322658Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-25T18:34:01.3601944Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-07-25T18:34:01.3640045Z ##[endgroup]
+2026-07-25T18:34:01.3640963Z ##[group]Fetching the repository
+2026-07-25T18:34:01.3642342Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +c9081d2b383952459da496294ca93e02c8249c15:refs/remotes/origin/main
+2026-07-25T18:34:01.6751458Z From https://github.com/lospollos19/cupbop-experiment
+2026-07-25T18:34:01.6769414Z  * [new ref]         c9081d2b383952459da496294ca93e02c8249c15 -> origin/main
+2026-07-25T18:34:01.6795992Z ##[endgroup]
+2026-07-25T18:34:01.6814597Z ##[group]Determining the checkout info
+2026-07-25T18:34:01.6818911Z ##[endgroup]
+2026-07-25T18:34:01.6841000Z [command]/usr/bin/git sparse-checkout disable
+2026-07-25T18:34:01.6891262Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-07-25T18:34:01.6921226Z ##[group]Checking out the ref
+2026-07-25T18:34:01.6926849Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-07-25T18:34:01.6944488Z Switched to a new branch 'main'
+2026-07-25T18:34:01.6950507Z Branch 'main' set up to track remote branch 'main' from 'origin'.
+2026-07-25T18:34:01.6991153Z ##[endgroup]
+2026-07-25T18:34:01.7031492Z [command]/usr/bin/git log -1 --format=%H
+2026-07-25T18:34:01.7038859Z c9081d2b383952459da496294ca93e02c8249c15
+2026-07-25T18:34:01.7257744Z ##[group]Run bash translate_srad.sh srad.cu 2048 2048 0 127 0 127 0.5 2
+2026-07-25T18:34:01.7258351Z [36;1mbash translate_srad.sh srad.cu 2048 2048 0 127 0 127 0.5 2[0m
+2026-07-25T18:34:01.7261965Z shell: sh -e {0}
+2026-07-25T18:34:01.7262209Z ##[endgroup]
+2026-07-25T18:34:01.8092872Z Ubuntu clang version 14.0.0-1ubuntu1.1
+2026-07-25T18:34:01.8093773Z Target: x86_64-pc-linux-gnu
+2026-07-25T18:34:01.8094668Z Thread model: posix
+2026-07-25T18:34:01.8095125Z InstalledDir: /usr/bin
+2026-07-25T18:34:01.8095801Z Found candidate GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+2026-07-25T18:34:01.8096705Z Selected GCC installation: /usr/bin/../lib/gcc/x86_64-linux-gnu/11
+2026-07-25T18:34:01.8097471Z Candidate multilib: .;@m64
+2026-07-25T18:34:01.8097987Z Selected multilib: .;@m64
+2026-07-25T18:34:01.8098627Z Found CUDA installation: /usr/local/cuda, version 
+2026-07-25T18:34:01.8102272Z clang: warning: CUDA version is newer than the latest supported version 11.5 [-Wunknown-cuda-version]
+2026-07-25T18:34:01.8129494Z  "/usr/lib/llvm-14/bin/clang" -cc1 -triple nvptx64-nvidia-cuda -aux-triple x86_64-pc-linux-gnu -E -save-temps=cwd -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name srad.cu -mrelocation-model static -mframe-pointer=all -fno-rounding-math -fno-verbose-asm -no-integrated-as -aux-target-cpu x86-64 -fcuda-is-device -mllvm -enable-memcpyopt-without-libcalls -mlink-builtin-bitcode /usr/local/cuda/nvvm/libdevice/libdevice.10.bc -target-feature +ptx75 -target-sdk-version=11.5 -target-cpu sm_50 -debugger-tuning=gdb -fno-dwarf-directory-asm -v -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include/cuda_wrappers -include __clang_cuda_runtime_wrapper.h -I . -I /opt/CuPBoP -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -internal-isystem /usr/local/cuda/include -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -std=c++11 -fdeprecated-macro -fno-autolink -fdebug-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -ferror-limit 19 -pthread -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -cuid=190d9936712d6c7d -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o srad-cuda-nvptx64-nvidia-cuda-sm_50.cui -x cuda srad.cu
+2026-07-25T18:34:01.8268706Z clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+2026-07-25T18:34:01.8275951Z ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+2026-07-25T18:34:01.8277550Z ignoring nonexistent directory "/include"
+2026-07-25T18:34:01.8278654Z ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+2026-07-25T18:34:01.8279711Z ignoring nonexistent directory "/include"
+2026-07-25T18:34:01.8280766Z ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11"
+2026-07-25T18:34:01.8282379Z ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11"
+2026-07-25T18:34:01.8283648Z ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward"
+2026-07-25T18:34:01.8284798Z ignoring duplicate directory "/usr/lib/llvm-14/lib/clang/14.0.0/include"
+2026-07-25T18:34:01.8285693Z ignoring duplicate directory "/usr/local/include"
+2026-07-25T18:34:01.8286654Z ignoring duplicate directory "/usr/include/x86_64-linux-gnu"
+2026-07-25T18:34:01.8287426Z ignoring duplicate directory "/usr/include"
+2026-07-25T18:34:01.8288067Z #include "..." search starts here:
+2026-07-25T18:34:01.8288674Z #include <...> search starts here:
+2026-07-25T18:34:01.8289267Z  .
+2026-07-25T18:34:01.8289703Z  /opt/CuPBoP
+2026-07-25T18:34:01.8290380Z  /usr/lib/llvm-14/lib/clang/14.0.0/include/cuda_wrappers
+2026-07-25T18:34:01.8291111Z  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11
+2026-07-25T18:34:01.8291945Z  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11
+2026-07-25T18:34:01.8292870Z  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward
+2026-07-25T18:34:01.8293679Z  /usr/lib/llvm-14/lib/clang/14.0.0/include
+2026-07-25T18:34:01.8294325Z  /usr/local/include
+2026-07-25T18:34:01.8294850Z  /usr/include/x86_64-linux-gnu
+2026-07-25T18:34:01.8295436Z  /usr/include
+2026-07-25T18:34:01.8295957Z  /usr/local/cuda/include
+2026-07-25T18:34:01.8296513Z End of search list.
+2026-07-25T18:34:01.8849090Z  "/usr/lib/llvm-14/bin/clang" -cc1 -triple nvptx64-nvidia-cuda -aux-triple x86_64-pc-linux-gnu -emit-llvm-bc -emit-llvm-uselists -save-temps=cwd -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name srad.cu -mrelocation-model static -mframe-pointer=all -fno-rounding-math -fno-verbose-asm -no-integrated-as -aux-target-cpu x86-64 -fcuda-is-device -mllvm -enable-memcpyopt-without-libcalls -mlink-builtin-bitcode /usr/local/cuda/nvvm/libdevice/libdevice.10.bc -target-feature +ptx75 -target-sdk-version=11.5 -target-cpu sm_50 -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -fno-dwarf-directory-asm -v -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -std=c++11 -fdeprecated-macro -fno-autolink -fdebug-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -ferror-limit 19 -pthread -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -disable-llvm-passes -cuid=190d9936712d6c7d -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o srad-cuda-nvptx64-nvidia-cuda-sm_50.bc -x cuda-cpp-output srad-cuda-nvptx64-nvidia-cuda-sm_50.cui
+2026-07-25T18:34:01.8995250Z clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+2026-07-25T18:34:01.8999073Z #include "..." search starts here:
+2026-07-25T18:34:01.8999794Z End of search list.
+2026-07-25T18:34:02.1371282Z srad.cu:240:5: warning: 'cudaThreadSynchronize' is deprecated [-Wdeprecated-declarations]
+2026-07-25T18:34:02.1374459Z     cudaThreadSynchronize();
+2026-07-25T18:34:02.1375149Z     ^
+2026-07-25T18:34:02.1376193Z /usr/local/cuda/include/cuda_runtime_api.h:1057:23: note: 'cudaThreadSynchronize' has been explicitly marked deprecated here
+2026-07-25T18:34:02.1377674Z extern __attribute__((deprecated)) __attribute__((host)) cudaError_t cudaThreadSynchronize(void);
+2026-07-25T18:34:02.1378595Z                       ^
+2026-07-25T18:34:02.1406950Z 1 warning generated when compiling for sm_50.
+2026-07-25T18:34:02.1441594Z  "/usr/lib/llvm-14/bin/clang" -cc1 -triple nvptx64-nvidia-cuda -aux-triple x86_64-pc-linux-gnu -S -save-temps=cwd -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name srad.cu -mrelocation-model static -mframe-pointer=all -fno-rounding-math -fno-verbose-asm -no-integrated-as -aux-target-cpu x86-64 -fcuda-is-device -mllvm -enable-memcpyopt-without-libcalls -mlink-builtin-bitcode /usr/local/cuda/nvvm/libdevice/libdevice.10.bc -target-feature +ptx75 -target-sdk-version=11.5 -target-cpu sm_50 -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -fno-dwarf-directory-asm -v -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -std=c++11 -fno-autolink -fdebug-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -ferror-limit 19 -pthread -fgnuc-version=4.2.1 -cuid=190d9936712d6c7d -o srad-cuda-nvptx64-nvidia-cuda-sm_50.s -x ir srad-cuda-nvptx64-nvidia-cuda-sm_50.bc
+2026-07-25T18:34:02.1601521Z clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+2026-07-25T18:34:02.1703102Z  "/usr/local/cuda/bin/ptxas" -m64 -O0 -v --gpu-name sm_50 --output-file srad-cuda-nvptx64-nvidia-cuda-sm_50.o srad-cuda-nvptx64-nvidia-cuda-sm_50.s
+2026-07-25T18:34:02.2221786Z ptxas info    : 3 bytes gmem
+2026-07-25T18:34:02.2222798Z ptxas info    : Compiling entry function '_Z11srad_cuda_2PfS_S_S_S_S_iiff' for 'sm_50'
+2026-07-25T18:34:02.2223955Z ptxas info    : Function properties for _Z11srad_cuda_2PfS_S_S_S_S_iiff
+2026-07-25T18:34:02.2224964Z     120 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2026-07-25T18:34:02.2225868Z ptxas info    : Used 22 registers, 5120 bytes smem, 384 bytes cmem[0]
+2026-07-25T18:34:02.2226857Z ptxas info    : Compiling entry function '_Z11srad_cuda_1PfS_S_S_S_S_iif' for 'sm_50'
+2026-07-25T18:34:02.2227870Z ptxas info    : Function properties for _Z11srad_cuda_1PfS_S_S_S_S_iif
+2026-07-25T18:34:02.2228760Z     144 bytes stack frame, 0 bytes spill stores, 0 bytes spill loads
+2026-07-25T18:34:02.2229739Z ptxas info    : Used 21 registers, 6144 bytes smem, 380 bytes cmem[0], 8 bytes cmem[2]
+2026-07-25T18:34:02.2242083Z  "/usr/local/cuda/bin/fatbinary" -64 --create srad.cu-cuda-nvptx64-nvidia-cuda.fatbin --image=profile=sm_50,file=srad-cuda-nvptx64-nvidia-cuda-sm_50.o --image=profile=compute_50,file=srad-cuda-nvptx64-nvidia-cuda-sm_50.s
+2026-07-25T18:34:02.2272944Z  "/usr/lib/llvm-14/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -target-sdk-version=11.5 -aux-triple nvptx64-nvidia-cuda -E -save-temps=cwd -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name srad.cu -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -debugger-tuning=gdb -v -fcoverage-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include/cuda_wrappers -include __clang_cuda_runtime_wrapper.h -I . -I /opt/CuPBoP -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11 -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -internal-isystem /usr/lib/llvm-14/lib/clang/14.0.0/include -internal-isystem /usr/local/include -internal-isystem /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include -internal-externc-isystem /usr/include/x86_64-linux-gnu -internal-externc-isystem /include -internal-externc-isystem /usr/include -internal-isystem /usr/local/cuda/include -std=c++11 -fdeprecated-macro -fdebug-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -ferror-limit 19 -pthread -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -cuid=190d9936712d6c7d -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o srad-host-x86_64-pc-linux-gnu.cui -x cuda srad.cu
+2026-07-25T18:34:02.2414883Z clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+2026-07-25T18:34:02.2421043Z ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+2026-07-25T18:34:02.2422538Z ignoring nonexistent directory "/include"
+2026-07-25T18:34:02.2423759Z ignoring nonexistent directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../x86_64-linux-gnu/include"
+2026-07-25T18:34:02.2425145Z ignoring nonexistent directory "/include"
+2026-07-25T18:34:02.2426047Z ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11"
+2026-07-25T18:34:02.2427233Z ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11"
+2026-07-25T18:34:02.2428584Z ignoring duplicate directory "/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward"
+2026-07-25T18:34:02.2429768Z ignoring duplicate directory "/usr/lib/llvm-14/lib/clang/14.0.0/include"
+2026-07-25T18:34:02.2430823Z ignoring duplicate directory "/usr/local/include"
+2026-07-25T18:34:02.2431628Z ignoring duplicate directory "/usr/include/x86_64-linux-gnu"
+2026-07-25T18:34:02.2432402Z ignoring duplicate directory "/usr/include"
+2026-07-25T18:34:02.2433041Z #include "..." search starts here:
+2026-07-25T18:34:02.2433635Z #include <...> search starts here:
+2026-07-25T18:34:02.2434192Z  .
+2026-07-25T18:34:02.2434626Z  /opt/CuPBoP
+2026-07-25T18:34:02.2435131Z  /usr/lib/llvm-14/lib/clang/14.0.0/include/cuda_wrappers
+2026-07-25T18:34:02.2435860Z  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11
+2026-07-25T18:34:02.2436712Z  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/x86_64-linux-gnu/c++/11
+2026-07-25T18:34:02.2437699Z  /usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../include/c++/11/backward
+2026-07-25T18:34:02.2438548Z  /usr/lib/llvm-14/lib/clang/14.0.0/include
+2026-07-25T18:34:02.2439216Z  /usr/local/include
+2026-07-25T18:34:02.2439766Z  /usr/include/x86_64-linux-gnu
+2026-07-25T18:34:02.2440489Z  /usr/include
+2026-07-25T18:34:02.2441003Z  /usr/local/cuda/include
+2026-07-25T18:34:02.2441558Z End of search list.
+2026-07-25T18:34:02.3119521Z  "/usr/lib/llvm-14/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -target-sdk-version=11.5 -aux-triple nvptx64-nvidia-cuda -emit-llvm-bc -emit-llvm-uselists -save-temps=cwd -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name srad.cu -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -std=c++11 -fdeprecated-macro -fdebug-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -ferror-limit 19 -pthread -fgnuc-version=4.2.1 -fcxx-exceptions -fexceptions -disable-llvm-passes -fcuda-include-gpubinary srad.cu-cuda-nvptx64-nvidia-cuda.fatbin -cuid=190d9936712d6c7d -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o srad-host-x86_64-pc-linux-gnu.bc -x cuda-cpp-output srad-host-x86_64-pc-linux-gnu.cui
+2026-07-25T18:34:02.3309272Z clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+2026-07-25T18:34:02.3317941Z #include "..." search starts here:
+2026-07-25T18:34:02.3320633Z End of search list.
+2026-07-25T18:34:02.5953307Z srad.cu:240:5: warning: 'cudaThreadSynchronize' is deprecated [-Wdeprecated-declarations]
+2026-07-25T18:34:02.5954297Z     cudaThreadSynchronize();
+2026-07-25T18:34:02.5955642Z     ^
+2026-07-25T18:34:02.5956574Z /usr/local/cuda/include/cuda_runtime_api.h:1057:23: note: 'cudaThreadSynchronize' has been explicitly marked deprecated here
+2026-07-25T18:34:02.5958383Z extern __attribute__((deprecated)) __attribute__((host)) cudaError_t cudaThreadSynchronize(void);
+2026-07-25T18:34:02.5959294Z                       ^
+2026-07-25T18:34:02.6006887Z 1 warning generated when compiling for host.
+2026-07-25T18:34:02.6048394Z  "/usr/lib/llvm-14/bin/clang" -cc1 -triple x86_64-pc-linux-gnu -target-sdk-version=11.5 -aux-triple nvptx64-nvidia-cuda -S -save-temps=cwd -disable-free -clear-ast-before-backend -disable-llvm-verifier -discard-value-names -main-file-name srad.cu -mrelocation-model pic -pic-level 2 -pic-is-pie -mframe-pointer=all -fmath-errno -ffp-contract=on -fno-rounding-math -mconstructor-aliases -funwind-tables=2 -target-cpu x86-64 -tune-cpu generic -mllvm -treat-scalable-fixed-error-as-warning -debugger-tuning=gdb -v -fcoverage-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -resource-dir /usr/lib/llvm-14/lib/clang/14.0.0 -std=c++11 -fdebug-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -ferror-limit 19 -pthread -fgnuc-version=4.2.1 -cuid=190d9936712d6c7d -faddrsig -D__GCC_HAVE_DWARF2_CFI_ASM=1 -o srad-host-x86_64-pc-linux-gnu.s -x ir srad-host-x86_64-pc-linux-gnu.bc
+2026-07-25T18:34:02.6192833Z clang -cc1 version 14.0.0 based upon LLVM 14.0.0 default target x86_64-pc-linux-gnu
+2026-07-25T18:34:02.6300742Z  "/usr/lib/llvm-14/bin/clang" -cc1as -triple x86_64-pc-linux-gnu -filetype obj -main-file-name srad.cu -target-cpu x86-64 -I . -I /opt/CuPBoP -fdebug-compilation-dir=/__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2 -dwarf-version=5 -mrelocation-model pic -mrelax-all --mrelax-relocations -o srad-host-x86_64-pc-linux-gnu.o srad-host-x86_64-pc-linux-gnu.s
+2026-07-25T18:34:02.6482746Z  "/usr/bin/ld" -pie -z relro --hash-style=gnu --build-id --eh-frame-hdr -m elf_x86_64 -dynamic-linker /lib64/ld-linux-x86-64.so.2 -o a.out /lib/x86_64-linux-gnu/Scrt1.o /lib/x86_64-linux-gnu/crti.o /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtbeginS.o -L/usr/local/cuda/lib64 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11 -L/usr/bin/../lib/gcc/x86_64-linux-gnu/11/../../../../lib64 -L/lib/x86_64-linux-gnu -L/lib/../lib64 -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib64 -L/usr/lib/llvm-14/bin/../lib -L/lib -L/usr/lib -L/usr/local/cuda/lib64/stubs srad-host-x86_64-pc-linux-gnu.o -lcudart_static -ldl -lrt -lstdc++ -lm -lgcc_s -lgcc -lpthread -lc -lgcc_s -lgcc /usr/bin/../lib/gcc/x86_64-linux-gnu/11/crtendS.o /lib/x86_64-linux-gnu/crtn.o
+2026-07-25T18:34:02.6973205Z kernel=srad-cuda-nvptx64-nvidia-cuda-sm_50.bc  host=srad-host-x86_64-pc-linux-gnu.bc
+2026-07-25T18:34:02.9687102Z === translation + link OK, running on CPU (CuPBoP) ===
+2026-07-25T18:34:04.1209334Z WG size of kernel = 16 X 16
+2026-07-25T18:34:04.1210348Z Randomizing the input matrix
+2026-07-25T18:34:04.1210973Z Start the SRAD main loop
+2026-07-25T18:34:04.1211445Z Computation Done
+2026-07-25T18:34:04.1215278Z === srad_v2 ran to completion under CuPBoP ===
+2026-07-25T18:34:04.1366763Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-25T18:34:04.1368302Z Post job cleanup.
+2026-07-25T18:34:04.1376003Z ##[command]/usr/bin/docker exec  30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547 sh -c "cat /etc/*release | grep ^ID"
+2026-07-25T18:34:04.3251895Z [command]/usr/bin/git version
+2026-07-25T18:34:04.3309018Z git version 2.34.1
+2026-07-25T18:34:04.3371131Z Temporarily overriding HOME='/__w/_temp/fbe7c91d-cf0d-4a55-8e93-7c78a3e05e4c' before making global git config changes
+2026-07-25T18:34:04.3372682Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-25T18:34:04.3374198Z [command]/usr/bin/git config --global --add safe.directory /__w/cupbop-experiment/cupbop-experiment
+2026-07-25T18:34:04.3441352Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-25T18:34:04.3496735Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-25T18:34:04.3848601Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-25T18:34:04.3877951Z http.https://github.com/.extraheader
+2026-07-25T18:34:04.3898099Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-07-25T18:34:04.3943389Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-25T18:34:04.4346032Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-25T18:34:04.4431337Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-25T18:34:04.4871968Z Stop and remove container: 7eb529b0e93944269a69f71c172fdbce_ghcriolospollos19cupbopexperimentcupbopsillatest_fdbf97
+2026-07-25T18:34:04.4878746Z ##[command]/usr/bin/docker rm --force 30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547
+2026-07-25T18:34:04.5893962Z 30bad283beb490afe1c4f05442a1da56ab41e2613c013eb8468c137794bd0547
+2026-07-25T18:34:04.5928352Z Remove container network: github_network_fd5b2460ae7d4d79a01d04fb70534379
+2026-07-25T18:34:04.5933870Z ##[command]/usr/bin/docker network rm github_network_fd5b2460ae7d4d79a01d04fb70534379
+2026-07-25T18:34:04.6741161Z github_network_fd5b2460ae7d4d79a01d04fb70534379
+2026-07-25T18:34:04.6818190Z Cleaning up orphan processes
+2026-07-25T18:34:04.7118215Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

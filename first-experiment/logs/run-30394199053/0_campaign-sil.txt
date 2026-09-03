@@ -1,0 +1,458 @@
+﻿2026-07-28T19:57:40.7371389Z Current runner version: '2.336.0'
+2026-07-28T19:57:40.7436182Z ##[group]Runner Image Provisioner
+2026-07-28T19:57:40.7437669Z Hosted Compute Agent
+2026-07-28T19:57:40.7439054Z Version: 20260707.563
+2026-07-28T19:57:40.7440121Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-07-28T19:57:40.7441479Z Build Date: 2026-07-07T19:33:50Z
+2026-07-28T19:57:40.7442714Z Worker ID: {1c5b263a-4b6e-494e-be6d-c55a89674be4}
+2026-07-28T19:57:40.7444040Z Azure Region: eastus
+2026-07-28T19:57:40.7445015Z ##[endgroup]
+2026-07-28T19:57:40.7447626Z ##[group]Operating System
+2026-07-28T19:57:40.7469236Z Ubuntu
+2026-07-28T19:57:40.7470166Z 22.04.5
+2026-07-28T19:57:40.7471158Z LTS
+2026-07-28T19:57:40.7472042Z ##[endgroup]
+2026-07-28T19:57:40.7473141Z ##[group]Runner Image
+2026-07-28T19:57:40.7474248Z Image: ubuntu-22.04
+2026-07-28T19:57:40.7475205Z Version: 20260720.234.2
+2026-07-28T19:57:40.7477478Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20260720.234/images/ubuntu/Ubuntu2204-Readme.md
+2026-07-28T19:57:40.7481135Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20260720.234
+2026-07-28T19:57:40.7482889Z ##[endgroup]
+2026-07-28T19:57:40.7484948Z ##[group]GITHUB_TOKEN Permissions
+2026-07-28T19:57:40.7488038Z Contents: read
+2026-07-28T19:57:40.7509732Z Metadata: read
+2026-07-28T19:57:40.7510759Z Packages: read
+2026-07-28T19:57:40.7511843Z ##[endgroup]
+2026-07-28T19:57:40.7515439Z Secret source: Actions
+2026-07-28T19:57:40.7517753Z Prepare workflow directory
+2026-07-28T19:57:40.8689545Z Prepare all required actions
+2026-07-28T19:57:40.8767263Z Getting action download info
+2026-07-28T19:57:41.1137558Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-07-28T19:57:41.3390796Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-07-28T19:57:41.5665822Z Complete job name: campaign-sil
+2026-07-28T19:57:41.6265017Z ##[group]Checking docker version
+2026-07-28T19:57:41.6286126Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-07-28T19:57:41.7230841Z '1.48'
+2026-07-28T19:57:41.7244308Z Docker daemon API version: '1.48'
+2026-07-28T19:57:41.7245560Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-07-28T19:57:41.7631236Z '1.48'
+2026-07-28T19:57:41.7635207Z Docker client API version: '1.48'
+2026-07-28T19:57:41.7642017Z ##[endgroup]
+2026-07-28T19:57:41.7648612Z ##[group]Clean up resources from previous jobs
+2026-07-28T19:57:41.7655674Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=040cf7"
+2026-07-28T19:57:41.7922282Z ##[command]/usr/bin/docker network prune --force --filter "label=040cf7"
+2026-07-28T19:57:41.8159894Z ##[endgroup]
+2026-07-28T19:57:41.8160434Z ##[group]Create local container network
+2026-07-28T19:57:41.8170685Z ##[command]/usr/bin/docker network create --label 040cf7 github_network_3288d91ea3f94a57ac3499198dbde691
+2026-07-28T19:57:41.8854451Z 278a62c15e6e3958fc1ab825a25854f4427c8cd51697a6acde87fe6e7571d0ba
+2026-07-28T19:57:41.8863537Z ##[endgroup]
+2026-07-28T19:57:41.8888711Z ##[group]Starting job container
+2026-07-28T19:57:41.8915213Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_d17d7a5f-ec0d-4091-8162-deed50ea03d8 login ghcr.io -u lospollos19 --password-stdin
+2026-07-28T19:57:42.0634887Z ##[command]/usr/bin/docker --config /home/runner/work/_temp/.docker_d17d7a5f-ec0d-4091-8162-deed50ea03d8 pull ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest
+2026-07-28T19:57:42.5333249Z latest: Pulling from lospollos19/cupbop-experiment/cupbop-sil
+2026-07-28T19:57:42.6808517Z aece8493d397: Pulling fs layer
+2026-07-28T19:57:42.6810403Z 976b13f9ef1a: Pulling fs layer
+2026-07-28T19:57:42.6814243Z b63c65d3acaa: Pulling fs layer
+2026-07-28T19:57:42.6815877Z 4dda4739d007: Pulling fs layer
+2026-07-28T19:57:42.6817175Z 197843862cd5: Pulling fs layer
+2026-07-28T19:57:42.6818848Z cf87cabd72e2: Pulling fs layer
+2026-07-28T19:57:42.6820204Z 7908cc89184b: Pulling fs layer
+2026-07-28T19:57:42.6821857Z 125997f82033: Pulling fs layer
+2026-07-28T19:57:42.6823067Z 675adc119131: Pulling fs layer
+2026-07-28T19:57:42.6824266Z ce04642bc4a1: Pulling fs layer
+2026-07-28T19:57:42.6825479Z ab12bfa13ae3: Pulling fs layer
+2026-07-28T19:57:42.6826755Z 2e11f6f0a93d: Pulling fs layer
+2026-07-28T19:57:42.6828029Z 9dce873ba65b: Pulling fs layer
+2026-07-28T19:57:42.6832378Z 4f4fb700ef54: Pulling fs layer
+2026-07-28T19:57:42.6833479Z 8d9e35d37b58: Pulling fs layer
+2026-07-28T19:57:42.6834343Z 16e1e99185fd: Pulling fs layer
+2026-07-28T19:57:42.6835193Z 164671959084: Pulling fs layer
+2026-07-28T19:57:42.6836031Z 372952b0bfd4: Pulling fs layer
+2026-07-28T19:57:42.6836881Z 4dda4739d007: Waiting
+2026-07-28T19:57:42.6837637Z 197843862cd5: Waiting
+2026-07-28T19:57:42.6838704Z cf87cabd72e2: Waiting
+2026-07-28T19:57:42.6839642Z 7908cc89184b: Waiting
+2026-07-28T19:57:42.6840537Z 125997f82033: Waiting
+2026-07-28T19:57:42.6841458Z 675adc119131: Waiting
+2026-07-28T19:57:42.6842414Z ce04642bc4a1: Waiting
+2026-07-28T19:57:42.6843417Z ab12bfa13ae3: Waiting
+2026-07-28T19:57:42.6844384Z 2e11f6f0a93d: Waiting
+2026-07-28T19:57:42.6845363Z 9dce873ba65b: Waiting
+2026-07-28T19:57:42.6846355Z 4f4fb700ef54: Waiting
+2026-07-28T19:57:42.6847885Z 8d9e35d37b58: Waiting
+2026-07-28T19:57:42.6850870Z 16e1e99185fd: Waiting
+2026-07-28T19:57:42.6852572Z 164671959084: Waiting
+2026-07-28T19:57:42.6854052Z 372952b0bfd4: Waiting
+2026-07-28T19:57:42.9610864Z 976b13f9ef1a: Verifying Checksum
+2026-07-28T19:57:42.9650184Z 976b13f9ef1a: Download complete
+2026-07-28T19:57:43.1263110Z aece8493d397: Verifying Checksum
+2026-07-28T19:57:43.1265449Z aece8493d397: Download complete
+2026-07-28T19:57:43.1751332Z b63c65d3acaa: Verifying Checksum
+2026-07-28T19:57:43.1754431Z b63c65d3acaa: Download complete
+2026-07-28T19:57:43.2197954Z 4dda4739d007: Verifying Checksum
+2026-07-28T19:57:43.2201273Z 4dda4739d007: Download complete
+2026-07-28T19:57:43.3744203Z 197843862cd5: Verifying Checksum
+2026-07-28T19:57:43.3746096Z 197843862cd5: Download complete
+2026-07-28T19:57:43.4720932Z 7908cc89184b: Verifying Checksum
+2026-07-28T19:57:43.4724170Z 7908cc89184b: Download complete
+2026-07-28T19:57:43.6205420Z 125997f82033: Download complete
+2026-07-28T19:57:43.7056159Z 675adc119131: Verifying Checksum
+2026-07-28T19:57:43.7060542Z 675adc119131: Download complete
+2026-07-28T19:57:43.9589466Z ab12bfa13ae3: Verifying Checksum
+2026-07-28T19:57:43.9614032Z ab12bfa13ae3: Download complete
+2026-07-28T19:57:46.1840565Z aece8493d397: Pull complete
+2026-07-28T19:57:51.2212038Z cf87cabd72e2: Verifying Checksum
+2026-07-28T19:57:51.2218879Z cf87cabd72e2: Download complete
+2026-07-28T19:57:51.5578841Z 9dce873ba65b: Download complete
+2026-07-28T19:57:51.8130201Z 4f4fb700ef54: Verifying Checksum
+2026-07-28T19:57:51.8131155Z 4f4fb700ef54: Download complete
+2026-07-28T19:57:55.3132984Z 2e11f6f0a93d: Verifying Checksum
+2026-07-28T19:57:55.3134453Z 2e11f6f0a93d: Download complete
+2026-07-28T19:57:55.5474920Z 16e1e99185fd: Verifying Checksum
+2026-07-28T19:57:55.5476120Z 16e1e99185fd: Download complete
+2026-07-28T19:57:55.7430605Z 8d9e35d37b58: Verifying Checksum
+2026-07-28T19:57:55.7431904Z 8d9e35d37b58: Download complete
+2026-07-28T19:57:56.1024831Z 372952b0bfd4: Verifying Checksum
+2026-07-28T19:57:56.1025950Z 372952b0bfd4: Download complete
+2026-07-28T19:57:56.1210302Z 164671959084: Verifying Checksum
+2026-07-28T19:57:56.1210632Z 164671959084: Download complete
+2026-07-28T19:57:58.1241592Z 976b13f9ef1a: Pull complete
+2026-07-28T19:58:00.2125113Z b63c65d3acaa: Pull complete
+2026-07-28T19:58:00.4859707Z 4dda4739d007: Pull complete
+2026-07-28T19:58:00.5201950Z 197843862cd5: Pull complete
+2026-07-28T19:58:09.0634090Z ce04642bc4a1: Verifying Checksum
+2026-07-28T19:58:09.0635054Z ce04642bc4a1: Download complete
+2026-07-28T19:58:19.1147967Z cf87cabd72e2: Pull complete
+2026-07-28T19:58:19.1325946Z 7908cc89184b: Pull complete
+2026-07-28T19:58:19.1474703Z 125997f82033: Pull complete
+2026-07-28T19:58:19.1586395Z 675adc119131: Pull complete
+2026-07-28T19:58:49.0156756Z ce04642bc4a1: Pull complete
+2026-07-28T19:58:49.0353025Z ab12bfa13ae3: Pull complete
+2026-07-28T19:59:03.5715640Z 2e11f6f0a93d: Pull complete
+2026-07-28T19:59:03.5921730Z 9dce873ba65b: Pull complete
+2026-07-28T19:59:03.6047688Z 4f4fb700ef54: Pull complete
+2026-07-28T19:59:05.3630926Z 8d9e35d37b58: Pull complete
+2026-07-28T19:59:06.2128866Z 16e1e99185fd: Pull complete
+2026-07-28T19:59:06.3521431Z 164671959084: Pull complete
+2026-07-28T19:59:06.3647814Z 372952b0bfd4: Pull complete
+2026-07-28T19:59:06.3695364Z Digest: sha256:baa9727c6ee469d34e9a0b3996a198708086bae1130bf34e2b80c8c9f37ce76b
+2026-07-28T19:59:06.3709011Z Status: Downloaded newer image for ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest
+2026-07-28T19:59:06.3726695Z ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest
+2026-07-28T19:59:06.3824896Z ##[command]/usr/bin/docker create --name c510fa771e664d749d2af413171e5ab1_ghcriolospollos19cupbopexperimentcupbopsillatest_40475e --label 040cf7 --workdir /__w/cupbop-experiment/cupbop-experiment --network github_network_3288d91ea3f94a57ac3499198dbde691  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.336.0/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" ghcr.io/lospollos19/cupbop-experiment/cupbop-sil:latest "-f" "/dev/null"
+2026-07-28T19:59:06.4184653Z 618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3
+2026-07-28T19:59:06.4210682Z ##[command]/usr/bin/docker start 618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3
+2026-07-28T19:59:06.6567105Z 618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3
+2026-07-28T19:59:06.6595692Z ##[command]/usr/bin/docker ps --all --filter id=618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-07-28T19:59:06.6785113Z 618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3 Up Less than a second
+2026-07-28T19:59:06.6814166Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3
+2026-07-28T19:59:06.6969530Z CI=true
+2026-07-28T19:59:06.6970097Z HOME=/github/home
+2026-07-28T19:59:06.6970458Z GITHUB_ACTIONS=true
+2026-07-28T19:59:06.6971224Z PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-07-28T19:59:06.6972039Z NVARCH=x86_64
+2026-07-28T19:59:06.6974510Z NVIDIA_REQUIRE_CUDA=cuda>=11.7 brand=tesla,driver>=470,driver<471 brand=unknown,driver>=470,driver<471 brand=nvidia,driver>=470,driver<471 brand=nvidiartx,driver>=470,driver<471 brand=geforce,driver>=470,driver<471 brand=geforcertx,driver>=470,driver<471 brand=quadro,driver>=470,driver<471 brand=quadrortx,driver>=470,driver<471 brand=titan,driver>=470,driver<471 brand=titanrtx,driver>=470,driver<471
+2026-07-28T19:59:06.6977064Z NV_CUDA_CUDART_VERSION=11.7.99-1
+2026-07-28T19:59:06.6977506Z NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-7
+2026-07-28T19:59:06.6977952Z CUDA_VERSION=11.7.1
+2026-07-28T19:59:06.6978709Z LD_LIBRARY_PATH=/opt/CuPBoP/build/runtime:/opt/CuPBoP/build/runtime/threadPool
+2026-07-28T19:59:06.6979357Z NVIDIA_VISIBLE_DEVICES=all
+2026-07-28T19:59:06.6979759Z NVIDIA_DRIVER_CAPABILITIES=compute,utility
+2026-07-28T19:59:06.6980207Z NV_CUDA_LIB_VERSION=11.7.1-1
+2026-07-28T19:59:06.6980615Z NV_NVTX_VERSION=11.7.91-1
+2026-07-28T19:59:06.6980987Z NV_LIBNPP_VERSION=11.7.4.75-1
+2026-07-28T19:59:06.6981407Z NV_LIBNPP_PACKAGE=libnpp-11-7=11.7.4.75-1
+2026-07-28T19:59:06.6981887Z NV_LIBCUSPARSE_VERSION=11.7.4.91-1
+2026-07-28T19:59:06.6982330Z NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-7
+2026-07-28T19:59:06.6982786Z NV_LIBCUBLAS_VERSION=11.10.3.66-1
+2026-07-28T19:59:06.6983258Z NV_LIBCUBLAS_PACKAGE=libcublas-11-7=11.10.3.66-1
+2026-07-28T19:59:06.6983737Z NV_LIBNCCL_PACKAGE_NAME=libnccl2
+2026-07-28T19:59:06.6984896Z NV_LIBNCCL_PACKAGE_VERSION=2.13.4-1
+2026-07-28T19:59:06.6985341Z NCCL_VERSION=2.13.4-1
+2026-07-28T19:59:06.6985711Z NV_LIBNCCL_PACKAGE=libnccl2=2.13.4-1+cuda11.7
+2026-07-28T19:59:06.6986160Z NVIDIA_PRODUCT_NAME=CUDA
+2026-07-28T19:59:06.6986527Z NV_CUDA_CUDART_DEV_VERSION=11.7.99-1
+2026-07-28T19:59:06.6986970Z NV_NVML_DEV_VERSION=11.7.91-1
+2026-07-28T19:59:06.6987395Z NV_LIBCUSPARSE_DEV_VERSION=11.7.4.91-1
+2026-07-28T19:59:06.6987841Z NV_LIBNPP_DEV_VERSION=11.7.4.75-1
+2026-07-28T19:59:06.6988573Z NV_LIBNPP_DEV_PACKAGE=libnpp-dev-11-7=11.7.4.75-1
+2026-07-28T19:59:06.6989092Z NV_LIBCUBLAS_DEV_VERSION=11.10.3.66-1
+2026-07-28T19:59:06.6989596Z NV_LIBCUBLAS_DEV_PACKAGE_NAME=libcublas-dev-11-7
+2026-07-28T19:59:06.6990199Z NV_LIBCUBLAS_DEV_PACKAGE=libcublas-dev-11-7=11.10.3.66-1
+2026-07-28T19:59:06.6990786Z NV_CUDA_NSIGHT_COMPUTE_VERSION=11.7.1-1
+2026-07-28T19:59:06.6991571Z NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE=cuda-nsight-compute-11-7=11.7.1-1
+2026-07-28T19:59:06.6992201Z NV_NVPROF_VERSION=11.7.101-1
+2026-07-28T19:59:06.6992644Z NV_NVPROF_DEV_PACKAGE=cuda-nvprof-11-7=11.7.101-1
+2026-07-28T19:59:06.6993158Z NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+2026-07-28T19:59:06.6993617Z NV_LIBNCCL_DEV_PACKAGE_VERSION=2.13.4-1
+2026-07-28T19:59:06.6994121Z NV_LIBNCCL_DEV_PACKAGE=libnccl-dev=2.13.4-1+cuda11.7
+2026-07-28T19:59:06.6994654Z LIBRARY_PATH=/usr/local/cuda/lib64/stubs
+2026-07-28T19:59:06.6995118Z CuPBoP_PATH=/opt/CuPBoP
+2026-07-28T19:59:06.6995403Z CUDA_PATH=/usr/local/cuda
+2026-07-28T19:59:06.7004451Z ##[endgroup]
+2026-07-28T19:59:06.7014070Z ##[group]Waiting for all services to be ready
+2026-07-28T19:59:06.7015778Z ##[endgroup]
+2026-07-28T19:59:06.7295007Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-28T19:59:06.7303652Z ##[group]Run actions/checkout@v4
+2026-07-28T19:59:06.7304100Z with:
+2026-07-28T19:59:06.7304334Z   repository: lospollos19/cupbop-experiment
+2026-07-28T19:59:06.7306800Z   token: ***
+2026-07-28T19:59:06.7307006Z   ssh-strict: true
+2026-07-28T19:59:06.7307207Z   ssh-user: git
+2026-07-28T19:59:06.7307402Z   persist-credentials: true
+2026-07-28T19:59:06.7376935Z   clean: true
+2026-07-28T19:59:06.7377285Z   sparse-checkout-cone-mode: true
+2026-07-28T19:59:06.7377680Z   fetch-depth: 1
+2026-07-28T19:59:06.7377989Z   fetch-tags: false
+2026-07-28T19:59:06.7378584Z   show-progress: true
+2026-07-28T19:59:06.7378910Z   lfs: false
+2026-07-28T19:59:06.7379267Z   submodules: false
+2026-07-28T19:59:06.7379600Z   set-safe-directory: true
+2026-07-28T19:59:06.7379987Z   allow-unsafe-pr-checkout: false
+2026-07-28T19:59:06.7383705Z ##[endgroup]
+2026-07-28T19:59:06.7454535Z ##[command]/usr/bin/docker exec  618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3 sh -c "cat /etc/*release | grep ^ID"
+2026-07-28T19:59:07.1316423Z Syncing repository: lospollos19/cupbop-experiment
+2026-07-28T19:59:07.1318984Z ##[group]Getting Git version info
+2026-07-28T19:59:07.1320078Z Working directory is '/__w/cupbop-experiment/cupbop-experiment'
+2026-07-28T19:59:07.1321295Z [command]/usr/bin/git version
+2026-07-28T19:59:07.1400850Z git version 2.34.1
+2026-07-28T19:59:07.1450805Z ##[endgroup]
+2026-07-28T19:59:07.1471911Z Temporarily overriding HOME='/__w/_temp/e11f1763-404e-4d05-b775-00b7f0c99d59' before making global git config changes
+2026-07-28T19:59:07.1475508Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-28T19:59:07.1480511Z [command]/usr/bin/git config --global --add safe.directory /__w/cupbop-experiment/cupbop-experiment
+2026-07-28T19:59:07.1553604Z Deleting the contents of '/__w/cupbop-experiment/cupbop-experiment'
+2026-07-28T19:59:07.1554936Z ##[group]Initializing the repository
+2026-07-28T19:59:07.1555728Z [command]/usr/bin/git init /__w/cupbop-experiment/cupbop-experiment
+2026-07-28T19:59:07.1611310Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-07-28T19:59:07.1629213Z hint: is subject to change. To configure the initial branch name to use in all
+2026-07-28T19:59:07.1648989Z hint: of your new repositories, which will suppress this warning, call:
+2026-07-28T19:59:07.1660923Z hint: 
+2026-07-28T19:59:07.1678063Z hint: 	git config --global init.defaultBranch <name>
+2026-07-28T19:59:07.1701413Z hint: 
+2026-07-28T19:59:07.1709101Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-07-28T19:59:07.1727307Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-07-28T19:59:07.1748801Z hint: 
+2026-07-28T19:59:07.1768977Z hint: 	git branch -m <name>
+2026-07-28T19:59:07.1769727Z Initialized empty Git repository in /__w/cupbop-experiment/cupbop-experiment/.git/
+2026-07-28T19:59:07.1771624Z [command]/usr/bin/git remote add origin https://github.com/lospollos19/cupbop-experiment
+2026-07-28T19:59:07.1773379Z ##[endgroup]
+2026-07-28T19:59:07.1774041Z ##[group]Disabling automatic garbage collection
+2026-07-28T19:59:07.1774635Z [command]/usr/bin/git config --local gc.auto 0
+2026-07-28T19:59:07.1818910Z ##[endgroup]
+2026-07-28T19:59:07.1819718Z ##[group]Setting up auth
+2026-07-28T19:59:07.1820598Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-28T19:59:07.1909350Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-28T19:59:07.2328561Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-28T19:59:07.2404439Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-28T19:59:07.2858807Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-28T19:59:07.2880390Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-28T19:59:07.3255825Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-07-28T19:59:07.3303799Z ##[endgroup]
+2026-07-28T19:59:07.3304960Z ##[group]Fetching the repository
+2026-07-28T19:59:07.3316365Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +cab5139ee2a0d4d7e5e891fa32258a801752ac41:refs/remotes/origin/main
+2026-07-28T19:59:07.6494700Z From https://github.com/lospollos19/cupbop-experiment
+2026-07-28T19:59:07.6496205Z  * [new ref]         cab5139ee2a0d4d7e5e891fa32258a801752ac41 -> origin/main
+2026-07-28T19:59:07.6522143Z ##[endgroup]
+2026-07-28T19:59:07.6522742Z ##[group]Determining the checkout info
+2026-07-28T19:59:07.6527251Z ##[endgroup]
+2026-07-28T19:59:07.6535812Z [command]/usr/bin/git sparse-checkout disable
+2026-07-28T19:59:07.6587577Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-07-28T19:59:07.6624406Z ##[group]Checking out the ref
+2026-07-28T19:59:07.6630220Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-07-28T19:59:07.6825408Z Switched to a new branch 'main'
+2026-07-28T19:59:07.6826673Z Branch 'main' set up to track remote branch 'main' from 'origin'.
+2026-07-28T19:59:07.6832671Z ##[endgroup]
+2026-07-28T19:59:07.6899010Z [command]/usr/bin/git log -1 --format=%H
+2026-07-28T19:59:07.6957457Z cab5139ee2a0d4d7e5e891fa32258a801752ac41
+2026-07-28T19:59:07.7238004Z ##[group]Run bash run_campaign.sh sil | tee "$GITHUB_STEP_SUMMARY"
+2026-07-28T19:59:07.7239089Z [36;1mbash run_campaign.sh sil | tee "$GITHUB_STEP_SUMMARY"[0m
+2026-07-28T19:59:07.7243096Z shell: sh -e {0}
+2026-07-28T19:59:07.7243333Z ##[endgroup]
+2026-07-28T19:59:09.5603780Z [  1/138] sync_removal_001                   SURVIVED       (max=0.0)
+2026-07-28T19:59:11.1210316Z [  2/138] sync_removal_002                   SURVIVED       (max=0.0)
+2026-07-28T19:59:12.6780972Z [  3/138] sync_removal_003                   KILLED_OUTPUT  (max=0.6128800000000001)
+2026-07-28T19:59:14.2269856Z [  4/138] sync_removal_004                   SURVIVED       (max=0.0)
+2026-07-28T19:59:15.8066174Z [  5/138] sync_removal_005                   SURVIVED       (max=0.0)
+2026-07-28T19:59:17.3561172Z [  6/138] sync_removal_006                   SURVIVED       (max=0.0)
+2026-07-28T19:59:18.9093224Z [  7/138] sync_removal_007                   SURVIVED       (max=0.0)
+2026-07-28T19:59:20.4900654Z [  8/138] sync_removal_008                   KILLED_OUTPUT  (max=0.5502)
+2026-07-28T19:59:22.0553453Z [  9/138] sync_removal_009                   SURVIVED       (max=0.0)
+2026-07-28T19:59:23.6230776Z [ 10/138] share_removal_001                  KILLED_OUTPUT  (max=0.57942)
+2026-07-28T19:59:25.1884708Z [ 11/138] share_removal_002                  SURVIVED       (max=0.0)
+2026-07-28T19:59:26.7632537Z [ 12/138] share_removal_003                  SURVIVED       (max=0.0)
+2026-07-28T19:59:28.3170846Z [ 13/138] share_removal_004                  SURVIVED       (max=0.0)
+2026-07-28T19:59:29.8973506Z [ 14/138] share_removal_005                  SURVIVED       (max=0.0)
+2026-07-28T19:59:31.4603956Z [ 15/138] share_removal_006                  SURVIVED       (max=0.0)
+2026-07-28T19:59:33.0302903Z [ 16/138] share_removal_007                  SURVIVED       (max=0.0)
+2026-07-28T19:59:34.6085684Z [ 17/138] share_removal_008                  SURVIVED       (max=0.0)
+2026-07-28T19:59:36.1752608Z [ 18/138] share_removal_009                  KILLED_OUTPUT  (max=0.40425999999999995)
+2026-07-28T19:59:37.7431159Z [ 19/138] share_removal_010                  SURVIVED       (max=0.0)
+2026-07-28T19:59:39.3300772Z [ 20/138] share_removal_011                  SURVIVED       (max=0.0)
+2026-07-28T19:59:40.9665343Z [ 21/138] gpu_index_replacement_001          KILLED_OUTPUT  (max=0.57942)
+2026-07-28T19:59:42.5410035Z [ 22/138] gpu_index_replacement_002          KILLED_OUTPUT  (max=0.57942)
+2026-07-28T19:59:44.1494496Z [ 23/138] gpu_index_replacement_003          KILLED_ERROR   (max=0)
+2026-07-28T19:59:45.7736536Z [ 24/138] gpu_index_replacement_004          KILLED_ERROR   (max=0)
+2026-07-28T19:59:47.3503979Z [ 25/138] gpu_index_replacement_005          KILLED_OUTPUT  (max=0.57942)
+2026-07-28T19:59:48.8757553Z [ 26/138] gpu_index_replacement_006          KILLED_OUTPUT  (max=0.57942)
+2026-07-28T19:59:50.4506866Z [ 27/138] gpu_index_replacement_007          KILLED_OUTPUT  (max=21.75188)
+2026-07-28T19:59:52.0261353Z [ 28/138] gpu_index_replacement_008          KILLED_OUTPUT  (max=29.867150000000002)
+2026-07-28T19:59:53.6020567Z [ 29/138] gpu_index_increment_001            KILLED_OUTPUT  (max=0.28778999999999977)
+2026-07-28T19:59:55.2091863Z [ 30/138] gpu_index_increment_002            KILLED_ERROR   (max=0)
+2026-07-28T19:59:56.8201810Z [ 31/138] gpu_index_increment_003            KILLED_OUTPUT  (max=0.60453)
+2026-07-28T19:59:58.5031357Z [ 32/138] gpu_index_increment_004            KILLED_OUTPUT  (max=0.49143000000000003)
+2026-07-28T20:00:00.1030288Z [ 33/138] gpu_index_increment_005            KILLED_OUTPUT  (max=0.28778999999999977)
+2026-07-28T20:00:01.7543354Z [ 34/138] gpu_index_increment_006            KILLED_ERROR   (max=0)
+2026-07-28T20:00:03.3851780Z [ 35/138] gpu_index_increment_007            KILLED_ERROR   (max=0)
+2026-07-28T20:00:04.9845851Z [ 36/138] gpu_index_increment_008            KILLED_ERROR   (max=0)
+2026-07-28T20:00:06.6577010Z [ 37/138] gpu_index_decrement_001            KILLED_ERROR   (max=0)
+2026-07-28T20:00:08.2102868Z [ 38/138] gpu_index_decrement_002            KILLED_ERROR   (max=0)
+2026-07-28T20:00:09.7490273Z [ 39/138] gpu_index_decrement_003            KILLED_OUTPUT  (max=0.08897)
+2026-07-28T20:00:11.3396341Z [ 40/138] gpu_index_decrement_004            KILLED_ERROR   (max=0)
+2026-07-28T20:00:12.9678819Z [ 41/138] gpu_index_decrement_005            KILLED_ERROR   (max=0)
+2026-07-28T20:00:14.5579157Z [ 42/138] gpu_index_decrement_006            KILLED_ERROR   (max=0)
+2026-07-28T20:00:16.1183648Z [ 43/138] gpu_index_decrement_007            KILLED_OUTPUT  (max=0.6773100000000001)
+2026-07-28T20:00:17.7002516Z [ 44/138] gpu_index_decrement_008            KILLED_ERROR   (max=0)
+2026-07-28T20:00:19.2555174Z [ 45/138] alloc_swap_001                     KILLED_OUTPUT  (max=0.8098000000000001)
+2026-07-28T20:00:20.8258796Z [ 46/138] alloc_swap_002                     KILLED_ERROR   (max=0)
+2026-07-28T20:00:22.3989201Z [ 47/138] alloc_increment_001                KILLED_ERROR   (max=0)
+2026-07-28T20:00:23.9660920Z [ 48/138] alloc_increment_002                KILLED_OUTPUT  (max=0.48292999999999986)
+2026-07-28T20:00:25.5283486Z [ 49/138] alloc_decrement_001                KILLED_OUTPUT  (max=0.49031)
+2026-07-28T20:00:27.0864332Z [ 50/138] alloc_decrement_002                KILLED_OUTPUT  (max=0.5145200000000001)
+2026-07-28T20:00:28.6650781Z [ 51/138] math_replacement_001               KILLED_OUTPUT  (max=0.26824000000000003)
+2026-07-28T20:00:30.2223104Z [ 52/138] math_replacement_002               KILLED_OUTPUT  (max=1.35874)
+2026-07-28T20:00:31.7756453Z [ 53/138] math_replacement_003               KILLED_OUTPUT  (max=0.2964599999999997)
+2026-07-28T20:00:33.3235542Z [ 54/138] math_replacement_004               KILLED_OUTPUT  (max=1.4481099999999998)
+2026-07-28T20:00:34.8832610Z [ 55/138] math_replacement_005               KILLED_OUTPUT  (max=0.30435999999999996)
+2026-07-28T20:00:36.4476285Z [ 56/138] math_replacement_006               KILLED_OUTPUT  (max=1.3599400000000004)
+2026-07-28T20:00:38.0113309Z [ 57/138] math_replacement_007               KILLED_OUTPUT  (max=0.32169000000000025)
+2026-07-28T20:00:39.5541150Z [ 58/138] math_replacement_008               KILLED_OUTPUT  (max=1.4039800000000002)
+2026-07-28T20:00:41.2062816Z [ 59/138] math_replacement_009               KILLED_OUTPUT  (max=0.3128000000000002)
+2026-07-28T20:00:42.7676614Z [ 60/138] math_replacement_010               KILLED_OUTPUT  (max=1.4831600000000003)
+2026-07-28T20:00:44.3401129Z [ 61/138] math_replacement_011               KILLED_OUTPUT  (max=0.31178000000000017)
+2026-07-28T20:00:45.8919251Z [ 62/138] math_replacement_012               KILLED_OUTPUT  (max=1.4148)
+2026-07-28T20:00:47.4570164Z [ 63/138] math_replacement_013               KILLED_OUTPUT  (max=0.2936300000000003)
+2026-07-28T20:00:49.0140396Z [ 64/138] math_replacement_014               KILLED_OUTPUT  (max=1.3911800000000003)
+2026-07-28T20:00:50.5742029Z [ 65/138] math_replacement_015               KILLED_OUTPUT  (max=0.3132900000000003)
+2026-07-28T20:00:52.1184922Z [ 66/138] math_replacement_016               KILLED_OUTPUT  (max=1.4049399999999999)
+2026-07-28T20:00:53.6928898Z [ 67/138] math_replacement_017               KILLED_OUTPUT  (max=0.4087900000000002)
+2026-07-28T20:00:55.2592433Z [ 68/138] math_replacement_018               KILLED_OUTPUT  (max=1.56731)
+2026-07-28T20:00:56.8205386Z [ 69/138] math_replacement_019               KILLED_OUTPUT  (max=0.4119200000000003)
+2026-07-28T20:00:58.3595788Z [ 70/138] math_replacement_020               KILLED_OUTPUT  (max=1.3584800000000001)
+2026-07-28T20:00:59.9232971Z [ 71/138] math_replacement_021               KILLED_OUTPUT  (max=0.42318999999999996)
+2026-07-28T20:01:01.5009461Z [ 72/138] math_replacement_022               KILLED_OUTPUT  (max=1.31378)
+2026-07-28T20:01:03.0567468Z [ 73/138] math_replacement_023               KILLED_OUTPUT  (max=0.4138799999999998)
+2026-07-28T20:01:04.6164074Z [ 74/138] math_replacement_024               KILLED_OUTPUT  (max=1.57931)
+2026-07-28T20:01:06.1736594Z [ 75/138] math_replacement_025               KILLED_OUTPUT  (max=0.4223600000000003)
+2026-07-28T20:01:07.7403710Z [ 76/138] math_replacement_026               KILLED_OUTPUT  (max=1.5647699999999998)
+2026-07-28T20:01:09.3107504Z [ 77/138] math_replacement_027               KILLED_OUTPUT  (max=0.4273199999999999)
+2026-07-28T20:01:10.8451937Z [ 78/138] math_replacement_028               KILLED_OUTPUT  (max=1.3483300000000003)
+2026-07-28T20:01:12.4067643Z [ 79/138] math_replacement_029               KILLED_OUTPUT  (max=0.4113100000000003)
+2026-07-28T20:01:13.9767356Z [ 80/138] math_replacement_030               KILLED_OUTPUT  (max=1.32306)
+2026-07-28T20:01:15.5420288Z [ 81/138] math_replacement_031               KILLED_OUTPUT  (max=0.4137500000000003)
+2026-07-28T20:01:17.0855567Z [ 82/138] math_replacement_032               KILLED_OUTPUT  (max=1.56338)
+2026-07-28T20:01:18.6441270Z [ 83/138] math_replacement_033               KILLED_OUTPUT  (max=0.5143599999999999)
+2026-07-28T20:01:20.2276496Z [ 84/138] math_replacement_034               KILLED_OUTPUT  (max=1.6763599999999999)
+2026-07-28T20:01:21.7950750Z [ 85/138] math_replacement_035               KILLED_OUTPUT  (max=0.51694)
+2026-07-28T20:01:23.3411506Z [ 86/138] math_replacement_036               KILLED_OUTPUT  (max=1.57078)
+2026-07-28T20:01:24.8726761Z [ 87/138] math_replacement_037               SURVIVED       (max=0.0)
+2026-07-28T20:01:26.4520902Z [ 88/138] math_replacement_038               KILLED_OUTPUT  (max=0.69668)
+2026-07-28T20:01:28.0279599Z [ 89/138] math_replacement_039               KILLED_OUTPUT  (max=0.24511999999999978)
+2026-07-28T20:01:29.6029640Z [ 90/138] math_replacement_040               KILLED_OUTPUT  (max=0.6782700000000002)
+2026-07-28T20:01:31.1310437Z [ 91/138] math_replacement_041               SURVIVED       (max=0.0)
+2026-07-28T20:01:32.6939522Z [ 92/138] math_replacement_042               KILLED_OUTPUT  (max=0.7062100000000002)
+2026-07-28T20:01:34.2617029Z [ 93/138] math_replacement_043               KILLED_OUTPUT  (max=0.23724000000000012)
+2026-07-28T20:01:35.8310956Z [ 94/138] math_replacement_044               KILLED_OUTPUT  (max=0.53976)
+2026-07-28T20:01:37.3927919Z [ 95/138] math_replacement_045               KILLED_OUTPUT  (max=0.4607300000000001)
+2026-07-28T20:01:38.9635589Z [ 96/138] math_replacement_046               KILLED_OUTPUT  (max=0.20401999999999987)
+2026-07-28T20:01:40.5809867Z [ 97/138] math_replacement_047               KILLED_OUTPUT  (max=0.21989999999999998)
+2026-07-28T20:01:42.1479660Z [ 98/138] math_replacement_048               KILLED_OUTPUT  (max=0.20781000000000005)
+2026-07-28T20:01:43.7325089Z [ 99/138] math_replacement_049               KILLED_OUTPUT  (max=0.57942)
+2026-07-28T20:01:45.3045457Z [100/138] math_replacement_050               KILLED_OUTPUT  (max=0.3141400000000001)
+2026-07-28T20:01:46.8643262Z [101/138] math_replacement_051               KILLED_OUTPUT  (max=0.4220299999999999)
+2026-07-28T20:01:48.4249270Z [102/138] math_replacement_052               KILLED_OUTPUT  (max=0.85761)
+2026-07-28T20:01:49.9799554Z [103/138] math_replacement_053               KILLED_OUTPUT  (max=0.04752000000000001)
+2026-07-28T20:01:51.5429626Z [104/138] math_replacement_054               KILLED_OUTPUT  (max=0.8849799999999999)
+2026-07-28T20:01:53.1135791Z [105/138] math_replacement_055               KILLED_OUTPUT  (max=1.23318)
+2026-07-28T20:01:54.7010533Z [106/138] math_replacement_056               KILLED_OUTPUT  (max=0.9433199999999999)
+2026-07-28T20:01:56.2836346Z [107/138] math_replacement_057               KILLED_OUTPUT  (max=19328.570069999998)
+2026-07-28T20:01:57.8481906Z [108/138] conditional_boundary_replacement_001 SURVIVED       (max=0.0)
+2026-07-28T20:01:59.4129998Z [109/138] conditional_boundary_replacement_002 SURVIVED       (max=0.0)
+2026-07-28T20:02:00.9824437Z [110/138] negate_conditional_replacement_001 KILLED_OUTPUT  (max=0.3706499999999999)
+2026-07-28T20:02:02.5412384Z [111/138] negate_conditional_replacement_002 KILLED_OUTPUT  (max=0.39192000000000005)
+2026-07-28T20:02:04.1151230Z [112/138] negate_conditional_replacement_003 KILLED_OUTPUT  (max=0.31576999999999966)
+2026-07-28T20:02:05.6819469Z [113/138] negate_conditional_replacement_004 KILLED_OUTPUT  (max=0.36389000000000005)
+2026-07-28T20:02:07.2532245Z [114/138] negate_conditional_replacement_005 KILLED_OUTPUT  (max=0.3425)
+2026-07-28T20:02:08.8141070Z [115/138] negate_conditional_replacement_006 KILLED_OUTPUT  (max=0.3401799999999999)
+2026-07-28T20:02:10.3798246Z [116/138] negate_conditional_replacement_007 KILLED_OUTPUT  (max=0.6003800000000001)
+2026-07-28T20:02:11.9434252Z [117/138] negate_conditional_replacement_008 KILLED_OUTPUT  (max=0.3278399999999999)
+2026-07-28T20:02:13.5161979Z [118/138] negate_conditional_replacement_009 KILLED_OUTPUT  (max=0.54698)
+2026-07-28T20:02:15.0802488Z [119/138] negate_conditional_replacement_010 KILLED_OUTPUT  (max=0.5657200000000002)
+2026-07-28T20:02:16.6464201Z [120/138] negate_conditional_replacement_011 KILLED_OUTPUT  (max=0.28849000000000014)
+2026-07-28T20:02:18.2126700Z [121/138] negate_conditional_replacement_012 KILLED_OUTPUT  (max=0.29081)
+2026-07-28T20:02:19.7778637Z [122/138] negate_conditional_replacement_013 KILLED_OUTPUT  (max=0.45884000000000014)
+2026-07-28T20:02:21.3306468Z [123/138] negate_conditional_replacement_014 KILLED_OUTPUT  (max=0.6781900000000001)
+2026-07-28T20:02:22.9062023Z [124/138] negate_conditional_replacement_015 KILLED_OUTPUT  (max=0.64324)
+2026-07-28T20:02:24.4757512Z [125/138] negate_conditional_replacement_016 KILLED_OUTPUT  (max=0.3524599999999998)
+2026-07-28T20:02:26.0235671Z [126/138] negate_conditional_replacement_017 KILLED_OUTPUT  (max=0.57942)
+2026-07-28T20:02:27.5789719Z [127/138] negate_conditional_replacement_018 KILLED_OUTPUT  (max=0.88774)
+2026-07-28T20:02:29.1132739Z [128/138] negate_conditional_replacement_019 KILLED_OUTPUT  (max=0.32987999999999995)
+2026-07-28T20:02:30.6644108Z [129/138] negate_conditional_replacement_020 KILLED_OUTPUT  (max=0.3388500000000001)
+2026-07-28T20:02:32.2263408Z [130/138] negate_conditional_replacement_021 KILLED_OUTPUT  (max=0.7102499999999998)
+2026-07-28T20:02:33.7881019Z [131/138] negate_conditional_replacement_022 KILLED_OUTPUT  (max=0.7032999999999998)
+2026-07-28T20:02:35.3219792Z [132/138] negate_conditional_replacement_023 KILLED_OUTPUT  (max=0.7706900000000003)
+2026-07-28T20:02:36.8690544Z [133/138] negate_conditional_replacement_024 KILLED_OUTPUT  (max=0.73234)
+2026-07-28T20:02:38.4000625Z [134/138] logical_replacement_001            KILLED_OUTPUT  (max=0.5754599999999999)
+2026-07-28T20:02:39.9759866Z [135/138] logical_replacement_002            KILLED_OUTPUT  (max=0.5988800000000001)
+2026-07-28T20:02:41.5620182Z [136/138] logical_replacement_003            KILLED_OUTPUT  (max=0.3442100000000001)
+2026-07-28T20:02:43.1023794Z [137/138] logical_replacement_004            KILLED_OUTPUT  (max=0.2908299999999999)
+2026-07-28T20:02:44.6557292Z [138/138] logical_replacement_005            KILLED_OUTPUT  (max=0.30928)
+2026-07-28T20:02:44.6558419Z === sil campaign done: 138 mutants, 118 killed, 20 survived ===
+2026-07-28T20:02:44.6559392Z results -> /__w/cupbop-experiment/cupbop-experiment/experiments/srad_v2/mutation/results_sil.json
+2026-07-28T20:02:44.6804169Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-28T20:02:44.6805901Z ##[group]Run actions/upload-artifact@v4
+2026-07-28T20:02:44.6806168Z with:
+2026-07-28T20:02:44.6806349Z   name: results-sil
+2026-07-28T20:02:44.6806608Z   path: experiments/srad_v2/mutation/results_sil.json
+2026-07-28T20:02:44.6806917Z   if-no-files-found: error
+2026-07-28T20:02:44.6807142Z   compression-level: 6
+2026-07-28T20:02:44.6807347Z   overwrite: false
+2026-07-28T20:02:44.6807549Z   include-hidden-files: false
+2026-07-28T20:02:44.6807779Z ##[endgroup]
+2026-07-28T20:02:44.6811826Z ##[command]/usr/bin/docker exec  618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3 sh -c "cat /etc/*release | grep ^ID"
+2026-07-28T20:02:45.1462503Z (node:7264) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-07-28T20:02:45.1470841Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-07-28T20:02:45.1597527Z With the provided path, there will be 1 file uploaded
+2026-07-28T20:02:45.1649469Z Artifact name is valid!
+2026-07-28T20:02:45.1669064Z Root directory input is valid!
+2026-07-28T20:02:45.3039991Z Beginning upload of artifact content to blob storage
+2026-07-28T20:02:45.3361879Z (node:7264) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-07-28T20:02:45.3779036Z Uploaded bytes 1594
+2026-07-28T20:02:45.3963095Z Finished uploading artifact content to blob storage!
+2026-07-28T20:02:45.3964164Z SHA256 digest of uploaded artifact zip is 2e8ea51bb133d3f417b93e4b8dc49e9507e87615f16ac5279da2a7434935768b
+2026-07-28T20:02:45.3964953Z Finalizing artifact upload
+2026-07-28T20:02:45.5853482Z Artifact results-sil.zip successfully finalized. Artifact ID 8702264740
+2026-07-28T20:02:45.5854703Z Artifact results-sil has been successfully uploaded! Final size is 1594 bytes. Artifact ID is 8702264740
+2026-07-28T20:02:45.5856218Z Artifact download URL: https://github.com/lospollos19/cupbop-experiment/actions/runs/30394199053/artifacts/8702264740
+2026-07-28T20:02:45.6161161Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-28T20:02:45.6162443Z Post job cleanup.
+2026-07-28T20:02:45.6169819Z ##[command]/usr/bin/docker exec  618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3 sh -c "cat /etc/*release | grep ^ID"
+2026-07-28T20:02:45.8318656Z [command]/usr/bin/git version
+2026-07-28T20:02:45.8456413Z git version 2.34.1
+2026-07-28T20:02:45.8619462Z Temporarily overriding HOME='/__w/_temp/47941a7c-b9d1-4b34-b486-d87c8443aa9e' before making global git config changes
+2026-07-28T20:02:45.8649181Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-28T20:02:45.8666055Z [command]/usr/bin/git config --global --add safe.directory /__w/cupbop-experiment/cupbop-experiment
+2026-07-28T20:02:45.8762307Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-28T20:02:45.8880806Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-28T20:02:45.9562198Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-28T20:02:45.9616005Z http.https://github.com/.extraheader
+2026-07-28T20:02:45.9669221Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-07-28T20:02:45.9714727Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-28T20:02:46.0335234Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-28T20:02:46.0439417Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-28T20:02:46.1147155Z Stop and remove container: c510fa771e664d749d2af413171e5ab1_ghcriolospollos19cupbopexperimentcupbopsillatest_40475e
+2026-07-28T20:02:46.1153743Z ##[command]/usr/bin/docker rm --force 618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3
+2026-07-28T20:02:46.2357389Z 618e236530c66ab72751caeeef40b6f0b779342171d0694ee13d9e87c36b07a3
+2026-07-28T20:02:46.2396929Z Remove container network: github_network_3288d91ea3f94a57ac3499198dbde691
+2026-07-28T20:02:46.2401791Z ##[command]/usr/bin/docker network rm github_network_3288d91ea3f94a57ac3499198dbde691
+2026-07-28T20:02:46.3246680Z github_network_3288d91ea3f94a57ac3499198dbde691
+2026-07-28T20:02:46.3318066Z Cleaning up orphan processes
+2026-07-28T20:02:46.3737736Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

@@ -1,0 +1,42 @@
+name: srad-hil
+
+# Job C of the pipeline: HIL reference run on the AGX Orin (self-hosted runner).
+# Runs srad_v2 NATIVELY with nvcc on real GPU hardware -- NOT the CuPBoP container.
+# This is the hardware side of RQ1: it produces srad_hil.out and, against the
+# committed SIL baseline, the SIL/HIL noise floor.
+on:
+  workflow_dispatch:   # manual only -- run on demand to conserve Actions usage
+
+jobs:
+  srad-on-orin:
+    # Adjust the labels to match your runner (Settings > Actions > Runners).
+    # A custom label (e.g. 'orin') is safer than ARM64 if you add more runners.
+    runs-on: [self-hosted, ARM64]
+    steps:
+      - uses: actions/checkout@v4
+
+      # nvcc lives in the CUDA toolkit, not on the default PATH of the runner user.
+      - name: srad_v2 native on GPU (HIL)
+        working-directory: experiments/srad_v2
+        run: |
+          export PATH="/usr/local/cuda/bin:$PATH"
+          nvcc --version
+          bash run_hil.sh srad.cu 512 512 0 127 0 127 0.5 2
+
+      # Noise floor = divergence between correct-code SIL and correct-code HIL on
+      # the same input. Reported, not gated (a nonzero floor is expected and is the
+      # result we want). This defines the mutation tolerance.
+      - name: Noise floor (HIL vs SIL baseline)
+        working-directory: experiments/srad_v2
+        run: |
+          echo "## srad noise floor (HIL vs SIL baseline)" >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          bash compare_outputs.sh baseline/srad_sil_baseline.out srad_hil.out | tee -a "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload srad_hil.out
+        uses: actions/upload-artifact@v4
+        with:
+          name: srad_hil-out
+          path: experiments/srad_v2/srad_hil.out
+          if-no-files-found: error

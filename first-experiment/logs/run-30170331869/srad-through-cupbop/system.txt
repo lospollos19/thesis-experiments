@@ -1,0 +1,8 @@
+2026-07-25T18:47:38.4370000Z Evaluating srad-through-cupbop.if
+2026-07-25T18:47:38.4370000Z Evaluating: success()
+2026-07-25T18:47:38.4370000Z Result: true
+2026-07-25T18:47:38.9280000Z Job is about to start running on the hosted runner: GitHub Actions 1000000012
+2026-07-25T18:47:38.9270000Z Job is waiting for a hosted runner to come online.
+2026-07-25T18:47:38.9050000Z Requested labels: ubuntu-22.04
+2026-07-25T18:47:38.9050000Z Job defined at: lospollos19/cupbop-experiment/.github/workflows/srad-sil.yaml@refs/heads/main
+2026-07-25T18:47:38.9050000Z Waiting for a runner to pick up this job...

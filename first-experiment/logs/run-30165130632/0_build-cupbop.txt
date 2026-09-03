@@ -1,0 +1,1124 @@
+﻿2026-07-25T16:11:43.6118868Z Current runner version: '2.335.1'
+2026-07-25T16:11:43.6144793Z ##[group]Runner Image Provisioner
+2026-07-25T16:11:43.6145847Z Hosted Compute Agent
+2026-07-25T16:11:43.6146532Z Version: 20260707.563
+2026-07-25T16:11:43.6147507Z Commit: 02667638d2b423fbc733a8e32a88b44996a3ba6e
+2026-07-25T16:11:43.6148471Z Build Date: 2026-07-07T19:33:50Z
+2026-07-25T16:11:43.6149266Z Worker ID: {447f6e43-b637-4b61-b760-1c00830e7ef2}
+2026-07-25T16:11:43.6150115Z Azure Region: westus3
+2026-07-25T16:11:43.6150874Z ##[endgroup]
+2026-07-25T16:11:43.6152802Z ##[group]Operating System
+2026-07-25T16:11:43.6153581Z Ubuntu
+2026-07-25T16:11:43.6154220Z 22.04.5
+2026-07-25T16:11:43.6154817Z LTS
+2026-07-25T16:11:43.6155438Z ##[endgroup]
+2026-07-25T16:11:43.6156157Z ##[group]Runner Image
+2026-07-25T16:11:43.6156845Z Image: ubuntu-22.04
+2026-07-25T16:11:43.6157840Z Version: 20260720.234.2
+2026-07-25T16:11:43.6159433Z Included Software: https://github.com/actions/runner-images/blob/ubuntu22/20260720.234/images/ubuntu/Ubuntu2204-Readme.md
+2026-07-25T16:11:43.6161376Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu22%2F20260720.234
+2026-07-25T16:11:43.6162516Z ##[endgroup]
+2026-07-25T16:11:43.6163969Z ##[group]GITHUB_TOKEN Permissions
+2026-07-25T16:11:43.6166510Z Contents: read
+2026-07-25T16:11:43.6167518Z Metadata: read
+2026-07-25T16:11:43.6168202Z Packages: read
+2026-07-25T16:11:43.6168880Z ##[endgroup]
+2026-07-25T16:11:43.6171427Z Secret source: Actions
+2026-07-25T16:11:43.6172305Z Prepare workflow directory
+2026-07-25T16:11:43.6707854Z Prepare all required actions
+2026-07-25T16:11:43.9815505Z Complete job name: build-cupbop
+2026-07-25T16:11:44.0421501Z ##[group]Checking docker version
+2026-07-25T16:11:44.0433025Z ##[command]/usr/bin/docker version --format '{{.Server.APIVersion}}'
+2026-07-25T16:11:44.0989816Z '1.48'
+2026-07-25T16:11:44.1016172Z Docker daemon API version: '1.48'
+2026-07-25T16:11:44.1017717Z ##[command]/usr/bin/docker version --format '{{.Client.APIVersion}}'
+2026-07-25T16:11:44.1255809Z '1.48'
+2026-07-25T16:11:44.1260036Z Docker client API version: '1.48'
+2026-07-25T16:11:44.1265193Z ##[endgroup]
+2026-07-25T16:11:44.1269057Z ##[group]Clean up resources from previous jobs
+2026-07-25T16:11:44.1274921Z ##[command]/usr/bin/docker ps --all --quiet --no-trunc --filter "label=e56721"
+2026-07-25T16:11:44.1466768Z ##[command]/usr/bin/docker network prune --force --filter "label=e56721"
+2026-07-25T16:11:44.1595911Z ##[endgroup]
+2026-07-25T16:11:44.1596479Z ##[group]Create local container network
+2026-07-25T16:11:44.1604682Z ##[command]/usr/bin/docker network create --label e56721 github_network_03083043cef24d9f87eb9ad1ff29a30d
+2026-07-25T16:11:44.2562267Z 59c3841e0d32f225b5b0640057affa356a5ec0ed3ef55d47e44338c2eed399f4
+2026-07-25T16:11:44.2576782Z ##[endgroup]
+2026-07-25T16:11:44.2603003Z ##[group]Starting job container
+2026-07-25T16:11:44.2625561Z ##[command]/usr/bin/docker pull nvidia/cuda:11.7.1-devel-ubuntu22.04
+2026-07-25T16:11:45.5713164Z 11.7.1-devel-ubuntu22.04: Pulling from nvidia/cuda
+2026-07-25T16:11:45.9111317Z aece8493d397: Pulling fs layer
+2026-07-25T16:11:45.9114824Z 976b13f9ef1a: Pulling fs layer
+2026-07-25T16:11:45.9115952Z b63c65d3acaa: Pulling fs layer
+2026-07-25T16:11:45.9116993Z 4dda4739d007: Pulling fs layer
+2026-07-25T16:11:45.9118134Z 197843862cd5: Pulling fs layer
+2026-07-25T16:11:45.9118745Z cf87cabd72e2: Pulling fs layer
+2026-07-25T16:11:45.9119219Z 7908cc89184b: Pulling fs layer
+2026-07-25T16:11:45.9119585Z 125997f82033: Pulling fs layer
+2026-07-25T16:11:45.9119927Z 675adc119131: Pulling fs layer
+2026-07-25T16:11:45.9120292Z ce04642bc4a1: Pulling fs layer
+2026-07-25T16:11:45.9120719Z ab12bfa13ae3: Pulling fs layer
+2026-07-25T16:11:45.9121059Z 4dda4739d007: Waiting
+2026-07-25T16:11:45.9121353Z 197843862cd5: Waiting
+2026-07-25T16:11:45.9121699Z 675adc119131: Waiting
+2026-07-25T16:11:45.9122013Z ce04642bc4a1: Waiting
+2026-07-25T16:11:45.9122318Z cf87cabd72e2: Waiting
+2026-07-25T16:11:45.9122668Z ab12bfa13ae3: Waiting
+2026-07-25T16:11:45.9122957Z 7908cc89184b: Waiting
+2026-07-25T16:11:45.9123272Z 125997f82033: Waiting
+2026-07-25T16:11:46.2084030Z 976b13f9ef1a: Verifying Checksum
+2026-07-25T16:11:46.2100098Z 976b13f9ef1a: Download complete
+2026-07-25T16:11:46.2883586Z aece8493d397: Verifying Checksum
+2026-07-25T16:11:46.2900841Z aece8493d397: Download complete
+2026-07-25T16:11:46.3315094Z b63c65d3acaa: Verifying Checksum
+2026-07-25T16:11:46.3318766Z b63c65d3acaa: Download complete
+2026-07-25T16:11:46.4416394Z 4dda4739d007: Verifying Checksum
+2026-07-25T16:11:46.4418031Z 4dda4739d007: Download complete
+2026-07-25T16:11:46.5311673Z 197843862cd5: Verifying Checksum
+2026-07-25T16:11:46.5314573Z 197843862cd5: Download complete
+2026-07-25T16:11:46.7026260Z 7908cc89184b: Verifying Checksum
+2026-07-25T16:11:46.7586348Z 7908cc89184b: Download complete
+2026-07-25T16:11:46.7587359Z 125997f82033: Verifying Checksum
+2026-07-25T16:11:46.7602363Z 125997f82033: Download complete
+2026-07-25T16:11:46.9449215Z 675adc119131: Download complete
+2026-07-25T16:11:47.2079670Z ab12bfa13ae3: Verifying Checksum
+2026-07-25T16:11:47.2081131Z ab12bfa13ae3: Download complete
+2026-07-25T16:11:49.9687485Z aece8493d397: Pull complete
+2026-07-25T16:11:54.5008957Z cf87cabd72e2: Verifying Checksum
+2026-07-25T16:11:54.5009996Z cf87cabd72e2: Download complete
+2026-07-25T16:12:01.9838063Z 976b13f9ef1a: Pull complete
+2026-07-25T16:12:06.2835411Z ce04642bc4a1: Verifying Checksum
+2026-07-25T16:12:06.2835881Z ce04642bc4a1: Download complete
+2026-07-25T16:12:11.4266929Z b63c65d3acaa: Pull complete
+2026-07-25T16:12:19.6277911Z 4dda4739d007: Pull complete
+2026-07-25T16:12:19.6445797Z 197843862cd5: Pull complete
+2026-07-25T16:12:41.2801336Z cf87cabd72e2: Pull complete
+2026-07-25T16:12:41.3061221Z 7908cc89184b: Pull complete
+2026-07-25T16:12:41.3226009Z 125997f82033: Pull complete
+2026-07-25T16:12:41.3409987Z 675adc119131: Pull complete
+2026-07-25T16:13:12.0353307Z ce04642bc4a1: Pull complete
+2026-07-25T16:13:20.3542484Z ab12bfa13ae3: Pull complete
+2026-07-25T16:13:20.3616764Z Digest: sha256:18aade8cf02eede9d4db5d8a8a73d4505bb2322e91cd54e4c601e5ae100ed691
+2026-07-25T16:13:20.3644035Z Status: Downloaded newer image for nvidia/cuda:11.7.1-devel-ubuntu22.04
+2026-07-25T16:13:20.3658991Z docker.io/nvidia/cuda:11.7.1-devel-ubuntu22.04
+2026-07-25T16:13:20.3726760Z ##[command]/usr/bin/docker create --name eef2df664b4246e4bdf2546d95826dac_nvidiacuda1171develubuntu2204_84b34d --label e56721 --workdir /__w/cupbop-experiment/cupbop-experiment --network github_network_03083043cef24d9f87eb9ad1ff29a30d  -e "HOME=/github/home" -e GITHUB_ACTIONS=true -e CI=true -v "/var/run/docker.sock":"/var/run/docker.sock" -v "/home/runner/work":"/__w" -v "/home/runner/actions-runner/cached/2.335.1/externals":"/__e":ro -v "/home/runner/work/_temp":"/__w/_temp" -v "/home/runner/work/_actions":"/__w/_actions" -v "/opt/hostedtoolcache":"/__t" -v "/home/runner/work/_temp/_github_home":"/github/home" -v "/home/runner/work/_temp/_github_workflow":"/github/workflow" --entrypoint "tail" nvidia/cuda:11.7.1-devel-ubuntu22.04 "-f" "/dev/null"
+2026-07-25T16:13:20.4464469Z 4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4
+2026-07-25T16:13:20.4482883Z ##[command]/usr/bin/docker start 4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4
+2026-07-25T16:13:20.8068518Z 4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4
+2026-07-25T16:13:20.8079522Z ##[command]/usr/bin/docker ps --all --filter id=4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4 --filter status=running --no-trunc --format "{{.ID}} {{.Status}}"
+2026-07-25T16:13:20.8211756Z 4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4 Up Less than a second
+2026-07-25T16:13:20.8234221Z ##[command]/usr/bin/docker inspect --format "{{range .Config.Env}}{{println .}}{{end}}" 4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4
+2026-07-25T16:13:20.8359052Z HOME=/github/home
+2026-07-25T16:13:20.8359379Z GITHUB_ACTIONS=true
+2026-07-25T16:13:20.8359911Z CI=true
+2026-07-25T16:13:20.8361246Z PATH=/usr/local/nvidia/bin:/usr/local/cuda/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+2026-07-25T16:13:20.8362191Z NVARCH=x86_64
+2026-07-25T16:13:20.8363870Z NVIDIA_REQUIRE_CUDA=cuda>=11.7 brand=tesla,driver>=470,driver<471 brand=unknown,driver>=470,driver<471 brand=nvidia,driver>=470,driver<471 brand=nvidiartx,driver>=470,driver<471 brand=geforce,driver>=470,driver<471 brand=geforcertx,driver>=470,driver<471 brand=quadro,driver>=470,driver<471 brand=quadrortx,driver>=470,driver<471 brand=titan,driver>=470,driver<471 brand=titanrtx,driver>=470,driver<471
+2026-07-25T16:13:20.8365176Z NV_CUDA_CUDART_VERSION=11.7.99-1
+2026-07-25T16:13:20.8365740Z NV_CUDA_COMPAT_PACKAGE=cuda-compat-11-7
+2026-07-25T16:13:20.8366303Z CUDA_VERSION=11.7.1
+2026-07-25T16:13:20.8366831Z LD_LIBRARY_PATH=/usr/local/nvidia/lib:/usr/local/nvidia/lib64
+2026-07-25T16:13:20.8367794Z NVIDIA_VISIBLE_DEVICES=all
+2026-07-25T16:13:20.8368712Z NVIDIA_DRIVER_CAPABILITIES=compute,utility
+2026-07-25T16:13:20.8369279Z NV_CUDA_LIB_VERSION=11.7.1-1
+2026-07-25T16:13:20.8369790Z NV_NVTX_VERSION=11.7.91-1
+2026-07-25T16:13:20.8370258Z NV_LIBNPP_VERSION=11.7.4.75-1
+2026-07-25T16:13:20.8370815Z NV_LIBNPP_PACKAGE=libnpp-11-7=11.7.4.75-1
+2026-07-25T16:13:20.8371361Z NV_LIBCUSPARSE_VERSION=11.7.4.91-1
+2026-07-25T16:13:20.8371831Z NV_LIBCUBLAS_PACKAGE_NAME=libcublas-11-7
+2026-07-25T16:13:20.8372370Z NV_LIBCUBLAS_VERSION=11.10.3.66-1
+2026-07-25T16:13:20.8372924Z NV_LIBCUBLAS_PACKAGE=libcublas-11-7=11.10.3.66-1
+2026-07-25T16:13:20.8373454Z NV_LIBNCCL_PACKAGE_NAME=libnccl2
+2026-07-25T16:13:20.8373912Z NV_LIBNCCL_PACKAGE_VERSION=2.13.4-1
+2026-07-25T16:13:20.8375150Z NCCL_VERSION=2.13.4-1
+2026-07-25T16:13:20.8376332Z NV_LIBNCCL_PACKAGE=libnccl2=2.13.4-1+cuda11.7
+2026-07-25T16:13:20.8376731Z NVIDIA_PRODUCT_NAME=CUDA
+2026-07-25T16:13:20.8377241Z NV_CUDA_CUDART_DEV_VERSION=11.7.99-1
+2026-07-25T16:13:20.8377776Z NV_NVML_DEV_VERSION=11.7.91-1
+2026-07-25T16:13:20.8378129Z NV_LIBCUSPARSE_DEV_VERSION=11.7.4.91-1
+2026-07-25T16:13:20.8378532Z NV_LIBNPP_DEV_VERSION=11.7.4.75-1
+2026-07-25T16:13:20.8379023Z NV_LIBNPP_DEV_PACKAGE=libnpp-dev-11-7=11.7.4.75-1
+2026-07-25T16:13:20.8379520Z NV_LIBCUBLAS_DEV_VERSION=11.10.3.66-1
+2026-07-25T16:13:20.8379911Z NV_LIBCUBLAS_DEV_PACKAGE_NAME=libcublas-dev-11-7
+2026-07-25T16:13:20.8380332Z NV_LIBCUBLAS_DEV_PACKAGE=libcublas-dev-11-7=11.10.3.66-1
+2026-07-25T16:13:20.8380781Z NV_CUDA_NSIGHT_COMPUTE_VERSION=11.7.1-1
+2026-07-25T16:13:20.8381225Z NV_CUDA_NSIGHT_COMPUTE_DEV_PACKAGE=cuda-nsight-compute-11-7=11.7.1-1
+2026-07-25T16:13:20.8381669Z NV_NVPROF_VERSION=11.7.101-1
+2026-07-25T16:13:20.8382063Z NV_NVPROF_DEV_PACKAGE=cuda-nvprof-11-7=11.7.101-1
+2026-07-25T16:13:20.8382460Z NV_LIBNCCL_DEV_PACKAGE_NAME=libnccl-dev
+2026-07-25T16:13:20.8382857Z NV_LIBNCCL_DEV_PACKAGE_VERSION=2.13.4-1
+2026-07-25T16:13:20.8383244Z NV_LIBNCCL_DEV_PACKAGE=libnccl-dev=2.13.4-1+cuda11.7
+2026-07-25T16:13:20.8383627Z LIBRARY_PATH=/usr/local/cuda/lib64/stubs
+2026-07-25T16:13:20.8391140Z ##[endgroup]
+2026-07-25T16:13:20.8400203Z ##[group]Waiting for all services to be ready
+2026-07-25T16:13:20.8401891Z ##[endgroup]
+2026-07-25T16:13:20.8576792Z ##[group]Run apt-get update
+2026-07-25T16:13:20.8577493Z [36;1mapt-get update[0m
+2026-07-25T16:13:20.8578115Z [36;1mapt-get install -y --no-install-recommends \[0m
+2026-07-25T16:13:20.8578536Z [36;1m  llvm-14 llvm-14-dev clang-14 libclang-14-dev \[0m
+2026-07-25T16:13:20.8578952Z [36;1m  cmake make git g++ ca-certificates[0m
+2026-07-25T16:13:20.8579341Z [36;1mfor t in clang clang++ llvm-config llc; do[0m
+2026-07-25T16:13:20.8579782Z [36;1m  update-alternatives --install /usr/bin/$t $t /usr/bin/$t-14 100[0m
+2026-07-25T16:13:20.8580185Z [36;1mdone[0m
+2026-07-25T16:13:20.8583199Z shell: sh -e {0}
+2026-07-25T16:13:20.8583618Z env:
+2026-07-25T16:13:20.8583921Z   CUDA_PATH: /usr/local/cuda
+2026-07-25T16:13:20.8584241Z ##[endgroup]
+2026-07-25T16:13:22.0864909Z Get:1 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  InRelease [1581 B]
+2026-07-25T16:13:22.1809510Z Get:2 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/x86_64  Packages [2849 kB]
+2026-07-25T16:13:22.3164092Z Get:3 http://security.ubuntu.com/ubuntu jammy-security InRelease [129 kB]
+2026-07-25T16:13:22.5144722Z Get:4 http://archive.ubuntu.com/ubuntu jammy InRelease [270 kB]
+2026-07-25T16:13:23.0302267Z Get:5 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [1313 kB]
+2026-07-25T16:13:23.4628290Z Get:6 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [128 kB]
+2026-07-25T16:13:23.6909169Z Get:7 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [127 kB]
+2026-07-25T16:13:23.7224920Z Get:8 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [7455 kB]
+2026-07-25T16:13:23.9195093Z Get:9 http://archive.ubuntu.com/ubuntu jammy/restricted amd64 Packages [164 kB]
+2026-07-25T16:13:23.9968469Z Get:10 http://archive.ubuntu.com/ubuntu jammy/universe amd64 Packages [17.5 MB]
+2026-07-25T16:13:24.1644103Z Get:11 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [4141 kB]
+2026-07-25T16:13:24.3223673Z Get:12 http://security.ubuntu.com/ubuntu jammy-security/multiverse amd64 Packages [84.1 kB]
+2026-07-25T16:13:25.2471492Z Get:13 http://archive.ubuntu.com/ubuntu jammy/main amd64 Packages [1792 kB]
+2026-07-25T16:13:25.2948925Z Get:14 http://archive.ubuntu.com/ubuntu jammy/multiverse amd64 Packages [266 kB]
+2026-07-25T16:13:25.3119428Z Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/multiverse amd64 Packages [92.7 kB]
+2026-07-25T16:13:25.3158867Z Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1616 kB]
+2026-07-25T16:13:25.3932340Z Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [7752 kB]
+2026-07-25T16:13:25.7452070Z Get:18 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [4480 kB]
+2026-07-25T16:13:25.9419740Z Get:19 http://archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [35.6 kB]
+2026-07-25T16:13:25.9422212Z Get:20 http://archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [82.8 kB]
+2026-07-25T16:13:26.3843342Z Fetched 50.3 MB in 4s (11.5 MB/s)
+2026-07-25T16:13:27.2927049Z Reading package lists...
+2026-07-25T16:13:28.2806729Z Reading package lists...
+2026-07-25T16:13:28.4631566Z Building dependency tree...
+2026-07-25T16:13:28.4633049Z Reading state information...
+2026-07-25T16:13:28.6287599Z g++ is already the newest version (4:11.2.0-1ubuntu1).
+2026-07-25T16:13:28.6288427Z g++ set to manually installed.
+2026-07-25T16:13:28.6292234Z make is already the newest version (4.3-4.1build1).
+2026-07-25T16:13:28.6293011Z make set to manually installed.
+2026-07-25T16:13:28.6293669Z The following additional packages will be installed:
+2026-07-25T16:13:28.6294591Z   cmake-data cpp-11 dh-elpa-helper emacsen-common g++-11 gcc-11 gcc-11-base
+2026-07-25T16:13:28.6295631Z   gcc-12-base git-man icu-devtools lib32gcc-s1 lib32stdc++6 libarchive13
+2026-07-25T16:13:28.6299053Z   libasan6 libatomic1 libbrotli1 libbsd0 libc-dev-bin libc6 libc6-dev
+2026-07-25T16:13:28.6301479Z   libc6-i386 libcc1-0 libclang-common-14-dev libclang-cpp14 libclang1-14
+2026-07-25T16:13:28.6302576Z   libcurl3-gnutls libcurl4 libedit2 liberror-perl libexpat1 libffi-dev libgc1
+2026-07-25T16:13:28.6303518Z   libgcc-11-dev libgcc-s1 libgomp1 libicu-dev libicu70 libitm1 libjsoncpp25
+2026-07-25T16:13:28.6304580Z   libllvm14 liblsan0 libmd0 libmpdec3 libncurses-dev libncurses6 libncursesw6
+2026-07-25T16:13:28.6305734Z   libnghttp2-14 libobjc-11-dev libobjc4 libpfm4 libpsl5 libpython3-stdlib
+2026-07-25T16:13:28.6306798Z   libpython3.10-minimal libpython3.10-stdlib libquadmath0 librhash0 librtmp1
+2026-07-25T16:13:28.6308467Z   libssh-4 libstdc++-11-dev libstdc++6 libtinfo-dev libtinfo6 libtsan0
+2026-07-25T16:13:28.6310673Z   libubsan1 libuv1 libxml2 libxml2-dev libyaml-0-2 libz3-4 libz3-dev
+2026-07-25T16:13:28.6311353Z   llvm-14-linker-tools llvm-14-runtime llvm-14-tools media-types python3
+2026-07-25T16:13:28.6312036Z   python3-minimal python3-pkg-resources python3-pygments python3-yaml
+2026-07-25T16:13:28.6312490Z   python3.10 python3.10-minimal
+2026-07-25T16:13:28.6313163Z Suggested packages:
+2026-07-25T16:13:28.6313985Z   clang-14-doc cmake-doc ninja-build cmake-format gcc-11-locales
+2026-07-25T16:13:28.6314628Z   g++-11-multilib gcc-11-doc gcc-11-multilib gettext-base git-daemon-run
+2026-07-25T16:13:28.6315300Z   | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb git-cvs
+2026-07-25T16:13:28.6315947Z   git-mediawiki git-svn lrzip glibc-doc locales manpages-dev icu-doc
+2026-07-25T16:13:28.6316582Z   ncurses-doc libstdc++-11-doc pkg-config llvm-14-doc python3-doc python3-tk
+2026-07-25T16:13:28.6317355Z   python3-venv python3-setuptools python-pygments-doc ttf-bitstream-vera
+2026-07-25T16:13:28.6317944Z   python3.10-venv python3.10-doc binfmt-support
+2026-07-25T16:13:28.6318362Z Recommended packages:
+2026-07-25T16:13:28.6318773Z   less ssh-client manpages manpages-dev libc-devtools libnss-nis
+2026-07-25T16:13:28.6319381Z   libnss-nisplus libgpm2 publicsuffix binfmt-support
+2026-07-25T16:13:28.7988758Z The following NEW packages will be installed:
+2026-07-25T16:13:28.7990113Z   clang-14 cmake cmake-data dh-elpa-helper emacsen-common git git-man
+2026-07-25T16:13:28.7991025Z   icu-devtools lib32gcc-s1 lib32stdc++6 libarchive13 libbrotli1 libbsd0
+2026-07-25T16:13:28.7994031Z   libc6-i386 libclang-14-dev libclang-common-14-dev libclang-cpp14
+2026-07-25T16:13:28.7996095Z   libclang1-14 libcurl3-gnutls libcurl4 libedit2 liberror-perl libexpat1
+2026-07-25T16:13:28.7997276Z   libffi-dev libgc1 libicu-dev libicu70 libjsoncpp25 libllvm14 libmd0
+2026-07-25T16:13:28.7998470Z   libmpdec3 libncurses-dev libnghttp2-14 libobjc-11-dev libobjc4 libpfm4
+2026-07-25T16:13:28.7999493Z   libpsl5 libpython3-stdlib libpython3.10-minimal libpython3.10-stdlib
+2026-07-25T16:13:28.8001709Z   librhash0 librtmp1 libssh-4 libtinfo-dev libuv1 libxml2 libxml2-dev
+2026-07-25T16:13:28.8002673Z   libyaml-0-2 libz3-4 libz3-dev llvm-14 llvm-14-dev llvm-14-linker-tools
+2026-07-25T16:13:28.8028464Z   llvm-14-runtime llvm-14-tools media-types python3 python3-minimal
+2026-07-25T16:13:28.8029428Z   python3-pkg-resources python3-pygments python3-yaml python3.10
+2026-07-25T16:13:28.8030041Z   python3.10-minimal
+2026-07-25T16:13:28.8030530Z The following packages will be upgraded:
+2026-07-25T16:13:28.8031310Z   ca-certificates cpp-11 g++-11 gcc-11 gcc-11-base gcc-12-base libasan6
+2026-07-25T16:13:28.8032129Z   libatomic1 libc-dev-bin libc6 libc6-dev libcc1-0 libgcc-11-dev libgcc-s1
+2026-07-25T16:13:28.8032948Z   libgomp1 libitm1 liblsan0 libncurses6 libncursesw6 libquadmath0
+2026-07-25T16:13:28.8033686Z   libstdc++-11-dev libstdc++6 libtinfo6 libtsan0 libubsan1
+2026-07-25T16:13:28.9654839Z 25 upgraded, 63 newly installed, 0 to remove and 78 not upgraded.
+2026-07-25T16:13:28.9655425Z Need to get 242 MB of archives.
+2026-07-25T16:13:28.9655828Z After this operation, 1068 MB of additional disk space will be used.
+2026-07-25T16:13:28.9656389Z Get:1 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-dev amd64 2.35-0ubuntu3.13 [2101 kB]
+2026-07-25T16:13:29.6035290Z Get:2 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc-dev-bin amd64 2.35-0ubuntu3.13 [20.3 kB]
+2026-07-25T16:13:29.6036155Z Get:3 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libatomic1 amd64 12.3.0-1ubuntu1~22.04.3 [10.5 kB]
+2026-07-25T16:13:29.6036942Z Get:4 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libubsan1 amd64 12.3.0-1ubuntu1~22.04.3 [976 kB]
+2026-07-25T16:13:29.6273655Z Get:5 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libquadmath0 amd64 12.3.0-1ubuntu1~22.04.3 [154 kB]
+2026-07-25T16:13:29.6304859Z Get:6 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 liblsan0 amd64 12.3.0-1ubuntu1~22.04.3 [1069 kB]
+2026-07-25T16:13:29.6796238Z Get:7 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libitm1 amd64 12.3.0-1ubuntu1~22.04.3 [30.2 kB]
+2026-07-25T16:13:29.6797682Z Get:8 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgomp1 amd64 12.3.0-1ubuntu1~22.04.3 [127 kB]
+2026-07-25T16:13:29.6830369Z Get:9 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-12-base amd64 12.3.0-1ubuntu1~22.04.3 [216 kB]
+2026-07-25T16:13:29.6882271Z Get:10 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgcc-s1 amd64 12.3.0-1ubuntu1~22.04.3 [53.9 kB]
+2026-07-25T16:13:29.6897778Z Get:11 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcc1-0 amd64 12.3.0-1ubuntu1~22.04.3 [48.3 kB]
+2026-07-25T16:13:29.7518889Z Get:12 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libstdc++6 amd64 12.3.0-1ubuntu1~22.04.3 [699 kB]
+2026-07-25T16:13:29.7596964Z Get:13 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6 amd64 2.35-0ubuntu3.13 [3235 kB]
+2026-07-25T16:13:29.8260954Z Get:14 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3.10-minimal amd64 3.10.12-1~22.04.16 [817 kB]
+2026-07-25T16:13:29.8366927Z Get:15 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libexpat1 amd64 2.4.7-1ubuntu0.7 [92.1 kB]
+2026-07-25T16:13:29.8378682Z Get:16 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3.10-minimal amd64 3.10.12-1~22.04.16 [2254 kB]
+2026-07-25T16:13:29.8645748Z Get:17 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-minimal amd64 3.10.6-1~22.04.1 [24.3 kB]
+2026-07-25T16:13:29.8663273Z Get:18 http://archive.ubuntu.com/ubuntu jammy/main amd64 media-types all 7.0.0 [25.5 kB]
+2026-07-25T16:13:29.8664742Z Get:19 http://archive.ubuntu.com/ubuntu jammy/main amd64 libmpdec3 amd64 2.5.1-2build2 [86.8 kB]
+2026-07-25T16:13:29.8666093Z Get:20 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libncurses6 amd64 6.3-2ubuntu0.2 [111 kB]
+2026-07-25T16:13:29.8674267Z Get:21 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libncursesw6 amd64 6.3-2ubuntu0.2 [147 kB]
+2026-07-25T16:13:29.8991472Z Get:22 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtinfo6 amd64 6.3-2ubuntu0.2 [105 kB]
+2026-07-25T16:13:29.9737627Z Get:23 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3.10-stdlib amd64 3.10.12-1~22.04.16 [1850 kB]
+2026-07-25T16:13:29.9861884Z Get:24 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3.10 amd64 3.10.12-1~22.04.16 [508 kB]
+2026-07-25T16:13:29.9900250Z Get:25 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpython3-stdlib amd64 3.10.6-1~22.04.1 [6812 B]
+2026-07-25T16:13:29.9904952Z Get:26 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3 amd64 3.10.6-1~22.04.1 [22.8 kB]
+2026-07-25T16:13:29.9910808Z Get:27 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 ca-certificates all 20260601~22.04.1 [141 kB]
+2026-07-25T16:13:29.9948130Z Get:28 http://archive.ubuntu.com/ubuntu jammy/main amd64 libmd0 amd64 1.0.4-1build1 [23.0 kB]
+2026-07-25T16:13:29.9968128Z Get:29 http://archive.ubuntu.com/ubuntu jammy/main amd64 libbsd0 amd64 0.11.5-1 [44.8 kB]
+2026-07-25T16:13:29.9973138Z Get:30 http://archive.ubuntu.com/ubuntu jammy/main amd64 libicu70 amd64 70.1-2 [10.6 MB]
+2026-07-25T16:13:30.2124544Z Get:31 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxml2 amd64 2.9.13+dfsg-1ubuntu0.12 [765 kB]
+2026-07-25T16:13:30.2172785Z Get:32 http://archive.ubuntu.com/ubuntu jammy/main amd64 libyaml-0-2 amd64 0.2.2-1build2 [51.6 kB]
+2026-07-25T16:13:30.2182165Z Get:33 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-pkg-resources all 59.6.0-1.2ubuntu0.22.04.3 [133 kB]
+2026-07-25T16:13:30.2189047Z Get:34 http://archive.ubuntu.com/ubuntu jammy/main amd64 python3-yaml amd64 5.4.1-1ubuntu1 [129 kB]
+2026-07-25T16:13:30.2197516Z Get:35 http://archive.ubuntu.com/ubuntu jammy/main amd64 libedit2 amd64 3.1-20210910-1build1 [96.8 kB]
+2026-07-25T16:13:30.2205902Z Get:36 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libnghttp2-14 amd64 1.43.0-1ubuntu0.4 [76.9 kB]
+2026-07-25T16:13:30.2214564Z Get:37 http://archive.ubuntu.com/ubuntu jammy/main amd64 libpsl5 amd64 0.21.0-1.2build2 [58.4 kB]
+2026-07-25T16:13:30.2221559Z Get:38 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libuv1 amd64 1.43.0-1ubuntu0.1 [92.7 kB]
+2026-07-25T16:13:30.2225612Z Get:39 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libllvm14 amd64 1:14.0.0-1ubuntu1.1 [24.0 MB]
+2026-07-25T16:13:30.7362256Z Get:40 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libclang-cpp14 amd64 1:14.0.0-1ubuntu1.1 [12.1 MB]
+2026-07-25T16:13:30.9666621Z Get:41 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libasan6 amd64 11.4.0-1ubuntu1~22.04.3 [2283 kB]
+2026-07-25T16:13:31.0120330Z Get:42 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 g++-11 amd64 11.4.0-1ubuntu1~22.04.3 [11.4 MB]
+2026-07-25T16:13:31.2340182Z Get:43 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11 amd64 11.4.0-1ubuntu1~22.04.3 [20.1 MB]
+2026-07-25T16:13:31.6939946Z Get:44 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libstdc++-11-dev amd64 11.4.0-1ubuntu1~22.04.3 [2101 kB]
+2026-07-25T16:13:31.7045141Z Get:45 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libgcc-11-dev amd64 11.4.0-1ubuntu1~22.04.3 [2517 kB]
+2026-07-25T16:13:31.7720954Z Get:46 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtsan0 amd64 11.4.0-1ubuntu1~22.04.3 [2260 kB]
+2026-07-25T16:13:31.8689350Z Get:47 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 cpp-11 amd64 11.4.0-1ubuntu1~22.04.3 [10.0 MB]
+2026-07-25T16:13:32.0486138Z Get:48 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 gcc-11-base amd64 11.4.0-1ubuntu1~22.04.3 [216 kB]
+2026-07-25T16:13:32.0505388Z Get:49 http://archive.ubuntu.com/ubuntu jammy/main amd64 libgc1 amd64 1:8.0.6-1.1build1 [96.8 kB]
+2026-07-25T16:13:32.0518135Z Get:50 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libobjc4 amd64 12.3.0-1ubuntu1~22.04.3 [48.7 kB]
+2026-07-25T16:13:32.0522375Z Get:51 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libobjc-11-dev amd64 11.4.0-1ubuntu1~22.04.3 [196 kB]
+2026-07-25T16:13:32.0658575Z Get:52 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libc6-i386 amd64 2.35-0ubuntu3.13 [2837 kB]
+2026-07-25T16:13:32.1143173Z Get:53 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32gcc-s1 amd64 12.3.0-1ubuntu1~22.04.3 [63.9 kB]
+2026-07-25T16:13:32.1158963Z Get:54 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 lib32stdc++6 amd64 12.3.0-1ubuntu1~22.04.3 [739 kB]
+2026-07-25T16:13:32.1283680Z Get:55 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libclang-common-14-dev amd64 1:14.0.0-1ubuntu1.1 [5975 kB]
+2026-07-25T16:13:32.2492803Z Get:56 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 llvm-14-linker-tools amd64 1:14.0.0-1ubuntu1.1 [1355 kB]
+2026-07-25T16:13:32.2706161Z Get:57 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libclang1-14 amd64 1:14.0.0-1ubuntu1.1 [6792 kB]
+2026-07-25T16:13:32.4053311Z Get:58 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 clang-14 amd64 1:14.0.0-1ubuntu1.1 [81.2 kB]
+2026-07-25T16:13:32.4073522Z Get:59 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libarchive13 amd64 3.6.0-1ubuntu1.8 [368 kB]
+2026-07-25T16:13:32.4159682Z Get:60 http://archive.ubuntu.com/ubuntu jammy/main amd64 libbrotli1 amd64 1.0.9-2build6 [315 kB]
+2026-07-25T16:13:32.4187483Z Get:61 http://archive.ubuntu.com/ubuntu jammy/main amd64 librtmp1 amd64 2.4+20151223.gitfa8646d.1-2build4 [58.2 kB]
+2026-07-25T16:13:32.4195302Z Get:62 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libssh-4 amd64 0.9.6-2ubuntu0.22.04.7 [187 kB]
+2026-07-25T16:13:32.4220297Z Get:63 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl4 amd64 7.81.0-1ubuntu1.25 [291 kB]
+2026-07-25T16:13:32.4272777Z Get:64 http://archive.ubuntu.com/ubuntu jammy/main amd64 libjsoncpp25 amd64 1.9.5-3 [80.0 kB]
+2026-07-25T16:13:32.4285890Z Get:65 http://archive.ubuntu.com/ubuntu jammy/main amd64 librhash0 amd64 1.4.2-1ubuntu1 [125 kB]
+2026-07-25T16:13:32.4367906Z Get:66 http://archive.ubuntu.com/ubuntu jammy/main amd64 dh-elpa-helper all 2.0.9ubuntu1 [7610 B]
+2026-07-25T16:13:32.4800601Z Get:67 http://archive.ubuntu.com/ubuntu jammy/main amd64 emacsen-common all 3.0.4 [14.9 kB]
+2026-07-25T16:13:32.5545751Z Get:68 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 cmake-data all 3.22.1-1ubuntu1.22.04.2 [1913 kB]
+2026-07-25T16:13:32.5839267Z Get:69 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 cmake amd64 3.22.1-1ubuntu1.22.04.2 [5010 kB]
+2026-07-25T16:13:32.6764439Z Get:70 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl3-gnutls amd64 7.81.0-1ubuntu1.25 [284 kB]
+2026-07-25T16:13:32.6798034Z Get:71 http://archive.ubuntu.com/ubuntu jammy/main amd64 liberror-perl all 0.17029-1 [26.5 kB]
+2026-07-25T16:13:32.6817760Z Get:72 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 git-man all 1:2.34.1-1ubuntu1.17 [954 kB]
+2026-07-25T16:13:32.7097717Z Get:73 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 git amd64 1:2.34.1-1ubuntu1.17 [3174 kB]
+2026-07-25T16:13:32.7600986Z Get:74 http://archive.ubuntu.com/ubuntu jammy/main amd64 icu-devtools amd64 70.1-2 [197 kB]
+2026-07-25T16:13:32.7623878Z Get:75 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 libclang-14-dev amd64 1:14.0.0-1ubuntu1.1 [25.2 MB]
+2026-07-25T16:13:33.4991019Z Get:76 http://archive.ubuntu.com/ubuntu jammy/main amd64 libicu-dev amd64 70.1-2 [11.6 MB]
+2026-07-25T16:13:33.7395215Z Get:77 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libncurses-dev amd64 6.3-2ubuntu0.2 [381 kB]
+2026-07-25T16:13:33.7443075Z Get:78 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libtinfo-dev amd64 6.3-2ubuntu0.2 [780 B]
+2026-07-25T16:13:33.7445671Z Get:79 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libxml2-dev amd64 2.9.13+dfsg-1ubuntu0.12 [805 kB]
+2026-07-25T16:13:33.7568475Z Get:80 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 llvm-14-runtime amd64 1:14.0.0-1ubuntu1.1 [484 kB]
+2026-07-25T16:13:33.7640807Z Get:81 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 libpfm4 amd64 4.11.1+git32-gd0b85fb-1ubuntu0.1 [345 kB]
+2026-07-25T16:13:33.7695171Z Get:82 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 llvm-14 amd64 1:14.0.0-1ubuntu1.1 [12.7 MB]
+2026-07-25T16:13:34.0259541Z Get:83 http://archive.ubuntu.com/ubuntu jammy/main amd64 libffi-dev amd64 3.4.2-4 [63.7 kB]
+2026-07-25T16:13:34.0264603Z Get:84 http://archive.ubuntu.com/ubuntu jammy-updates/main amd64 python3-pygments all 2.11.2+dfsg-2ubuntu0.1 [750 kB]
+2026-07-25T16:13:34.0373643Z Get:85 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 llvm-14-tools amd64 1:14.0.0-1ubuntu1.1 [404 kB]
+2026-07-25T16:13:34.0441573Z Get:86 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libz3-4 amd64 4.8.12-1 [5766 kB]
+2026-07-25T16:13:34.1501281Z Get:87 http://archive.ubuntu.com/ubuntu jammy/universe amd64 libz3-dev amd64 4.8.12-1 [72.2 kB]
+2026-07-25T16:13:34.1512165Z Get:88 http://archive.ubuntu.com/ubuntu jammy-updates/universe amd64 llvm-14-dev amd64 1:14.0.0-1ubuntu1.1 [37.8 MB]
+2026-07-25T16:13:35.6269573Z debconf: delaying package configuration, since apt-utils is not installed
+2026-07-25T16:13:35.6498289Z Fetched 242 MB in 6s (38.2 MB/s)
+2026-07-25T16:13:36.0693272Z (Reading database ... 
+2026-07-25T16:13:36.0694225Z (Reading database ... 5%
+2026-07-25T16:13:36.0695007Z (Reading database ... 10%
+2026-07-25T16:13:36.0695380Z (Reading database ... 15%
+2026-07-25T16:13:36.0695930Z (Reading database ... 20%
+2026-07-25T16:13:36.0696553Z (Reading database ... 25%
+2026-07-25T16:13:36.0696876Z (Reading database ... 30%
+2026-07-25T16:13:36.0705008Z (Reading database ... 35%
+2026-07-25T16:13:36.0705704Z (Reading database ... 40%
+2026-07-25T16:13:36.0706370Z (Reading database ... 45%
+2026-07-25T16:13:36.0706864Z (Reading database ... 50%
+2026-07-25T16:13:36.0707478Z (Reading database ... 55%
+2026-07-25T16:13:36.0707975Z (Reading database ... 60%
+2026-07-25T16:13:36.0729804Z (Reading database ... 65%
+2026-07-25T16:13:36.0730455Z (Reading database ... 70%
+2026-07-25T16:13:36.0739374Z (Reading database ... 75%
+2026-07-25T16:13:36.0796478Z (Reading database ... 80%
+2026-07-25T16:13:36.0848403Z (Reading database ... 85%
+2026-07-25T16:13:36.0907408Z (Reading database ... 90%
+2026-07-25T16:13:36.2932384Z (Reading database ... 95%
+2026-07-25T16:13:36.2932781Z (Reading database ... 100%
+2026-07-25T16:13:36.2933469Z (Reading database ... 13949 files and directories currently installed.)
+2026-07-25T16:13:36.2934462Z Preparing to unpack .../0-libc6-dev_2.35-0ubuntu3.13_amd64.deb ...
+2026-07-25T16:13:36.2965692Z Unpacking libc6-dev:amd64 (2.35-0ubuntu3.13) over (2.35-0ubuntu3.4) ...
+2026-07-25T16:13:38.0875055Z Preparing to unpack .../1-libc-dev-bin_2.35-0ubuntu3.13_amd64.deb ...
+2026-07-25T16:13:38.0915699Z Unpacking libc-dev-bin (2.35-0ubuntu3.13) over (2.35-0ubuntu3.4) ...
+2026-07-25T16:13:38.1103993Z Preparing to unpack .../2-libatomic1_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:38.1151410Z Unpacking libatomic1:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:38.1302683Z Preparing to unpack .../3-libubsan1_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:38.1333466Z Unpacking libubsan1:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:38.2794017Z Preparing to unpack .../4-libquadmath0_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:38.3448831Z Unpacking libquadmath0:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:38.3733687Z Preparing to unpack .../5-liblsan0_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:38.3773188Z Unpacking liblsan0:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:38.4652299Z Preparing to unpack .../6-libitm1_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:38.4712189Z Unpacking libitm1:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:38.4936337Z Preparing to unpack .../7-libgomp1_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:38.4969780Z Unpacking libgomp1:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:38.5213721Z Preparing to unpack .../8-gcc-12-base_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:38.6097242Z Unpacking gcc-12-base:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:39.0046721Z Setting up gcc-12-base:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:13:39.0219053Z (Reading database ... 
+2026-07-25T16:13:39.0219754Z (Reading database ... 5%
+2026-07-25T16:13:39.0220241Z (Reading database ... 10%
+2026-07-25T16:13:39.0220691Z (Reading database ... 15%
+2026-07-25T16:13:39.0221156Z (Reading database ... 20%
+2026-07-25T16:13:39.0221600Z (Reading database ... 25%
+2026-07-25T16:13:39.0222041Z (Reading database ... 30%
+2026-07-25T16:13:39.0222465Z (Reading database ... 35%
+2026-07-25T16:13:39.0222875Z (Reading database ... 40%
+2026-07-25T16:13:39.0223246Z (Reading database ... 45%
+2026-07-25T16:13:39.0223577Z (Reading database ... 50%
+2026-07-25T16:13:39.0223904Z (Reading database ... 55%
+2026-07-25T16:13:39.0224240Z (Reading database ... 60%
+2026-07-25T16:13:39.0235605Z (Reading database ... 65%
+2026-07-25T16:13:39.0242692Z (Reading database ... 70%
+2026-07-25T16:13:39.0252731Z (Reading database ... 75%
+2026-07-25T16:13:39.0262032Z (Reading database ... 80%
+2026-07-25T16:13:39.0265505Z (Reading database ... 85%
+2026-07-25T16:13:39.0274103Z (Reading database ... 90%
+2026-07-25T16:13:39.0277446Z (Reading database ... 95%
+2026-07-25T16:13:39.0278098Z (Reading database ... 100%
+2026-07-25T16:13:39.0278857Z (Reading database ... 13949 files and directories currently installed.)
+2026-07-25T16:13:39.0286068Z Preparing to unpack .../libgcc-s1_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:39.0924237Z Unpacking libgcc-s1:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:39.1178427Z Setting up libgcc-s1:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:13:39.1571939Z (Reading database ... 
+2026-07-25T16:13:39.1572520Z (Reading database ... 5%
+2026-07-25T16:13:39.1572899Z (Reading database ... 10%
+2026-07-25T16:13:39.1573247Z (Reading database ... 15%
+2026-07-25T16:13:39.1573609Z (Reading database ... 20%
+2026-07-25T16:13:39.1573962Z (Reading database ... 25%
+2026-07-25T16:13:39.1574332Z (Reading database ... 30%
+2026-07-25T16:13:39.1574699Z (Reading database ... 35%
+2026-07-25T16:13:39.1575061Z (Reading database ... 40%
+2026-07-25T16:13:39.1575713Z (Reading database ... 45%
+2026-07-25T16:13:39.1576066Z (Reading database ... 50%
+2026-07-25T16:13:39.1576422Z (Reading database ... 55%
+2026-07-25T16:13:39.1576789Z (Reading database ... 60%
+2026-07-25T16:13:39.1582405Z (Reading database ... 65%
+2026-07-25T16:13:39.1589895Z (Reading database ... 70%
+2026-07-25T16:13:39.1608954Z (Reading database ... 75%
+2026-07-25T16:13:39.1610377Z (Reading database ... 80%
+2026-07-25T16:13:39.1613204Z (Reading database ... 85%
+2026-07-25T16:13:39.1622800Z (Reading database ... 90%
+2026-07-25T16:13:39.1626018Z (Reading database ... 95%
+2026-07-25T16:13:39.1626525Z (Reading database ... 100%
+2026-07-25T16:13:39.1627444Z (Reading database ... 13949 files and directories currently installed.)
+2026-07-25T16:13:39.1634369Z Preparing to unpack .../libcc1-0_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:39.1664680Z Unpacking libcc1-0:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:39.2447372Z Preparing to unpack .../libstdc++6_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:39.3108456Z Unpacking libstdc++6:amd64 (12.3.0-1ubuntu1~22.04.3) over (12.3.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:39.5837671Z Setting up libstdc++6:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:13:39.8614277Z (Reading database ... 
+2026-07-25T16:13:39.8635667Z (Reading database ... 5%
+2026-07-25T16:13:39.8636311Z (Reading database ... 10%
+2026-07-25T16:13:39.8637401Z (Reading database ... 15%
+2026-07-25T16:13:39.8638148Z (Reading database ... 20%
+2026-07-25T16:13:39.8638718Z (Reading database ... 25%
+2026-07-25T16:13:39.8639163Z (Reading database ... 30%
+2026-07-25T16:13:39.8639613Z (Reading database ... 35%
+2026-07-25T16:13:39.8640041Z (Reading database ... 40%
+2026-07-25T16:13:39.8640467Z (Reading database ... 45%
+2026-07-25T16:13:39.8641029Z (Reading database ... 50%
+2026-07-25T16:13:39.8641484Z (Reading database ... 55%
+2026-07-25T16:13:39.8641931Z (Reading database ... 60%
+2026-07-25T16:13:39.8642383Z (Reading database ... 65%
+2026-07-25T16:13:39.8643227Z (Reading database ... 70%
+2026-07-25T16:13:39.8689273Z (Reading database ... 75%
+2026-07-25T16:13:39.8689866Z (Reading database ... 80%
+2026-07-25T16:13:39.8690476Z (Reading database ... 85%
+2026-07-25T16:13:39.8690964Z (Reading database ... 90%
+2026-07-25T16:13:39.8691486Z (Reading database ... 95%
+2026-07-25T16:13:39.8692037Z (Reading database ... 100%
+2026-07-25T16:13:39.8692587Z (Reading database ... 13949 files and directories currently installed.)
+2026-07-25T16:13:39.8701191Z Preparing to unpack .../libc6_2.35-0ubuntu3.13_amd64.deb ...
+2026-07-25T16:13:40.0508438Z debconf: unable to initialize frontend: Dialog
+2026-07-25T16:13:40.0509188Z debconf: (TERM is not set, so the dialog frontend is not usable.)
+2026-07-25T16:13:40.0509835Z debconf: falling back to frontend: Readline
+2026-07-25T16:13:40.0986477Z Unpacking libc6:amd64 (2.35-0ubuntu3.13) over (2.35-0ubuntu3.4) ...
+2026-07-25T16:13:42.0738370Z Setting up libc6:amd64 (2.35-0ubuntu3.13) ...
+2026-07-25T16:13:42.1306803Z debconf: unable to initialize frontend: Dialog
+2026-07-25T16:13:42.1307810Z debconf: (TERM is not set, so the dialog frontend is not usable.)
+2026-07-25T16:13:42.1308497Z debconf: falling back to frontend: Readline
+2026-07-25T16:13:43.2261126Z Selecting previously unselected package libpython3.10-minimal:amd64.
+2026-07-25T16:13:43.2262088Z (Reading database ... 
+2026-07-25T16:13:43.2262759Z (Reading database ... 5%
+2026-07-25T16:13:43.2263298Z (Reading database ... 10%
+2026-07-25T16:13:43.2263833Z (Reading database ... 15%
+2026-07-25T16:13:43.2264396Z (Reading database ... 20%
+2026-07-25T16:13:43.2264911Z (Reading database ... 25%
+2026-07-25T16:13:43.2265413Z (Reading database ... 30%
+2026-07-25T16:13:43.2265925Z (Reading database ... 35%
+2026-07-25T16:13:43.2266448Z (Reading database ... 40%
+2026-07-25T16:13:43.2267026Z (Reading database ... 45%
+2026-07-25T16:13:43.2267798Z (Reading database ... 50%
+2026-07-25T16:13:43.2268258Z (Reading database ... 55%
+2026-07-25T16:13:43.2268730Z (Reading database ... 60%
+2026-07-25T16:13:43.2273564Z (Reading database ... 65%
+2026-07-25T16:13:43.2280885Z (Reading database ... 70%
+2026-07-25T16:13:43.2291076Z (Reading database ... 75%
+2026-07-25T16:13:43.2303520Z (Reading database ... 80%
+2026-07-25T16:13:43.2307619Z (Reading database ... 85%
+2026-07-25T16:13:43.2318078Z (Reading database ... 90%
+2026-07-25T16:13:43.2321817Z (Reading database ... 95%
+2026-07-25T16:13:43.2322303Z (Reading database ... 100%
+2026-07-25T16:13:43.2322863Z (Reading database ... 13949 files and directories currently installed.)
+2026-07-25T16:13:43.2331936Z Preparing to unpack .../libpython3.10-minimal_3.10.12-1~22.04.16_amd64.deb ...
+2026-07-25T16:13:43.2348306Z Unpacking libpython3.10-minimal:amd64 (3.10.12-1~22.04.16) ...
+2026-07-25T16:13:43.3826688Z Selecting previously unselected package libexpat1:amd64.
+2026-07-25T16:13:43.3841084Z Preparing to unpack .../libexpat1_2.4.7-1ubuntu0.7_amd64.deb ...
+2026-07-25T16:13:43.3851386Z Unpacking libexpat1:amd64 (2.4.7-1ubuntu0.7) ...
+2026-07-25T16:13:43.4024874Z Selecting previously unselected package python3.10-minimal.
+2026-07-25T16:13:43.4025662Z Preparing to unpack .../python3.10-minimal_3.10.12-1~22.04.16_amd64.deb ...
+2026-07-25T16:13:43.4061517Z Unpacking python3.10-minimal (3.10.12-1~22.04.16) ...
+2026-07-25T16:13:43.4545736Z Setting up libpython3.10-minimal:amd64 (3.10.12-1~22.04.16) ...
+2026-07-25T16:13:43.4596470Z Setting up libexpat1:amd64 (2.4.7-1ubuntu0.7) ...
+2026-07-25T16:13:43.4623131Z Setting up python3.10-minimal (3.10.12-1~22.04.16) ...
+2026-07-25T16:13:44.1490488Z Selecting previously unselected package python3-minimal.
+2026-07-25T16:13:44.1491507Z (Reading database ... 
+2026-07-25T16:13:44.1492168Z (Reading database ... 5%
+2026-07-25T16:13:44.1492636Z (Reading database ... 10%
+2026-07-25T16:13:44.1493232Z (Reading database ... 15%
+2026-07-25T16:13:44.1493843Z (Reading database ... 20%
+2026-07-25T16:13:44.1495343Z (Reading database ... 25%
+2026-07-25T16:13:44.1495975Z (Reading database ... 30%
+2026-07-25T16:13:44.1496479Z (Reading database ... 35%
+2026-07-25T16:13:44.1496993Z (Reading database ... 40%
+2026-07-25T16:13:44.1497586Z (Reading database ... 45%
+2026-07-25T16:13:44.1498027Z (Reading database ... 50%
+2026-07-25T16:13:44.1498540Z (Reading database ... 55%
+2026-07-25T16:13:44.1499004Z (Reading database ... 60%
+2026-07-25T16:13:44.1499465Z (Reading database ... 65%
+2026-07-25T16:13:44.1499981Z (Reading database ... 70%
+2026-07-25T16:13:44.1504349Z (Reading database ... 75%
+2026-07-25T16:13:44.1516086Z (Reading database ... 80%
+2026-07-25T16:13:44.1518899Z (Reading database ... 85%
+2026-07-25T16:13:44.1527814Z (Reading database ... 90%
+2026-07-25T16:13:44.1531018Z (Reading database ... 95%
+2026-07-25T16:13:44.1531744Z (Reading database ... 100%
+2026-07-25T16:13:44.1532515Z (Reading database ... 14253 files and directories currently installed.)
+2026-07-25T16:13:44.1538214Z Preparing to unpack .../0-python3-minimal_3.10.6-1~22.04.1_amd64.deb ...
+2026-07-25T16:13:44.1550253Z Unpacking python3-minimal (3.10.6-1~22.04.1) ...
+2026-07-25T16:13:44.1695143Z Selecting previously unselected package media-types.
+2026-07-25T16:13:44.1696195Z Preparing to unpack .../1-media-types_7.0.0_all.deb ...
+2026-07-25T16:13:44.1708573Z Unpacking media-types (7.0.0) ...
+2026-07-25T16:13:44.1870822Z Selecting previously unselected package libmpdec3:amd64.
+2026-07-25T16:13:44.1881102Z Preparing to unpack .../2-libmpdec3_2.5.1-2build2_amd64.deb ...
+2026-07-25T16:13:44.1890299Z Unpacking libmpdec3:amd64 (2.5.1-2build2) ...
+2026-07-25T16:13:44.2030703Z Preparing to unpack .../3-libncurses6_6.3-2ubuntu0.2_amd64.deb ...
+2026-07-25T16:13:44.2091506Z Unpacking libncurses6:amd64 (6.3-2ubuntu0.2) over (6.3-2ubuntu0.1) ...
+2026-07-25T16:13:44.2327708Z Preparing to unpack .../4-libncursesw6_6.3-2ubuntu0.2_amd64.deb ...
+2026-07-25T16:13:44.2356648Z Unpacking libncursesw6:amd64 (6.3-2ubuntu0.2) over (6.3-2ubuntu0.1) ...
+2026-07-25T16:13:44.3354808Z Preparing to unpack .../5-libtinfo6_6.3-2ubuntu0.2_amd64.deb ...
+2026-07-25T16:13:44.3441031Z Unpacking libtinfo6:amd64 (6.3-2ubuntu0.2) over (6.3-2ubuntu0.1) ...
+2026-07-25T16:13:44.3686179Z Setting up libtinfo6:amd64 (6.3-2ubuntu0.2) ...
+2026-07-25T16:13:44.3938316Z Selecting previously unselected package libpython3.10-stdlib:amd64.
+2026-07-25T16:13:44.3938952Z (Reading database ... 
+2026-07-25T16:13:44.3939520Z (Reading database ... 5%
+2026-07-25T16:13:44.3939967Z (Reading database ... 10%
+2026-07-25T16:13:44.3940426Z (Reading database ... 15%
+2026-07-25T16:13:44.3940846Z (Reading database ... 20%
+2026-07-25T16:13:44.3941284Z (Reading database ... 25%
+2026-07-25T16:13:44.3941716Z (Reading database ... 30%
+2026-07-25T16:13:44.3942112Z (Reading database ... 35%
+2026-07-25T16:13:44.3942506Z (Reading database ... 40%
+2026-07-25T16:13:44.3942965Z (Reading database ... 45%
+2026-07-25T16:13:44.3943389Z (Reading database ... 50%
+2026-07-25T16:13:44.3943777Z (Reading database ... 55%
+2026-07-25T16:13:44.3944173Z (Reading database ... 60%
+2026-07-25T16:13:44.3945988Z (Reading database ... 65%
+2026-07-25T16:13:44.3947506Z (Reading database ... 70%
+2026-07-25T16:13:44.3955054Z (Reading database ... 75%
+2026-07-25T16:13:44.3966785Z (Reading database ... 80%
+2026-07-25T16:13:44.3969797Z (Reading database ... 85%
+2026-07-25T16:13:44.3978486Z (Reading database ... 90%
+2026-07-25T16:13:44.3981480Z (Reading database ... 95%
+2026-07-25T16:13:44.3982159Z (Reading database ... 100%
+2026-07-25T16:13:44.3982748Z (Reading database ... 14287 files and directories currently installed.)
+2026-07-25T16:13:44.3988665Z Preparing to unpack .../libpython3.10-stdlib_3.10.12-1~22.04.16_amd64.deb ...
+2026-07-25T16:13:44.3999564Z Unpacking libpython3.10-stdlib:amd64 (3.10.12-1~22.04.16) ...
+2026-07-25T16:13:44.4653864Z Selecting previously unselected package python3.10.
+2026-07-25T16:13:44.4667350Z Preparing to unpack .../python3.10_3.10.12-1~22.04.16_amd64.deb ...
+2026-07-25T16:13:44.4676991Z Unpacking python3.10 (3.10.12-1~22.04.16) ...
+2026-07-25T16:13:44.4817243Z Selecting previously unselected package libpython3-stdlib:amd64.
+2026-07-25T16:13:44.4829085Z Preparing to unpack .../libpython3-stdlib_3.10.6-1~22.04.1_amd64.deb ...
+2026-07-25T16:13:44.4843971Z Unpacking libpython3-stdlib:amd64 (3.10.6-1~22.04.1) ...
+2026-07-25T16:13:44.5003571Z Setting up python3-minimal (3.10.6-1~22.04.1) ...
+2026-07-25T16:13:44.9234965Z Selecting previously unselected package python3.
+2026-07-25T16:13:44.9245387Z (Reading database ... 
+2026-07-25T16:13:44.9246247Z (Reading database ... 5%
+2026-07-25T16:13:44.9246780Z (Reading database ... 10%
+2026-07-25T16:13:44.9248942Z (Reading database ... 15%
+2026-07-25T16:13:44.9249615Z (Reading database ... 20%
+2026-07-25T16:13:44.9250057Z (Reading database ... 25%
+2026-07-25T16:13:44.9250483Z (Reading database ... 30%
+2026-07-25T16:13:44.9250957Z (Reading database ... 35%
+2026-07-25T16:13:44.9251342Z (Reading database ... 40%
+2026-07-25T16:13:44.9251785Z (Reading database ... 45%
+2026-07-25T16:13:44.9252183Z (Reading database ... 50%
+2026-07-25T16:13:44.9252591Z (Reading database ... 55%
+2026-07-25T16:13:44.9253246Z (Reading database ... 60%
+2026-07-25T16:13:44.9261921Z (Reading database ... 65%
+2026-07-25T16:13:44.9266307Z (Reading database ... 70%
+2026-07-25T16:13:44.9273920Z (Reading database ... 75%
+2026-07-25T16:13:44.9286845Z (Reading database ... 80%
+2026-07-25T16:13:44.9289648Z (Reading database ... 85%
+2026-07-25T16:13:44.9298274Z (Reading database ... 90%
+2026-07-25T16:13:44.9301810Z (Reading database ... 95%
+2026-07-25T16:13:44.9302688Z (Reading database ... 100%
+2026-07-25T16:13:44.9304030Z (Reading database ... 14654 files and directories currently installed.)
+2026-07-25T16:13:44.9309169Z Preparing to unpack .../00-python3_3.10.6-1~22.04.1_amd64.deb ...
+2026-07-25T16:13:44.9348313Z Unpacking python3 (3.10.6-1~22.04.1) ...
+2026-07-25T16:13:44.9514764Z Preparing to unpack .../01-ca-certificates_20260601~22.04.1_all.deb ...
+2026-07-25T16:13:44.9545310Z Unpacking ca-certificates (20260601~22.04.1) over (20230311ubuntu0.22.04.1) ...
+2026-07-25T16:13:45.6120932Z Selecting previously unselected package libmd0:amd64.
+2026-07-25T16:13:45.6121611Z Preparing to unpack .../02-libmd0_1.0.4-1build1_amd64.deb ...
+2026-07-25T16:13:45.6129144Z Unpacking libmd0:amd64 (1.0.4-1build1) ...
+2026-07-25T16:13:45.6289500Z Selecting previously unselected package libbsd0:amd64.
+2026-07-25T16:13:45.6290357Z Preparing to unpack .../03-libbsd0_0.11.5-1_amd64.deb ...
+2026-07-25T16:13:45.6300744Z Unpacking libbsd0:amd64 (0.11.5-1) ...
+2026-07-25T16:13:45.6442270Z Selecting previously unselected package libicu70:amd64.
+2026-07-25T16:13:45.6443437Z Preparing to unpack .../04-libicu70_70.1-2_amd64.deb ...
+2026-07-25T16:13:45.6453486Z Unpacking libicu70:amd64 (70.1-2) ...
+2026-07-25T16:13:45.7720549Z Selecting previously unselected package libxml2:amd64.
+2026-07-25T16:13:45.7721745Z Preparing to unpack .../05-libxml2_2.9.13+dfsg-1ubuntu0.12_amd64.deb ...
+2026-07-25T16:13:45.7734342Z Unpacking libxml2:amd64 (2.9.13+dfsg-1ubuntu0.12) ...
+2026-07-25T16:13:45.8016470Z Selecting previously unselected package libyaml-0-2:amd64.
+2026-07-25T16:13:45.8017398Z Preparing to unpack .../06-libyaml-0-2_0.2.2-1build2_amd64.deb ...
+2026-07-25T16:13:45.8036871Z Unpacking libyaml-0-2:amd64 (0.2.2-1build2) ...
+2026-07-25T16:13:45.8202480Z Selecting previously unselected package python3-pkg-resources.
+2026-07-25T16:13:45.8217942Z Preparing to unpack .../07-python3-pkg-resources_59.6.0-1.2ubuntu0.22.04.3_all.deb ...
+2026-07-25T16:13:45.8231001Z Unpacking python3-pkg-resources (59.6.0-1.2ubuntu0.22.04.3) ...
+2026-07-25T16:13:45.8374361Z Selecting previously unselected package python3-yaml.
+2026-07-25T16:13:45.8387525Z Preparing to unpack .../08-python3-yaml_5.4.1-1ubuntu1_amd64.deb ...
+2026-07-25T16:13:45.8396522Z Unpacking python3-yaml (5.4.1-1ubuntu1) ...
+2026-07-25T16:13:45.8543119Z Selecting previously unselected package libedit2:amd64.
+2026-07-25T16:13:45.8554793Z Preparing to unpack .../09-libedit2_3.1-20210910-1build1_amd64.deb ...
+2026-07-25T16:13:45.8563718Z Unpacking libedit2:amd64 (3.1-20210910-1build1) ...
+2026-07-25T16:13:45.8865825Z Selecting previously unselected package libnghttp2-14:amd64.
+2026-07-25T16:13:45.8876718Z Preparing to unpack .../10-libnghttp2-14_1.43.0-1ubuntu0.4_amd64.deb ...
+2026-07-25T16:13:45.8886972Z Unpacking libnghttp2-14:amd64 (1.43.0-1ubuntu0.4) ...
+2026-07-25T16:13:45.9013547Z Selecting previously unselected package libpsl5:amd64.
+2026-07-25T16:13:45.9024170Z Preparing to unpack .../11-libpsl5_0.21.0-1.2build2_amd64.deb ...
+2026-07-25T16:13:45.9034366Z Unpacking libpsl5:amd64 (0.21.0-1.2build2) ...
+2026-07-25T16:13:46.0803178Z Selecting previously unselected package libuv1:amd64.
+2026-07-25T16:13:46.0817582Z Preparing to unpack .../12-libuv1_1.43.0-1ubuntu0.1_amd64.deb ...
+2026-07-25T16:13:46.0838075Z Unpacking libuv1:amd64 (1.43.0-1ubuntu0.1) ...
+2026-07-25T16:13:46.1203467Z Selecting previously unselected package libllvm14:amd64.
+2026-07-25T16:13:46.1204144Z Preparing to unpack .../13-libllvm14_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:46.1217750Z Unpacking libllvm14:amd64 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:46.5441080Z Selecting previously unselected package libclang-cpp14.
+2026-07-25T16:13:46.5441704Z Preparing to unpack .../14-libclang-cpp14_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:46.5452305Z Unpacking libclang-cpp14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:46.7713530Z Preparing to unpack .../15-libasan6_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:46.7754538Z Unpacking libasan6:amd64 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:47.2778972Z Preparing to unpack .../16-g++-11_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:47.2811094Z Unpacking g++-11 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:48.0056067Z Preparing to unpack .../17-gcc-11_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:48.0097224Z Unpacking gcc-11 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:49.2720260Z Preparing to unpack .../18-libstdc++-11-dev_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:49.2747558Z Unpacking libstdc++-11-dev:amd64 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:50.7836648Z Preparing to unpack .../19-libgcc-11-dev_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:50.7863842Z Unpacking libgcc-11-dev:amd64 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:51.3731121Z Preparing to unpack .../20-libtsan0_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:51.3760499Z Unpacking libtsan0:amd64 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:51.5568109Z Preparing to unpack .../21-cpp-11_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:51.5597192Z Unpacking cpp-11 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:52.1948972Z Preparing to unpack .../22-gcc-11-base_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:52.1981021Z Unpacking gcc-11-base:amd64 (11.4.0-1ubuntu1~22.04.3) over (11.4.0-1ubuntu1~22.04) ...
+2026-07-25T16:13:52.2188612Z Selecting previously unselected package libgc1:amd64.
+2026-07-25T16:13:52.2202615Z Preparing to unpack .../23-libgc1_1%3a8.0.6-1.1build1_amd64.deb ...
+2026-07-25T16:13:52.2211951Z Unpacking libgc1:amd64 (1:8.0.6-1.1build1) ...
+2026-07-25T16:13:52.2367417Z Selecting previously unselected package libobjc4:amd64.
+2026-07-25T16:13:52.2379500Z Preparing to unpack .../24-libobjc4_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:52.2389727Z Unpacking libobjc4:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:13:52.2513483Z Selecting previously unselected package libobjc-11-dev:amd64.
+2026-07-25T16:13:52.2514358Z Preparing to unpack .../25-libobjc-11-dev_11.4.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:52.2522709Z Unpacking libobjc-11-dev:amd64 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:13:52.2722263Z Selecting previously unselected package libc6-i386.
+2026-07-25T16:13:52.2726702Z Preparing to unpack .../26-libc6-i386_2.35-0ubuntu3.13_amd64.deb ...
+2026-07-25T16:13:52.2740011Z Unpacking libc6-i386 (2.35-0ubuntu3.13) ...
+2026-07-25T16:13:52.3509396Z Selecting previously unselected package lib32gcc-s1.
+2026-07-25T16:13:52.3515945Z Preparing to unpack .../27-lib32gcc-s1_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:52.3527567Z Unpacking lib32gcc-s1 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:13:52.3702310Z Selecting previously unselected package lib32stdc++6.
+2026-07-25T16:13:52.3703080Z Preparing to unpack .../28-lib32stdc++6_12.3.0-1ubuntu1~22.04.3_amd64.deb ...
+2026-07-25T16:13:52.3713580Z Unpacking lib32stdc++6 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:13:52.3900307Z Selecting previously unselected package libclang-common-14-dev.
+2026-07-25T16:13:52.3911646Z Preparing to unpack .../29-libclang-common-14-dev_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:52.3920903Z Unpacking libclang-common-14-dev (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:52.6159037Z Selecting previously unselected package llvm-14-linker-tools.
+2026-07-25T16:13:52.6173310Z Preparing to unpack .../30-llvm-14-linker-tools_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:52.6182619Z Unpacking llvm-14-linker-tools (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:52.6438188Z Selecting previously unselected package libclang1-14.
+2026-07-25T16:13:52.6449253Z Preparing to unpack .../31-libclang1-14_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:52.6460852Z Unpacking libclang1-14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:52.7434285Z Selecting previously unselected package clang-14.
+2026-07-25T16:13:52.7435106Z Preparing to unpack .../32-clang-14_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:52.7446954Z Unpacking clang-14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:52.7659385Z Selecting previously unselected package libarchive13:amd64.
+2026-07-25T16:13:52.7673794Z Preparing to unpack .../33-libarchive13_3.6.0-1ubuntu1.8_amd64.deb ...
+2026-07-25T16:13:52.7683853Z Unpacking libarchive13:amd64 (3.6.0-1ubuntu1.8) ...
+2026-07-25T16:13:52.7836045Z Selecting previously unselected package libbrotli1:amd64.
+2026-07-25T16:13:52.7849007Z Preparing to unpack .../34-libbrotli1_1.0.9-2build6_amd64.deb ...
+2026-07-25T16:13:52.7858908Z Unpacking libbrotli1:amd64 (1.0.9-2build6) ...
+2026-07-25T16:13:52.8017690Z Selecting previously unselected package librtmp1:amd64.
+2026-07-25T16:13:52.8030270Z Preparing to unpack .../35-librtmp1_2.4+20151223.gitfa8646d.1-2build4_amd64.deb ...
+2026-07-25T16:13:52.8038529Z Unpacking librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build4) ...
+2026-07-25T16:13:52.8171176Z Selecting previously unselected package libssh-4:amd64.
+2026-07-25T16:13:52.8182905Z Preparing to unpack .../36-libssh-4_0.9.6-2ubuntu0.22.04.7_amd64.deb ...
+2026-07-25T16:13:52.8217677Z Unpacking libssh-4:amd64 (0.9.6-2ubuntu0.22.04.7) ...
+2026-07-25T16:13:52.8379166Z Selecting previously unselected package libcurl4:amd64.
+2026-07-25T16:13:52.8391092Z Preparing to unpack .../37-libcurl4_7.81.0-1ubuntu1.25_amd64.deb ...
+2026-07-25T16:13:52.8404196Z Unpacking libcurl4:amd64 (7.81.0-1ubuntu1.25) ...
+2026-07-25T16:13:52.8588750Z Selecting previously unselected package libjsoncpp25:amd64.
+2026-07-25T16:13:52.8602568Z Preparing to unpack .../38-libjsoncpp25_1.9.5-3_amd64.deb ...
+2026-07-25T16:13:52.8612902Z Unpacking libjsoncpp25:amd64 (1.9.5-3) ...
+2026-07-25T16:13:52.8883724Z Selecting previously unselected package librhash0:amd64.
+2026-07-25T16:13:52.8895893Z Preparing to unpack .../39-librhash0_1.4.2-1ubuntu1_amd64.deb ...
+2026-07-25T16:13:52.8905339Z Unpacking librhash0:amd64 (1.4.2-1ubuntu1) ...
+2026-07-25T16:13:52.9022002Z Selecting previously unselected package dh-elpa-helper.
+2026-07-25T16:13:52.9034097Z Preparing to unpack .../40-dh-elpa-helper_2.0.9ubuntu1_all.deb ...
+2026-07-25T16:13:52.9069158Z Unpacking dh-elpa-helper (2.0.9ubuntu1) ...
+2026-07-25T16:13:52.9218797Z Selecting previously unselected package emacsen-common.
+2026-07-25T16:13:52.9228986Z Preparing to unpack .../41-emacsen-common_3.0.4_all.deb ...
+2026-07-25T16:13:52.9303653Z Unpacking emacsen-common (3.0.4) ...
+2026-07-25T16:13:52.9928563Z Selecting previously unselected package cmake-data.
+2026-07-25T16:13:52.9929830Z Preparing to unpack .../42-cmake-data_3.22.1-1ubuntu1.22.04.2_all.deb ...
+2026-07-25T16:13:52.9982065Z Unpacking cmake-data (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-25T16:13:53.2671500Z Selecting previously unselected package cmake.
+2026-07-25T16:13:53.2681110Z Preparing to unpack .../43-cmake_3.22.1-1ubuntu1.22.04.2_amd64.deb ...
+2026-07-25T16:13:53.2738706Z Unpacking cmake (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-25T16:13:53.3549998Z Selecting previously unselected package libcurl3-gnutls:amd64.
+2026-07-25T16:13:53.3563069Z Preparing to unpack .../44-libcurl3-gnutls_7.81.0-1ubuntu1.25_amd64.deb ...
+2026-07-25T16:13:53.3581883Z Unpacking libcurl3-gnutls:amd64 (7.81.0-1ubuntu1.25) ...
+2026-07-25T16:13:53.3729403Z Selecting previously unselected package liberror-perl.
+2026-07-25T16:13:53.3735226Z Preparing to unpack .../45-liberror-perl_0.17029-1_all.deb ...
+2026-07-25T16:13:53.3746772Z Unpacking liberror-perl (0.17029-1) ...
+2026-07-25T16:13:53.3879989Z Selecting previously unselected package git-man.
+2026-07-25T16:13:53.3885343Z Preparing to unpack .../46-git-man_1%3a2.34.1-1ubuntu1.17_all.deb ...
+2026-07-25T16:13:53.3897016Z Unpacking git-man (1:2.34.1-1ubuntu1.17) ...
+2026-07-25T16:13:53.4091706Z Selecting previously unselected package git.
+2026-07-25T16:13:53.4092334Z Preparing to unpack .../47-git_1%3a2.34.1-1ubuntu1.17_amd64.deb ...
+2026-07-25T16:13:53.4132831Z Unpacking git (1:2.34.1-1ubuntu1.17) ...
+2026-07-25T16:13:53.4966311Z Selecting previously unselected package icu-devtools.
+2026-07-25T16:13:53.4983331Z Preparing to unpack .../48-icu-devtools_70.1-2_amd64.deb ...
+2026-07-25T16:13:53.5001422Z Unpacking icu-devtools (70.1-2) ...
+2026-07-25T16:13:53.5206502Z Selecting previously unselected package libclang-14-dev.
+2026-07-25T16:13:53.5207685Z Preparing to unpack .../49-libclang-14-dev_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:53.5220166Z Unpacking libclang-14-dev (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:54.4939320Z Selecting previously unselected package libicu-dev:amd64.
+2026-07-25T16:13:54.4944879Z Preparing to unpack .../50-libicu-dev_70.1-2_amd64.deb ...
+2026-07-25T16:13:54.5035197Z Unpacking libicu-dev:amd64 (70.1-2) ...
+2026-07-25T16:13:54.9445892Z Selecting previously unselected package libncurses-dev:amd64.
+2026-07-25T16:13:54.9465878Z Preparing to unpack .../51-libncurses-dev_6.3-2ubuntu0.2_amd64.deb ...
+2026-07-25T16:13:55.0004850Z Unpacking libncurses-dev:amd64 (6.3-2ubuntu0.2) ...
+2026-07-25T16:13:55.4684844Z Selecting previously unselected package libtinfo-dev:amd64.
+2026-07-25T16:13:55.4701740Z Preparing to unpack .../52-libtinfo-dev_6.3-2ubuntu0.2_amd64.deb ...
+2026-07-25T16:13:55.5130344Z Unpacking libtinfo-dev:amd64 (6.3-2ubuntu0.2) ...
+2026-07-25T16:13:55.5244753Z Selecting previously unselected package libxml2-dev:amd64.
+2026-07-25T16:13:55.5263301Z Preparing to unpack .../53-libxml2-dev_2.9.13+dfsg-1ubuntu0.12_amd64.deb ...
+2026-07-25T16:13:55.5273438Z Unpacking libxml2-dev:amd64 (2.9.13+dfsg-1ubuntu0.12) ...
+2026-07-25T16:13:55.5619622Z Selecting previously unselected package llvm-14-runtime.
+2026-07-25T16:13:55.5626760Z Preparing to unpack .../54-llvm-14-runtime_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:55.5637717Z Unpacking llvm-14-runtime (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:55.5829515Z Selecting previously unselected package libpfm4:amd64.
+2026-07-25T16:13:55.5837485Z Preparing to unpack .../55-libpfm4_4.11.1+git32-gd0b85fb-1ubuntu0.1_amd64.deb ...
+2026-07-25T16:13:55.5848402Z Unpacking libpfm4:amd64 (4.11.1+git32-gd0b85fb-1ubuntu0.1) ...
+2026-07-25T16:13:55.6059401Z Selecting previously unselected package llvm-14.
+2026-07-25T16:13:55.6060212Z Preparing to unpack .../56-llvm-14_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:55.6069296Z Unpacking llvm-14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:56.1170560Z Selecting previously unselected package libffi-dev:amd64.
+2026-07-25T16:13:56.1183785Z Preparing to unpack .../57-libffi-dev_3.4.2-4_amd64.deb ...
+2026-07-25T16:13:56.1195668Z Unpacking libffi-dev:amd64 (3.4.2-4) ...
+2026-07-25T16:13:56.1351026Z Selecting previously unselected package python3-pygments.
+2026-07-25T16:13:56.1368503Z Preparing to unpack .../58-python3-pygments_2.11.2+dfsg-2ubuntu0.1_all.deb ...
+2026-07-25T16:13:56.1379615Z Unpacking python3-pygments (2.11.2+dfsg-2ubuntu0.1) ...
+2026-07-25T16:13:56.1840901Z Selecting previously unselected package llvm-14-tools.
+2026-07-25T16:13:56.1842880Z Preparing to unpack .../59-llvm-14-tools_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:56.1852613Z Unpacking llvm-14-tools (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:56.3900714Z Selecting previously unselected package libz3-4:amd64.
+2026-07-25T16:13:56.3916834Z Preparing to unpack .../60-libz3-4_4.8.12-1_amd64.deb ...
+2026-07-25T16:13:56.3930066Z Unpacking libz3-4:amd64 (4.8.12-1) ...
+2026-07-25T16:13:56.9526434Z Selecting previously unselected package libz3-dev:amd64.
+2026-07-25T16:13:56.9562170Z Preparing to unpack .../61-libz3-dev_4.8.12-1_amd64.deb ...
+2026-07-25T16:13:57.1016926Z Unpacking libz3-dev:amd64 (4.8.12-1) ...
+2026-07-25T16:13:58.0000308Z Selecting previously unselected package llvm-14-dev.
+2026-07-25T16:13:58.0022402Z Preparing to unpack .../62-llvm-14-dev_1%3a14.0.0-1ubuntu1.1_amd64.deb ...
+2026-07-25T16:13:58.0057597Z Unpacking llvm-14-dev (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:13:59.1730078Z Setting up media-types (7.0.0) ...
+2026-07-25T16:14:00.7907738Z Setting up gcc-11-base:amd64 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:01.4908261Z Setting up libpsl5:amd64 (0.21.0-1.2build2) ...
+2026-07-25T16:14:02.1401801Z Setting up libyaml-0-2:amd64 (0.2.2-1build2) ...
+2026-07-25T16:14:02.1427822Z Setting up libbrotli1:amd64 (1.0.9-2build6) ...
+2026-07-25T16:14:02.1478936Z Setting up libnghttp2-14:amd64 (1.43.0-1ubuntu0.4) ...
+2026-07-25T16:14:02.1529571Z Setting up libgomp1:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:02.1557213Z Setting up libffi-dev:amd64 (3.4.2-4) ...
+2026-07-25T16:14:02.1581457Z Setting up libasan6:amd64 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:02.1609282Z Setting up liberror-perl (0.17029-1) ...
+2026-07-25T16:14:02.1633711Z Setting up ca-certificates (20260601~22.04.1) ...
+2026-07-25T16:14:02.2184960Z debconf: unable to initialize frontend: Dialog
+2026-07-25T16:14:02.2186664Z debconf: (TERM is not set, so the dialog frontend is not usable.)
+2026-07-25T16:14:02.2187583Z debconf: falling back to frontend: Readline
+2026-07-25T16:14:03.2761111Z Updating certificates in /etc/ssl/certs...
+2026-07-25T16:14:03.9238411Z rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+2026-07-25T16:14:03.9422656Z 24 added, 40 removed; done.
+2026-07-25T16:14:03.9573678Z Setting up libz3-4:amd64 (4.8.12-1) ...
+2026-07-25T16:14:03.9601490Z Setting up libuv1:amd64 (1.43.0-1ubuntu0.1) ...
+2026-07-25T16:14:03.9639537Z Setting up libpfm4:amd64 (4.11.1+git32-gd0b85fb-1ubuntu0.1) ...
+2026-07-25T16:14:03.9689883Z Setting up emacsen-common (3.0.4) ...
+2026-07-25T16:14:03.9934516Z Setting up librtmp1:amd64 (2.4+20151223.gitfa8646d.1-2build4) ...
+2026-07-25T16:14:03.9964913Z Setting up dh-elpa-helper (2.0.9ubuntu1) ...
+2026-07-25T16:14:03.9993806Z Setting up libncurses6:amd64 (6.3-2ubuntu0.2) ...
+2026-07-25T16:14:04.0027713Z Setting up libquadmath0:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0056078Z Setting up libatomic1:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0084964Z Setting up libjsoncpp25:amd64 (1.9.5-3) ...
+2026-07-25T16:14:04.0155666Z Setting up libncursesw6:amd64 (6.3-2ubuntu0.2) ...
+2026-07-25T16:14:04.0187181Z Setting up libgc1:amd64 (1:8.0.6-1.1build1) ...
+2026-07-25T16:14:04.0215331Z Setting up libssh-4:amd64 (0.9.6-2ubuntu0.22.04.7) ...
+2026-07-25T16:14:04.0243629Z Setting up libubsan1:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0282625Z Setting up libmd0:amd64 (1.0.4-1build1) ...
+2026-07-25T16:14:04.0313787Z Setting up librhash0:amd64 (1.4.2-1ubuntu1) ...
+2026-07-25T16:14:04.0344064Z Setting up libmpdec3:amd64 (2.5.1-2build2) ...
+2026-07-25T16:14:04.0372423Z Setting up libc6-i386 (2.35-0ubuntu3.13) ...
+2026-07-25T16:14:04.0411316Z Setting up libcurl4:amd64 (7.81.0-1ubuntu1.25) ...
+2026-07-25T16:14:04.0444445Z Setting up git-man (1:2.34.1-1ubuntu1.17) ...
+2026-07-25T16:14:04.0472663Z Setting up cmake-data (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-25T16:14:04.0707575Z Setting up libc-dev-bin (2.35-0ubuntu3.13) ...
+2026-07-25T16:14:04.0737749Z Setting up libbsd0:amd64 (0.11.5-1) ...
+2026-07-25T16:14:04.0767343Z Setting up libcc1-0:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0796994Z Setting up liblsan0:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0823968Z Setting up libitm1:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0851050Z Setting up libicu70:amd64 (70.1-2) ...
+2026-07-25T16:14:04.0875360Z Setting up libtsan0:amd64 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0903115Z Setting up cpp-11 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.0932056Z Setting up libz3-dev:amd64 (4.8.12-1) ...
+2026-07-25T16:14:04.0959805Z Setting up libedit2:amd64 (3.1-20210910-1build1) ...
+2026-07-25T16:14:04.0987989Z Setting up libobjc4:amd64 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.1015735Z Setting up libcurl3-gnutls:amd64 (7.81.0-1ubuntu1.25) ...
+2026-07-25T16:14:04.1044603Z Setting up libpython3.10-stdlib:amd64 (3.10.12-1~22.04.16) ...
+2026-07-25T16:14:04.1075033Z Setting up lib32gcc-s1 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.1113188Z Setting up lib32stdc++6 (12.3.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.1154774Z Setting up icu-devtools (70.1-2) ...
+2026-07-25T16:14:04.1183239Z Setting up git (1:2.34.1-1ubuntu1.17) ...
+2026-07-25T16:14:04.1259286Z Setting up libgcc-11-dev:amd64 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.1285755Z Setting up gcc-11 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.1312866Z Setting up libc6-dev:amd64 (2.35-0ubuntu3.13) ...
+2026-07-25T16:14:04.1341786Z Setting up libicu-dev:amd64 (70.1-2) ...
+2026-07-25T16:14:04.1369992Z Setting up libxml2:amd64 (2.9.13+dfsg-1ubuntu0.12) ...
+2026-07-25T16:14:04.1400841Z Setting up libpython3-stdlib:amd64 (3.10.6-1~22.04.1) ...
+2026-07-25T16:14:04.1427746Z Setting up libncurses-dev:amd64 (6.3-2ubuntu0.2) ...
+2026-07-25T16:14:04.1453577Z Setting up python3.10 (3.10.12-1~22.04.16) ...
+2026-07-25T16:14:04.6048354Z Setting up libarchive13:amd64 (3.6.0-1ubuntu1.8) ...
+2026-07-25T16:14:04.6079059Z Setting up libobjc-11-dev:amd64 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.6103806Z Setting up python3 (3.10.6-1~22.04.1) ...
+2026-07-25T16:14:04.6163605Z running python rtupdate hooks for python3.10...
+2026-07-25T16:14:04.6164832Z running python post-rtupdate hooks for python3.10...
+2026-07-25T16:14:04.6763067Z Setting up libxml2-dev:amd64 (2.9.13+dfsg-1ubuntu0.12) ...
+2026-07-25T16:14:04.6788974Z Setting up libstdc++-11-dev:amd64 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.6814594Z Setting up libllvm14:amd64 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:04.6839268Z Setting up cmake (3.22.1-1ubuntu1.22.04.2) ...
+2026-07-25T16:14:04.6868963Z Setting up llvm-14-linker-tools (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:04.6891934Z Setting up python3-pkg-resources (59.6.0-1.2ubuntu0.22.04.3) ...
+2026-07-25T16:14:04.8221907Z Setting up libtinfo-dev:amd64 (6.3-2ubuntu0.2) ...
+2026-07-25T16:14:04.8300668Z Setting up g++-11 (11.4.0-1ubuntu1~22.04.3) ...
+2026-07-25T16:14:04.8326810Z Setting up libclang1-14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:04.8361007Z Setting up python3-yaml (5.4.1-1ubuntu1) ...
+2026-07-25T16:14:04.9434999Z Setting up python3-pygments (2.11.2+dfsg-2ubuntu0.1) ...
+2026-07-25T16:14:05.3459113Z Setting up llvm-14-runtime (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3492976Z Setting up libclang-common-14-dev (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3519476Z Setting up libclang-cpp14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3545426Z Setting up libclang-14-dev (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3570356Z Setting up llvm-14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3596294Z Setting up llvm-14-tools (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3623451Z Setting up clang-14 (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3653033Z Setting up llvm-14-dev (1:14.0.0-1ubuntu1.1) ...
+2026-07-25T16:14:05.3928664Z Processing triggers for libc-bin (2.35-0ubuntu3.4) ...
+2026-07-25T16:14:08.6075464Z Processing triggers for ca-certificates (20260601~22.04.1) ...
+2026-07-25T16:14:08.6122909Z Updating certificates in /etc/ssl/certs...
+2026-07-25T16:14:08.9187996Z 0 added, 0 removed; done.
+2026-07-25T16:14:08.9188448Z Running hooks in /etc/ca-certificates/update.d...
+2026-07-25T16:14:08.9197490Z done.
+2026-07-25T16:14:08.9983047Z update-alternatives: using /usr/bin/clang-14 to provide /usr/bin/clang (clang) in auto mode
+2026-07-25T16:14:09.0006855Z update-alternatives: using /usr/bin/clang++-14 to provide /usr/bin/clang++ (clang++) in auto mode
+2026-07-25T16:14:09.0028147Z update-alternatives: using /usr/bin/llvm-config-14 to provide /usr/bin/llvm-config (llvm-config) in auto mode
+2026-07-25T16:14:09.0044969Z update-alternatives: using /usr/bin/llc-14 to provide /usr/bin/llc (llc) in auto mode
+2026-07-25T16:14:09.0170433Z ##[group]Run git clone --recursive https://github.com/cupbop/CuPBoP.git
+2026-07-25T16:14:09.0171010Z [36;1mgit clone --recursive https://github.com/cupbop/CuPBoP.git[0m
+2026-07-25T16:14:09.0171498Z shell: sh -e {0}
+2026-07-25T16:14:09.0171767Z env:
+2026-07-25T16:14:09.0172021Z   CUDA_PATH: /usr/local/cuda
+2026-07-25T16:14:09.0172623Z ##[endgroup]
+2026-07-25T16:14:09.0666721Z Cloning into 'CuPBoP'...
+2026-07-25T16:14:09.9419273Z Submodule 'external/moodycamel' (https://github.com/cameron314/concurrentqueue) registered for path 'external/moodycamel'
+2026-07-25T16:14:09.9420556Z Submodule 'test/Hetero-Mark' (https://github.com/NUCAR-DEV/Hetero-Mark) registered for path 'test/Hetero-Mark'
+2026-07-25T16:14:09.9449282Z Cloning into '/__w/cupbop-experiment/cupbop-experiment/CuPBoP/external/moodycamel'...
+2026-07-25T16:14:11.0594870Z Cloning into '/__w/cupbop-experiment/cupbop-experiment/CuPBoP/test/Hetero-Mark'...
+2026-07-25T16:14:22.5540373Z Submodule path 'external/moodycamel': checked out '65d6970912fc3f6bb62d80edf95ca30e0df85137'
+2026-07-25T16:14:22.5866741Z Submodule path 'test/Hetero-Mark': checked out 'b8ea324d2394401776487b3520338d03f8c27676'
+2026-07-25T16:14:22.5986039Z ##[group]Run mkdir build && cd build
+2026-07-25T16:14:22.5986446Z [36;1mmkdir build && cd build[0m
+2026-07-25T16:14:22.5986805Z [36;1mcmake .. -DLLVM_DIR=/usr/lib/llvm-14/lib/cmake/llvm[0m
+2026-07-25T16:14:22.5987860Z [36;1mmake -j"$(nproc)"[0m
+2026-07-25T16:14:22.5988350Z shell: sh -e {0}
+2026-07-25T16:14:22.5988635Z env:
+2026-07-25T16:14:22.5988917Z   CUDA_PATH: /usr/local/cuda
+2026-07-25T16:14:22.5989215Z ##[endgroup]
+2026-07-25T16:14:24.1712703Z -- The C compiler identification is GNU 11.4.0
+2026-07-25T16:14:24.3268579Z -- The CXX compiler identification is GNU 11.4.0
+2026-07-25T16:14:24.3326177Z -- Detecting C compiler ABI info
+2026-07-25T16:14:24.7190341Z -- Detecting C compiler ABI info - done
+2026-07-25T16:14:24.7245706Z -- Check for working C compiler: /usr/bin/cc - skipped
+2026-07-25T16:14:24.7249754Z -- Detecting C compile features
+2026-07-25T16:14:24.7258391Z -- Detecting C compile features - done
+2026-07-25T16:14:24.7280588Z -- Detecting CXX compiler ABI info
+2026-07-25T16:14:25.3308849Z -- Detecting CXX compiler ABI info - done
+2026-07-25T16:14:25.3369175Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-07-25T16:14:25.3373469Z -- Detecting CXX compile features
+2026-07-25T16:14:25.3380573Z -- Detecting CXX compile features - done
+2026-07-25T16:14:25.3389809Z -- Found llvm-config: /usr/bin/llvm-config
+2026-07-25T16:14:25.3508200Z -- CUDA_PATH from environment: /usr/local/cuda
+2026-07-25T16:14:25.3528047Z -- Add test: aes
+2026-07-25T16:14:25.3528813Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3529676Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3552559Z -- Add test: bs
+2026-07-25T16:14:25.3553014Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3553644Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3576753Z -- Add test: ep
+2026-07-25T16:14:25.3594335Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3595201Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3595763Z -- Add test: fir
+2026-07-25T16:14:25.3603987Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3605043Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3626167Z -- Add test: ga
+2026-07-25T16:14:25.3626928Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3627809Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3648289Z -- Add test: hist
+2026-07-25T16:14:25.3648947Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3649704Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3666649Z -- Add test: kmeans
+2026-07-25T16:14:25.3668905Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3669584Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3690038Z -- Add test: pr
+2026-07-25T16:14:25.3705376Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/test
+2026-07-25T16:14:25.3706113Z -- /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.3709690Z -- Configuring done
+2026-07-25T16:14:25.3793195Z -- Generating done
+2026-07-25T16:14:25.3806473Z CMake Warning:
+2026-07-25T16:14:25.3807012Z   Manually-specified variables were not used by the project:
+2026-07-25T16:14:25.3807565Z 
+2026-07-25T16:14:25.3807754Z     LLVM_DIR
+2026-07-25T16:14:25.3809170Z 
+2026-07-25T16:14:25.3809330Z 
+2026-07-25T16:14:25.3828424Z -- Build files have been written to: /__w/cupbop-experiment/cupbop-experiment/CuPBoP/build
+2026-07-25T16:14:25.4152841Z [  4%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/generate_cpu_format.cpp.o
+2026-07-25T16:14:25.4198887Z [  8%] Building CXX object compilation/HostTranslation/CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/RemoveCudaBuiltin.cpp.o
+2026-07-25T16:14:27.3356654Z [ 12%] Building CXX object compilation/HostTranslation/CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/RemoveMetadata.cpp.o
+2026-07-25T16:14:28.2916340Z [ 16%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/handle_sync.cpp.o
+2026-07-25T16:14:28.4213919Z [ 20%] Building CXX object compilation/HostTranslation/CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/ReplaceConstantMemory.cpp.o
+2026-07-25T16:14:29.4760045Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/HostTranslation/src/cpu/ReplaceConstantMemory.cpp: In function 'void ReplaceConstantMemory(llvm::Module*, std::ifstream&)':
+2026-07-25T16:14:29.4763545Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/HostTranslation/src/cpu/ReplaceConstantMemory.cpp:52:49: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:29.4765894Z    52 |           auto element_type = PT->getElementType();
+2026-07-25T16:14:29.4766771Z       |                               ~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:29.4768899Z In file included from /usr/lib/llvm-14/include/llvm/IR/DataLayout.h:27,
+2026-07-25T16:14:29.4769757Z                  from /usr/lib/llvm-14/include/llvm/IR/Module.h:25,
+2026-07-25T16:14:29.4770907Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./HostTranslation/include/cpu/ReplaceConstantMemory.h:4,
+2026-07-25T16:14:29.4772373Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/HostTranslation/src/cpu/ReplaceConstantMemory.cpp:1:
+2026-07-25T16:14:29.4773699Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:29.4774526Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:29.4775152Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:29.8834448Z [ 24%] Building CXX object compilation/HostTranslation/CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/ReplaceCudaBuiltin.cpp.o
+2026-07-25T16:14:30.4864985Z [ 28%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/init.cpp.o
+2026-07-25T16:14:33.7092081Z [ 32%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/insert_sync.cpp.o
+2026-07-25T16:14:34.4962942Z [ 36%] Building CXX object compilation/HostTranslation/CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/ReplaceKernelArgs.cpp.o
+2026-07-25T16:14:36.8051898Z [ 40%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/insert_warp_loop.cpp.o
+2026-07-25T16:14:36.9264301Z [ 44%] Linking CXX shared library libcudaRuntime2cpuRuntime.so
+2026-07-25T16:14:36.9340626Z /usr/bin/c++ -fPIC -I/usr/local/cuda/include -I/usr/lib/llvm-14/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -Wunused -shared -Wl,-soname,libcudaRuntime2cpuRuntime.so -o libcudaRuntime2cpuRuntime.so CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/RemoveCudaBuiltin.cpp.o CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/RemoveMetadata.cpp.o CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/ReplaceConstantMemory.cpp.o CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/ReplaceCudaBuiltin.cpp.o CMakeFiles/cudaRuntime2cpuRuntime.dir/src/cpu/ReplaceKernelArgs.cpp.o 
+2026-07-25T16:14:37.1204651Z [ 44%] Built target cudaRuntime2cpuRuntime
+2026-07-25T16:14:37.1299287Z [ 48%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/memory_hierarchy.cpp.o
+2026-07-25T16:14:38.1532318Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/memory_hierarchy.cpp: In function 'void mem_share2global(llvm::Module*)':
+2026-07-25T16:14:38.1534900Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/memory_hierarchy.cpp:21:49: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:38.1549325Z    21 |           auto element_type = PT->getElementType();
+2026-07-25T16:14:38.1550286Z       |                               ~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:38.1560492Z In file included from /usr/lib/llvm-14/include/llvm/IR/DataLayout.h:27,
+2026-07-25T16:14:38.1562234Z                  from /usr/lib/llvm-14/include/llvm/IR/Module.h:25,
+2026-07-25T16:14:38.1563506Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/memory_hierarchy.h:3,
+2026-07-25T16:14:38.1565080Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/memory_hierarchy.cpp:1:
+2026-07-25T16:14:38.1566457Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:38.1567365Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:38.1567949Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:38.1728937Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/memory_hierarchy.cpp: In function 'void mem_constant2global(llvm::Module*, std::ofstream&)':
+2026-07-25T16:14:38.1731461Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/memory_hierarchy.cpp:124:49: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:38.1733630Z   124 |           auto element_type = PT->getElementType();
+2026-07-25T16:14:38.1734337Z       |                               ~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:38.1741818Z In file included from /usr/lib/llvm-14/include/llvm/IR/DataLayout.h:27,
+2026-07-25T16:14:38.1742744Z                  from /usr/lib/llvm-14/include/llvm/IR/Module.h:25,
+2026-07-25T16:14:38.1743731Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/memory_hierarchy.h:3,
+2026-07-25T16:14:38.1745138Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/memory_hierarchy.cpp:1:
+2026-07-25T16:14:38.1746362Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:38.1747030Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:38.1747855Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:38.8538839Z [ 52%] Building CXX object runtime/CMakeFiles/CPUruntime.dir/src/cpu/cudaKernelImpl.cpp.o
+2026-07-25T16:14:39.5301967Z [ 56%] Building CXX object runtime/CMakeFiles/CPUruntime.dir/src/cpu/cudaRuntimeImpl.cpp.o
+2026-07-25T16:14:39.5334184Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp: In function 'llvm::Instruction* GetContextArray(llvm::Instruction*, bool)':
+2026-07-25T16:14:39.5337353Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:100:69: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:39.5340647Z   100 |         dyn_cast<AllocaInst>(instruction)->getType()->getElementType();
+2026-07-25T16:14:39.5341492Z       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:39.5342277Z In file included from /usr/lib/llvm-14/include/llvm/IR/Function.h:29,
+2026-07-25T16:14:39.5343434Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/insert_warp_loop.h:4,
+2026-07-25T16:14:39.5344884Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:2:
+2026-07-25T16:14:39.5345962Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:39.5346602Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:39.5347241Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:39.5424137Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp: In function 'void handle_alloc(llvm::Function*)':
+2026-07-25T16:14:39.5426902Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:249:62: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:39.5449631Z   249 |     if (dyn_cast<AllocaInst>(inst)->getType()->getElementType()) {
+2026-07-25T16:14:39.5450520Z       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:39.5451283Z In file included from /usr/lib/llvm-14/include/llvm/IR/Function.h:29,
+2026-07-25T16:14:39.5452435Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/insert_warp_loop.h:4,
+2026-07-25T16:14:39.5453938Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:2:
+2026-07-25T16:14:39.5455039Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:39.5455837Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:39.5457435Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:39.5459458Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:250:74: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:39.5461591Z   250 |       elementType = dyn_cast<AllocaInst>(inst)->getType()->getElementType();
+2026-07-25T16:14:39.5462384Z       |                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:39.5463237Z In file included from /usr/lib/llvm-14/include/llvm/IR/Function.h:29,
+2026-07-25T16:14:39.5464354Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/insert_warp_loop.h:4,
+2026-07-25T16:14:39.5465760Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:2:
+2026-07-25T16:14:39.5467034Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:39.5467855Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:39.5468453Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:39.5599872Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp: In function 'void handle_local_variable_intra_warp(std::vector<ParallelRegion>, llvm::DivergenceInfo&)':
+2026-07-25T16:14:39.5602698Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:359:64: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:39.5604744Z   359 |           builder.CreateAlloca(alloc->getType()->getElementType(),
+2026-07-25T16:14:39.5616104Z       |                                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:39.5616936Z In file included from /usr/lib/llvm-14/include/llvm/IR/Function.h:29,
+2026-07-25T16:14:39.5618111Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/insert_warp_loop.h:4,
+2026-07-25T16:14:39.5619428Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:2:
+2026-07-25T16:14:39.5620449Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:39.5621095Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:39.5621835Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:39.5682641Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp: In function 'void print_parallel_region(std::vector<ParallelRegion>)':
+2026-07-25T16:14:39.5684496Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:573:15: warning: unused variable 'b' [-Wunused-variable]
+2026-07-25T16:14:39.5685699Z   573 |     for (auto b : region.wrapped_block) {
+2026-07-25T16:14:39.5686225Z       |               ^
+2026-07-25T16:14:39.5687421Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:566:10: warning: unused variable 'start' [-Wunused-variable]
+2026-07-25T16:14:39.5688586Z   566 |     auto start = region.start_block;
+2026-07-25T16:14:39.5689064Z       |          ^~~~~
+2026-07-25T16:14:39.5690136Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:567:10: warning: unused variable 'end' [-Wunused-variable]
+2026-07-25T16:14:39.5691174Z   567 |     auto end = region.end_block;
+2026-07-25T16:14:39.5691662Z       |          ^~~
+2026-07-25T16:14:39.5694239Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/insert_warp_loop.cpp:568:10: warning: unused variable 'next' [-Wunused-variable]
+2026-07-25T16:14:39.5695442Z   568 |     auto next = region.successor_block;
+2026-07-25T16:14:39.5696055Z       |          ^~~~
+2026-07-25T16:14:39.9469202Z [ 60%] Linking CXX shared library libCPUruntime.so
+2026-07-25T16:14:39.9555798Z /usr/bin/c++ -fPIC -I/usr/local/cuda/include -I/usr/lib/llvm-14/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -Wunused -shared -Wl,-soname,libCPUruntime.so -o libCPUruntime.so CMakeFiles/CPUruntime.dir/src/cpu/cudaKernelImpl.cpp.o CMakeFiles/CPUruntime.dir/src/cpu/cudaRuntimeImpl.cpp.o 
+2026-07-25T16:14:40.0300895Z [ 60%] Built target CPUruntime
+2026-07-25T16:14:40.0506700Z [ 64%] Building CXX object runtime/threadPool/CMakeFiles/threadPool.dir/src/cpu/api.cpp.o
+2026-07-25T16:14:40.6182856Z [ 68%] Linking CXX shared library libthreadPool.so
+2026-07-25T16:14:40.6274586Z /usr/bin/c++ -fPIC -I/usr/local/cuda/include -I/usr/lib/llvm-14/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -Wunused -shared -Wl,-soname,libthreadPool.so -o libthreadPool.so CMakeFiles/threadPool.dir/src/cpu/api.cpp.o 
+2026-07-25T16:14:40.6918924Z [ 68%] Built target threadPool
+2026-07-25T16:14:40.6997772Z [ 72%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/performance.cpp.o
+2026-07-25T16:14:41.2835036Z [ 76%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/tool.cpp.o
+2026-07-25T16:14:43.4852432Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp: In function 'void replace_built_in_function(llvm::Module*)':
+2026-07-25T16:14:43.4856913Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:242:78: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:43.4859489Z   242 |         builder.CreateAlloca(global_intra_warp_idx->getType()->getElementType(),
+2026-07-25T16:14:43.4860287Z       |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:43.4861097Z In file included from /usr/lib/llvm-14/include/llvm/IR/Constants.h:31,
+2026-07-25T16:14:43.4861942Z                  from /usr/lib/llvm-14/include/llvm/IR/ConstantFolder.h:21,
+2026-07-25T16:14:43.4862613Z                  from /usr/lib/llvm-14/include/llvm/IR/IRBuilder.h:25,
+2026-07-25T16:14:43.4867002Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/tool.h:4,
+2026-07-25T16:14:43.4868874Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:1:
+2026-07-25T16:14:43.4869915Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:43.4870702Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:43.4871168Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:43.4873068Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:253:78: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:43.4875175Z   253 |         builder.CreateAlloca(global_inter_warp_idx->getType()->getElementType(),
+2026-07-25T16:14:43.4875960Z       |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:43.4876779Z In file included from /usr/lib/llvm-14/include/llvm/IR/Constants.h:31,
+2026-07-25T16:14:43.4890223Z                  from /usr/lib/llvm-14/include/llvm/IR/ConstantFolder.h:21,
+2026-07-25T16:14:43.4890997Z                  from /usr/lib/llvm-14/include/llvm/IR/IRBuilder.h:25,
+2026-07-25T16:14:43.4892029Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/tool.h:4,
+2026-07-25T16:14:43.4893307Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:1:
+2026-07-25T16:14:43.4894795Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:43.4895488Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:43.4896011Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:43.4961658Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:439:56: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:43.4963953Z   439 |                 auto SrcTy = SrcPointTy->getElementType();
+2026-07-25T16:14:43.4964616Z       |                              ~~~~~~~~~~~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:43.4972055Z In file included from /usr/lib/llvm-14/include/llvm/IR/Constants.h:31,
+2026-07-25T16:14:43.4979520Z                  from /usr/lib/llvm-14/include/llvm/IR/ConstantFolder.h:21,
+2026-07-25T16:14:43.4988223Z                  from /usr/lib/llvm-14/include/llvm/IR/IRBuilder.h:25,
+2026-07-25T16:14:43.4989238Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/tool.h:4,
+2026-07-25T16:14:43.4990631Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:1:
+2026-07-25T16:14:43.4991776Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:43.4992494Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:43.4993046Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:43.4994984Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:450:43: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:43.4997436Z   449 |                       cast<PointerType>(src_alloc->getType()->getScalarType())
+2026-07-25T16:14:43.4998196Z       |                       ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-07-25T16:14:43.4998914Z   450 |                           ->getElementType(),
+2026-07-25T16:14:43.4999550Z       |                           ~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:43.5000237Z In file included from /usr/lib/llvm-14/include/llvm/IR/Constants.h:31,
+2026-07-25T16:14:43.5001284Z                  from /usr/lib/llvm-14/include/llvm/IR/ConstantFolder.h:21,
+2026-07-25T16:14:43.5002185Z                  from /usr/lib/llvm-14/include/llvm/IR/IRBuilder.h:25,
+2026-07-25T16:14:43.5003248Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/tool.h:4,
+2026-07-25T16:14:43.5004642Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/tool.cpp:1:
+2026-07-25T16:14:43.5005747Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:43.5006491Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:43.5008031Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:43.5104382Z [ 80%] Building CXX object compilation/KernelTranslation/CMakeFiles/spmd2mpmd.dir/src/cpu/warp_func.cpp.o
+2026-07-25T16:14:45.0350804Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/warp_func.cpp: In function 'void handle_warp_vote(llvm::Module*)':
+2026-07-25T16:14:45.0356723Z /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/warp_func.cpp:67:29: warning: 'llvm::Type* llvm::PointerType::getElementType() const' is deprecated: Pointer element types are deprecated. You can *temporarily* use Type::getPointerElementType() instead [-Wdeprecated-declarations]
+2026-07-25T16:14:45.0359305Z    66 |         cast<PointerType>(warp_vote_ptr->getType()->getScalarType())
+2026-07-25T16:14:45.0388581Z       |         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2026-07-25T16:14:45.0389350Z    67 |             ->getElementType(),
+2026-07-25T16:14:45.0389950Z       |             ~~~~~~~~~~~~~~~~^~
+2026-07-25T16:14:45.0390571Z In file included from /usr/lib/llvm-14/include/llvm/IR/Function.h:29,
+2026-07-25T16:14:45.0391602Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/./KernelTranslation/include/cpu/warp_func.h:4,
+2026-07-25T16:14:45.0392930Z                  from /__w/cupbop-experiment/cupbop-experiment/CuPBoP/compilation/KernelTranslation/src/cpu/warp_func.cpp:2:
+2026-07-25T16:14:45.0393942Z /usr/lib/llvm-14/include/llvm/IR/DerivedTypes.h:675:9: note: declared here
+2026-07-25T16:14:45.0394501Z   675 |   Type *getElementType() const {
+2026-07-25T16:14:45.0434498Z       |         ^~~~~~~~~~~~~~
+2026-07-25T16:14:45.7401477Z [ 84%] Linking CXX static library libspmd2mpmd.a
+2026-07-25T16:14:45.7524002Z /usr/bin/ar qc libspmd2mpmd.a CMakeFiles/spmd2mpmd.dir/src/cpu/generate_cpu_format.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/handle_sync.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/init.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/insert_sync.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/insert_warp_loop.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/memory_hierarchy.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/performance.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/tool.cpp.o CMakeFiles/spmd2mpmd.dir/src/cpu/warp_func.cpp.o
+2026-07-25T16:14:46.9433035Z /usr/bin/ranlib libspmd2mpmd.a
+2026-07-25T16:14:47.2053466Z [ 84%] Built target spmd2mpmd
+2026-07-25T16:14:47.2231391Z [ 92%] Building CXX object compilation/CMakeFiles/kernelTranslator.dir/KernelTranslation.cpp.o
+2026-07-25T16:14:47.2232266Z [ 92%] Building CXX object compilation/CMakeFiles/hostTranslator.dir/HostTranslation.cpp.o
+2026-07-25T16:14:49.4880814Z [ 96%] Linking CXX executable hostTranslator
+2026-07-25T16:14:49.4964211Z /usr/bin/c++ -I/usr/local/cuda/include -I/usr/lib/llvm-14/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -Wunused -rdynamic CMakeFiles/hostTranslator.dir/HostTranslation.cpp.o -o hostTranslator  -Wl,-rpath,/__w/cupbop-experiment/cupbop-experiment/CuPBoP/build/compilation/HostTranslation KernelTranslation/libspmd2mpmd.a HostTranslation/libcudaRuntime2cpuRuntime.so -L/usr/lib/llvm-14/lib -lLLVM-14 -lz -lrt -ldl -ltinfo -lpthread -lm 
+2026-07-25T16:14:49.5280264Z [100%] Linking CXX executable kernelTranslator
+2026-07-25T16:14:49.5379944Z /usr/bin/c++ -I/usr/local/cuda/include -I/usr/lib/llvm-14/include -std=c++14   -fno-exceptions -D_GNU_SOURCE -D__STDC_CONSTANT_MACROS -D__STDC_FORMAT_MACROS -D__STDC_LIMIT_MACROS  -Wunused -rdynamic CMakeFiles/kernelTranslator.dir/KernelTranslation.cpp.o -o kernelTranslator  KernelTranslation/libspmd2mpmd.a -L/usr/lib/llvm-14/lib -lLLVM-14 -lz -lrt -ldl -ltinfo -lpthread -lm 
+2026-07-25T16:14:49.6549326Z /usr/bin/ld: cannot find -lz: No such file or directory
+2026-07-25T16:14:49.6663683Z /usr/bin/ld: cannot find -lz: No such file or directory
+2026-07-25T16:14:49.7769760Z collect2: error: ld returned 1 exit status
+2026-07-25T16:14:49.7784755Z make[2]: *** [compilation/CMakeFiles/hostTranslator.dir/build.make:102: compilation/hostTranslator] Error 1
+2026-07-25T16:14:49.7792014Z make[1]: *** [CMakeFiles/Makefile2:215: compilation/CMakeFiles/hostTranslator.dir/all] Error 2
+2026-07-25T16:14:49.7793114Z make[1]: *** Waiting for unfinished jobs....
+2026-07-25T16:14:49.8030724Z collect2: error: ld returned 1 exit status
+2026-07-25T16:14:49.8047473Z make[2]: *** [compilation/CMakeFiles/kernelTranslator.dir/build.make:101: compilation/kernelTranslator] Error 1
+2026-07-25T16:14:49.8049679Z make[1]: *** [CMakeFiles/Makefile2:188: compilation/CMakeFiles/kernelTranslator.dir/all] Error 2
+2026-07-25T16:14:49.8051263Z make: *** [Makefile:101: all] Error 2
+2026-07-25T16:14:49.8096745Z ##[error]Process completed with exit code 2.
+2026-07-25T16:14:49.8165386Z Stop and remove container: eef2df664b4246e4bdf2546d95826dac_nvidiacuda1171develubuntu2204_84b34d
+2026-07-25T16:14:49.8169544Z ##[command]/usr/bin/docker rm --force 4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4
+2026-07-25T16:14:50.8301421Z 4a185401ca481e38090315994a371b872bea095cbdd2f2f5402ee198c67a2eb4
+2026-07-25T16:14:50.8322614Z Remove container network: github_network_03083043cef24d9f87eb9ad1ff29a30d
+2026-07-25T16:14:50.8325925Z ##[command]/usr/bin/docker network rm github_network_03083043cef24d9f87eb9ad1ff29a30d
+2026-07-25T16:14:50.9148307Z github_network_03083043cef24d9f87eb9ad1ff29a30d
+2026-07-25T16:14:50.9221722Z Cleaning up orphan processes

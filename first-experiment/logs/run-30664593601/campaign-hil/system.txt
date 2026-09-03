@@ -1,0 +1,7 @@
+2026-07-31T20:53:31.4780000Z Requested labels: self-hosted, ARM64
+2026-07-31T20:53:31.4780000Z Job defined at: lospollos19/cupbop-experiment/.github/workflows/campaign-hil.yaml@refs/heads/main
+2026-07-31T20:53:31.4780000Z Waiting for a runner to pick up this job...
+2026-07-31T20:53:31.4750000Z Evaluating campaign-hil.if
+2026-07-31T20:53:31.4750000Z Evaluating: success()
+2026-07-31T20:53:31.4750000Z Result: true
+2026-07-31T20:53:31.9050000Z Job is about to start running on the runner: jetson-orin

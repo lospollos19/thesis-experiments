@@ -1,0 +1,61 @@
+name: cupbop-build
+
+on:
+  workflow_dispatch:          
+  push:
+    paths: ['.github/workflows/cupbop-build.yml']
+    branches: [main]
+
+jobs:
+  build-cupbop:
+    runs-on: ubuntu-22.04
+    container:
+      image: nvidia/cuda:11.7.1-devel-ubuntu22.04   # runner amd64 natif, CUDA fourni
+    env:
+      CUDA_PATH: /usr/local/cuda
+    steps:
+      - name: LLVM 14 dependencies
+        run: |
+          apt-get update
+          apt-get install -y --no-install-recommends \
+            llvm-14 llvm-14-dev clang-14 libclang-14-dev \
+            cmake make git g++ ca-certificates \
+            zlib1g-dev
+          for t in clang clang++ llvm-config llc; do
+            update-alternatives --install /usr/bin/$t $t /usr/bin/$t-14 100
+          done
+
+      - name: Clone CuPBoP
+        run: git clone --recursive https://github.com/cupbop/CuPBoP.git
+
+      - name: Build
+        working-directory: CuPBoP
+        run: |
+          mkdir build && cd build
+          cmake .. -DLLVM_DIR=/usr/lib/llvm-14/lib/cmake/llvm
+          make -j"$(nproc)"
+
+      - name: Smoke test vecadd
+        working-directory: CuPBoP
+        run: |
+          export CuPBoP_PATH="$(pwd)"
+          export LD_LIBRARY_PATH="$CuPBoP_PATH/build/runtime:$CuPBoP_PATH/build/runtime/threadPool:$LD_LIBRARY_PATH"
+          cd examples/vecadd
+          clang++ -std=c++11 vecadd.cu -I../.. --cuda-path="$CUDA_PATH" \
+            --cuda-gpu-arch=sm_50 -L"$CUDA_PATH/lib64" \
+            -lcudart_static -ldl -lrt -pthread -save-temps -v || true
+          # the host triple varies (pc- vs unknown-) with the clang build, so match the .bc by pattern
+          KERNEL_BC=$(ls vecadd-*nvptx64*sm_50.bc 2>/dev/null || true)
+          HOST_BC=$(ls vecadd-host-*.bc 2>/dev/null || true)
+          test -n "$KERNEL_BC" || { echo "::error::kernel .bc manquant"; exit 1; }
+          test -n "$HOST_BC"   || { echo "::error::host .bc manquant";   exit 1; }
+          echo "kernel=$KERNEL_BC  host=$HOST_BC"
+          "$CuPBoP_PATH/build/compilation/kernelTranslator" "$KERNEL_BC" kernel.bc
+          "$CuPBoP_PATH/build/compilation/hostTranslator"   "$HOST_BC"   host.bc
+          llc --relocation-model=pic --filetype=obj kernel.bc
+          llc --relocation-model=pic --filetype=obj host.bc
+          g++ -o vecadd -fPIC -no-pie \
+            -I"$CuPBoP_PATH/runtime/threadPool/include" \
+            -L"$CuPBoP_PATH/build/runtime" -L"$CuPBoP_PATH/build/runtime/threadPool" \
+            host.o kernel.o -I../.. -lc -lCPUruntime -lthreadPool -lpthread
+          ./vecadd

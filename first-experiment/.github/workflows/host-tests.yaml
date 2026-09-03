@@ -1,0 +1,28 @@
+name: host-tests
+
+# Job A of the pipeline: pure C++ host-logic unit tests (GoogleTest).
+# Runs anywhere -- no GPU, no CuPBoP. This is the "test the code that doesn't
+# need hardware" tier; the CUDA/kernel tier runs via CuPBoP in srad-sil.yaml.
+on:
+  workflow_dispatch:   # manual only -- run on demand to conserve Actions usage
+
+jobs:
+  host-unit-tests:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install cmake + GoogleTest
+        run: sudo apt-get update && sudo apt-get install -y cmake libgtest-dev
+
+      - name: Configure
+        working-directory: experiments/srad_v2
+        run: cmake -S . -B build
+
+      - name: Build
+        working-directory: experiments/srad_v2
+        run: cmake --build build
+
+      - name: Run tests
+        working-directory: experiments/srad_v2
+        run: ctest --test-dir build --output-on-failure

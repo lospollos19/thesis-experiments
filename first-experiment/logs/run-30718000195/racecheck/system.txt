@@ -1,0 +1,7 @@
+2026-08-01T20:54:50.5960000Z Evaluating racecheck.if
+2026-08-01T20:54:50.5960000Z Evaluating: success()
+2026-08-01T20:54:50.5960000Z Result: true
+2026-08-01T20:54:51.0840000Z Requested labels: self-hosted, ARM64
+2026-08-01T20:54:51.0840000Z Job defined at: lospollos19/cupbop-experiment/.github/workflows/racecheck.yaml@refs/heads/main
+2026-08-01T20:54:51.0840000Z Waiting for a runner to pick up this job...
+2026-08-01T20:54:51.5850000Z Job is about to start running on the runner: jetson-orin

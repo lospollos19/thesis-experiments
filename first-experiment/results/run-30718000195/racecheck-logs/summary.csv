@@ -1,0 +1,11 @@
+name,build,exec,hazards,summary_line
+baseline_control,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_001,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_002,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_003,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_004,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_005,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_006,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_007,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_008,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"
+sync_removal_009,ok,ok,1,"========= RACECHECK SUMMARY: 1 hazard displayed (1 error, 0 warnings)"

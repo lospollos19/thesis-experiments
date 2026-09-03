@@ -1,0 +1,7 @@
+2026-07-26T16:57:24.4380000Z Requested labels: self-hosted, ARM64
+2026-07-26T16:57:24.4380000Z Job defined at: lospollos19/cupbop-experiment/.github/workflows/srad-hil.yaml@refs/heads/main
+2026-07-26T16:57:24.4380000Z Waiting for a runner to pick up this job...
+2026-07-26T16:57:24.4370000Z Evaluating srad-on-orin.if
+2026-07-26T16:57:24.4370000Z Evaluating: success()
+2026-07-26T16:57:24.4370000Z Result: true
+2026-07-26T16:57:24.9450000Z Job is about to start running on the runner: jetson-orin

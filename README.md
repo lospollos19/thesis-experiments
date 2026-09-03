@@ -1,11 +1,12 @@
 # work-thesis
 
-Code and data for the two experiments of the thesis, one directory each.
+Code and data for the two experiments of the thesis.
 
-```
-first-experiment/     the RQ1 case study
-second-experiment/    the RQ2 study: regression test selection in a PyCUDA pipeline
-```
+| Directory | Subject |
+|---|---|
+| `first-experiment/` | Mutation testing of a CUDA C++ benchmark in two environments: CuPBoP on an x86 CI runner without a GPU, against native execution on an NVIDIA AGX Orin. |
+| `second-experiment/` | Regression test selection on a PyCUDA vision pipeline, with the CUDA-C sources stored two ways. |
 
-Each directory carries its own README, its own dependencies and its own tests,
-and is meant to be read and run on its own.
+Each carries its own README, dependencies and tests, and is meant to be read and
+run on its own. Both include the artifacts and logs of the CI runs that produced
+their measurements, under `results/` and `logs/`.

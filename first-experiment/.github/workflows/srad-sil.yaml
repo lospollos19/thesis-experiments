@@ -1,0 +1,51 @@
+name: srad-sil
+
+on:
+  workflow_dispatch:   # manual only -- run on demand to conserve Actions usage
+
+jobs:
+  srad-through-cupbop:
+    runs-on: ubuntu-22.04              # native x86 = the SIL environment (no qemu)
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/${{ github.repository }}/cupbop-sil:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # Runs inside the SIL image, so CuPBoP + LLVM + the CuPBoP_PATH/CUDA_PATH
+      # env vars are already present. Small matrix (512x512) keeps the dump small
+      # (~1.5 MB) for noise calibration; dims must be multiples of 16. Fixed seed
+      # srand(7) + fixed input => deterministic srad_sil.out.
+      - name: srad_v2 through CuPBoP
+        working-directory: experiments/srad_v2
+        run: bash translate_srad.sh srad.cu 512 512 0 127 0 127 0.5 2
+
+      # Determinism guard: the SIL output must stay byte-identical to the committed
+      # baseline (correct code, srand(7), same args). Any drift -- from a refactor
+      # or a toolchain change -- invalidates every downstream mutation number, so
+      # fail loudly here. During the mutation campaign this step is disabled/ignored
+      # (mutants are *expected* to diverge); it guards the correct-code path only.
+      - name: Determinism guard (vs committed baseline)
+        working-directory: experiments/srad_v2
+        run: |
+          if diff -q srad_sil.out baseline/srad_sil_baseline.out; then
+            echo "OK: srad_sil.out matches baseline (no numerical drift)"
+          else
+            echo "::error::srad_sil.out diverges from baseline/srad_sil_baseline.out -- numerical drift, fix before any mutation run"
+            echo "--- first differing lines (baseline < | > current) ---"
+            diff baseline/srad_sil_baseline.out srad_sil.out | head -20
+            exit 1
+          fi
+
+      # Expose the SIL result matrix so it can be diffed against the Orin's srad_hil.out.
+      - name: Upload srad_sil.out
+        uses: actions/upload-artifact@v4
+        with:
+          name: srad_sil-out
+          path: experiments/srad_v2/srad_sil.out
+          if-no-files-found: error

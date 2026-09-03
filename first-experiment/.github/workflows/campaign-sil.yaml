@@ -1,0 +1,41 @@
+name: campaign-sil
+
+# Mutation campaign, SIL side: builds+runs all mutants through CuPBoP (no GPU)
+# in ONE job (cheap on Actions minutes) and emits results_sil.jsonl.
+on:
+  workflow_dispatch:
+    inputs:
+      niter:
+        description: "srad iterations (higher = more fault propagation)"
+        default: "2"
+        required: false
+
+jobs:
+  campaign-sil:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: read
+      packages: read
+    container:
+      image: ghcr.io/${{ github.repository }}/cupbop-sil:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run mutation campaign (SIL / CuPBoP)
+        working-directory: experiments/srad_v2/mutation
+        shell: bash   # container default is sh (dash): no 'set -o pipefail'
+        env:
+          NITER: ${{ github.event.inputs.niter }}
+        run: |
+          set -o pipefail   # don't let tee mask a campaign failure
+          bash run_campaign.sh sil | tee "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload results_sil.jsonl
+        uses: actions/upload-artifact@v4
+        with:
+          name: results-sil
+          path: experiments/srad_v2/mutation/results_sil.jsonl
+          if-no-files-found: error

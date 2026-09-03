@@ -1,0 +1,289 @@
+﻿2026-07-29T14:22:19.7923734Z Current runner version: '2.336.0'
+2026-07-29T14:22:19.7937032Z Runner name: 'jetson-orin'
+2026-07-29T14:22:19.8021751Z Runner group name: 'Default'
+2026-07-29T14:22:19.8023965Z Machine name: 'jetson-orin'
+2026-07-29T14:22:19.8030448Z ##[group]GITHUB_TOKEN Permissions
+2026-07-29T14:22:19.8035776Z Contents: read
+2026-07-29T14:22:19.8036745Z Metadata: read
+2026-07-29T14:22:19.8037650Z Packages: read
+2026-07-29T14:22:19.8038542Z ##[endgroup]
+2026-07-29T14:22:19.8042883Z Secret source: Actions
+2026-07-29T14:22:19.8045292Z Prepare workflow directory
+2026-07-29T14:22:19.9031443Z Prepare all required actions
+2026-07-29T14:22:19.9132120Z Getting action download info
+2026-07-29T14:22:20.4936592Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-07-29T14:22:20.9854852Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-07-29T14:22:21.7832946Z Complete job name: campaign-hil
+2026-07-29T14:22:22.0122293Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-29T14:22:22.0142127Z ##[group]Run actions/checkout@v4
+2026-07-29T14:22:22.0143915Z with:
+2026-07-29T14:22:22.0144975Z   repository: lospollos19/cupbop-experiment
+2026-07-29T14:22:22.0152706Z   token: ***
+2026-07-29T14:22:22.0153732Z   ssh-strict: true
+2026-07-29T14:22:22.0154704Z   ssh-user: git
+2026-07-29T14:22:22.0155682Z   persist-credentials: true
+2026-07-29T14:22:22.0156721Z   clean: true
+2026-07-29T14:22:22.0157687Z   sparse-checkout-cone-mode: true
+2026-07-29T14:22:22.0158782Z   fetch-depth: 1
+2026-07-29T14:22:22.0159716Z   fetch-tags: false
+2026-07-29T14:22:22.0160666Z   show-progress: true
+2026-07-29T14:22:22.0161652Z   lfs: false
+2026-07-29T14:22:22.0162658Z   submodules: false
+2026-07-29T14:22:22.0163856Z   set-safe-directory: true
+2026-07-29T14:22:22.0165018Z   allow-unsafe-pr-checkout: false
+2026-07-29T14:22:22.0166757Z ##[endgroup]
+2026-07-29T14:22:22.1946920Z Syncing repository: lospollos19/cupbop-experiment
+2026-07-29T14:22:22.1951246Z ##[group]Getting Git version info
+2026-07-29T14:22:22.1953421Z Working directory is '/home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment'
+2026-07-29T14:22:22.1956138Z [command]/usr/bin/git version
+2026-07-29T14:22:22.1957281Z git version 2.43.0
+2026-07-29T14:22:22.1960792Z ##[endgroup]
+2026-07-29T14:22:22.1970463Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/actions-runner/_work/_temp/c34a5225-32ad-44f1-af18-420b74d6e8d8/.gitconfig'
+2026-07-29T14:22:22.1984444Z Temporarily overriding HOME='/home/vub/Documents/moussa/actions-runner/_work/_temp/c34a5225-32ad-44f1-af18-420b74d6e8d8' before making global git config changes
+2026-07-29T14:22:22.1987549Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-29T14:22:22.1992816Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment
+2026-07-29T14:22:22.2063086Z [command]/usr/bin/git config --local --get remote.origin.url
+2026-07-29T14:22:22.2102877Z https://github.com/lospollos19/cupbop-experiment
+2026-07-29T14:22:22.2127187Z ##[group]Removing previously created refs, to avoid conflicts
+2026-07-29T14:22:22.2134379Z [command]/usr/bin/git rev-parse --symbolic-full-name --verify --quiet HEAD
+2026-07-29T14:22:22.2170568Z refs/heads/main
+2026-07-29T14:22:22.2187344Z [command]/usr/bin/git checkout --detach
+2026-07-29T14:22:22.2245545Z HEAD is now at da4fef9 mutation: fix cross-platform baseline bug — score each side vs its own pristine baseline (was scoring HIL vs SIL baseline, injecting the 1e-05 noise floor and false-killing equivalent mutants)
+2026-07-29T14:22:22.2317649Z [command]/usr/bin/git branch --delete --force main
+2026-07-29T14:22:22.2378077Z Deleted branch main (was da4fef9).
+2026-07-29T14:22:22.2440015Z ##[endgroup]
+2026-07-29T14:22:22.2445600Z [command]/usr/bin/git submodule status
+2026-07-29T14:22:22.2809294Z ##[group]Cleaning the repository
+2026-07-29T14:22:22.2816177Z [command]/usr/bin/git clean -ffdx
+2026-07-29T14:22:22.2993500Z Removing experiments/srad_v2/mutation/mutants/
+2026-07-29T14:22:22.3018465Z [command]/usr/bin/git reset --hard HEAD
+2026-07-29T14:22:22.3092175Z HEAD is now at da4fef9 mutation: fix cross-platform baseline bug — score each side vs its own pristine baseline (was scoring HIL vs SIL baseline, injecting the 1e-05 noise floor and false-killing equivalent mutants)
+2026-07-29T14:22:22.3103785Z ##[endgroup]
+2026-07-29T14:22:22.3107355Z ##[group]Disabling automatic garbage collection
+2026-07-29T14:22:22.3119974Z [command]/usr/bin/git config --local gc.auto 0
+2026-07-29T14:22:22.3194856Z ##[endgroup]
+2026-07-29T14:22:22.3221120Z ##[group]Setting up auth
+2026-07-29T14:22:22.3226877Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-29T14:22:22.3297896Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-29T14:22:22.3716244Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-29T14:22:22.3803268Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-29T14:22:22.4227897Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-29T14:22:22.4306547Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-29T14:22:22.4724448Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-07-29T14:22:22.4828867Z ##[endgroup]
+2026-07-29T14:22:22.4834228Z ##[group]Fetching the repository
+2026-07-29T14:22:22.4882033Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +d98c645cfacb13db502b204242d6f1ccf988c6b5:refs/remotes/origin/main
+2026-07-29T14:22:23.0581104Z From https://github.com/lospollos19/cupbop-experiment
+2026-07-29T14:22:23.0590865Z  + da4fef9...d98c645 d98c645cfacb13db502b204242d6f1ccf988c6b5 -> origin/main  (forced update)
+2026-07-29T14:22:23.0621894Z ##[endgroup]
+2026-07-29T14:22:23.0624914Z ##[group]Determining the checkout info
+2026-07-29T14:22:23.0669420Z ##[endgroup]
+2026-07-29T14:22:23.0673111Z [command]/usr/bin/git sparse-checkout disable
+2026-07-29T14:22:23.0724904Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-07-29T14:22:23.0775872Z ##[group]Checking out the ref
+2026-07-29T14:22:23.0782248Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-07-29T14:22:23.0837306Z Warning: you are leaving 1 commit behind, not connected to
+2026-07-29T14:22:23.0842803Z any of your branches:
+2026-07-29T14:22:23.0846133Z 
+2026-07-29T14:22:23.0857468Z   da4fef9 mutation: fix cross-platform baseline bug — score each side vs its own pristine baseline (was scoring HIL vs SIL baseline, injecting the 1e-05 noise floor and false-killing equivalent mutants)
+2026-07-29T14:22:23.0869025Z 
+2026-07-29T14:22:23.0871996Z If you want to keep it by creating a new branch, this may be a good time
+2026-07-29T14:22:23.0877952Z to do so with:
+2026-07-29T14:22:23.0880038Z 
+2026-07-29T14:22:23.0882000Z  git branch <new-branch-name> da4fef9
+2026-07-29T14:22:23.0885611Z 
+2026-07-29T14:22:23.0887409Z Switched to a new branch 'main'
+2026-07-29T14:22:23.0892067Z branch 'main' set up to track 'origin/main'.
+2026-07-29T14:22:23.0904345Z ##[endgroup]
+2026-07-29T14:22:23.0925351Z [command]/usr/bin/git log -1 --format=%H
+2026-07-29T14:22:23.0964885Z d98c645cfacb13db502b204242d6f1ccf988c6b5
+2026-07-29T14:22:23.1802841Z ##[group]Run set -o pipefail   # don't let tee mask a campaign failure
+2026-07-29T14:22:23.1809189Z [36;1mset -o pipefail   # don't let tee mask a campaign failure[0m
+2026-07-29T14:22:23.1813294Z [36;1mexport PATH="/usr/local/cuda/bin:$PATH"[0m
+2026-07-29T14:22:23.1817159Z [36;1mbash run_campaign.sh hil | tee "$GITHUB_STEP_SUMMARY"[0m
+2026-07-29T14:22:23.1868238Z shell: /usr/bin/bash -e {0}
+2026-07-29T14:22:23.1870648Z ##[endgroup]
+2026-07-29T14:22:23.3331284Z Building pristine hil baseline (unmutated srad)...
+2026-07-29T14:22:34.9492563Z baseline ready: 512 rows
+2026-07-29T14:22:48.0629374Z [  1/138] sync_removal_001                   SURVIVED       (max=0.0)
+2026-07-29T14:23:00.7685099Z [  2/138] sync_removal_002                   SURVIVED       (max=0.0)
+2026-07-29T14:23:13.6396673Z [  3/138] sync_removal_003                   SURVIVED       (max=0.0)
+2026-07-29T14:23:26.4592129Z [  4/138] sync_removal_004                   SURVIVED       (max=0.0)
+2026-07-29T14:23:39.2970617Z [  5/138] sync_removal_005                   SURVIVED       (max=0.0)
+2026-07-29T14:23:52.0292337Z [  6/138] sync_removal_006                   SURVIVED       (max=0.0)
+2026-07-29T14:24:04.7682902Z [  7/138] sync_removal_007                   SURVIVED       (max=0.0)
+2026-07-29T14:24:17.6078604Z [  8/138] sync_removal_008                   SURVIVED       (max=0.0)
+2026-07-29T14:24:30.4771495Z [  9/138] sync_removal_009                   SURVIVED       (max=0.0)
+2026-07-29T14:24:43.2950067Z [ 10/138] share_removal_001                  SURVIVED       (max=0.0)
+2026-07-29T14:24:56.1605049Z [ 11/138] share_removal_002                  SURVIVED       (max=0.0)
+2026-07-29T14:25:08.9326233Z [ 12/138] share_removal_003                  SURVIVED       (max=0.0)
+2026-07-29T14:25:21.7639138Z [ 13/138] share_removal_004                  SURVIVED       (max=0.0)
+2026-07-29T14:25:34.6284247Z [ 14/138] share_removal_005                  SURVIVED       (max=0.0)
+2026-07-29T14:25:47.4843036Z [ 15/138] share_removal_006                  SURVIVED       (max=0.0)
+2026-07-29T14:26:00.3045960Z [ 16/138] share_removal_007                  SURVIVED       (max=0.0)
+2026-07-29T14:26:13.0490464Z [ 17/138] share_removal_008                  SURVIVED       (max=0.0)
+2026-07-29T14:26:25.7737086Z [ 18/138] share_removal_009                  SURVIVED       (max=0.0)
+2026-07-29T14:26:38.6089424Z [ 19/138] share_removal_010                  SURVIVED       (max=0.0)
+2026-07-29T14:26:51.4524402Z [ 20/138] share_removal_011                  SURVIVED       (max=0.0)
+2026-07-29T14:27:04.2642989Z [ 21/138] gpu_index_replacement_001          SURVIVED       (max=0.0)
+2026-07-29T14:27:17.0808928Z [ 22/138] gpu_index_replacement_002          SURVIVED       (max=0.0)
+2026-07-29T14:27:29.8467784Z [ 23/138] gpu_index_replacement_003          SURVIVED       (max=0.0)
+2026-07-29T14:27:42.6790695Z [ 24/138] gpu_index_replacement_004          SURVIVED       (max=0.0)
+2026-07-29T14:27:55.3868200Z [ 25/138] gpu_index_replacement_005          SURVIVED       (max=0.0)
+2026-07-29T14:28:08.1993111Z [ 26/138] gpu_index_replacement_006          SURVIVED       (max=0.0)
+2026-07-29T14:28:21.0324424Z [ 27/138] gpu_index_replacement_007          SURVIVED       (max=0.0)
+2026-07-29T14:28:33.7814775Z [ 28/138] gpu_index_replacement_008          SURVIVED       (max=0.0)
+2026-07-29T14:28:46.5123675Z [ 29/138] gpu_index_increment_001            SURVIVED       (max=0.0)
+2026-07-29T14:28:59.2607261Z [ 30/138] gpu_index_increment_002            SURVIVED       (max=0.0)
+2026-07-29T14:29:12.1112095Z [ 31/138] gpu_index_increment_003            SURVIVED       (max=0.0)
+2026-07-29T14:29:24.9696715Z [ 32/138] gpu_index_increment_004            SURVIVED       (max=0.0)
+2026-07-29T14:29:37.7230431Z [ 33/138] gpu_index_increment_005            SURVIVED       (max=0.0)
+2026-07-29T14:29:50.6082659Z [ 34/138] gpu_index_increment_006            SURVIVED       (max=0.0)
+2026-07-29T14:30:03.3601687Z [ 35/138] gpu_index_increment_007            SURVIVED       (max=0.0)
+2026-07-29T14:30:16.1127507Z [ 36/138] gpu_index_increment_008            SURVIVED       (max=0.0)
+2026-07-29T14:30:28.9935622Z [ 37/138] gpu_index_decrement_001            SURVIVED       (max=0.0)
+2026-07-29T14:30:41.7445889Z [ 38/138] gpu_index_decrement_002            SURVIVED       (max=0.0)
+2026-07-29T14:30:54.4524251Z [ 39/138] gpu_index_decrement_003            SURVIVED       (max=0.0)
+2026-07-29T14:31:07.1832981Z [ 40/138] gpu_index_decrement_004            SURVIVED       (max=0.0)
+2026-07-29T14:31:19.9418416Z [ 41/138] gpu_index_decrement_005            SURVIVED       (max=0.0)
+2026-07-29T14:31:32.7804705Z [ 42/138] gpu_index_decrement_006            SURVIVED       (max=0.0)
+2026-07-29T14:31:45.5362672Z [ 43/138] gpu_index_decrement_007            SURVIVED       (max=0.0)
+2026-07-29T14:31:58.2414332Z [ 44/138] gpu_index_decrement_008            SURVIVED       (max=0.0)
+2026-07-29T14:32:11.0008803Z [ 45/138] alloc_swap_001                     SURVIVED       (max=0.0)
+2026-07-29T14:32:23.7451716Z [ 46/138] alloc_swap_002                     SURVIVED       (max=0.0)
+2026-07-29T14:32:36.6248966Z [ 47/138] alloc_increment_001                SURVIVED       (max=0.0)
+2026-07-29T14:32:49.4652375Z [ 48/138] alloc_increment_002                SURVIVED       (max=0.0)
+2026-07-29T14:33:02.3029656Z [ 49/138] alloc_decrement_001                SURVIVED       (max=0.0)
+2026-07-29T14:33:15.0126000Z [ 50/138] alloc_decrement_002                SURVIVED       (max=0.0)
+2026-07-29T14:33:27.8493862Z [ 51/138] math_replacement_001               SURVIVED       (max=0.0)
+2026-07-29T14:33:40.6045984Z [ 52/138] math_replacement_002               SURVIVED       (max=0.0)
+2026-07-29T14:33:53.4606480Z [ 53/138] math_replacement_003               SURVIVED       (max=0.0)
+2026-07-29T14:34:06.2410165Z [ 54/138] math_replacement_004               SURVIVED       (max=0.0)
+2026-07-29T14:34:18.9762157Z [ 55/138] math_replacement_005               SURVIVED       (max=0.0)
+2026-07-29T14:34:31.7373542Z [ 56/138] math_replacement_006               SURVIVED       (max=0.0)
+2026-07-29T14:34:44.5559521Z [ 57/138] math_replacement_007               SURVIVED       (max=0.0)
+2026-07-29T14:34:57.4073424Z [ 58/138] math_replacement_008               SURVIVED       (max=0.0)
+2026-07-29T14:35:10.2514847Z [ 59/138] math_replacement_009               SURVIVED       (max=0.0)
+2026-07-29T14:35:23.1321366Z [ 60/138] math_replacement_010               SURVIVED       (max=0.0)
+2026-07-29T14:35:35.9083924Z [ 61/138] math_replacement_011               SURVIVED       (max=0.0)
+2026-07-29T14:35:48.7430361Z [ 62/138] math_replacement_012               SURVIVED       (max=0.0)
+2026-07-29T14:36:01.4527617Z [ 63/138] math_replacement_013               SURVIVED       (max=0.0)
+2026-07-29T14:36:14.1641251Z [ 64/138] math_replacement_014               SURVIVED       (max=0.0)
+2026-07-29T14:36:26.8684190Z [ 65/138] math_replacement_015               SURVIVED       (max=0.0)
+2026-07-29T14:36:39.6890395Z [ 66/138] math_replacement_016               SURVIVED       (max=0.0)
+2026-07-29T14:36:52.4429368Z [ 67/138] math_replacement_017               SURVIVED       (max=0.0)
+2026-07-29T14:37:05.2767024Z [ 68/138] math_replacement_018               SURVIVED       (max=0.0)
+2026-07-29T14:37:18.0927367Z [ 69/138] math_replacement_019               SURVIVED       (max=0.0)
+2026-07-29T14:37:30.9046112Z [ 70/138] math_replacement_020               SURVIVED       (max=0.0)
+2026-07-29T14:37:43.7764206Z [ 71/138] math_replacement_021               SURVIVED       (max=0.0)
+2026-07-29T14:37:56.6333083Z [ 72/138] math_replacement_022               SURVIVED       (max=0.0)
+2026-07-29T14:38:09.3755782Z [ 73/138] math_replacement_023               SURVIVED       (max=0.0)
+2026-07-29T14:38:22.1405827Z [ 74/138] math_replacement_024               SURVIVED       (max=0.0)
+2026-07-29T14:38:35.0095756Z [ 75/138] math_replacement_025               SURVIVED       (max=0.0)
+2026-07-29T14:38:47.8452777Z [ 76/138] math_replacement_026               SURVIVED       (max=0.0)
+2026-07-29T14:39:00.6603737Z [ 77/138] math_replacement_027               SURVIVED       (max=0.0)
+2026-07-29T14:39:13.5170950Z [ 78/138] math_replacement_028               SURVIVED       (max=0.0)
+2026-07-29T14:39:26.2762723Z [ 79/138] math_replacement_029               SURVIVED       (max=0.0)
+2026-07-29T14:39:39.1365604Z [ 80/138] math_replacement_030               SURVIVED       (max=0.0)
+2026-07-29T14:39:52.0079473Z [ 81/138] math_replacement_031               SURVIVED       (max=0.0)
+2026-07-29T14:40:04.7157985Z [ 82/138] math_replacement_032               SURVIVED       (max=0.0)
+2026-07-29T14:40:17.4820875Z [ 83/138] math_replacement_033               SURVIVED       (max=0.0)
+2026-07-29T14:40:30.3437523Z [ 84/138] math_replacement_034               SURVIVED       (max=0.0)
+2026-07-29T14:40:43.2272548Z [ 85/138] math_replacement_035               SURVIVED       (max=0.0)
+2026-07-29T14:40:56.1010209Z [ 86/138] math_replacement_036               SURVIVED       (max=0.0)
+2026-07-29T14:41:08.9706173Z [ 87/138] math_replacement_037               SURVIVED       (max=0.0)
+2026-07-29T14:41:21.8122871Z [ 88/138] math_replacement_038               SURVIVED       (max=0.0)
+2026-07-29T14:41:34.5447935Z [ 89/138] math_replacement_039               SURVIVED       (max=0.0)
+2026-07-29T14:41:47.3832210Z [ 90/138] math_replacement_040               SURVIVED       (max=0.0)
+2026-07-29T14:42:00.2126527Z [ 91/138] math_replacement_041               SURVIVED       (max=0.0)
+2026-07-29T14:42:13.0794963Z [ 92/138] math_replacement_042               SURVIVED       (max=0.0)
+2026-07-29T14:42:25.9129588Z [ 93/138] math_replacement_043               SURVIVED       (max=0.0)
+2026-07-29T14:42:38.7787918Z [ 94/138] math_replacement_044               SURVIVED       (max=0.0)
+2026-07-29T14:42:51.6567787Z [ 95/138] math_replacement_045               SURVIVED       (max=0.0)
+2026-07-29T14:43:04.5208331Z [ 96/138] math_replacement_046               SURVIVED       (max=0.0)
+2026-07-29T14:43:17.2465798Z [ 97/138] math_replacement_047               SURVIVED       (max=0.0)
+2026-07-29T14:43:30.0885975Z [ 98/138] math_replacement_048               SURVIVED       (max=0.0)
+2026-07-29T14:43:42.9438693Z [ 99/138] math_replacement_049               SURVIVED       (max=0.0)
+2026-07-29T14:43:55.8276820Z [100/138] math_replacement_050               SURVIVED       (max=0.0)
+2026-07-29T14:44:08.6835294Z [101/138] math_replacement_051               SURVIVED       (max=0.0)
+2026-07-29T14:44:21.5355807Z [102/138] math_replacement_052               SURVIVED       (max=0.0)
+2026-07-29T14:44:34.2608016Z [103/138] math_replacement_053               SURVIVED       (max=0.0)
+2026-07-29T14:44:47.0245002Z [104/138] math_replacement_054               SURVIVED       (max=0.0)
+2026-07-29T14:44:59.8593838Z [105/138] math_replacement_055               SURVIVED       (max=0.0)
+2026-07-29T14:45:12.6396418Z [106/138] math_replacement_056               SURVIVED       (max=0.0)
+2026-07-29T14:45:25.4930434Z [107/138] math_replacement_057               SURVIVED       (max=0.0)
+2026-07-29T14:45:38.3334974Z [108/138] conditional_boundary_replacement_001 SURVIVED       (max=0.0)
+2026-07-29T14:45:51.0754539Z [109/138] conditional_boundary_replacement_002 SURVIVED       (max=0.0)
+2026-07-29T14:46:03.9002006Z [110/138] negate_conditional_replacement_001 SURVIVED       (max=0.0)
+2026-07-29T14:46:16.6909436Z [111/138] negate_conditional_replacement_002 SURVIVED       (max=0.0)
+2026-07-29T14:46:29.5109725Z [112/138] negate_conditional_replacement_003 SURVIVED       (max=0.0)
+2026-07-29T14:46:42.3532438Z [113/138] negate_conditional_replacement_004 SURVIVED       (max=0.0)
+2026-07-29T14:46:55.2231343Z [114/138] negate_conditional_replacement_005 SURVIVED       (max=0.0)
+2026-07-29T14:47:08.0450072Z [115/138] negate_conditional_replacement_006 SURVIVED       (max=0.0)
+2026-07-29T14:47:20.9040124Z [116/138] negate_conditional_replacement_007 SURVIVED       (max=0.0)
+2026-07-29T14:47:33.7725384Z [117/138] negate_conditional_replacement_008 SURVIVED       (max=0.0)
+2026-07-29T14:47:46.5166567Z [118/138] negate_conditional_replacement_009 SURVIVED       (max=0.0)
+2026-07-29T14:47:59.2816371Z [119/138] negate_conditional_replacement_010 SURVIVED       (max=0.0)
+2026-07-29T14:48:12.1485131Z [120/138] negate_conditional_replacement_011 SURVIVED       (max=0.0)
+2026-07-29T14:48:24.8601964Z [121/138] negate_conditional_replacement_012 SURVIVED       (max=0.0)
+2026-07-29T14:48:37.6945568Z [122/138] negate_conditional_replacement_013 SURVIVED       (max=0.0)
+2026-07-29T14:48:50.4997391Z [123/138] negate_conditional_replacement_014 SURVIVED       (max=0.0)
+2026-07-29T14:49:03.3590702Z [124/138] negate_conditional_replacement_015 SURVIVED       (max=0.0)
+2026-07-29T14:49:16.2274820Z [125/138] negate_conditional_replacement_016 SURVIVED       (max=0.0)
+2026-07-29T14:49:29.0518174Z [126/138] negate_conditional_replacement_017 SURVIVED       (max=0.0)
+2026-07-29T14:49:41.9071832Z [127/138] negate_conditional_replacement_018 SURVIVED       (max=0.0)
+2026-07-29T14:49:54.7038810Z [128/138] negate_conditional_replacement_019 SURVIVED       (max=0.0)
+2026-07-29T14:50:07.4609153Z [129/138] negate_conditional_replacement_020 SURVIVED       (max=0.0)
+2026-07-29T14:50:20.2874858Z [130/138] negate_conditional_replacement_021 SURVIVED       (max=0.0)
+2026-07-29T14:50:33.1082211Z [131/138] negate_conditional_replacement_022 SURVIVED       (max=0.0)
+2026-07-29T14:50:45.8518692Z [132/138] negate_conditional_replacement_023 SURVIVED       (max=0.0)
+2026-07-29T14:50:58.6375599Z [133/138] negate_conditional_replacement_024 SURVIVED       (max=0.0)
+2026-07-29T14:51:11.5016091Z [134/138] logical_replacement_001            SURVIVED       (max=0.0)
+2026-07-29T14:51:24.3631385Z [135/138] logical_replacement_002            SURVIVED       (max=0.0)
+2026-07-29T14:51:37.1591424Z [136/138] logical_replacement_003            SURVIVED       (max=0.0)
+2026-07-29T14:51:50.0088399Z [137/138] logical_replacement_004            SURVIVED       (max=0.0)
+2026-07-29T14:52:02.7156987Z [138/138] logical_replacement_005            SURVIVED       (max=0.0)
+2026-07-29T14:52:02.7160929Z === hil campaign done: 138 mutants, 0 killed, 138 survived ===
+2026-07-29T14:52:02.7162562Z results -> /home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment/experiments/srad_v2/mutation/results_hil.json
+2026-07-29T14:52:02.7814901Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-29T14:52:02.7821253Z ##[group]Run actions/upload-artifact@v4
+2026-07-29T14:52:02.7822272Z with:
+2026-07-29T14:52:02.7822952Z   name: results-hil
+2026-07-29T14:52:02.7823942Z   path: experiments/srad_v2/mutation/results_hil.json
+2026-07-29T14:52:02.7825143Z   if-no-files-found: error
+2026-07-29T14:52:02.7826014Z   compression-level: 6
+2026-07-29T14:52:02.7826811Z   overwrite: false
+2026-07-29T14:52:02.7827596Z   include-hidden-files: false
+2026-07-29T14:52:02.7828476Z ##[endgroup]
+2026-07-29T14:52:03.0738784Z (node:1866327) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-07-29T14:52:03.0740221Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-07-29T14:52:03.0816055Z With the provided path, there will be 1 file uploaded
+2026-07-29T14:52:03.0824816Z Artifact name is valid!
+2026-07-29T14:52:03.0825974Z Root directory input is valid!
+2026-07-29T14:52:03.5440451Z Beginning upload of artifact content to blob storage
+2026-07-29T14:52:03.5975653Z (node:1866327) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-07-29T14:52:04.0994212Z Uploaded bytes 863
+2026-07-29T14:52:04.2154180Z Finished uploading artifact content to blob storage!
+2026-07-29T14:52:04.2156766Z SHA256 digest of uploaded artifact zip is 40051a1a39ac82e02d0b064436ea035a3b77ec86ec207200efb0b05eb50b2c02
+2026-07-29T14:52:04.2164251Z Finalizing artifact upload
+2026-07-29T14:52:04.4867162Z Artifact results-hil.zip successfully finalized. Artifact ID 8728391368
+2026-07-29T14:52:04.4869889Z Artifact results-hil has been successfully uploaded! Final size is 863 bytes. Artifact ID is 8728391368
+2026-07-29T14:52:04.4886656Z Artifact download URL: https://github.com/lospollos19/cupbop-experiment/actions/runs/30460521924/artifacts/8728391368
+2026-07-29T14:52:04.5567265Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-07-29T14:52:04.5572308Z Post job cleanup.
+2026-07-29T14:52:04.7090684Z [command]/usr/bin/git version
+2026-07-29T14:52:04.7157239Z git version 2.43.0
+2026-07-29T14:52:04.7217844Z Copying '/home/vub/.gitconfig' to '/home/vub/Documents/moussa/actions-runner/_work/_temp/8c6afa6d-0956-4306-aebd-825411a6f9d4/.gitconfig'
+2026-07-29T14:52:04.7232461Z Temporarily overriding HOME='/home/vub/Documents/moussa/actions-runner/_work/_temp/8c6afa6d-0956-4306-aebd-825411a6f9d4' before making global git config changes
+2026-07-29T14:52:04.7234053Z Adding repository directory to the temporary git global config as a safe directory
+2026-07-29T14:52:04.7242162Z [command]/usr/bin/git config --global --add safe.directory /home/vub/Documents/moussa/actions-runner/_work/cupbop-experiment/cupbop-experiment
+2026-07-29T14:52:04.7303525Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-07-29T14:52:04.7363032Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-07-29T14:52:04.7677326Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-07-29T14:52:04.7715684Z http.https://github.com/.extraheader
+2026-07-29T14:52:04.7736424Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-07-29T14:52:04.7792645Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-07-29T14:52:04.8150258Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-07-29T14:52:04.8210895Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-07-29T14:52:04.8976768Z Cleaning up orphan processes
+2026-07-29T14:52:05.0579736Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
