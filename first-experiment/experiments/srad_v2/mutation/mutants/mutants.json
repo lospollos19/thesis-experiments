@@ -1,0 +1,1382 @@
+[
+  {
+    "id": "sync_removal_001",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 53,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_002",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 65,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_003",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 71,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_004",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 149,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_005",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 198,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_006",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 205,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_007",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 214,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_008",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 218,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "sync_removal_009",
+    "operator": "sync_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 253,
+    "original": "__syncthreads();",
+    "mutated": "; /* removed */",
+    "race_dependent": true
+  },
+  {
+    "id": "share_removal_001",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 36,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_002",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 37,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_003",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 39,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_004",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 40,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_005",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 41,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_006",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 42,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_007",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 188,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_008",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 189,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_009",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 191,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_010",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 192,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "share_removal_011",
+    "operator": "share_removal",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 193,
+    "original": "__shared__",
+    "mutated": "(none)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_001",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 23,
+    "original": "threadIdx",
+    "mutated": "blockIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_002",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 24,
+    "original": "threadIdx",
+    "mutated": "blockIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_003",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 178,
+    "original": "threadIdx",
+    "mutated": "blockIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_004",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 179,
+    "original": "threadIdx",
+    "mutated": "blockIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_005",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 19,
+    "original": "blockIdx",
+    "mutated": "threadIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_006",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 20,
+    "original": "blockIdx",
+    "mutated": "threadIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_007",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 174,
+    "original": "blockIdx",
+    "mutated": "threadIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_replacement_008",
+    "operator": "gpu_index_replacement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 175,
+    "original": "blockIdx",
+    "mutated": "threadIdx",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_001",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 19,
+    "original": "blockIdx.x",
+    "mutated": "(blockIdx.x + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_002",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 20,
+    "original": "blockIdx.y",
+    "mutated": "(blockIdx.y + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_003",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 23,
+    "original": "threadIdx.x",
+    "mutated": "(threadIdx.x + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_004",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 24,
+    "original": "threadIdx.y",
+    "mutated": "(threadIdx.y + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_005",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 174,
+    "original": "blockIdx.x",
+    "mutated": "(blockIdx.x + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_006",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 175,
+    "original": "blockIdx.y",
+    "mutated": "(blockIdx.y + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_007",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 178,
+    "original": "threadIdx.x",
+    "mutated": "(threadIdx.x + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_increment_008",
+    "operator": "gpu_index_increment",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 179,
+    "original": "threadIdx.y",
+    "mutated": "(threadIdx.y + 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_001",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 19,
+    "original": "blockIdx.x",
+    "mutated": "(blockIdx.x - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_002",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 20,
+    "original": "blockIdx.y",
+    "mutated": "(blockIdx.y - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_003",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 23,
+    "original": "threadIdx.x",
+    "mutated": "(threadIdx.x - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_004",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 24,
+    "original": "threadIdx.y",
+    "mutated": "(threadIdx.y - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_005",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 174,
+    "original": "blockIdx.x",
+    "mutated": "(blockIdx.x - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_006",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 175,
+    "original": "blockIdx.y",
+    "mutated": "(blockIdx.y - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_007",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 178,
+    "original": "threadIdx.x",
+    "mutated": "(threadIdx.x - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "gpu_index_decrement_008",
+    "operator": "gpu_index_decrement",
+    "category": "GPU",
+    "file": "srad_kernel.cu",
+    "line": 179,
+    "original": "threadIdx.y",
+    "mutated": "(threadIdx.y - 1)",
+    "race_dependent": false
+  },
+  {
+    "id": "alloc_swap_001",
+    "operator": "alloc_swap",
+    "category": "GPU",
+    "file": "srad.cu",
+    "line": 221,
+    "original": "<<<dimGrid, dimBlock>>>",
+    "mutated": "<<<dimBlock, dimGrid>>>",
+    "race_dependent": false
+  },
+  {
+    "id": "alloc_swap_002",
+    "operator": "alloc_swap",
+    "category": "GPU",
+    "file": "srad.cu",
+    "line": 222,
+    "original": "<<<dimGrid, dimBlock>>>",
+    "mutated": "<<<dimBlock, dimGrid>>>",
+    "race_dependent": false
+  },
+  {
+    "id": "alloc_increment_001",
+    "operator": "alloc_increment",
+    "category": "GPU",
+    "file": "srad.cu",
+    "line": 213,
+    "original": "dim3 dimBlock(BLOCK_SIZE, BLOCK_SIZE)",
+    "mutated": "dim3 dimBlock(BLOCK_SIZE + 1, BLOCK_SIZE)",
+    "race_dependent": false
+  },
+  {
+    "id": "alloc_increment_002",
+    "operator": "alloc_increment",
+    "category": "GPU",
+    "file": "srad.cu",
+    "line": 214,
+    "original": "dim3 dimGrid(block_x , block_y)",
+    "mutated": "dim3 dimGrid(block_x + 1, block_y)",
+    "race_dependent": false
+  },
+  {
+    "id": "alloc_decrement_001",
+    "operator": "alloc_decrement",
+    "category": "GPU",
+    "file": "srad.cu",
+    "line": 213,
+    "original": "dim3 dimBlock(BLOCK_SIZE, BLOCK_SIZE)",
+    "mutated": "dim3 dimBlock(BLOCK_SIZE - 1, BLOCK_SIZE)",
+    "race_dependent": false
+  },
+  {
+    "id": "alloc_decrement_002",
+    "operator": "alloc_decrement",
+    "category": "GPU",
+    "file": "srad.cu",
+    "line": 214,
+    "original": "dim3 dimGrid(block_x , block_y)",
+    "mutated": "dim3 dimGrid(block_x - 1, block_y)",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_001",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 76,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_002",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 77,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_003",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 78,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_004",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 79,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_005",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 82,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_006",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 83,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_007",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 84,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_008",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 85,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_009",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 88,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_010",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 89,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_011",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 90,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_012",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 91,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_013",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 94,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_014",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 95,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_015",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 96,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_016",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 97,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_017",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 101,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_018",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 102,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_019",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 103,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_020",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 104,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_021",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 107,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_022",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 108,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_023",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 109,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_024",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 110,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_025",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 113,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_026",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 114,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_027",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 115,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_028",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 116,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_029",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 119,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_030",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 120,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_031",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 121,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_032",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 122,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_033",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 125,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_034",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 126,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_035",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 127,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_036",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 128,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_037",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_038",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_039",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_040",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_041",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_042",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_043",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_044",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "/",
+    "mutated": "*",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_045",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 132,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_046",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 134,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_047",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 134,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_048",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 134,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_049",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 134,
+    "original": "/",
+    "mutated": "*",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_050",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 136,
+    "original": "-",
+    "mutated": "+",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_051",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 137,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_052",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 141,
+    "original": "/",
+    "mutated": "*",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_053",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 141,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_054",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 142,
+    "original": "/",
+    "mutated": "*",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_055",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 251,
+    "original": "+",
+    "mutated": "-",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_056",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 251,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "math_replacement_057",
+    "operator": "math_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 251,
+    "original": "*",
+    "mutated": "/",
+    "race_dependent": false
+  },
+  {
+    "id": "conditional_boundary_replacement_001",
+    "operator": "conditional_boundary_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 145,
+    "original": "<",
+    "mutated": "<=",
+    "race_dependent": false
+  },
+  {
+    "id": "conditional_boundary_replacement_002",
+    "operator": "conditional_boundary_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 146,
+    "original": ">",
+    "mutated": ">=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_001",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 47,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_002",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 50,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_003",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 58,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_004",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 61,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_005",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 75,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_006",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 75,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_007",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 81,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_008",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 81,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_009",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 87,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_010",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 87,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_011",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 93,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_012",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 93,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_013",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 100,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_014",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 106,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_015",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 112,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_016",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 118,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_017",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 145,
+    "original": "<",
+    "mutated": ">=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_018",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 146,
+    "original": ">",
+    "mutated": "<=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_019",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 202,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_020",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 210,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_021",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 222,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_022",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 222,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_023",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 228,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "negate_conditional_replacement_024",
+    "operator": "negate_conditional_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 234,
+    "original": "==",
+    "mutated": "!=",
+    "race_dependent": false
+  },
+  {
+    "id": "logical_replacement_001",
+    "operator": "logical_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 75,
+    "original": "&&",
+    "mutated": "||",
+    "race_dependent": false
+  },
+  {
+    "id": "logical_replacement_002",
+    "operator": "logical_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 81,
+    "original": "&&",
+    "mutated": "||",
+    "race_dependent": false
+  },
+  {
+    "id": "logical_replacement_003",
+    "operator": "logical_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 87,
+    "original": "&&",
+    "mutated": "||",
+    "race_dependent": false
+  },
+  {
+    "id": "logical_replacement_004",
+    "operator": "logical_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 93,
+    "original": "&&",
+    "mutated": "||",
+    "race_dependent": false
+  },
+  {
+    "id": "logical_replacement_005",
+    "operator": "logical_replacement",
+    "category": "conventional",
+    "file": "srad_kernel.cu",
+    "line": 222,
+    "original": "&&",
+    "mutated": "||",
+    "race_dependent": false
+  }
+]

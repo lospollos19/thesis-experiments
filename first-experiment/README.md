@@ -19,6 +19,8 @@ experiments/srad_v2/               the subject
   baseline/                        SIL reference output, its provenance and the tolerance
   mutation/
     generate_mutants.py            source-level mutant generator, no GPU needed
+    mutants/                       the 138 mutants of the campaign, one file changed each,
+                                   plus mutants.json naming the line and the edit
     run_campaign.sh                one environment per invocation, loops over all mutants
     analyze_campaign.py            joins SIL and HIL verdicts, reports the gap per operator
   tests/host_test.cpp              host-side unit test
@@ -43,6 +45,9 @@ Building the image locally would trigger amd64 emulation. The real build and
 push run in CI on an x86 runner.
 
 ## Campaign
+
+The 138 mutants are committed under `experiments/srad_v2/mutation/mutants/`.
+Regenerating them overwrites that directory with an identical set:
 
 ```bash
 python experiments/srad_v2/mutation/generate_mutants.py    # no GPU needed

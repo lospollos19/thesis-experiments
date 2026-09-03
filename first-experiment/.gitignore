@@ -48,8 +48,7 @@ image_out.pgm
 .idea/
 .vscode/
 
-# Generated mutants (regenerable via generate_mutants.py)
-experiments/srad_v2/mutation/mutants/
+# Campaign outputs (the measured ones are kept under results/)
 experiments/srad_v2/mutation/results_*.json
 experiments/srad_v2/mutation/results_*.jsonl
 
