@@ -46,17 +46,40 @@ src/motion_pipeline/
   ui/                        Display (OpenCV overlay, headless-safe)
   pipeline.py                orchestrator, never imports UI code
 tests/                       one file per module, plus integration and workload tiers
-tools/                       the measurement and selection tooling
+tools/                       the selector and the measurement tooling, listed below
 bench/                       standalone benchmarks, not collected by pytest
 .github/workflows/           CI, including the jobs that run on the Orin
 ```
 
-Shared by both arms, at this level:
+Shared by both arms, one level up:
 
 ```
 results/                     artefacts published by the CI runs
 logs/                        step-by-step logs of those same runs
 ```
+
+## The selector and the measurement tooling
+
+Everything the study runs lives in each arm's `tools/`, next to the tracer in
+`src/motion_pipeline/processing/_trace.py`. Nothing is kept elsewhere.
+
+| File | What it does |
+|---|---|
+| `kernel_select.py` | **The kernel-aware selector — condition C.** `manifest` hashes the kernel sources of a tree; `select` emits the node ids to run. Its four rules are documented at the top of the file: R1 an edge to a changed kernel selects the test, R2 a collected id absent from the map is selected, R3 any kernel change selects the tests declared `no_kernel_launch`, R4 a change to the shared geometry selects everything. The final selection is the union with testmon's. |
+| `_trace.py` | Records which kernels each test launches, by instrumenting the launch sites. |
+| `merge_kernel_deps.py` | Unions the traced sessions into one test-to-kernel map. |
+| `kernel_map_report.py` | Reports on that map: is it exploitable, and is it complete. |
+| `mutate.py` | The mutation corpus and the tool that applies one mutation to a tree. |
+| `ground_truth.py` | Measures `D(m)`: which tests each mutation actually breaks. |
+| `ground_truth_report.py` | Aggregates the per-arm `D(m)` and rules on their validity. |
+| `campaign.py` | Runs one condition over a chunk of the corpus: select, then time. |
+| `campaign_report.py` | Crosses the selections with `D(m)`: violations and occupancy. |
+| `repeat_report.py` | Mean, spread and saving with propagated uncertainty, from repeated timings. |
+| `checkpoint_testmon_db.py` | Folds testmon's write-ahead log into its database before archiving. |
+
+Each takes `--help`. The map the campaign used is shipped at
+`results/run-31558337740/verdict-q2q3/kernel_deps.json`, with the raw traces
+that produced it.
 
 ## Installing
 
